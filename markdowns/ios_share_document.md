@@ -1,14 +1,14 @@
 # ios_share_document
 
-##分享功能使用
-设置Yodo1KeyInfo.plist分享参数
+##Use of the share function
+setting Yodo1KeyInfo.plist Sharing of Parameters
 ![](./../../resource/ios_share_1.png)
 
 # #import "OpenSuitSNSManager.h"
 
 /**
 *  
-* 调用分享界面UI
+* Call the shared interface UI
 * 
 */
 - (void)showSocial:(SMContent *)content

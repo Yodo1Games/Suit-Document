@@ -1,94 +1,94 @@
 # ios_payment_document
 
-## 1.使用支付功能之前准备工作
-设置Yodo1ProductInfo.plist计费点
+## 1.Preparation before using the payment function
+Setting Yodo1ProductInfo.plist billing point
 ![](./../../resource/ios_payment_1.png)
 
-## 2.支付功能使用
+## 2.Use of payment function
 # #import "Yd1UCenterManager.h"
 
 /**
- *  根据channelProductId 获取uniformProductId
+ *  Get uniformProductId by channelProductId
  */
 - (NSString *)uniformProductIdWithChannelProductId:(NSString *)channelProductId;
 
 /**
- *  创建订单号和订单，返回订单号
+ *  Create order number and order, return order number
  */
 - (void)createOrderIdWithUniformProductId:(NSString *)uniformProductId
                                     extra:(NSString*)extra
                                  callback:(void (^)(bool success,NSString * orderid,NSString* error))callback;
 
 /**
- * 购买产品
- * extra 是字典json字符串 @{@"channelUserid":@""}
+ * Buy product
+ * extra is a dictionary json string @{@"channelUserid":@""}
  */
 - (void)paymentWithUniformProductId:(NSString *)uniformProductId
                               extra:(NSString*)extra
                            callback:(PaymentCallback)callback;
 
 /**
- *  恢复购买
+ *  Restore purchases
  */
 - (void)restorePayment:(RestoreCallback)callback;
 
 /**
- *  查询漏单
+ *  Query for missing orders
  */
 - (void)queryLossOrder:(LossOrderCallback)callback;
 
 /**
- *  查询订阅
+ *  Query subscription
  */
 - (void)querySubscriptions:(BOOL)excludeOldTransactions
                   callback:(QuerySubscriptionCallback)callback;
 
 /**
- *  获取产品信息
+ *  Get product information
  */
 - (void)productWithUniformProductId:(NSString*)uniformProductId
                            callback:(ProductsInfoCallback)callback;
 
 /**
- *  获取所有产品信息
+ *  Get all product information
  */
 - (void)products:(ProductsInfoCallback)callback;
 
 /**
- *  获取促销订单
+ *  Get promotional order
  */
 - (void)fetchStorePromotionOrder:(FetchStorePromotionOrderCallback) callback;
 
 /**
- *  获取促销活动订单可见性
+ *  Get promotion order visibility
  */
 - (void)fetchStorePromotionVisibilityForProduct:(NSString*)uniformProductId
                                        callback:(FetchStorePromotionVisibilityCallback)callback;
 /**
- *  更新促销活动订单
+ *  Update promotion order
  */
 - (void)updateStorePromotionOrder:(NSArray<NSString *> *)uniformProductIdArray
                          callback:(UpdateStorePromotionOrderCallback)callback;
 
 /**
- *  更新促销活动可见性
+ *  Update promotion visibility
  */
 - (void)updateStorePromotionVisibility:(BOOL)visibility
                                product:(NSString*)uniformProductId
                               callback:(UpdateStorePromotionVisibilityCallback)callback;
 
 /**
- *  准备继续购买促销
+ *  Ready to proceed with the purchase promotion
  */
 - (void)readyToContinuePurchaseFromPromot:(PaymentCallback)callback;
 
 /**
- *  取消购买
+ *  Cancel purchase
  */
 - (void)cancelPromotion;
 
 /**
- *  获取促销产品
+ *  Get promotional products
  */
 - (Product*)promotionProduct;
 
@@ -96,8 +96,8 @@
 
 # #import "Yd1UCenter.h"
 /**
- *  设备登录
- *  @param playerId 是玩家id
+ *  device login
+ *  @param playerId is playid
  */
 - (void)deviceLoginWithPlayerId:(NSString *)playerId
                        callback:(void(^)(YD1User* _Nullable user, NSError* _Nullable  error))callback;
