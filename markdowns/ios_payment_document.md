@@ -103,12 +103,12 @@ Setting Yodo1ProductInfo.plist billing point
                        callback:(void(^)(YD1User* _Nullable user, NSError* _Nullable  error))callback;
 
 /**
- *  创建订单号
+ *  Create order number
  */
 - (void)generateOrderId:(void (^)(NSString* _Nullable orderId,NSError* _Nullable error))callback;
 
 /**
- *  创建订单
+ *  Create order
  */
 - (void)createOrder:(NSDictionary*) parameter
            callback:(void (^)(int error_code,NSString* error))callback;
@@ -120,48 +120,48 @@ Setting Yodo1ProductInfo.plist billing point
                       callback:(void (^)(BOOL verifySuccess,NSString* response,NSError* error))callback;
 
 /**
- * 查询订阅
+ * Query subscription
  */
 - (void)querySubscriptions:(YD1ItemInfo *)itemInfo
                   callback:(void (^)(BOOL success,NSString* _Nullable response,NSError* _Nullable error))callback;
 
 /**
- * 通知已发货成功
+ * Notification has been shipped successfully
  */
 - (void)sendGoodsOver:(NSString *)orderIds
              callback:(void (^)(BOOL success,NSString* error))callback;
 
 
 /**
- * 通知已发货失败
+ * Notification has been shipped failed
  */
 - (void)sendGoodsOverForFault:(NSString *)orderIds
                      callback:(void (^)(BOOL success,NSString* error))callback;
 
 /**
- *  上报订单已支付成功接口
+ *  Report order has been paid successfully interface
  */
 - (void)clientCallback:(YD1ItemInfo *)itemInfo callbakc:(void (^)(BOOL success,NSString* error))callback;
 
 /**
- *  上报支付失败接口
+ *  Reporting payment failure interface
  */
 - (void)reportOrderStatus:(YD1ItemInfo *)itemInfo callbakc:(void (^)(BOOL success,NSString* error))callback;
 
 /**
- *  客户端通知服务端已同步unity接口
+ *  The client notifies the server that the unity interface has been synchronized
  */
 - (void)clientNotifyForSyncUnityStatus:(NSArray *)orderIds
                               callback:(void (^)(BOOL success,NSArray* notExistOrders,NSArray* notPayOrders,NSString* error))callback;
 
 /**
- *  查询漏单接口（单机版）
+ *  Query missing orders interface (stand-alone version)
  */
 - (void)offlineMissorders:(YD1ItemInfo *)itemInfo
                  callback:(void (^)(BOOL success,NSArray* missorders,NSString* error))callback;
 
 /**
- * 激活码/优惠券
+ * Activation Code/Coupon
  */
 - (void)verifyActivationcode:(NSString *)code
                     callback:(void (^)(BOOL success,NSDictionary* _Nullable response,NSString* _Nullable error))callback;
