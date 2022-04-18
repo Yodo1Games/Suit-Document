@@ -36,8 +36,8 @@ pod install --repo-update
 #### 2.1 Set `Yodo1KeyInfo.plist` parameter
 ``` xml
 <key>KeyConfig</key> 
-<dict> 
-		<key>AppsFlyer_domain</key> 
+<dict>  
+    	<key>AppsFlyer_domain</key> 
     	<string>[AppsFlyer domain]</string> 
     	<key>ThinkingAppId</key> 
     	<string>[ThinkingData AppId]</string> 
@@ -75,8 +75,8 @@ You can also directly edit the plist source code (`Open As Source Code`) to achi
 ``` xml
 <key>NSAppTransportSecurity</key> 
 <dict> 
-		<key>NSAppTransportSecurity</key> 
-    	<true/>
+	<key>NSAppTransportSecurity</key> 
+	<true/>
 </dict>
 ```
 
@@ -193,7 +193,7 @@ Please follow all legal frameworks that apply to your game and its users.
 ``` xml
 <key>custom name</key> 
 <dict> 
-		<key>ProductName</key> 
+    	<key>ProductName</key> 
     	<string>product name</string> 
     	<key>ChannelProductId</key> 
     	<string>product id</string> 
