@@ -36,31 +36,31 @@ pod install --repo-update
 #### 2.1 Set `Yodo1KeyInfo.plist` parameter
 ``` xml
 <key>KeyConfig</key> 
-	<dict> 
+<dict> 
    	 	<key>AppsFlyer_domain</key> 
-    		<string>[AppsFlyer domain]</string> 
+    	<string>[AppsFlyer domain]</string> 
     	<key>ThinkingAppId</key> 
-    		<string>[ThinkingData AppId]</string> 
+    	<string>[ThinkingData AppId]</string> 
     	<key>AppsFlyer_Schemes</key> 
-    		<string>[AppsFlyer Schemes]</string> 
+    	<string>[AppsFlyer Schemes]</string> 
     	<key>ThinkingServerUrl</key> 
-    		<string>[Thinking ServerUrl]</string> 
+    	<string>[Thinking ServerUrl]</string> 
     	<key>AppsFlyer_Identifier</key> 
-    		<string>[[AppsFlyer Identifier]</string> 
+    	<string>[[AppsFlyer Identifier]</string> 
     	<key>SdkVersion</key> 
-    		<string>1.5.1.1</string> 
+    	<string>1.5.1.1</string> 
     	<key>GameKey</key> 
-    		<string>[Yodo1 GameKey]</string> 
+    	<string>[Yodo1 GameKey]</string> 
     	<key>debugEnabled</key> 
-   	 		<string>0</string> 
+   	 	<string>0</string> 
     	<key>RegionCode</key> 
-    		<string>[Yodo1 RegionCode]</string> 
+    	<string>[Yodo1 RegionCode]</string> 
     	<key>UmengAnalytics</key> 
-    		<string>[Umeng AppId]</string> 
+    	<string>[Umeng AppId]</string> 
     	<key>AppleAppId</key> 
-    		<string>[Apple AppId]</string> 
+    	<string>[Apple AppId]</string> 
     	<key>AppsFlyerDevKey</key> 
-    		<string>[AppsFlyer DevKey]</string> 
+    	<string>[AppsFlyer DevKey]</string> 
 </dict>
 ```
 ![](./../../resource/ios_init_appkey.png)
@@ -74,9 +74,9 @@ You can also directly edit the plist source code (`Open As Source Code`) to achi
         
 ``` xml
 <key>NSAppTransportSecurity</key> 
-	<dict> 
+<dict> 
    	 	<key>NSAppTransportSecurity</key> 
-    		<true/>
+    	<true/>
 </dict>
 ```
 
@@ -192,23 +192,23 @@ Please follow all legal frameworks that apply to your game and its users.
 #### 6.1 Prepare billing point `Yodo1ProductInfo.plist`
 ``` xml
 <key>custom name</key> 
-	<dict> 
+<dict> 
    	 	<key>ProductName</key> 
-    		<string>产品名称</string> 
+    	<string>product name</string> 
     	<key>ChannelProductId</key> 
-    		<string>产品id</string> 
+    	<string>product id</string> 
     	<key>ProductDescription</key> 
-    		<string>产品描述</string> 
+    	<string>product description</string> 
     	<key>PriceDisplay</key> 
-    		<string>显示的价格</string> 
+    	<string>displayed price</string> 
     	<key>ProductPrice</key> 
-    		<string>产品价格</string> 
+    	<string>product price</string> 
     	<key>Currency</key> 
-    		<string>货币</string> 
-    	<key>ProductType</key> 
-    		<string>产品类型</string> 
+    	<string>currency</string> 
+    	<key>ProductType(0:not consumable, 1:consumable, 2:auto subscribe, 3:non-auto subscription)</key> 
+    	<string>product type()</string> 
     	<key>PeriodUnit</key> 
-   	 		<string>时间单位</string> 
+   	 	<string>Period Unit</string> 
 </dict>
 ```
 ![](./../../resource/ios_purchase_point.png)
