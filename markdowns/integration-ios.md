@@ -266,7 +266,7 @@ Please follow all legal frameworks that apply to your game and its users.
  */
 - (void)products:(ProductsInfoCallback)callback;
 ```
-### 7. In-App Purchase Shipping Notifications
+### 7. In-App Purchase Send Goods Notifications
 #### 7.1 Import the header file `Yd1UCenter.h`
 ``` obj-c
 #import "Yd1UCenter.h"
