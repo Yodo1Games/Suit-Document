@@ -63,7 +63,7 @@ pod install --repo-update
     	<string>[AppsFlyer DevKey]</string> 
 </dict>
 ```
-![](./../../resource/ios_init_appkey.png)
+![](./../resource/ios_init_appkey.png)
 #### 2.2 Set `iOS9 App Transport Security`
 In `iOS9`, Apple added controls on `ATS`. To ensure uninterrupted support of statistics on all intermediary networks, you need to make the following settings in the `Info.plist` file:
 
@@ -83,7 +83,7 @@ You can also directly edit the plist source code (`Open As Source Code`) to achi
 #### 2.3 Disable `BitCode`
 To ensure that all intermediary networks work properly, disable bitcode as shown in the image below:
 
-<img src="./../../resource/ios_bitcode.png" style="zoom:50%;" />
+<img src="./../resource/ios_bitcode.png" style="zoom:50%;" />
 
 ### 3. Compliance with the necessary legal framework (Privacy)
 Please follow all legal frameworks that apply to your game and its users.
@@ -211,7 +211,7 @@ Please follow all legal frameworks that apply to your game and its users.
     	<string>Period Unit</string> 
 </dict>
 ```
-![](./../../resource/ios_purchase_point.png)
+![](./../resource/ios_purchase_point.png)
 
 #### 6.2 Import the header file `Yd1UCenterManager.h`
 ``` obj-c
