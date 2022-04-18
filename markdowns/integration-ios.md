@@ -37,7 +37,7 @@ pod install --repo-update
 ``` xml
 <key>KeyConfig</key> 
 <dict> 
-   	 	<key>AppsFlyer_domain</key> 
+		<key>AppsFlyer_domain</key> 
     	<string>[AppsFlyer domain]</string> 
     	<key>ThinkingAppId</key> 
     	<string>[ThinkingData AppId]</string> 
@@ -52,7 +52,7 @@ pod install --repo-update
     	<key>GameKey</key> 
     	<string>[Yodo1 GameKey]</string> 
     	<key>debugEnabled</key> 
-   	 	<string>0</string> 
+    	<string>0</string> 
     	<key>RegionCode</key> 
     	<string>[Yodo1 RegionCode]</string> 
     	<key>UmengAnalytics</key> 
@@ -75,7 +75,7 @@ You can also directly edit the plist source code (`Open As Source Code`) to achi
 ``` xml
 <key>NSAppTransportSecurity</key> 
 <dict> 
-   	 	<key>NSAppTransportSecurity</key> 
+		<key>NSAppTransportSecurity</key> 
     	<true/>
 </dict>
 ```
@@ -193,7 +193,7 @@ Please follow all legal frameworks that apply to your game and its users.
 ``` xml
 <key>custom name</key> 
 <dict> 
-   	 	<key>ProductName</key> 
+		<key>ProductName</key> 
     	<string>product name</string> 
     	<key>ChannelProductId</key> 
     	<string>product id</string> 
@@ -208,7 +208,7 @@ Please follow all legal frameworks that apply to your game and its users.
     	<key>ProductType(0:not consumable, 1:consumable, 2:auto subscribe, 3:non-auto subscription)</key> 
     	<string>product type()</string> 
     	<key>PeriodUnit</key> 
-   	 	<string>Period Unit</string> 
+    	<string>Period Unit</string> 
 </dict>
 ```
 ![](./../../resource/ios_purchase_point.png)
