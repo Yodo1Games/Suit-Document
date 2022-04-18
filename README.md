@@ -4,7 +4,7 @@
 
 iOS Installation
 
-###[Integration steps](markdowns/integration-ios.md)
+### [Integration steps](markdowns/integration-ios.md)
 #### [1, Add `iOS SDK` to the project](markdowns/integration-ios.md)
 #### [2, `Xcode` project configuration](markdowns/integration-ios.md)
 #### 3, `Xcode` project configuration
