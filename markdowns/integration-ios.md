@@ -1,20 +1,20 @@
-# iOS集成
+# iOS Integrated Document
 
-**开始之前**:
->* `iOS14`要求`Xcode`版本为`12+`，请务必升级您的`Xcode`版本到`12+`。
->*  `SDK`要求`iOS`的最低版本为`iOS10.0`
->*  最简便的方法就是使用`CocoaPods`(请使用`1.10`及以上版本), 如果您刚开始接触`CocoaPods`，请参阅其[官方文档](https://guides.cocoapods.org/using/using-cocoapods)，了解如何创建和使用`Podfile`
+**Before the start**:
+>* `iOS14` requires `Xcode` version to be `12+`, please be sure to upgrade your `Xcode` version to `12+`.
+>*  `SDK` requires the minimum version of `iOS` to be `iOS10.0`
+>*  The easiest way is to use `CocoaPods` (please use `1.10` and above), if you are new to `CocoaPods`, please refer to its [official documentation](https://guides.cocoapods.org/using/using -cocoapods), learn how to create and use a `Podfile`
 
-## 集成步骤
-### 1. 将`iOS SDK`添加到项目中
-#### 1.1 创建`Podfile`文件</br>
-在项目根目录下创建`Podfile`文件
+## Integration steps
+### 1. Add `iOS SDK` to the project
+#### 1.1 Create `Podfile` file</br>
+Create a `Podfile` file in the project root directory
 ```ruby
 touch Podfile
 ```
 
-#### 1.2 将iOS SDK导入项目</br>
-请打开项目的 `Podfile` 文件并将下面代码添加到应用的目标中：
+#### 1.2 Import the iOS SDK into the project</br>
+Please open the project's `Podfile` file and add the following code to the application's target:
 
 ```ruby
 source 'https://github.com/Yodo1Games/Yodo1Spec.git'
@@ -27,13 +27,13 @@ pod 'Yodo1Suit/Yodo1_UCenter', '1.5.1.1'
 
 ```
 
-在`终端`中执行如下命令：</br>
+Execute the following command in `Terminal`:</br>
 ```ruby
 pod install --repo-update
 ```
 
-### 2. `Xcode`工程配置
-#### 2.1 设置`Yodo1KeyInfo.plist`参数
+### 2. `Xcode` project configuration
+#### 2.1 Set `Yodo1KeyInfo.plist` parameter
 ``` xml
 <key>KeyConfig</key> 
 	<dict> 
@@ -64,13 +64,13 @@ pod install --repo-update
 </dict>
 ```
 ![](./../../resource/ios_init_appkey.png)
-#### 2.2 `iOS9 App Transport Security`设置
-在`iOS9`中，苹果增加了关于`ATS`的控制。为了确保在所有中介网络上不间断地支持MAS广告，需要您在`Info.plist`文件中进行以下设置：
+#### 2.2 Set `iOS9 App Transport Security`
+In `iOS9`, Apple added controls on `ATS`. To ensure uninterrupted support of statistics on all intermediary networks, you need to make the following settings in the `Info.plist` file:
 
-* 添加`NSAppTransportSecurity`，类型为`Dictionary`
-* 在`NSAppTransportSecurity`中添加`NSAllowsArbitraryLoads`，类型为`Boolean`，值为`YES`
+* Add `NSAppTransportSecurity` of type `Dictionary`
+* Add `NSAllowsArbitraryLoads` in `NSAppTransportSecurity`, type `Boolean`, value `YES`
 
-你也可以直接编辑plist源码(`Open As Source Code`)实现同样的功能，示例如下：
+You can also directly edit the plist source code (`Open As Source Code`) to achieve the same function, the example is as follows:
         
 ``` xml
 <key>NSAppTransportSecurity</key> 
@@ -80,28 +80,28 @@ pod install --repo-update
 </dict>
 ```
 
-#### 2.3 禁用`BitCode`
-为确保所有中介网络正常工作，请禁用bitcode，如下图所示:
+#### 2.3 Disable `BitCode`
+To ensure that all intermediary networks work properly, disable bitcode as shown in the image below:
 
 <img src="./../../resource/ios_bitcode.png" style="zoom:50%;" />
 
-### 3. 遵守必要的法律框架(Privacy)
-请遵守适用于您的游戏及其用户的所有法律框架。
+### 3. Compliance with the necessary legal framework (Privacy)
+Please follow all legal frameworks that apply to your game and its users.
 
-<font color=red>重要：</font>不遵守这些框架可能会导致苹果商店拒绝你的游戏，并对你的游戏盈利产生负面影响。
-#### 3.1 导入头文件`Yodo1Suit.h``YD1AgePrivacyManager.h`
+<font color=red>Important:</font> Failure to adhere to these frameworks may result in your game being rejected by the Apple Store and negatively impact your game monetization.
+#### 3.1 Import header file `Yodo1Suit.h` YD1AgePrivacyManager.h`
 ``` obj-c
 #import "YodoSuit.h"
 #import "YD1AgePrivacyManager.h"
 ```
-#### 3.2 Privacy设置
+#### 3.2 Set Privacy
 ``` obj-c
 //CCPA Publishers may choose to display a "Do Not Sell My Personal Information" link.
-//true is age < limitAge.
+//YES is age < limitAge.
 [Yodo1Suit setDoNotSell:NO];
 
 //COPPA To ensure COPPA, GDPR, and AppStore policy compliance, you should indicate whether a user is a child.
-//true, If the user is known to be in an age-restricted category (i.e., under the age of 13), false otherwise.
+//YES, If the user is known to be in an age-restricted category (i.e., under the age of 13), false otherwise.
 [Yodo1Suit setTagForUnderAgeOfConsent:NO];
 
 //GDPR YES, If the user has consented, NO otherwise.
@@ -111,45 +111,45 @@ pod install --repo-update
 
 ``` obj-c
 /**
- *  如果没有其他方案提供协议标记，则通过sdk sdk协议展示交互来获取到协议标记。
+ *  If no other solution provides the protocol flag, the protocol flag is obtained by displaying the interaction through the SDK protocol.
  */
 [YD1AgePrivacyManager dialogShowUserConsentWithGameAppKey:@"Your AppKey" channelCode:@"appstore" viewController:self block:^(BOOL accept, BOOL child, int age) {
 
  }];
 ```
-### 4. 初始化SDK
-#### 4.1 导入头文件`Yodo1Suit.h`
+### 4. Initialize SDK
+#### 4.1 Import the header file `Yodo1Suit.h`
 ``` obj-c
 #import "YodoSuit.h"
 ```
 
-#### 4.2 在 didFinishLaunchingWithOptions 中进行初始化 
+#### 4.2 Initialize in didFinishLaunchingWithOptions
 ``` obj-c
 [YodoSuit initWithAppKey:@"Your AppKey"];
 ```
 
-### 5. 数据分析(可选)
-#### 5.1 导入头文件`Yodo1AnalyticsManager.h`
+### 5. Data analysis (optional)
+#### 5.1 Import the header file `Yodo1AnalyticsManager.h`
 ``` obj-c
 #import "Yodo1AnalyticsManager.h"
 ```
-#### 5.2 上报自定义事件
+#### 5.2 Report a custom event
 ``` obj-c
 /**
- *  @param eventName  事件id(必须)
- *  @param eventData  事件数据(可选)
+ *  @param eventName  event id (required)
+ *  @param eventData  event data (optional)
  */
 - (void)eventAnalytics:(NSString*)eventName
              eventData:(NSDictionary*)eventData;
 ```
 
-#### 5.3 AppsFlyer相关事件
+#### 5.3 AppsFlyer related events
 
 ``` obj-c
 /**
- *  使用appsflyer 自定义事件
- *  @param eventName  事件id(必须)
- *  @param eventData  事件数据(可选)
+ *  Custom events with appsflyer
+ *  @param eventName  event id (required)
+ *  @param eventData  event data (optional)
  */
 - (void)eventAdAnalyticsWithName:(NSString *)eventName 
                        eventData:(NSDictionary *)eventData;
@@ -157,7 +157,7 @@ pod install --repo-update
 
 ``` obj-c
 /**
- *  AppsFlyer Apple 内付费验证和事件统计
+ *  AppsFlyer In-Apple Payment Verification and Event Statistics
  */
 - (void)validateAndTrackInAppPurchase:(NSString*)productIdentifier
                                 price:(NSString*)price
@@ -167,29 +167,29 @@ pod install --repo-update
 
 ``` obj-c
 /**
- *  订阅openURL(AppsFlyer-Deeplink])
+ *  Subscribe to openURL(AppsFlyer-Deeplink])
  *
- *  @param application  生命周期中的application
- *  @param url                    生命周期中的openurl
- *  @param options           生命周期中的options
+ *  @param application  	application in life cycle
+ *  @param url				openurl in life cycle
+ *  @param options			options in the life cycle
  */
 - (void)SubApplication:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
 ```
 
 ``` obj-c
 /**
- *  订阅continueUserActivity(AppsFlyer-Deeplink])
+ *  Subscribe to continueUserActivity(AppsFlyer-Deeplink])
  *
- *  @param application                      生命周期中的application
- *  @param userActivity                    生命周期中的userActivity
- *  @param restorationHandler       生命周期中的restorationHandler
+ *  @param application			application in life cycle
+ *  @param userActivity			userActivity in the lifecycle
+ *  @param restorationHandler	RestorationHandler in the life cycle
  */
 - (void)SubApplication:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity restorationHandler:(nonnull void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler;
 ```
 
-### 6. 应用程序内购
+### 6. In-App Purchase
 
-#### 6.1 准备计费点`Yodo1ProductInfo.plist`
+#### 6.1 Prepare billing point `Yodo1ProductInfo.plist`
 ``` xml
 <key>custom name</key> 
 	<dict> 
@@ -213,75 +213,75 @@ pod install --repo-update
 ```
 ![](./../../resource/ios_purchase_point.png)
 
-#### 6.2 导入头文件`Yd1UCenterManager.h`
+#### 6.2 Import the header file `Yd1UCenterManager.h`
 ``` obj-c
 #import "Yd1UCenterManager.h"
 ```
-#### 6.3 购买产品
+#### 6.3 Buy product
 ``` obj-c
 /**
- * 购买产品
- * extra 是字典json字符串 @{@"channelUserid":@""}(非必须)
+ * Buy product
+ * extra is a dictionary json string @{@"channelUserid":@""} (optional)
  */
 - (void)paymentWithUniformProductId:(NSString *)uniformProductId
                               extra:(NSString*)extra
                            callback:(PaymentCallback)callback;
 ```
-#### 6.4 恢复购买
+#### 6.4 Restore purchases
 ```obj-c
 /**
- *  恢复购买
+ *  Restore purchases
  */
 - (void)restorePayment:(RestoreCallback)callback;
 ```
-#### 6.5 查询漏单
+#### 6.5 Query missing orders
 
 ```obj-c
 /**
- *  查询漏单
+ *  Query missing orders
  */
 - (void)queryLossOrder:(LossOrderCallback)callback;
 ```
-#### 6.6 查询订阅
+#### 6.6 Query subscription
 
 ```obj-c
 /**
- *  查询订阅
+ *  Query subscription
  */
 - (void)querySubscriptions:(BOOL)excludeOldTransactions
                   callback:(QuerySubscriptionCallback)callback;
 ```
-#### 6.7 获取产品信息
+#### 6.7 Get product information
 
 ```obj-c
 /**
- *  获取某个产品信息
+ *  Get information about a product
  */
 - (void)productWithUniformProductId:(NSString*)uniformProductId
                            callback:(ProductsInfoCallback)callback;
 ``` 
 ```obj-c                        
 /**
- *  获取所有产品信息
+ *  Get information on all products
  */
 - (void)products:(ProductsInfoCallback)callback;
 ```
-### 7. 应用程序内购发货通知
-#### 7.1 导入头文件`Yd1UCenter.h`
+### 7. In-App Purchase Shipping Notifications
+#### 7.1 Import the header file `Yd1UCenter.h`
 ``` obj-c
 #import "Yd1UCenter.h"
 ```
-#### 7.2 发货
+#### 7.2 Send Goods
 ```obj-c
 /**
- *  通知已发货成功
+ *  Send Goods Success
  */
 - (void)sendGoodsOver:(NSString *)orderIds
              callback:(void (^)(BOOL success,NSString* error))callback;
 ```
 ```obj-c
 /**
- *  通知已发货失败
+ *  Send Goods Failed
  */
 - (void)sendGoodsOverForFault:(NSString *)orderIds
                      callback:(void (^)(BOOL success,NSString* error))callback;
