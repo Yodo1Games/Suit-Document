@@ -20,6 +20,7 @@ touch Podfile
 source 'https://github.com/Yodo1Games/Yodo1Spec.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
+pod 'Yodo1Suit/Yodo1_ConfigKey', '1.5.1.1'
 pod 'Yodo1Suit/OpenSuit_AnalyticsAppsFlyer', '1.5.1.1'
 pod 'Yodo1Suit/OpenSuit_AnalyticsUmeng', '1.5.1.1'
 pod 'Yodo1Suit/Yodo1_UCenter', '1.5.1.1'
@@ -33,7 +34,7 @@ pod install --repo-update
 
 ### 2. `Xcode`工程配置
 #### 2.1 设置`Yodo1KeyInfo.plist`参数
-![](./../../resource/ios_init_1.png)
+![](./../../resource/ios_init_appkey.png)
 ![](./../../resource/Yodo1KeyConfig.bundle/Yodo1KeyInfo.plist)
 
 #### 2.2 `iOS9 App Transport Security`设置
@@ -55,7 +56,7 @@ pod install --repo-update
 #### 2.3 禁用`BitCode`
 为确保所有中介网络正常工作，请禁用bitcode，如下图所示:
 
-<img src="./../../resource/ios_init_2.png" style="zoom:50%;" />
+<img src="./../../resource/ios_bitcode.png" style="zoom:50%;" />
 
 ### 3. 遵守必要的法律框架(Privacy)
 请遵守适用于您的游戏及其用户的所有法律框架。您可以通过这些链接找到相关的法规信息:
@@ -160,7 +161,17 @@ pod install --repo-update
 ### 6. 应用程序内购
 
 #### 6.1 准备计费点`Yodo1ProductInfo.plist`
-![](./../../resource/ios_payment_1.png)
+``` obj-c
+ProductName:产品名称
+ChannelProductId:产品id
+ProductDescription:产品描述
+PriceDisplay:显示的价格
+ProductPrice:产品价格
+Currency:货币
+ProductType:产品类型(0:不可消耗 1:可消耗 2:自动订阅 3:非自动订阅)
+PeriodUnit:时间单位
+```
+![](./../../resource/ios_purchase_point.png)
 ![](./../../resource/Yodo1KeyConfig.bundle/Yodo1KeyInfo.plist)
 
 #### 6.2 导入头文件`Yd1UCenterManager.h`
@@ -216,127 +227,12 @@ pod install --repo-update
  */
 - (void)products:(ProductsInfoCallback)callback;
 ```
-#### 6.8 促销产品相关
-
-```obj-c
-/**
- *  获取促销订单
- */
-- (void)fetchStorePromotionOrder:(FetchStorePromotionOrderCallback) callback;
-```
-```obj-c
-/**
- *  获取促销活动订单可见性
- */
-- (void)fetchStorePromotionVisibilityForProduct:(NSString*)uniformProductId
-                                       callback:(FetchStorePromotionVisibilityCallback)callback;
-```
-```obj-c
-/**
- *  更新促销活动订单
- */
-- (void)updateStorePromotionOrder:(NSArray<NSString *> *)uniformProductIdArray
-                         callback:(UpdateStorePromotionOrderCallback)callback;
-```
-```obj-c
-/**
- *  更新促销活动可见性
- */
-- (void)updateStorePromotionVisibility:(BOOL)visibility
-                               product:(NSString*)uniformProductId
-                              callback:(UpdateStorePromotionVisibilityCallback)callback;
-```
-```obj-c
-/**
- *  准备继续购买促销
- */
-- (void)readyToContinuePurchaseFromPromot:(PaymentCallback)callback;
-```
-```obj-c
-/**
- *  获取促销产品
- */
-- (Product*)promotionProduct;
-```
-#### 6.9 取消购买
-```obj-c
-/**
- *  取消购买
- */
-- (Product*)promotionProduct;
-```
-
-### 7. 应用程序内购-事件上报
+### 7. 应用程序内购发货通知
 #### 7.1 导入头文件`Yd1UCenter.h`
 ``` obj-c
 #import "Yd1UCenter.h"
 ```
-#### 7.2 YD1ItemInfo相关
-``` obj-c
-@interface YD1ItemInfo : NSObject
-/// 产品ID
-@property (nonatomic,strong)NSString *productId;
-/// payment订单号
-@property (nonatomic,strong)NSString *orderId;
-/// 订单号(苹果transaction_id)
-@property (nonatomic,strong)NSString *channelOrderid;
-/// 不传默认0 商品类型,0-不可消耗;1-可消耗;2-自动订阅;3-非自动订阅
-@property (nonatomic,assign)int product_type;
-/// 是否获得所有数据
-@property (nonatomic,strong)NSString *exclude_old_transactions;
-/// 道具代码(同IAP代码)
-@property (nonatomic,strong)NSString *item_code;
-/// playerid
-@property (nonatomic,strong)NSString *playerid;
-/// 用户id
-@property (nonatomic,strong)NSString *uid;
-/// yid
-@property (nonatomic,strong)NSString *yid;
-/// 登录时，返回的ucuid（登陆uc的情况使用）
-@property (nonatomic,strong)NSString *ucuid;
-/// 例如idfa等设备id
-@property (nonatomic,strong)NSString *deviceid;
-/// 苹果验证收据
-@property (nonatomic,strong)NSString *trx_receipt;
-/// true为连接沙盒环境，不传或其他为正式环境
-@property (nonatomic,strong)NSString *is_sandbox;
-/// 附加信息
-@property (nonatomic,strong)NSString *extra;
-/// 渠道号 - AppStore
-@property (nonatomic,strong)NSString *channelCode;
-/// 失败订单的三方返回code
-@property (nonatomic,strong)NSString *statusCode;
-/// 三方返回的msg，可空
-@property (nonatomic,strong)NSString *statusMsg;
-
-@end
-```
-#### 7.3 登录上报
-```obj-c
-/**
- *  设备登录
- *  playerId 是玩家id（非必选，@""）
- */
-- (void)deviceLoginWithPlayerId:(NSString *)playerId
-                       callback:(void(^)(YD1User* _Nullable user, NSError* _Nullable  error))callback;
-```
-#### 7.4 App Store verify IAP上报
-```obj-c
-/**
- *  App Store verify IAP
- */
-- (void)verifyAppStoreIAPOrder:(YD1ItemInfo *)itemInfo
-                      callback:(void (^)(BOOL verifySuccess,NSString* response,NSError* error))callback;
-```
-#### 7.5 查询订阅上报
-```obj-c
-/**
- *  查询订阅
- */
-- (void)querySubscriptions:(YD1ItemInfo *)itemInfo
-                  callback:(void (^)(BOOL success,NSString* _Nullable response,NSError* _Nullable error))callback;
-```
-#### 7.6 发货上报
+#### 7.2 发货
 ```obj-c
 /**
  *  通知已发货成功
@@ -351,43 +247,6 @@ pod install --repo-update
 - (void)sendGoodsOverForFault:(NSString *)orderIds
                      callback:(void (^)(BOOL success,NSString* error))callback;
 ```
-#### 7.7 支付上报
-```obj-c
-/**
- *  上报订单已支付成功接口
- */
-- (void)clientCallback:(YD1ItemInfo *)itemInfo callbakc:(void (^)(BOOL success,NSString* error))callback;
-```
-```obj-c
-/**
- *  上报支付失败接口
- */
-- (void)reportOrderStatus:(YD1ItemInfo *)itemInfo callbakc:(void (^)(BOOL success,NSString* error))callback;
-```
-#### 7.8 客户端通知服务端上报
-```obj-c
-/**
- *  客户端通知服务端已同步unity接口
- */
-- (void)clientNotifyForSyncUnityStatus:(NSArray *)orderIds
-                              callback:(void (^)(BOOL success,NSArray* notExistOrders,NSArray* notPayOrders,NSString* error))callback;
-```
-#### 7.9 查询漏单接口（单机版）
-```obj-c
-/**
- *  查询漏单接口（单机版）
- */
-- (void)offlineMissorders:(YD1ItemInfo *)itemInfo
-                 callback:(void (^)(BOOL success,NSArray* missorders,NSString* error))callback;
-```
-#### 7.10 激活码/优惠券
-```obj-c
-/**
- *  激活码/优惠券
- *  @param code 激活码
- */
-- (void)verifyActivationcode:(NSString *)code
-                    callback:(void (^)(BOOL success,NSDictionary* _Nullable response,NSString* _Nullable error))callback;
-```
+
 
 
