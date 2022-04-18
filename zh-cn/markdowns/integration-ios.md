@@ -18,7 +18,6 @@ touch Podfile
 
 ```ruby
 source 'https://github.com/Yodo1Games/Yodo1Spec.git'
-source 'https://github.com/Yodo1Sdk/Yodo1Spec.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 pod 'Yodo1Suit/OpenSuit_AnalyticsAppsFlyer', '1.5.1.1'
@@ -33,8 +32,9 @@ pod install --repo-update
 ```
 
 ### 2. `Xcode`工程配置
-#### 2.1 设置Yodo1KeyInfo.plist参数
+#### 2.1 设置`Yodo1KeyInfo.plist`参数
 ![](./../../resource/ios_init_1.png)
+![](./../../resource/Yodo1KeyConfig.bundle/Yodo1KeyInfo.plist)
 
 #### 2.2 `iOS9 App Transport Security`设置
 在`iOS9`中，苹果增加了关于`ATS`的控制。为了确保在所有中介网络上不间断地支持MAS广告，需要您在`Info.plist`文件中进行以下设置：
@@ -159,8 +159,9 @@ pod install --repo-update
 
 ### 6. 应用程序内购
 
-#### 6.1 准备计费点
+#### 6.1 准备计费点`Yodo1ProductInfo.plist`
 ![](./../../resource/ios_payment_1.png)
+![](./../../resource/Yodo1KeyConfig.bundle/Yodo1KeyInfo.plist)
 
 #### 6.2 导入头文件`Yd1UCenterManager.h`
 ``` obj-c
