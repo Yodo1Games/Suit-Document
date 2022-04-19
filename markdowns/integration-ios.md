@@ -89,7 +89,7 @@ To ensure that all intermediary networks work properly, disable bitcode as shown
 Please follow all legal frameworks that apply to your game and its users.
 
 <font color=red>Important:</font> Failure to adhere to these frameworks may result in your game being rejected by the Apple Store and negatively impact your game monetization.
-#### 3.1 Import header file `Yodo1Suit.h` YD1AgePrivacyManager.h`
+#### 3.1 Import header file `Yodo1Suit.h` `YD1AgePrivacyManager.h`
 ``` obj-c
 #import "YodoSuit.h"
 #import "YD1AgePrivacyManager.h"
