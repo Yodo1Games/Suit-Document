@@ -273,7 +273,7 @@ If you're using ProGuard with the Suit SDK, add the following code to your ProGu
 
 ### 1. Set up your Play Games Services app id
 
-Please add the below content to your AndroidManifest.xml file and set up your app id of Play Games Services
+Add the below content to your AndroidManifest.xml file and set up your app id of Play Games Services
 
 ```xml
 <meta-data
