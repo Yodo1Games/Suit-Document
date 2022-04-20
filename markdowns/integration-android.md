@@ -23,7 +23,7 @@ implementation 'com.yodo1.suit.pay:google:4.0.0.2'
 implementation 'com.yodo1.suit.analytics:appsflyer:6.5.3.3'
 ```
 
-#### 2.2 Add the `compileOptions` property to the `Android` section
+#### 2.2 Add `compileOptions` property to the `Android` section
 ```groovy
 android {
 	compileOptions {
@@ -33,7 +33,7 @@ android {
 }
 ```
 
-### 3. Add the `MultiDex` property to the `defaultConfig` section
+### 3. Add `MultiDex` property to the `defaultConfig` section
 
 ```groovy
 defaultConfig {
@@ -316,7 +316,7 @@ Yodo1UserCenter.setListener(new Yodo1AccountListener() {
 
 ### 2. Login to user center
 
-   login to user center, in order to identify order flow and analytics . (GooglePlay Login must be done to release sign build)
+   Login to user center, in order to identify order flow and analytics(GooglePlay Login must be done to release sign build).
 
 ```java
 /**
@@ -350,7 +350,7 @@ Yodo1UserCenter.logout(activity);
 
 ## In-App Purchase Integration
 
-**Note**: Please skip this step if you don't need in-app purchases
+**Note**: Please skip this step if in-app purchases integration is not needed.
 
 ### 1. Set up the SKUs of game
 
@@ -463,7 +463,7 @@ Yodo1Purchase.init(new Yodo1PurchaseListener() {
 
 ### 3. Purchase product
 
-Launch the cashier for payment, you can get the purchased result in the method `purchased ` of listener `Yodo1PurchaseListener`.
+Launch the cashier for payment; the purchased result can be accessed using the method `purchased ` of listener `Yodo1PurchaseListener`.
 
 ```java
 /**
@@ -490,7 +490,7 @@ Yodo1Purchase.restoreProduct(activity);
 
 ### 5. Query products information
 
-You can listen for products information in method `queryProductInfo ` of listener `Yodo1PurchaseListener`.In order to update the latest product information such as ProductName price description and so on by channel config of yodo1_payinfo.xml.
+The products information can be retrieved using the method `queryProductInfo ` of listener `Yodo1PurchaseListener`.In order to update the latest product information such as ProductName, price description etc by channel config of yodo1_payinfo.xml.
 
 ```java
 /**
@@ -503,7 +503,7 @@ Yodo1Purchase.queryProducts(activity);
 
 ### 6. Query order information of missed orders
 
-The game may lose orders due to various reasons, and call this method to replenish orders. You can listen for missing orders in method `queryMissOrder` of listener `Yodo1PurchaseListener`.
+The game may lose orders due to various reasons, and call this method to replenish orders. The missing orders can be listened using the method `queryMissOrder` of listener `Yodo1PurchaseListener`.
 
 ```java
 /**
@@ -516,7 +516,7 @@ Yodo1Purchase.queryMissOrder(activity);
 
 ### 7. Query subscribed items information
 
-The method is for get the subscribed items information and updates the latest time and term of the subscribed items. You can get the formation in method `querySubscriptions` of listener `Yodo1PurchaseListener`.
+The method is to get the subscribed items information and to update the latest time and terms of the subscribed items. The information can be accessed using the method `querySubscriptions` of listener `Yodo1PurchaseListener`.
 
 ```java
 /**
@@ -560,7 +560,7 @@ Yodo1Purchase.sendGoods(orders);
 
 ### 1. Report event
 
-You can use `Yodo1Analytics.onCustomEvent` to upload events. The name of the event is of type `String` and can only begin with a letter. It can contain numbers, letters and an underscore "_". The maximum length is 50 characters and is not sensitive to letter case.
+`Yodo1Analytics.onCustomEvent` can be used to report events. The name of the event should be of type `String` and can only begin with a letter. It can contain numbers, letters and an underscore "_". The maximum length is 50 characters and is not sensitive to letter case.
 
 ```java
 Yodo1Analytics.onCustomEvent(context, eventName);
