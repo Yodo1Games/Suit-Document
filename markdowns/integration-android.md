@@ -269,9 +269,11 @@ If you're using ProGuard with the Suit SDK, add the following code to your ProGu
 -keep class com.yodo1.** { *; }
 ```
 
-### 11. GooglePlay Channel Config
+## Account Integration
 
-beside `google_publish_key` defined in `yodo1_games_config.properties` you also need to  add resource below in your AndroidManifest.
+### 1. Set up your Play Games Services app id
+
+Please add the below content to your AndroidManifest.xml file and set up your app id of Play Games Services
 
 ```xml
 <meta-data
@@ -279,9 +281,7 @@ beside `google_publish_key` defined in `yodo1_games_config.properties` you also 
       android:value="Your Google App Id" />
 ```
 
-## Account Integration
-
-### 1. Set up the listener of account
+### 2. Set up the listener of account
 ```java
 Yodo1UserCenter.setListener(new Yodo1AccountListener() {
     @Override
@@ -314,9 +314,7 @@ Yodo1UserCenter.setListener(new Yodo1AccountListener() {
 });
 ```
 
-### 2. Login to user center
-
-   Login to user center, in order to identify order flow and analytics(GooglePlay Login must be done to release sign build).
+### 3. Login to user center
 
 ```java
 /**
@@ -327,7 +325,9 @@ Yodo1UserCenter.setListener(new Yodo1AccountListener() {
 Yodo1UserCenter.login(activity);
 ```
 
-### 3. Check the login status
+**Note**: Please make sure you're using the same keystore as when you publish the Play store when you need to test it.
+
+### 4. Check the login status
 ```java
 /**
  * Whether the user logged in to the user center.
@@ -337,7 +337,7 @@ Yodo1UserCenter.login(activity);
 boolean isLogin = Yodo1UserCenter.isLogin()
 ```
 
-### 4. Logout user center
+### 5. Logout user center
 
 ```java
 /**
