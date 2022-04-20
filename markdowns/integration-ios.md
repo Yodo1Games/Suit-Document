@@ -1,9 +1,9 @@
-# iOS Integrated
+# iOS Integration
 
-**Before the start**:
->* `iOS14` requires `Xcode` version to be `12+`, please be sure to upgrade your `Xcode` version to `12+`.
+**Basic requirements**:
+>* `iOS14` requires `Xcode` version to be `12+`, Upgrade `Xcode` version to `12+`.
 >*  `SDK` requires the minimum version of `iOS` to be `iOS10.0`
->*  The easiest way is to use `CocoaPods` (please use `1.10` and above), if you are new to `CocoaPods`, please refer to its [official documentation](https://guides.cocoapods.org/using/using -cocoapods), learn how to create and use a `Podfile`
+>*  The easiest way is to use `CocoaPods` (Use `1.10` and above), Refer `CocoaPods` [official documentation](https://guides.cocoapods.org/using/using -cocoapods), for learning how to create and use a `Podfile`
 
 ## Integration steps
 ### 1. Add `iOS SDK` to the project
@@ -14,7 +14,7 @@ touch Podfile
 ```
 
 #### 1.2 Import the iOS SDK into the project</br>
-Please open the project's `Podfile` file and add the following code to the application's target:
+Open the project's `Podfile` file and add the following code to the application's target:
 
 ```ruby
 source 'https://github.com/Yodo1Games/Yodo1Spec.git'
@@ -45,12 +45,12 @@ pod install --repo-update
 ```
 ![](./../resource/ios_init_appkey.png)
 #### 2.2 Set `iOS9 App Transport Security`
-In `iOS9`, Apple added controls on `ATS`. To ensure uninterrupted support of statistics on all intermediary networks, you need to make the following settings in the `Info.plist` file:
+In `iOS9`, Apple added controls on `ATS`. To ensure uninterrupted support of statistics on all intermediary networks, add the following settings in the `Info.plist` file:
 
 * Add `NSAppTransportSecurity` of type `Dictionary`
 * Add `NSAllowsArbitraryLoads` in `NSAppTransportSecurity`, type `Boolean`, value `YES`
 
-You can also directly edit the plist source code (`Open As Source Code`) to achieve the same function, the example is as follows:
+The plist source code can also be edited(`Open As Source Code`) to achieve the same functionality; the example is as follows:
         
 ``` xml
 <key>NSAppTransportSecurity</key> 
@@ -71,7 +71,7 @@ To ensure that all intermediary networks work properly, disable bitcode as shown
 #import "Yodo1Manager.h"
 ```
 
-#### 3.2 Add the snippet below by using your AppDelegate's `didFinishLaunchingWithOptions` method
+#### 3.2 Add the code snippet below by using AppDelegate's `didFinishLaunchingWithOptions` method
 ``` obj-c
 SDKConfig *config = [[SDKConfig alloc]init];
 config.appKey = @"Your AppKey";
@@ -163,7 +163,7 @@ The product structure is as follows
 - (void)queryLossOrder:(LossOrderCallback)callback;
 ```
 ### 6. Query subscription
-<font color=red>Important: </font>The API for querying and subscribing products is checked with the Apple API. The number of requests per day is limited. In order to ensure that this function can be used normally, please make reasonable arrangements to call the API for querying and subscribing.
+<font color=red>Important: </font>The API for querying and subscribing products is checked with the Apple API. The number of requests per day is limited. In order to ensure that this function can be used normally, make reasonable arrangements to call the API for querying and subscribing.
 
 ```obj-c
 /**
