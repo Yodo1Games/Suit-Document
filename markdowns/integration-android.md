@@ -235,6 +235,9 @@ appsflyer_dev_key=Your_AF_DevKey
 google_publish_key=Your_Google_Licensing
 ```
 
+* google_publish_key - You can find out it like this
+![image](https://user-images.githubusercontent.com/12006868/164370037-3ccd465c-b2ef-410b-9d09-118ef63a62cc.png)
+
 ### 9. Initialize the SDK
 Initialize the SDK in the `onCreate` method of `Activity`
 
