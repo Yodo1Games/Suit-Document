@@ -272,7 +272,7 @@ If you're using ProGuard with the Suit SDK, add the following code to your ProGu
 -keep class com.yodo1.** { *; }
 ```
 
-## Account Integration
+## Account Integration(Optional)
 
 ### 1. Set up your Play Games Services app id
 
