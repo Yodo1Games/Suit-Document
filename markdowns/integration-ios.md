@@ -78,7 +78,7 @@ config.appKey = @"Your AppKey";
 [Yodo1Manager initSDKWithConfig:config];
 ```
 
-## Account Integration
+## Account Integration (Optional)
 
 Import the header file `Yd1UCenter.h`
 
