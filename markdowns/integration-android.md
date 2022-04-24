@@ -388,7 +388,6 @@ Yodo1Purchase.init(new Yodo1PurchaseListener() {
     @Override
     public void purchased(int code, String orderId, ProductData productData, PayType payType) {
         String msg = "purchased, code = " + code + ", orderId = " + orderId;
-        Log.d(TAG, "Purchased msg: " + msg);
 
         if (code == Yodo1PurchaseListener.ERROR_CODE_SUCCESS) {
             Log.d(TAG, "Purchase successfully and will send goods");
