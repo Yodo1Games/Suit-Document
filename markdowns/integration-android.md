@@ -376,7 +376,7 @@ Yodo1UserCenter.logout(activity);
 	| productPrice |     STRING     | Product Price(CNY:元,USD:dollar) |
 	| currency     |     STRING     | Currency type(eg:USD,CNY,JPY,EUR,HKD) |
 	| priceDisplay |     STRING     | Displayed currency price |
-	| isRepeated   |     STRING     | Product type.(SKU type, "1": Consumable, "0":no-Consumable, "2": Subscription) |
+	| isRepeated   |     STRING     | Product type.(SKU type, "1": Consumable, "0":non-Consumable, "2": Subscription) |
 	| coin         |     STRING     | Equivalent game currency |
 	| fidGooglePlay|     STRING     | SKU code of Google play store |
 	
