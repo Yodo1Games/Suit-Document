@@ -92,6 +92,13 @@ Import the header file `Yd1UCenter.h`
 
 ## In-App Purchase Integration
 
+### 1. Requirements
+
+You need to prepare the below `SHARED KEY` before you start integration In-App purchase integration, and send it to Yodo1 Team. The link https://appstoreconnect.apple.com/access/shared-secret
+
+![image](https://user-images.githubusercontent.com/12006868/165882664-0f81c01a-5f03-40d4-8998-01eb94965fbf.png)
+
+
 ### 1. Set up the SKUs of game
 
  `Yodo1ProductInfo.plist`
