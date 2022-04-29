@@ -229,14 +229,7 @@ dmp_key_thinkingdata_appId=Your_TD_AppId
 
 # AppsFlyer
 appsflyer_dev_key=Your_AF_DevKey
-
-#=========================== Google Play related KEYs ===========================
-# Google Play Licensing, Base64-encoded RSA public key to include in your app binary. Remove any spaces.
-google_publish_key=Your_Google_Licensing
 ```
-
-* google_publish_key - You can find out it like this
-![image](https://user-images.githubusercontent.com/12006868/164370037-3ccd465c-b2ef-410b-9d09-118ef63a62cc.png)
 
 ### 9. Initialize the SDK
 Initialize the SDK in the `onCreate` method of `Activity`
@@ -355,7 +348,20 @@ Yodo1UserCenter.logout(activity);
 
 **Note**: Please skip this step if in-app purchases integration is not needed.
 
-### 1. Set up the SKUs of game
+## 1. Create a `yodo1_games_config.properties` file in `src/main/res/raw` folder, and then set up your game configuration as below
+
+```properties
+#=========================== Google Play related KEYs ===========================
+# Google Play Licensing, Base64-encoded RSA public key to include in your app binary. Remove any spaces.
+google_publish_key=Your_Google_Licensing
+```
+
+* google_publish_key - You can find out it like this
+![image](https://user-images.githubusercontent.com/12006868/164370037-3ccd465c-b2ef-410b-9d09-118ef63a62cc.png)
+
+* Relevant KEYs required by the service (clientID, clientSecret, refreshToken), you can get these KEYs follow up [here](https://developers.google.com/android-publisher/authorization?hl=en)
+
+### 2. Set up the SKUs of game
 
 * Create a `yodo1_payinfo.xml` file in `src/main/assets/` folder, and then add your in-app purchase SKU items to the file
 
@@ -381,7 +387,7 @@ Yodo1UserCenter.logout(activity);
 	| fidGooglePlay|     STRING     | SKU code of Google play store |
 	
 
-### 2. Set the listener method
+### 3. Set the listener method
 
 ```java
 Yodo1Purchase.init(new Yodo1PurchaseListener() {
@@ -463,7 +469,7 @@ Yodo1Purchase.init(new Yodo1PurchaseListener() {
 });      
 ```
 
-### 3. Purchase product
+### 4. Purchase product
 
 Launch the cashier for payment; the purchased result can be accessed using the method `purchased ` of listener `Yodo1PurchaseListener`.
 
@@ -477,7 +483,7 @@ Launch the cashier for payment; the purchased result can be accessed using the m
 Yodo1Purchase.pay(activity, productid);
 ```
 
-### 4. Restore purchased products
+### 5. Restore purchased products
 
 
 ```java
@@ -490,7 +496,7 @@ Yodo1Purchase.pay(activity, productid);
 Yodo1Purchase.restoreProduct(activity);
 ```
 
-### 5. Query products information
+### 6. Query products information
 
 The products information can be retrieved using the method `queryProductInfo ` of listener `Yodo1PurchaseListener`.In order to update the latest product information such as ProductName, price description etc by channel config of yodo1_payinfo.xml.
 
@@ -503,7 +509,7 @@ The products information can be retrieved using the method `queryProductInfo ` o
 Yodo1Purchase.queryProducts(activity);
 ```
 
-### 6. Query order information of missed orders
+### 7. Query order information of missed orders
 
 The game may lose orders due to various reasons, and call this method to replenish orders. The missing orders can be listened using the method `queryMissOrder` of listener `Yodo1PurchaseListener`.
 
@@ -516,7 +522,7 @@ The game may lose orders due to various reasons, and call this method to repleni
 Yodo1Purchase.queryMissOrder(activity);
 ```
 
-### 7. Query subscribed items information
+### 8. Query subscribed items information
 
 The method is to get the subscribed items information and to update the latest time and terms of the subscribed items. The information can be accessed using the method `querySubscriptions` of listener `Yodo1PurchaseListener`.
 
@@ -530,7 +536,7 @@ The method is to get the subscribed items information and to update the latest t
 Yodo1Purchase.querySubscriptions(activity);
 ```
 
-### 8. Send goods successfully
+### 9. Send goods successfully
 
 Send notification of purchase success to payment server of Yodo1, this method will be called when the item has been purchased and distributed to the player successfully.
 
@@ -544,7 +550,7 @@ Send notification of purchase success to payment server of Yodo1, this method wi
 Yodo1Purchase.sendGoods(orders);
 ```
 
-### 9. Send goods failed
+### 10. Send goods failed
 
 Send notification of purchase failed to payment server of Yodo1, this method will be called when the item purchased has been failed.
 
