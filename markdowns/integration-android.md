@@ -91,8 +91,6 @@ There are two ways to implement lifecycle methods of `Yodo1Application`
 	}
 	```
 
-
-
 ### 7. Implement the `Yodo1Activity` lifecycle methods
 
 App MainActivity should be an extension of Yodo1Activity. There are two ways to implement lifecycle methods of `Yodo1Activity`
@@ -348,6 +346,15 @@ Yodo1UserCenter.logout(activity);
 
 **Note**: Please skip this step if in-app purchases integration is not needed.
 
+### Requirements
+
+You need to prepare the below KEYs before you start integrationo In-App purchase integration
+
+* google_publish_key - You can find out it like this
+![image](https://user-images.githubusercontent.com/12006868/164370037-3ccd465c-b2ef-410b-9d09-118ef63a62cc.png)
+
+* Relevant KEYs required by the service (clientID, clientSecret, refreshToken), you can get these KEYs follow up [here](https://developers.google.com/android-publisher/authorization?hl=en)
+
 ## 1. Create a `yodo1_games_config.properties` file in `src/main/res/raw` folder, and then set up your game configuration as below
 
 ```properties
@@ -355,11 +362,6 @@ Yodo1UserCenter.logout(activity);
 # Google Play Licensing, Base64-encoded RSA public key to include in your app binary. Remove any spaces.
 google_publish_key=Your_Google_Licensing
 ```
-
-* google_publish_key - You can find out it like this
-![image](https://user-images.githubusercontent.com/12006868/164370037-3ccd465c-b2ef-410b-9d09-118ef63a62cc.png)
-
-* Relevant KEYs required by the service (clientID, clientSecret, refreshToken), you can get these KEYs follow up [here](https://developers.google.com/android-publisher/authorization?hl=en)
 
 ### 2. Set up the SKUs of game
 
