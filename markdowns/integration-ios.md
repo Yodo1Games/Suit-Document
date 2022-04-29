@@ -99,7 +99,7 @@ You need to prepare the below `SHARED KEY` before you start integration In-App p
 ![image](https://user-images.githubusercontent.com/12006868/165882664-0f81c01a-5f03-40d4-8998-01eb94965fbf.png)
 
 
-### 1. Set up the SKUs of game
+### 2. Set up the SKUs of game
 
  `Yodo1ProductInfo.plist`
  
@@ -139,12 +139,12 @@ The product structure is as follows
 | ProductType         |   string  | 1(0:not consumable, 1:consumable, 2:auto subscribe, 3:non-auto subscription) |
 | PeriodUnit          |   string  | Period Unit |
 	
-### 2. Import the header file `Yd1UCenterManager.h``Yd1UCenter.h`
+### 3. Import the header file `Yd1UCenterManager.h``Yd1UCenter.h`
 ``` obj-c
 #import "Yd1UCenterManager.h"
 #import "Yd1UCenter.h"
 ```
-### 3 Purchase product
+### 4. Purchase product
 ``` obj-c
 /**
  * Buy product
@@ -154,14 +154,14 @@ The product structure is as follows
                               extra:(NSString*)extra
                            callback:(PaymentCallback)callback;
 ```
-### 4. Restore purchased products
+### 5. Restore purchased products
 ```obj-c
 /**
  *  Restore purchases
  */
 - (void)restorePayment:(RestoreCallback)callback;
 ```
-### 5. Query missing orders
+### 6. Query missing orders
 
 ```obj-c
 /**
@@ -169,7 +169,7 @@ The product structure is as follows
  */
 - (void)queryLossOrder:(LossOrderCallback)callback;
 ```
-### 6. Query subscription
+### 7. Query subscription
 <font color=red>Important: </font>The API for querying and subscribing products is checked with the Apple API. The number of requests per day is limited. In order to ensure that this function can be used normally, make reasonable arrangements to call the API for querying and subscribing.
 
 ```obj-c
@@ -179,7 +179,7 @@ The product structure is as follows
 - (void)querySubscriptions:(BOOL)excludeOldTransactions
                   callback:(QuerySubscriptionCallback)callback;
 ```
-### 7. Query products information
+### 8. Query products information
 
 ```obj-c
 /**
@@ -194,7 +194,7 @@ The product structure is as follows
  */
 - (void)products:(ProductsInfoCallback)callback;
 ```
-### 8. Send goods successfully
+### 9. Send goods successfully
 Send notification of purchase success to payment server of Yodo1, this method will be called when the item has been purchased and distributed to the player successfully.
 
 ```obj-c
@@ -204,7 +204,7 @@ Send notification of purchase success to payment server of Yodo1, this method wi
 - (void)sendGoodsOver:(NSString *)orderIds
              callback:(void (^)(BOOL success,NSString* error))callback;
 ```
-### 9. Send goods failed
+### 10. Send goods failed
 Send notification of purchase failed to payment server of Yodo1, this method will be called when the item purchased has been failed.
 
 
