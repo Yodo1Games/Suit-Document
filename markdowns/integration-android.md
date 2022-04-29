@@ -348,12 +348,12 @@ Yodo1UserCenter.logout(activity);
 
 ### Requirements
 
-You need to prepare the below KEYs before you start integrationo In-App purchase integration
+You need to prepare the below KEYs before you start integration In-App purchase integration
 
 * google_publish_key - You can find out it like this
 ![image](https://user-images.githubusercontent.com/12006868/164370037-3ccd465c-b2ef-410b-9d09-118ef63a62cc.png)
 
-* Relevant KEYs required by the service (clientID, clientSecret, refreshToken), you can get these KEYs follow up [here](https://developers.google.com/android-publisher/authorization?hl=en)
+* Relevant KEYs required by the service (clientID, clientSecret, refreshToken), you can get these KEYs follow up [here](https://developers.google.com/android-publisher/authorization?hl=en), and send these KEYs to Yodo1 Team.
 
 ## 1. Create a `yodo1_games_config.properties` file in `src/main/res/raw` folder, and then set up your game configuration as below
 
