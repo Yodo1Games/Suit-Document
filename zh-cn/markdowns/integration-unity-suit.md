@@ -1,12 +1,14 @@
-# Unity OpenSuit
+# Unity Suit
 
-**介绍**:
->* OpenSuit SDK是为了解决游戏发行中，和渠道、商务层面的各种问题而制作，集成了用户、支付、统计、分享、隐私协议、激活码等功能。OpenSuit源于yodo1内部在使用的Suit作为基础，制作的游戏侧可单独打包运行上架的工具。借助yodo1平台便捷实现游戏发行和收益的工具。
->* 中国国内联运渠道很多，各个厂商定义的接口内容和数量不一(例如登录支付防沉迷统计退出等)，yodo1 suit sdk对各个厂商的sdk尽可能做了兼容适配和包装。各个厂商对必须接入的接口要求不一，同样意义的接口返回值类型可能也不同，本文档在特殊之处会重点说明。请开发者重点理解。同时游戏接入厂，为了尽可能兼容更多的处理类型，建议采用尽量宽泛的交互处理。
->* 必接功能，为游戏必须接入，并且处理完毕整个流程的功能。没有标注必接的功能，为非必接功能，或者是 根据特定厂商 选择接入，或者根据厂商的合作类型 选择接入。原则上，只接入必接功能，就能保证上线没有问题。建议游戏开发者根据游戏内功能，尽量多地接入功能。重点说明，有些功能是简单的包装桥接，具体的实现要看三方厂商是否已经支持。开发中也建议尽量宽泛地处理调用后的处理。
->* 重点说明，中国大陆发行所有游戏，无论类型和来源，必须接入防沉迷系统。第二，所有游戏必须合法合规，完善游戏的隐私文档和用户协议文档，yodo1 sdk制定了通用宽泛的协议内容，如果游戏有特殊的权限数据获取等操作，请在隐私文档中说明清楚，严格自律。
+**集成准备**:
+>* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1Sdk_OpenSuit/Yodo1SDK(Suit)-6.1.1.unitypackage)
+>* SDK支持Unity LTS 版本（2019或更高版本）
+>* SDK支持Android API 19+
+>* [Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier)是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 启用
+> * `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
+> * iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
 
-[unitypackage插件下载](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1Sdk_OpenSuit/Yodo1SDK(Suit)-6.1.1.unitypackage)
+
 
 ## 集成步骤
 ### 1. 集成配置
@@ -73,7 +75,7 @@ android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|naviga
 ```
 
 #### 1.3.3 打包依赖
-OpenSuit使用Google的ExternalDependencyManager管理依赖，请[查看详情](https://github.com/googlesamples/unity-jar-resolver#overview)
+Suit使用Google的ExternalDependencyManager管理依赖，请[查看详情](https://github.com/googlesamples/unity-jar-resolver#overview)
 
 ### 2. 集成接入
 ### 2.1 初始化
@@ -464,7 +466,7 @@ Yodo1U3dPublish.IsCaptureSupported();
 
 接入方，收集统计游戏内所有的商品信息，填入excel表格中，上传反馈到 yodo1 系统即可。需要进行托管的计费点，由运营人员编辑各个渠道所需要的格式，上传开启。游戏开发一视同仁。
 
-OpenSuit Unity打包中，将excel表格改名为IapConfig，扩展名保持不变。放置于Yodo1/Suit/Resources/目录下。
+Suit Unity打包中，将excel表格改名为IapConfig，扩展名保持不变。放置于Yodo1/Suit/Resources/目录下。
 
 #### 2.12.2  查询所有商品
 一般在游戏实名认证结束后，或者登录成功后 进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。
