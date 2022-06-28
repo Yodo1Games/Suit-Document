@@ -12,9 +12,9 @@
 ### 1. 集成配置
 ### 1.1 进行Android配置
 <center class="half">
-    <img src="./../../resource/unity_setting_0.png" width="120"/>
-    <img src="./../../resource/unity_setting_1.jpg" width="120"/>
-    <img src="./../../resource/unity_setting_2.jpg" width="120"/>
+    <img src="./../../resource/unity_setting_0.png" width="200"/>
+    <img src="./../../resource/unity_setting_1.jpg" width="200"/>
+    <img src="./../../resource/unity_setting_2.jpg" width="200"/>
 </center>
 >* 已经保存的配置存放在Yodo1/Suit/Resources/下，注意别被覆盖
 >* use_framework必须添加
