@@ -16,6 +16,7 @@
     <img src="./../../resource/unity_setting_1.jpg" width="200"/>
     <img src="./../../resource/unity_setting_2.jpg" width="200"/>
 </center>
+
 >* 已经保存的配置存放在Yodo1/Suit/Resources/下，注意别被覆盖
 >* use_framework必须添加
 >* 不使用suit登录和支付功能，Channel不需要勾选和配置。使用登录或者支付功能，Channel勾选一个并进行配置
