@@ -70,11 +70,6 @@ pod install --repo-update
 ```
 
 #### 3.2 在项目中的AppDelegate的`didFinishLaunchingWithOptions` 方法中添加以下代码
-场景一：需要使用AppsFlyer的同一台设备多个账号，需要设置`appsflyerCustomUserId`
-
-场景二：需要使用ThinkingData的同一台设备多个账号，需要设置`thinkingDataAccountId`
-
-场景三：AppsFlyer数据上报到ThinkingData，同时设置`appsflyerCustomUserId`和`thinkingDataAccountId`，且设置为相同值
 
 ``` obj-c
 AnalyticsInitConfig * config = [[AnalyticsInitConfig alloc]init];

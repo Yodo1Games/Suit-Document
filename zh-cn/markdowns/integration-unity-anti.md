@@ -1,4 +1,4 @@
-# Unity Suit
+# Unity AntiAddiction
 
 **集成准备**:
 >* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1SdkUnityPlugin_AntiIndulged/Yodo1AntiAddictionSDK_3.2.1.unitypackage)

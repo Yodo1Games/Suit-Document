@@ -38,7 +38,7 @@ pod install --repo-update
 
 ### 2. `Xcode`工程配置
 
-#### 2.2 准备计费点`Yodo1ProductInfo.plist`
+#### 2.1 准备计费点`Yodo1ProductInfo.plist`
 ``` xml
 <key>custom name</key> 
 <dict> 
