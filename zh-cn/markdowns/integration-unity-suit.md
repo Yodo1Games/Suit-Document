@@ -85,6 +85,7 @@ android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|naviga
     <img src="./../../resource/unity_setting_1.jpg" width="300"/>
     <img src="./../../resource/unity_setting_2.jpg" width="300"/>
 </center>
+
 >* use_framework必须添加
 
 ### 2. 集成接入
