@@ -31,13 +31,24 @@ pod 'Yodo1AntiAddiction', '6.0.6'
 pod install --repo-update
 ```
 
-### 2. 初始化SDK
-#### 2.1 引入头文件`Yodo1AntiAddiction.h`
+### 2. `Xcode`项目配置
+#### 2.1 设置`Info.plist` 参数
+``` xml
+<key>KeyConfig</key> 
+<dict>  
+    	<key>GameKey</key> 
+    	<string>[Yodo1 GameKey]</string>
+</dict>
+```
+![](./../../resource/ios_anti_setting.jpg)
+
+### 3. 初始化SDK
+#### 3.1 引入头文件`Yodo1AntiAddiction.h`
 ``` obj-c
 #import "Yodo1AntiAddiction.h"
 ```
 
-#### 2.2 初始化方法
+#### 3.2 初始化方法
 ``` obj-c
 /// 初始化 三种初始化方法
 - (void)init:(NSString *)appKey delegate: (id<Yodo1AntiAddictionDelegate>)delegate;
@@ -45,7 +56,7 @@ pod install --repo-update
 - (void)init:(NSString *)appKey channel:(NSString *)channel regionCode:(NSString *)regionCode delegate: (id<Yodo1AntiAddictionDelegate>)delegate;
 ```
 
-### 3. 防沉迷api使用
+### 4. 防沉迷api使用
 ``` obj-c
 // 是否是游客用户
 - (BOOL)isGuestUser;
