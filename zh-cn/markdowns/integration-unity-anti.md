@@ -23,7 +23,7 @@
 Yodo1AntiIndulgedSDK/User/Resources/Yodo1U3dSettings.asset
 
 <center class="half">
-    <img src="./../../resource/unity_anti_setting_0.png" width="200"/>
+    <img src="./../../resource/unity_anti_setting_0.png" width="300"/>
 </center>
 
 >* Ios Setting配置`App Key`和`Region Code`
@@ -54,7 +54,7 @@ Yodo1AntiIndulgedSDK/User/Resources/Yodo1U3dSettings.asset
 另外说明，标题栏Assets/Yodo1Anti Settings，只对Android配置有效。请开发者以上图示意配置为主。
 
 <center class="half">
-    <img src="./../../resource/unity_anti_setting_1.png" width="200"/>
+    <img src="./../../resource/unity_anti_setting_1.png" width="300"/>
 </center>
 
 ### 1.3 发布iOS包时的配置
@@ -64,7 +64,7 @@ Yodo1AntiIndulgedSDK/User/Resources/Yodo1U3dSettings.asset
 接入流程图
 
 <center class="half">
-    <img src="./../../resource/unity_anti_ process.png" width="200"/>
+    <img src="./../../resource/unity_anti_ process.png" width="300"/>
 </center>
 
 
