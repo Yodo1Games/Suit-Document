@@ -79,7 +79,6 @@ pod install --repo-update
 ///上线行为
 - (void)online:(OnBehaviourResult)callback;
 
-
 ///下线行为
 - (void)offline:(OnBehaviourResult)callback;
 
