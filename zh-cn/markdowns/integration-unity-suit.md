@@ -11,6 +11,8 @@
 ## 集成步骤
 ### 1. 集成配置
 ### 1.1 进行Android配置
+Android海外打包
+ 
 <center class="half">
     <img src="./../../resource/unity_setting_3.png" width="300"/>
 </center>
@@ -22,19 +24,36 @@
 >* 其他数据统计是可选的，如果需要请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置）
 >* Debug Mode为日志打开和测试模式开启，上线时请关闭
 
+Android国内打包（不支持本地打包，需要联系Yodo1团队进行PA打包）
+
+<center class="half">
+    <img src="./../../resource/unity_setting_4.png" width="300"/>
+</center>
+
+<font color=red>Apple Pay注意: </font>设置`Publish Channel`为`ChinaMainLand`
+
+>* AppKey配置Yodo1 GameKey，RegionCode配置Yodo1 RegionCode（没有可以不用配置）
+>* 如果使share功能，请勾选`Share`，同时配置对应的appkey和link
+>* 数据统计ThinkingData必须配置，请配置ThinkingData appid
+>* 其他数据统计是可选的，如果需要请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置）
+>* Debug Mode为日志打开和测试模式开启，上线时请关闭
+
 [Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier)是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 启用
 
 <center class="half">
     <img src="./../../resource/andriod_use_jetifier.png" width="300"/>
 </center>
 
-AndroidManifest配置(针对需要定制启动)-使用unitypackage中自带的plugin/AndroidManifest.xml可以不用配置
-/Assets/Plugins/Android/AndroidManifest.xml 修改application：
+AndroidManifest配置(针对需要定制游戏的主类mainClass)
+
+如果使用unitypackage中自带的plugin/AndroidManifest.xml，可以不用配置
+
+反之，使用/Assets/Plugins/Android/AndroidManifest.xml，请修改application：
 
 ```java	
 android:name="com.yodo1.android.sdk.Yodo1Application"
 ```
-修改启动类
+修改mainClass：
 
 ```java	
 <!-- YODO1 SDK(Use PA System) Start -->
@@ -86,7 +105,7 @@ android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|naviga
     <img src="./../../resource/unity_setting_2.jpg" width="300"/>
 </center>
 
->* use_framework必须添加
+>* `use_frameworks! :linkage => :static`必须添加（原因：Yodo1 SDK中包含了第三方的静态链接的二进制文件，例如：AppsFlyer，WeChat，weibo等）
 
 ### 2. 集成接入
 ### 2.1 初始化
@@ -101,9 +120,43 @@ Yodo1U3dSDK.InitWithAppKey("Your App Key","RegionCode");
 Yodo1U3dSDK.InitWithConfig("Your Config");
 ```
 
+示例代码：
+
+```java
+public void Initialize()
+{
+        string appKey = PlayerPrefs.GetString(KEY_APP_KEY);
+        string regionCode = PlayerPrefs.GetString(KEY_REGION_CODE);
+        Debug.Log(Yodo1U3dConstants.LOG_TAG + " appKey:" + appKey + "  regionCode:" + regionCode);
+        if (initialized)
+        {
+            Yodo1U3dUtils.ShowAlert("Warning", "Yodo1 Sdk has been initialized", "Ok");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(appKey))
+        {
+            Yodo1U3dUtils.ShowAlert("Warning", "Yodo1 AppKey can not be empty", "Ok");
+            return;
+        }
+
+        Yodo1U3dInitConfig config = new Yodo1U3dInitConfig();
+        config.GameType = Yodo1U3dConstants.GameType.OFFLINE;
+        config.AppKey = appKey;
+        config.RegionCode = regionCode;
+        Yodo1U3dSDK.InitWithConfig(config);
+        
+        initialized = true;
+}
+
+```
+
 ### 2.2 统计功能
+>* 事件的名称是`字符串`类型，只能以字母开头，可包含数字，字母和下划线“_”，长度最大为 50 个字符，对字母大小写不敏感。
+>* 事件的属性是一个`字典`对象，其中每个元素代表一个属性
+>* Key的值为属性的名称，为`字符串`类型，规定只能以字母开头，包含数字，字母和下划线“_”，长度最大为 50 个字符，对字母大小写不敏感。
+
 #### 2.2.1 发送自定义事件
-注意，很多特定统计是空实现，使用需要咨询。可尽可能使用自定义统计接口。
 
 ``` java
 /**
@@ -115,6 +168,7 @@ Yodo1U3dSDK.InitWithConfig("Your Config");
 Yodo1U3dAnalytics.customEvent()
 ```
 #### 2.2.2 用户相关-特定事件
+
 ``` obj-c
 //统计平台的用户登录。游戏自定义玩家属性值，来配置填充到统计sdk上。eg.accountId(clientId,user,playId)
 Yodo1U3dAnalytics.login(Yodo1U3dUser user);
@@ -126,6 +180,13 @@ Yodo1U3dAnalytics.validateInAppPurchase_Apple(string productId, string price, st
 //以自定义事件进行支付上报
 Yodo1U3dAnalytics.eventAndValidateInAppPurchase_Apple(string revenue, string currency, string quantity, string contentId, string receiptId);
 ```
+
+Yodo1U3dAnalytics.login中Yodo1U3dUser结构：
+
+| Key名称            | 描述 | 是否为空|
+| -------------- | --------- | ----- |
+| playedId       |   用户id   | 不可为空|
+
 #### 2.2.3 特定渠道事件统计
 说明：当游戏应用不执行suit内置登录时，请使用initWithConfig进行初始化，并设置appsflyerCustomUserID值为用户或者设备唯一id。（可以获取使用deviceId）
 
@@ -138,9 +199,9 @@ Yodo1U3dAnalytics.customEventAppsflyer();
 Yodo1U3dAccount.Login();
 /**
   *loginType:缺省代表渠道登录
-  *Channel(0, "支付渠道账号登陆", "Channel"),,默认使用Channel方式登录
-  *Device(1, "设备登陆", "Device"),
-  *Google(2, "谷歌账号登陆", "Google"),
+  *Channel(0, "支付渠道账号登录", "Channel"),,默认使用Channel方式登录
+  *Device(1, "设备登录", "Device"),
+  *Google(2, "谷歌账号登录", "Google"),
   *Yodo1(3, "游道易账号登录", "Yodo1"),
   *Wechat(4, "微信登录", "WECHAT"),
   *Sina(5, "新浪微博登录", "SINA"),
@@ -149,6 +210,19 @@ Yodo1U3dAccount.Login();
 **/
 Yodo1U3dAccount.Login(Yodo1U3dConstants.LoginType loginType, string extra)
 ```
+
+Yodo1U3dConstants.LoginType结构：
+
+| Key名称      | 描述          |
+| ----------- | ------------- |
+| Channel     | 支付渠道登录    |
+| Device      | 设备登录       |
+| Yodo1       | 游道易账号登录  |
+| Wechat      | 微信登录       |
+| Sina        | 新浪微博登录    |
+| QQ          | QQ登录         |
+
+
 设置登录回调：
 
 ``` java
@@ -159,9 +233,28 @@ void LoginDelegate(Yodo1U3dConstants.AccountEvent accountEvent, Yodo1U3dUser use
 Debug.Log ("login success");
     } else if (accountEvent == Yodo1U3dConstants.AccountEvent.Fail) {
 Debug.Log ("login failed");
-}
+    } else if (accountEvent == Yodo1U3dConstants.AccountEvent.Cancel) {
+Debug.Log ("login cancel");
+    } else if (accountEvent == Yodo1U3dConstants.AccountEvent.Fail_Plugin) {
+Debug.Log ("login failed for plugin");
+    } else if (accountEvent == Yodo1U3dConstants.AccountEvent.Fail_NetWork) {
+Debug.Log ("login failed for network");
+    } else if (accountEvent == Yodo1U3dConstants.AccountEvent.NeedRealName) {
+Debug.Log ("need real name");
+    }
 }
 ```
+Yodo1U3dConstants.AccountEvent结构：
+
+| Key名称      | 描述          |
+| ----------- | ------------- |
+| Success     | 登录成功       |
+| Fail        | 登录失败       |
+| Cancel      | 取消登录       |
+| Fail_Plugin | plugin失败    |
+| Fail_NetWork| 网络连接失败    |
+| NeedRealName| 需要真实名字    |
+
 
 #### 2.3.2 提交用户信息
 登录成功后，游戏根据自己的逻辑处理上报给sdk和渠道sdk，设置玩家playerId，和其他信息。健壮后面的逻辑。
@@ -180,8 +273,8 @@ Yodo1U3dUser结构：
 | gender         |   性别     | 可为空|
 | gameServerId   |   服务器id | 可为空|
 
-#### 2.3.3 登出（紧支持Andriod）
-退出登录，在切换登录等特定需要时接入。一般不接入。
+#### 2.3.3 登出（仅支持Andriod，可选）
+在切换登录或者有退出登录功能时需要接入。没有切换功能不需要接入
 
 ``` java
 Yodo1U3dAccount.Logout ();
@@ -192,7 +285,7 @@ void LogoutDelegate (Yodo1U3dConstants.AccountEvent accountEvent) {
 ```
 
 #### 2.3.4 判断是否已经登录
-退出登录，在切换登录等特定需要时接入。一般不接入。
+在切换登录或者有退出登录功能时需要接入。没有切换功能不需要接入
 
 ``` java
 bool isLogin = Yodo1U3dAccount.IsLogin ();
@@ -207,29 +300,20 @@ bool isLogin = Yodo1U3dAccount.IsLogin ();
 ![image](https://user-images.githubusercontent.com/12006868/164370037-3ccd465c-b2ef-410b-9d09-118ef63a62cc.png)
 
 #### 2.4.1 计费点配置和计费点托管
-游戏内商品的iap 商品计费点，在项目中单独配置放置。大多数渠道包，通过打到包内的 xml 配置，获取商品最新的价格、名称、描述等信息。其中小米，华为，googlePlay等渠道，使用计费点托管到渠道服务器，根据对应的productId，来获取商品信息，或者发起支付。
+方式一：游戏内商品的iap 商品计费点（商品计费点：指的是商品的唯一标识productId），在项目中单独配置，然后引入到项目中。
+
+这里提供一个iOS模板。[点击打开Yodo1ProductInfo.plist](./../../resource/Yodo1KeyConfig.bundle/Yodo1ProductInfo.plist)
+
+方式二：通过把商品的计费点、商品最新的价格、名称、描述等信息打到包内的 xml 配置中。其中小米，华为，googlePlay等渠道，使用计费点托管到渠道服务器，根据对应的productId，来获取商品信息，或者发起支付。
 
 这里提供一个excel模板。[点击打开IapConfig_sample.xls](./../../resource/IapConfig_sample.xls)
 
-接入方，收集统计游戏内所有的商品信息，填入excel表格中，上传反馈到 yodo1 系统即可。需要进行托管的计费点，由运营人员编辑各个渠道所需要的格式，上传开启。游戏开发一视同仁。
+接入方，收集统计游戏内所有的商品信息，填入excel表格中，上传反馈到 yodo1 团队即可。需要进行托管的计费点，由运营人员编辑各个渠道所需要的格式，上传，然后开启。
 
 Suit Unity打包中，将excel表格改名为IapConfig，扩展名保持不变。放置于Yodo1/Suit/Resources/目录下。
 
-产品结构如下：
-	
-| Key                 | Data Type | Description |
-| ------------------- | --------- | ----------- |
-| ProductName         |   string  | Product Name|
-| ChannelProductId    |   string  | Product unique ID |
-| ProductDescription  |   string  | Product description |
-| PriceDisplay        |   string  | Displayed price |
-| ProductPrice        |   string  | Product Price(CNY:元,USD:dollar) |
-| Currency            |   string  | Currency type(eg:USD,CNY,JPY,EUR,HKD) |
-| ProductType         |   string  | 1(0:not consumable, 1:consumable, 2:auto subscribe, 3:non-auto subscription) |
-| PeriodUnit          |   string  | Period Unit |
-
 #### 2.4.2 查询所有商品
-一般在游戏实名认证结束后，或者登录成功后 进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。
+登录成功后，可以在游戏大厅和在需要商品信息之前，请求获取到。
 
 ``` java
 //该方法会请求所有商品信息，然后在回调中全部返回
@@ -250,8 +334,24 @@ void RequestProductsInfoDelegate(bool success, List<Yodo1U3dProductData> product
 }
 ```
 
+Yodo1U3dProductData如下：
+	
+| Key                 | Data Type | Description |
+| ------------------- | --------- | ----------- |
+| orderId             |   string  | Order Id    |
+| productName         |   string  | Product Name|
+| marketId            |   string  | Market Id   |
+| coin                |   int     | Coin        |
+| productId           |   string  | Product unique ID|
+| description         |   string  | Product description |
+| priceDisplay        |   string  | Displayed price |
+| price               |   double  | Product Price(CNY:元,USD:dollar) |
+| currency            |   string  | Currency type(eg:USD,CNY,JPY,EUR,HKD) |
+| productType         |   string  | 1(0:not consumable, 1:consumable, 2:auto subscribe, 3:non-auto subscription) |
+| periodUnit          |   string  | Period Unit |
+
 #### 2.4.3 查询已经拥有的订阅型商品
-一般在游戏实名认证结束,或者登录成功后进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。备注：只适用于GooglePlay渠道，AppleStore渠道。
+登录成功后，可以在游戏大厅和在需要商品信息之前，请求获取到。备注：只适用于GooglePlay渠道，AppleStore渠道。
 
 ``` java
 Yodo1U3dPayment.SetQuerySubscriptionsDelegate(QuerySubscriptionsDelegate);
@@ -260,7 +360,7 @@ Yodo1U3dPayment.QuerySubsriptions();
 ```
 
 #### 2.4.4 查询已经拥有的消耗和非消耗商品
-一般在游戏实名认证结束,或者登录成功后进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。备注：只适用于GooglePlay渠道。
+登录成功后，可以在游戏大厅和在需要商品信息之前，请求获取到。备注：只适用于GooglePlay渠道。
 
 ``` java
 Yodo1U3dPayment.SetVerifyProductsInfoDelegate(VerifyPurchasesDelegate);
@@ -269,7 +369,7 @@ Yodo1U3dPayment.RequestGoogleCode();
 ```
 
 #### 2.4.5 恢复所有商品
-一般在游戏实名认证结束,或者登录成功后进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。备注：只适用于GooglePlay渠道，AppleStore渠道。
+登录成功后，可以在游戏大厅和在需要商品信息之前，请求获取到。备注：只适用于GooglePlay渠道，AppleStore渠道。
 
 ``` java
 Yodo1U3dPayment.SetRestorePurchasesDelegate(RestorePurchasesDelegate);
@@ -300,16 +400,36 @@ Yodo1U3dPayment.SetPurchaseDelegate(PurchaseDelegate);
 * extra，渠道支付返回的多余信息
 * payType，支付类型
 */
-void PurchaseDelegate (Yodo1U3dConstants.PayStatus status, string orderId, string productId, string extra, Yodo1U3dConstants.PayType payType)
+void PurchaseDelegate (Yodo1U3dConstants.PayEvent status, string orderId, string productId, string extra, Yodo1U3dConstants.PayType payType)
 {
         Debug.Log ("status : " + status + ",productId : "+productId+", orderId : "+orderId+ ", extra : " + extra);
-if (status == Yodo1U3dConstants.PayStatus.PaySuccess) {
+if (status == Yodo1U3dConstants.PayEvent.PaySuccess) {
 //支付成功
 }
 }
 ```
+
+Yodo1U3dConstants.PayEvent结构：
+
+| Key名称         | 描述 |
+| -------------- | --------- |
+| PayCannel      |   取消支付  |
+| PaySuccess     |   支付成功  |
+| PayFail        |   支付失败  |
+| PayVerifyFail  |  ops验证失败|
+| PayCustomCode  |  支付账号异常|
+
+Yodo1U3dConstants.PayType结构：
+
+| Key名称         | 描述 |
+| -------------- | ------------- |
+| PayTypeWechat  |   微信         |
+| PayTypeAlipay  |   支付宝       |
+| PayTypeChannel | 支付渠道(ios为appstore)  |
+| PayTypeSMS     |   短代               |
+
 #### 2.4.7 查询漏单
-一般在游戏实名认证结束,或者登录成功后进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。
+登录成功后，可以在游戏大厅和在需要商品信息之前，请求获取到。
 Yodo1U3dPayment.QueryLossOrder ();
 
 设置回调：
@@ -326,7 +446,7 @@ void LossOrderIdPurchasesDelegate(bool success, List<Yodo1U3dProductData> produc
 ```
 
 #### 2.4.8 发货成功通知
- 购买成功后，调用发货成功通知接口。。功能是健全购买流程，作为丢单的统计依据。
+ 购买成功后，调用发货成功通知接口。功能是健全购买流程，作为丢单的统计依据。
 
 ``` java
 /**
@@ -339,7 +459,7 @@ void LossOrderIdPurchasesDelegate(bool success, List<Yodo1U3dProductData> produc
 ```
 
 #### 2.4.9 发货失败通知
- 购买失败后，调用发货失败通知接口。。功能是健全购买流程，作为丢单的统计依据。
+ 购买失败后，调用发货失败通知接口。功能是健全购买流程，作为丢单的统计依据。
 
 ``` java
 /**
@@ -364,8 +484,10 @@ void exitCallback(string msg){
 ### 3.1 在线参数功能
 使用在线参数功能，设置在线参数的key/value需要与Yodo1团队沟通，然后进行设置
 #### 3.1.1 激活码功能
-yodo1 PA生成相关规则激活码。兑换码领奖品接口
+```java
+// yodo1团队生成相关规则激活码。兑换码领奖品接口
 Yodo1U3dUtils.VerifyActivationCode(“activation Code”);
+```
 
 设置回调：
 
@@ -415,6 +537,21 @@ Yodo1U3dUtils.GetnativeRuntime(key);
 
 ### 3.2 分享功能
 snsType为二进制数字：
+
+Yodo1SNSType结构：
+
+| Key名称                    | 描述          |
+| ------------------------- | ------------- |
+| Yodo1SNSTypeNone          |               |
+| Yodo1SNSTypeTencentQQ     | QQ朋友圈       |
+| Yodo1SNSTypeWeixinMoments | 微信朋友圈      |
+| Yodo1SNSTypeWeixinContacts| 微信聊天界面    |
+| Yodo1SNSTypeSinaWeibo     | 新浪微博       |
+| Yodo1SNSTypeFacebook      | Facebook      |
+| Yodo1SNSTypeTwitter       | Twitter       |
+| Yodo1SNSTypeInstagram     | Instagram     |
+| Yodo1SNSTypeAll           | 所有分享平台    |
+
 
 ``` java
 Yodo1SNSTypeNone(-1),
