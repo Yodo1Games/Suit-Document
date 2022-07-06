@@ -16,6 +16,7 @@ jobs:
       - name: Install and Build 🔧 
         run: |
           pip install pipenv
+          pipenv shell
           pipenv install
           sh ./scripts/build-all.sh
 
