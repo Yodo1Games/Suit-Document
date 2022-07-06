@@ -12,9 +12,11 @@
 
 ### Android 配置
 
-<center class="half">
-    <img src="./../../resource/unity_setting_3.png" width="300"/>
-</center>
+<figure markdown>
+  ![Unity Settings](/zh/assets/images/unity_setting_3.png){ width="300" }
+</figure>
+
+<!-- ![Unity Settings](/zh/assets/images/unity_setting_3.png){ width="100" } -->
 
 >* AppKey配置Yodo1 GameKey，RegionCode配置Yodo1 RegionCode（没有可以不用配置）
 >* 如果使share功能，请勾选`Share`，同时配置对应的appkey和link
@@ -23,21 +25,22 @@
 >* 其他数据统计是可选的，如果需要请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置）
 >* Debug Mode为日志打开和测试模式开启，上线时请关闭
 
-[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier)是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 启用
+[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) 是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 启用
 
-<center class="half">
-    <img src="./../../resource/andriod_use_jetifier.png" width="300"/>
-</center>
+<figure markdown>
+![andriod use jetifier](/zh/assets/images/andriod_use_jetifier.png){ width="300" }
+</figure>
 
-AndroidManifest配置(针对需要定制启动)-使用unitypackage中自带的plugin/AndroidManifest.xml可以不用配置
-/Assets/Plugins/Android/AndroidManifest.xml 修改application：
+AndroidManifest配置(针对需要定制启动)-使用unitypackage中自带的 `plugin/AndroidManifest.xml`可以不用配置
+`/Assets/Plugins/Android/AndroidManifest.xml` 修改application：
 
-```java	
+```java
 android:name="com.yodo1.android.sdk.Yodo1Application"
 ```
+
 修改启动类
 
-```java	
+```java
 <!-- YODO1 SDK(Use PA System) Start -->
         <!-- 闪屏页,游戏必须配置com.yodo1.android.sdk.view.SplashActivity,其他配置游戏可自己定制，SplashActivity必须为应用启动组件,其screenOrientation属性，尽量根据游戏配置sensorLandscape/sensorPortrait“-->
         <activity android:name="com.yodo1.android.sdk.view.SplashActivity"
@@ -71,9 +74,9 @@ android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|naviga
 
 ### iOS 配置
 
-<center class="half">
-    <img src="./../../resource/unity_setting_0.png" width="300"/>
-</center>
+<figure markdown>
+![andriod use jetifier](/zh/assets/images/unity_setting_0.png){ width="300" }
+</figure>
 
 >* AppKey配置Yodo1 GameKey，RegionCode配置Yodo1 RegionCode（没有可以不用配置）
 >* 如果使share功能，请勾选`Share`，同时配置对应的appkey和link
@@ -83,10 +86,10 @@ android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|naviga
 >* 其他数据统计是可选的，如果需要请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置。配置好后，需要在XCode中检查domain配置）
 >* Debug Mode为日志打开和测试模式开启，上线时请关闭
 
-<center class="half">
-    <img src="./../../resource/unity_setting_1.jpg" width="300"/>
-    <img src="./../../resource/unity_setting_2.jpg" width="300"/>
-</center>
+<figure markdown>
+![andriod use jetifier](/zh/assets/images/unity_setting_1.jpg){ width="300" }
+![andriod use jetifier](/zh/assets/images/unity_setting_2.jpg){ width="300" }
+</figure>
 
 >* use_framework必须添加
 

@@ -6,8 +6,9 @@ site_dir: '../../generated/zh' # Where to put the English HTML files
 theme:
   name: material
   language: zh
-
-## 下面部分所有语言一样
+  
+  ## 下面部分所有语言一样
+  custom_dir: '../../overrides/'
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -21,6 +22,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - attr_list
+  - md_in_html
 
 extra:
   alternate:
