@@ -18,7 +18,7 @@ jobs:
       
       - name: Install and Build 🔧 
         run: |
-          pip install mkdocs-material mkdocs
+          pip install -r requirements.txt
           sh ./scripts/build-all.sh
 
       - uses: FirebaseExtended/action-hosting-deploy@v0

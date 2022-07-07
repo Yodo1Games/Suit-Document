@@ -1,7 +1,7 @@
 site_name: Yodo1 套件文档
 
 docs_dir: '../../docs/zh'      # Where to find the English markdown files
-site_dir: '../../generated/zh' # Where to put the English HTML files
+site_dir: '../../build/zh' # Where to put the English HTML files
 
 theme:
   name: material

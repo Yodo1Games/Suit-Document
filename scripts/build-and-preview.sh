@@ -1,4 +1,4 @@
 # /bin/bash
 
 sh ./scripts/build-all.sh
-python -m http.server -d generated
+python -m http.server -d build
