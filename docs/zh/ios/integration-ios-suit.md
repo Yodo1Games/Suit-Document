@@ -1,13 +1,22 @@
-# iOS Suit
+---
+hide:
+  - navigation
+---
+
+# Quick Start
 
 **开始前**:
+
 >* ' iOS14 '要求' Xcode '版本为' 12+ '，请确保升级你的' Xcode '版本为' 12+ '。
 >* ' SDK '要求' iOS '的最低版本为' iOS10.0 '
 >*最简单的方法是使用' CocoaPods '(请使用' 1.10 '及以上)，如果你是' CocoaPods '的新手，请参考它的[官方文档](https://guides.cocoapods.org/using/using -cocoapods)，学习如何创建和使用' Podfile '
 
 ## 集成步骤
+
 ### 1. 添加`iOS SDK`到项目中
+
 #### 1.1 创建 `Podfile` 文件</br>
+
 在项目的根目录中创建`Podfile`文件
 
 ```ruby
@@ -15,6 +24,7 @@ touch Podfile
 ```
 
 #### 1.2 引入iOS SDK到项目中</br>
+
 请打开项目中的`Podfile`文件并且将下面的代码添加到文件中:
 
 ```ruby
@@ -25,6 +35,7 @@ pod 'Yodo1Suit', '6.1.1'
 ```
 
 在`终端`中执行以下命令:</br>
+
 ```ruby
 pod install --repo-update
 ```

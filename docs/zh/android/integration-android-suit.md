@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 #### 一，Android SuitSDK安装
 
 1. gradle配置

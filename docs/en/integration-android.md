@@ -367,27 +367,27 @@ google_publish_key=Your_Google_Licensing
 
 * Create a `yodo1_payinfo.xml` file in `src/main/assets/` folder, and then add your in-app purchase SKU items to the file
 
-	```xml
-	<?xml version="1.0" encoding="UTF-8"?>
-	<products>
-	    <product coin="3000" currency="CNY" fidGooglePlay="com.yodo1.stampede.offer1" isRepeated="1" priceDisplay="$1.99" productDesc="LuxuryTourSale" productId="iap_few_coins" productName="LuxuryTourSale" productPrice="0.01" />
-	
-	</products>
-	```
-	The product structure is as follows
-	
-	| Key          |   Data Type    |  Description |
-	|:-------------|:---------------|:-------------|
-	| productId    |     STRING     | Product unique ID |
-	| productName  |     STRING     | Product Name |
-	| productDesc  |     STRING     | Product description |
-	| productPrice |     STRING     | Product Price(CNY:元,USD:dollar) |
-	| currency     |     STRING     | Currency type(eg:USD,CNY,JPY,EUR,HKD) |
-	| priceDisplay |     STRING     | Displayed currency price |
-	| isRepeated   |     STRING     | Product type.(SKU type, "1": Consumable, "0":non-Consumable, "2": Subscription) |
-	| coin         |     STRING     | Equivalent game currency |
-	| fidGooglePlay|     STRING     | SKU code of Google play store |
-	
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+	<product coin="3000" currency="CNY" fidGooglePlay="com.yodo1.stampede.offer1" isRepeated="1" priceDisplay="$1.99" productDesc="LuxuryTourSale" productId="iap_few_coins" productName="LuxuryTourSale" productPrice="0.01" />
+
+</products>
+```
+
+The product structure is as follows
+
+| Key           | Data Type | Description                                                                     |
+| :------------ | :-------- | :------------------------------------------------------------------------------ |
+| productId     | STRING    | Product unique ID                                                               |
+| productName   | STRING    | Product Name                                                                    |
+| productDesc   | STRING    | Product description                                                             |
+| productPrice  | STRING    | Product Price(CNY:元,USD:dollar)                                                |
+| currency      | STRING    | Currency type(eg:USD,CNY,JPY,EUR,HKD)                                           |
+| priceDisplay  | STRING    | Displayed currency price                                                        |
+| isRepeated    | STRING    | Product type.(SKU type, "1": Consumable, "0":non-Consumable, "2": Subscription) |
+| coin          | STRING    | Equivalent game currency                                                        |
+| fidGooglePlay | STRING    | SKU code of Google play store                                                   |
 
 ### 3. Set the listener method
 
@@ -586,4 +586,3 @@ Yodo1Analytics.onCustomEvent(eventName,eventParams);
 Map<String,Object> eventParams = new HashMap();
 Yodo1Analytics.onCustomEventAppsflyer("eventName",eventParams);
 ```
-

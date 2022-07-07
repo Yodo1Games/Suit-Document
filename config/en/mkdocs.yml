@@ -1,0 +1,51 @@
+site_name: Yodo1 Suits Document
+
+docs_dir: '../../docs/en'      # Where to find the English markdown files
+site_dir: '../../build/en' # Where to put the English HTML files
+
+theme:
+  name: material
+  language: en
+
+  custom_dir: '../../overrides/'
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+
+extra:
+  alternate:
+    - name: English
+      link: /en
+      lang: en
+    - name: 中文
+      link: /zh/ 
+      lang: zh
+
+nav:
+  - Getting started:
+    - '../../docs/en/index.md'
+    - '../../docs/en/ingegration/integration-android.md'
+    - '../../docs/en/ingegration/integration-ios.md'
