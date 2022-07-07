@@ -4,6 +4,14 @@
 
 本项目使用了以下几个工具 MkDocs 包和 Material for MkDocs 主题制作而成，部署到 Firebase 提供的静态页面托管服务上。
 
+## 更新流程
+
+1. 从 main 分支拉一个新的分支。
+2. 新的分支上更新 docs 目录的文档。
+3. 如果有新增页面，还需要修改 `config/zh/mkdocs.yaml` 下的 `nav` 配置。
+4. 提交 PR，提交 PR 后将自动产生新的临时站点提供预览。
+5. 合并 PR，合并 PR 后正式版本将自动更新到 [yodo1-suit.web.app](https://yodo1-suit.web.app) 上。
+
 ## 目录介绍
 
 ```log
@@ -36,13 +44,6 @@
     ├── build-all.sh          # 编译全部，并且输出到 build 目录
     └── build-and-preview.sh  # 编译全部，并且输出到 build 目录，并且启动本地 http server
 ```
-
-## 更新流程
-
-1. 从 main 分支拉一个新的分支。
-2. 新的分支上更新 docs 目录的文档。
-3. 如果有新增页面，还需要修改 `config/zh/mkdocs.yaml` 下的 `nav` 配置。
-4. 提交 PR。提交 PR 后将自动产生新的临时站点提供预览。
 
 ## 规范要求
 
