@@ -1,6 +1,6 @@
 # 社区功能/Community,MoreGame,BBS
 
-``` java
+``` c#
 /**
  * 打开游戏社区。调用之前，判断是否有该功能
  */

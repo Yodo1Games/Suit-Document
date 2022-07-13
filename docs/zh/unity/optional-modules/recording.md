@@ -1,6 +1,6 @@
 # 录制屏幕功能
 
-``` java
+``` c#
 //开启录屏
 Yodo1U3dPublish.BeginRecordVideo();
 //停止录屏,仅支持iOS

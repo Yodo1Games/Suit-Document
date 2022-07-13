@@ -2,7 +2,7 @@
 
 ## 获取设备id,SIM,国家码,语言，版本号等
 
-``` java
+``` c#
 /**
  * 获取设备id
  */
@@ -37,7 +37,7 @@ Yodo1U3dUtils.IsChineseMainland();
 
 ## 获取渠道号
 
-``` java
+``` c#
 /**
  * 获取当前渠道号。
  */
