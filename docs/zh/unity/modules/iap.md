@@ -34,7 +34,7 @@ Suit Unity打包中，将excel表格改名为IapConfig，扩展名保持不变�
 
 一般在游戏实名认证结束后，或者登录成功后 进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。
 
-``` java
+``` c#
 //该方法会请求所有商品信息，然后在回调中全部返回
 Yodo1U3dPayment.RequestProductsInfo();
 或
@@ -57,7 +57,7 @@ void RequestProductsInfoDelegate(bool success, List<Yodo1U3dProductData> product
 
 一般在游戏实名认证结束,或者登录成功后进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。备注：只适用于GooglePlay渠道，AppleStore渠道。
 
-``` java
+``` c#
 Yodo1U3dPayment.SetQuerySubscriptionsDelegate(QuerySubscriptionsDelegate);
   
 Yodo1U3dPayment.QuerySubsriptions();
@@ -67,7 +67,7 @@ Yodo1U3dPayment.QuerySubsriptions();
 
 一般在游戏实名认证结束,或者登录成功后进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。备注：只适用于GooglePlay渠道。
 
-``` java
+``` c#
 Yodo1U3dPayment.SetVerifyProductsInfoDelegate(VerifyPurchasesDelegate);
   
 Yodo1U3dPayment.RequestGoogleCode();
@@ -77,7 +77,7 @@ Yodo1U3dPayment.RequestGoogleCode();
 
 一般在游戏实名认证结束,或者登录成功后进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。备注：只适用于GooglePlay渠道，AppleStore渠道。
 
-``` java
+``` c#
 Yodo1U3dPayment.SetRestorePurchasesDelegate(RestorePurchasesDelegate);
   
 Yodo1U3dPayment.restorePurchase();
@@ -87,7 +87,7 @@ Yodo1U3dPayment.restorePurchase();
 
 调用支付方法，对于需要用户登录才能拉起支付的时候会先自动调用登录。
 
-``` java
+``` c#
 /**该方法会根据引入的渠道展示支付方式（支付宝，微信，渠道，运营商）
 * productId  商品Id
 * extra 透传值，可为null
@@ -98,7 +98,7 @@ Yodo1U3dPayment.Purchase(string productId, string extra)
 
 设置支付回调：
 
-``` java
+``` c#
 Yodo1U3dPayment.SetPurchaseDelegate(PurchaseDelegate);
 /**
 * orderId,yodo1订单号
@@ -107,14 +107,35 @@ Yodo1U3dPayment.SetPurchaseDelegate(PurchaseDelegate);
 * extra，渠道支付返回的多余信息
 * payType，支付类型
 */
-void PurchaseDelegate (Yodo1U3dConstants.PayStatus status, string orderId, string productId, string extra, Yodo1U3dConstants.PayType payType)
-{
+
+void PurchaseDelegate (Yodo1U3dConstants.PayEvent status, string orderId, string productId, string extra, Yodo1U3dConstants.PayType payType) {
         Debug.Log ("status : " + status + ",productId : "+productId+", orderId : "+orderId+ ", extra : " + extra);
-if (status == Yodo1U3dConstants.PayStatus.PaySuccess) {
-//支付成功
-}
+        if (status == Yodo1U3dConstants.PayEvent.PaySuccess) {
+
+        }
 }
 ```
+
+Yodo1U3dConstants.PayEvent结构：
+
+| Key名称         | 描述 |
+| -------------- | --------- |
+| PayCannel      |   取消支付  |
+| PaySuccess     |   支付成功  |
+| PayFail        |   支付失败  |
+| PayVerifyFail  |  ops验证失败|
+| PayCustomCode  |  支付账号异常|
+
+Yodo1U3dConstants.PayType结构：
+
+| Key名称         | 描述 |
+| -------------- | ------------- |
+| PayTypeWechat  |   微信         |
+| PayTypeAlipay  |   支付宝       |
+| PayTypeChannel | 支付渠道(ios为appstore)  |
+| PayTypeSMS     |   短代               |
+
+
 
 ## 查询漏单
 
@@ -123,7 +144,7 @@ Yodo1U3dPayment.QueryLossOrder ();
 
 设置回调：
 
-``` java
+``` c#
 Yodo1U3dPayment.SetLossOrderIdPurchasesDelegate(LossOrderIdPurchasesDelegate);
   
 void LossOrderIdPurchasesDelegate(bool success, List<Yodo1U3dProductData> products) {
@@ -138,7 +159,7 @@ void LossOrderIdPurchasesDelegate(bool success, List<Yodo1U3dProductData> produc
 
 购买成功后，调用发货成功通知接口。。功能是健全购买流程，作为丢单的统计依据。
 
-``` java
+``` c#
 /**
  * 发送发货成功通知，可以不用在意回调处理。
  */
@@ -152,7 +173,7 @@ void LossOrderIdPurchasesDelegate(bool success, List<Yodo1U3dProductData> produc
 
 购买失败后，调用发货失败通知接口。。功能是健全购买流程，作为丢单的统计依据。
 
-``` java
+``` c#
 /**
  * 发送发货失败通知，可以不用在意回调处理。
  */

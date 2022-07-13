@@ -14,6 +14,21 @@ Yodo1SNSTypeInstagram(1 << 6), //Instagram
 Yodo1SNSTypeAll(1 << 7); //所有平台分享
 ```
 
+Yodo1SNSType结构：
+
+| Key名称                    | 描述          |
+| ------------------------- | ------------- |
+| Yodo1SNSTypeNone          |               |
+| Yodo1SNSTypeTencentQQ     | QQ朋友圈       |
+| Yodo1SNSTypeWeixinMoments | 微信朋友圈      |
+| Yodo1SNSTypeWeixinContacts| 微信聊天界面    |
+| Yodo1SNSTypeSinaWeibo     | 新浪微博       |
+| Yodo1SNSTypeFacebook      | Facebook      |
+| Yodo1SNSTypeTwitter       | Twitter       |
+| Yodo1SNSTypeInstagram     | Instagram     |
+| Yodo1SNSTypeAll           | 所有分享平台    |
+
+
 可以使用程序员计算机计算，或者手动位计算十进制：
 所有平台 = 127或者128
 Facebook + Twitter+ Instagram = 112

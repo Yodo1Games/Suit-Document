@@ -1,6 +1,6 @@
 # 云存储功能/iCloud
 
-``` java
+``` c#
 Yodo1U3dPublish.saveToCloud（）
 Yodo1U3dPublish.loadToCloud（）
  
@@ -12,7 +12,7 @@ Yodo1U3dSDK.setiCloudGetValueDelegate();
 
 ### 成就功能/Achievement
 
-``` java
+``` c#
 // 打开成就
 Yodo1U3dPublish.achievementsOpen();
 
@@ -25,6 +25,6 @@ Yodo1U3dPublish.updateScore();
 
 ### 排行榜功能/Leaderboard
 
-``` java
+``` c#
 Yodo1U3dPublish.leaderboardsOpen()；
 ```

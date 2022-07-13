@@ -12,11 +12,10 @@
 
 ### Android 配置
 
+1. 设置SDK基本配置
 <figure markdown>
   ![Unity Settings](/zh/assets/images/unity_setting_3.png){ width="300" }
 </figure>
-
-<!-- ![Unity Settings](/zh/assets/images/unity_setting_3.png){ width="100" } -->
 
 >* AppKey配置Yodo1 GameKey，RegionCode配置Yodo1 RegionCode（没有可以不用配置）
 >* 如果使share功能，请勾选`Share`，同时配置对应的appkey和link
@@ -24,55 +23,73 @@
 >* 数据统计ThinkingData必须配置，请配置ThinkingData appid
 >* 其他数据统计是可选的，如果需要请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置）
 >* Debug Mode为日志打开和测试模式开启，上线时请关闭
+>* 如果要构建中国应用商店包，请修改`Publish Channel`为`ChinaMainLand`, 并联系Yodo1团队进行PA打包
 
-[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) 是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 启用
+2. 设置支持AndroidX
 
-<figure markdown>
-![andriod use jetifier](/zh/assets/images/andriod_use_jetifier.png){ width="300" }
-</figure>
+    [Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) 是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 来启用它，如下图所示：
 
-AndroidManifest配置(针对需要定制启动)-使用unitypackage中自带的 `plugin/AndroidManifest.xml`可以不用配置
-`/Assets/Plugins/Android/AndroidManifest.xml` 修改application：
+    <figure markdown>
+        ![andriod use jetifier](/zh/assets/images/andriod_use_jetifier.png){ width="300" }
+    </figure>
 
-```java
-android:name="com.yodo1.android.sdk.Yodo1Application"
-```
+3. 实现 `Yodo1Application` 声明周期方法
 
-修改启动类
+> 有两种方法实现`Yodo1Application`的生命周期方法
 
-```java
-<!-- YODO1 SDK(Use PA System) Start -->
-        <!-- 闪屏页,游戏必须配置com.yodo1.android.sdk.view.SplashActivity,其他配置游戏可自己定制，SplashActivity必须为应用启动组件,其screenOrientation属性，尽量根据游戏配置sensorLandscape/sensorPortrait“-->
-        <activity android:name="com.yodo1.android.sdk.view.SplashActivity"
-            android:hardwareAccelerated="true"
-            android:launchMode="singleTop"
-android:exported="true"
-            android:screenOrientation="portrait">
+* 在 `AndroidManifest.xml` 中更改应用程序的 `android:name`，如下所示
+
+    ```xml
+    <application
+        android:name="com.yodo1.android.sdk.Yodo1Application">
+    ```
+
+* 或者使用代码实现，如下所示
+
+    ```java
+    import com.yodo1.android.sdk.Yodo1Application;
+    
+    public class AppApplication extends Yodo1Application {
+    }
+    ```
+
+4. 添加 `SplashActivity` 做为启动 `Activity`
+
+    ```xml
+    <application >
+        <activity
+            android:name="com.yodo1.android.sdk.view.SplashActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+    </application>
+    ```
+    注意:你需要根据你的游戏设置改变`android:screenOrientation`
 
-         <!-- 闪屏页的跳转目标 -->
-         <meta-data
-            android:name="YODO1_MAIN_CLASS"
-            android:value="com.yodo1.plugin.u3d.Yodo1UnityActivity"/>
+5. 在 `AndroidManifest.xml` 中添加 `Yodo1UnityActivity` 
 
-        <activity
-            android:name="com.yodo1.plugin.u3d.Yodo1UnityActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="user"
-android:exported="false"
-            android:launchMode="singleTask"
-android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale">
-            <meta-data android:name="unityplayer.SkipPermissionsDialog" android:value="true" />
-     <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
-</activity>
-<!-- YODO1 SDK(Use PA System) End -->
-```
+    ```xml
+    <activity
+        android:name="com.yodo1.plugin.u3d.Yodo1UnityActivity"
+        android:label="@string/app_name"
+        android:screenOrientation="user"
+        android:exported="false"
+        android:launchMode="singleTask"
+        android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale">
+        <meta-data android:name="unityplayer.SkipPermissionsDialog" android:value="true" />
+        <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+    </activity>
+    ```
 
 ### iOS 配置
+
+1. 设置SDK基本配置
 
 <figure markdown>
 ![andriod use jetifier](/zh/assets/images/unity_setting_0.png){ width="300" }
@@ -86,16 +103,34 @@ android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|naviga
 >* 其他数据统计是可选的，如果需要请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置。配置好后，需要在XCode中检查domain配置）
 >* Debug Mode为日志打开和测试模式开启，上线时请关闭
 
+2. 添加 `use_framework`，如下图所示
+
 <figure markdown>
 ![andriod use jetifier](/zh/assets/images/unity_setting_1.jpg){ width="300" }
 ![andriod use jetifier](/zh/assets/images/unity_setting_2.jpg){ width="300" }
 </figure>
 
->* use_framework必须添加
-
 ## 初始化
 
-```java
+在`Start`方法中调用SDK初始化
+
+推荐的初始化方法如下
+
+```c#
+void Start()  {
+	Yodo1U3dSDK.InitWithAppKey("Your App Key");
+}
+```
+
+带有`RegionCode` 为过时方法，仅适用于已申请`RegionCode`的老游戏
+
+```c#
+void Start()  {
+	Yodo1U3dSDK.InitWithAppKey("Your App Key","RegionCode");
+}
+```
+
+<!-- ```java
 //Your App Key 是yodo1分配的gameKey
 Yodo1U3dSDK.InitWithAppKey("Your App Key");
 //or
@@ -104,4 +139,4 @@ Yodo1U3dSDK.InitWithAppKey("Your App Key","RegionCode");
 //Your Config是json，格式如{"appKey":"asdb","regionCode":"asdfb","appsflyerCustomUserID":"1243"}
 //无登录游戏，务必传appsflyerCustomUserID
 Yodo1U3dSDK.InitWithConfig("Your Config");
-```
+``` -->
