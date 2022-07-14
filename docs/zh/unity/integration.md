@@ -8,13 +8,11 @@
 >* `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
 >* iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
 
-## 集成步骤
+## 集成配置
 
 ### 1. Android 配置
 
 #### 1.1 设置SDK基本配置
-
-#### 1. 设置SDK基本配置
 
 <!-- markdownlint-disable -->
 <figure> 
@@ -95,9 +93,9 @@
   </activity>
   ```
 
-### iOS 配置
+### 2. iOS 配置
 
-#### 1 设置SDK基本配置
+#### 2.1 设置SDK基本配置
 
 <!-- markdownlint-disable -->
 <figure> 
@@ -113,7 +111,7 @@
 >* 其他数据统计是可选的，如果需要请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置。配置好后，需要在XCode中检查domain配置）
 >* Debug Mode为日志打开和测试模式开启，上线时请关闭
 
-#### 2 添加 `use_framework`
+#### 2.2 添加 `use_framework`
 
 <!-- markdownlint-disable -->
 <figure> 
