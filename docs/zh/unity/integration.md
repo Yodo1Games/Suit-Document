@@ -14,8 +14,12 @@
 
 #### 1.1 设置SDK基本配置
 
-<figure markdown>
-    ![Unity Settings](/zh/assets/images/unity_setting_3.png){ width="300" }
+#### 1. 设置SDK基本配置
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/unity_setting_3.png" width="300"> 
+    <figcaption>Unity Settings</figcaption> 
 </figure>
 
 >* AppKey配置Yodo1 GameKey，RegionCode配置Yodo1 RegionCode（没有可以不用配置）
@@ -30,8 +34,10 @@
 
 [Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) 是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 来启用它，如下图所示：
 
-<figure markdown>
-    ![andriod use jetifier](/zh/assets/images/andriod_use_jetifier.png){ width="300" }
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/andriod_use_jetifier.png" width="300"> 
+    <figcaption>andriod use jetifier</figcaption> 
 </figure>
 
 #### 1.3 实现 `Yodo1Application` 声明周期方法
@@ -89,28 +95,34 @@
   </activity>
   ```
 
-### 2. iOS 配置
+### iOS 配置
 
-#### 2.1 设置SDK基本配置
+#### 1 设置SDK基本配置
 
- <figure markdown>
- ![andriod use jetifier](/zh/assets/images/unity_setting_0.png){ width="300" }
- </figure>
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/unity_setting_0.png" width="300">
+</figure>
+<!-- markdownlint-restore -->
 
- >* AppKey配置Yodo1 GameKey，RegionCode配置Yodo1 RegionCode（没有可以不用配置）
- >* 如果使share功能，请勾选`Share`，同时配置对应的appkey和link
- >* 如果使用支付功能，请勾选`UCpayment`
- >* 如果使用iCloud功能，请勾选`iCloud`
- >* 数据统计ThinkingData必须配置，请配置ThinkingData appid
- >* 其他数据统计是可选的，如果需要请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置。配置好后，需要在XCode中检查domain配置）
- >* Debug Mode为日志打开和测试模式开启，上线时请关闭
+>* AppKey配置Yodo1 GameKey，RegionCode配置Yodo1 RegionCode（没有可以不用配置）
+>* 如果使share功能，请勾选`Share`，同时配置对应的appkey和link
+>* 如果使用支付功能，请勾选`UCpayment`
+>* 如果使用iCloud功能，请勾选`iCloud`
+>* 数据统计ThinkingData必须配置，请配置ThinkingData appid
+>* 其他数据统计是可选的，如果需要请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置。配置好后，需要在XCode中检查domain配置）
+>* Debug Mode为日志打开和测试模式开启，上线时请关闭
 
-#### 2.2 添加 `use_framework`
+#### 2 添加 `use_framework`
 
- <figure markdown>
- ![andriod use jetifier](/zh/assets/images/unity_setting_1.jpg){ width="300" }
- ![andriod use jetifier](/zh/assets/images/unity_setting_2.jpg){ width="300" }
- </figure>
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/unity_setting_1.jpg" width="300"> 
+</figure>
+<figure> 
+    <img src="/zh/assets/images/unity_setting_2.jpg" width="300"> 
+</figure>
+<!-- markdownlint-restore -->
 
 ## 初始化
 
