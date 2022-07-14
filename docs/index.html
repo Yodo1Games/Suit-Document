@@ -1,25 +1,37 @@
 <html>
 
 <head>
-    <title>Redirect</title>
-    <meta http-equiv="refresh" content="0; url=/en/" />
-    <style>
-        .centralizedContainer {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            position: fixed;
-            align-items: center;
-            justify-content: center;
-            font-size: 200%;
-        }
-    </style>
+  <title>Redirect</title>
+  <style>
+    .centralizedContainer {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      position: fixed;
+      align-items: center;
+      justify-content: center;
+      font-size: 200%;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="centralizedContainer">
-        <div><a href="/en/">Redirect</a> to landing page.</div>
-    </div>
+<div class="centralizedContainer">
+  <div><a id="redirect" href="/en/">Redirect</a> to landing page.</div>
+</div>
 </body>
+<script>
+  !function () {
+    let lang = navigator.language;
+    lang = lang.substr(0, 2);
+    let redirect_a = document.getElementById("redirect")
+    let language = "/en/"
+    if (lang === 'zh') {
+      language = "/zh/"
+    }
+    redirect_a.setAttribute("href", language)
+    window.location.replace(language)
 
+  }()
+</script>
 </html>
