@@ -8,7 +8,7 @@
 >* `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
 >* iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
 
-## 集成步骤
+## 集成配置
 
 ### 1. Android 配置
 
@@ -112,7 +112,7 @@
  ![andriod use jetifier](/zh/assets/images/unity_setting_2.jpg){ width="300" }
  </figure>
 
-## 3. 初始化
+## 初始化
 
 在`Start`方法中调用SDK初始化
 
