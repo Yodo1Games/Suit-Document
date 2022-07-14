@@ -110,7 +110,7 @@
    >* 其他数据统计是可选的，如果需要请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置。配置好后，需要在XCode中检查domain配置）
    >* Debug Mode为日志打开和测试模式开启，上线时请关闭
 
-#### 2 添加 `use_framework`，如下图所示
+#### 2 添加 `use_framework`
    <!-- markdownlint-disable -->
    <figure markdown>
    ![andriod use jetifier](/zh/assets/images/unity_setting_1.jpg){ width="300" }
