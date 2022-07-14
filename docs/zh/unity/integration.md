@@ -8,17 +8,19 @@
 >* `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
 >* iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
 
-## 集成配置
+## 集成步骤
 
-### Android 配置
+### 1. Android 配置
+
+#### 1.1 设置SDK基本配置
 
 #### 1. 设置SDK基本配置
+
 <!-- markdownlint-disable -->
 <figure> 
     <img src="/zh/assets/images/unity_setting_3.png" width="300"> 
     <figcaption>Unity Settings</figcaption> 
 </figure>
-<!-- markdownlint-restore -->
 
 >* AppKey配置Yodo1 GameKey，RegionCode配置Yodo1 RegionCode（没有可以不用配置）
 >* 如果使share功能，请勾选`Share`，同时配置对应的appkey和link
@@ -28,7 +30,7 @@
 >* Debug Mode为日志打开和测试模式开启，上线时请关闭
 >* 如果要构建中国应用商店包，请修改`Publish Channel`为`ChinaMainLand`, 并联系Yodo1团队进行PA打包
 
-#### 2. 设置支持AndroidX
+#### 1.2 设置支持AndroidX
 
 [Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) 是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 来启用它，如下图所示：
 
@@ -37,29 +39,28 @@
     <img src="/zh/assets/images/andriod_use_jetifier.png" width="300"> 
     <figcaption>andriod use jetifier</figcaption> 
 </figure>
-<!-- markdownlint-restore -->
 
-#### 3. 实现 `Yodo1Application` 声明周期方法
+#### 1.3 实现 `Yodo1Application` 声明周期方法
 
 有两种方法实现`Yodo1Application`的生命周期方法
 
 * 在 `AndroidManifest.xml` 中更改应用程序的 `android:name`，如下所示
   
-    ```xml
-    <application
-        android:name="com.yodo1.android.sdk.Yodo1Application">
-    ```
+  ```xml
+  <application
+    android:name="com.yodo1.android.sdk.Yodo1Application">
+  ```
 
 * 或者使用代码实现，如下所示
   
-    ```java
-    import com.yodo1.android.sdk.Yodo1Application;
+  ```java
+  import com.yodo1.android.sdk.Yodo1Application;
 
-    public class AppApplication extends Yodo1Application {
-    }
-    ```
+  public class AppApplication extends Yodo1Application {
+  }
+  ```
 
-#### 4. 添加 `SplashActivity` 做为启动 `Activity`
+#### 1.4 添加 `SplashActivity` 做为启动 `Activity`
 
   ```xml
   <application >
@@ -79,7 +80,7 @@
 
 注意:你需要根据你的游戏设置改变`android:screenOrientation`
 
-#### 5. 在 `AndroidManifest.xml` 中添加 `Yodo1UnityActivity`
+#### 1.5 在 `AndroidManifest.xml` 中添加 `Yodo1UnityActivity`
 
   ```xml
   <activity
