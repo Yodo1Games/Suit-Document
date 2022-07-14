@@ -1,8 +1,3 @@
----
-hide:
-  - navigation
----
-
 # 集成 SDK
 
 **集成准备**:
