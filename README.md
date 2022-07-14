@@ -47,4 +47,26 @@
 
 ## 规范要求
 
-- Markdown 文件需要通过 markdown linter 的检查。建议使用 VSCode 插件，在本地编写的时候就检查一遍
+- Markdown 文件需要通过 markdown linter 的检查。建议使用 VSCode 插件，在本地编写的时候就检查一遍。
+
+## 本地编译
+
+### 配置本地环境
+
+```bash
+# 先创建虚拟环境，只需要创建一次，后续直接激活即可
+python3 -m venv venv
+# 激活虚拟环境
+source tutorial-env/bin/activate
+# 安装必要依赖
+pip install -r requirements.txt
+```
+
+### 编译预览
+
+```bash
+# 先激活虚拟环境
+source tutorial-env/bin/activate
+# 安装必要依赖
+sh scripts/build-and-preview.sh
+```
