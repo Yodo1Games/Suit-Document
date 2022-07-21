@@ -14,6 +14,9 @@
 
 1. 设置SDK基本配置
 <figure markdown>
+  ![Unity Settings](/zh/assets/images/unity_android.png){ width="300" }
+</figure>
+<figure markdown>
   ![Unity Settings](/zh/assets/images/unity_setting_3.png){ width="300" }
 </figure>
 
@@ -90,9 +93,10 @@
 ### iOS 配置
 
 1. 设置SDK基本配置
-
 <figure markdown>
-![andriod use jetifier](/zh/assets/images/unity_setting_0.png){ width="300" }
+  ![Unity Settings](/zh/assets/images/unity_ios.png){ width="300" }
+<figure markdown>
+![Unity Settings](/zh/assets/images/unity_setting_0.png){ width="300" }
 </figure>
 
 >* AppKey配置Yodo1 GameKey，RegionCode配置Yodo1 RegionCode（没有可以不用配置）
