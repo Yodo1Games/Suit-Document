@@ -15,8 +15,7 @@
 1. 设置SDK基本配置
 <figure markdown>
   ![Unity Settings](/zh/assets/images/unity_android.png){ width="300" }
-</figure>
-<figure markdown>
+  
   ![Unity Settings](/zh/assets/images/unity_setting_3.png){ width="300" }
 </figure>
 #### 1.1 设置SDK基本配置
@@ -103,9 +102,10 @@
 
 1. 设置SDK基本配置
 <figure markdown>
-  ![Unity Settings](/zh/assets/images/unity_ios.png){ width="300" }
-<figure markdown>
+![Unity Settings](/zh/assets/images/unity_ios.png){ width="300" }
+
 ![Unity Settings](/zh/assets/images/unity_setting_0.png){ width="300" }
+</figure>
   
   ```java
   import com.yodo1.android.sdk.Yodo1Application;
