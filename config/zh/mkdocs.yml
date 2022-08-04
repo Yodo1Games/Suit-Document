@@ -55,6 +55,11 @@ nav:
       - unity/optional-modules/info.md
 
   - iOS:
-    - 'ios/integration-ios-suit.md'
+    - 'ios/integration.md'
+    - 功能模块:
+      - 'ios/modules/analyze.md'
+      - 'ios/modules/iap.md'
+    - 可选功能:
+      - ios/optional-modules/share.md
   - Android:
     - 'android/integration-android-suit.md'

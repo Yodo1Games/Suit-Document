@@ -28,7 +28,6 @@ Yodo1SNSType结构：
 | Yodo1SNSTypeInstagram     | Instagram     |
 | Yodo1SNSTypeAll           | 所有分享平台    |
 
-
 可以使用程序员计算机计算，或者手动位计算十进制：
 所有平台 = 127或者128
 Facebook + Twitter+ Instagram = 112

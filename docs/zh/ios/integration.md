@@ -1,15 +1,10 @@
----
-hide:
-  - navigation
----
+# 集成 SDK
 
-# Quick Start
+**集成准备**:
 
-**开始前**:
-
->* ' iOS14 '要求' Xcode '版本为' 12+ '，请确保升级你的' Xcode '版本为' 12+ '。
->* ' SDK '要求' iOS '的最低版本为' iOS10.0 '
->*最简单的方法是使用' CocoaPods '(请使用' 1.10 '及以上)，如果你是' CocoaPods '的新手，请参考它的[官方文档](https://guides.cocoapods.org/using/using -cocoapods)，学习如何创建和使用' Podfile '
+>* `iOS14`要求`Xcode`版本为`12+`，请确保升级你的`Xcode`版本为`12+`。
+>* SDK要求`iOS`的最低版本为`10.0`
+>* 最简单的方法是使用`CocoaPods`(请使用`1.10`及以上)，如果你是`CocoaPods`的新手，请参考它的[官方文档](https://guides.cocoapods.org/using/using-cocoapods)，学习如何创建和使用`Podfile`
 
 ## 集成步骤
 
@@ -28,10 +23,10 @@ touch Podfile
 请打开项目中的`Podfile`文件并且将下面的代码添加到文件中:
 
 ```ruby
-source 'https://github.com/Yodo1Games/Yodo1-Games-Spec.git'
 source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/Yodo1Games/Yodo1-Games-Spec.git'
 
-pod 'Yodo1Suit', '6.1.1'
+pod 'Yodo1Suit', '6.1.2'
 ```
 
 在`终端`中执行以下命令:</br>
@@ -41,24 +36,33 @@ pod install --repo-update
 ```
 
 ### 2. `Xcode`项目配置
+
 #### 2.1 设置`Info.plist` 参数
-``` xml
+
+```xml
 <key>AnalyticsInfo</key> 
-<dict>  
-    	<key>ThinkingAppId</key> 
-    	<string>[ThinkingData AppId]</string> 
-    	<key>AppleAppId</key> 
-    	<string>[Apple AppId]</string> 
-    	<key>AppsFlyerDevKey</key> 
-    	<string>[AppsFlyer DevKey]</string>
-    	<key>GameKey</key> 
-    	<string>[Yodo1 GameKey]</string>
-    	<key>debugEnabled</key> 
-    	<string>0</string> 
+<dict>
+<!-- markdownlint-disable -->
+	<key>ThinkingAppId</key>
+	<string>[ThinkingData AppId]</string>
+	<key>AppleAppId</key>
+	<string>[Apple AppId]</string>
+	<key>AppsFlyerDevKey</key>
+	<string>[AppsFlyer DevKey]</string>
+	<key>GameKey</key>
+	<string>[Yodo1 GameKey]</string>
+	<key>debugEnabled</key>
+	<string>0</string>
 </dict>
 ```
-![](./../../resource/ios_analytics_setting.png)
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/ios_analytics_setting.png" width="300">
+</figure>
+
 #### 2.2 设置`iOS9 App Transport Security`
+
 在`iOS9`中, 苹果增加了`ATS`的控制功能。为了确保在所有中间网络上不间断地支持统计数据，您需要在`Info.plist`中进行以下设置:
 
 * 添加 `NSAppTransportSecurity` 类型 `Dictionary`
