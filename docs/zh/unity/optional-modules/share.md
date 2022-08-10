@@ -42,3 +42,13 @@ Yodo1U3dUtils.share();
 //设置分享结果回调
 Yodo1U3dSDK.setShareDelegate(ShareDelegate);
 ```
+
+使用unity插件6.1.3及之后的版本需要在xcode中做以下配置（facebook分享）
+<!-- markdownlint-disable -->
+<figure> 
+	 <img src="/zh/assets/images/xcode_share_0.jpg" width="300">
+    <img src="/zh/assets/images/xcode_share_1.jpg" width="300">
+    <img src="/zh/assets/images/xcode_share_2.jpg" width="300">
+    <img src="/zh/assets/images/xcode_share_3.jpg" width="300">
+</figure>
+<!-- markdownlint-restore -->
