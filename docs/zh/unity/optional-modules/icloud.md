@@ -8,6 +8,14 @@ Yodo1U3dPublish.loadToCloud（）
 Yodo1U3dSDK.setiCloudGetValueDelegate();
 ```
 
+Xcode工程中，在“Capabilities”中添加“iCloud”，勾选“Key-value storage”和“iCloudKit”
+<!-- markdownlint-disable -->
+<figure> 
+	 <img src="/zh/assets/images/xcode_icloud.png" width="400">
+</figure>
+<!-- markdownlint-restore -->
+
+
 ## GameCenter功能
 
 ### 成就功能/Achievement
