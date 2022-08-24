@@ -1,0 +1,65 @@
+site_name: Yodo1 套件文档
+
+docs_dir: '../../docs/zh'      # Where to find the English markdown files
+site_dir: '../../build/zh' # Where to put the English HTML files
+
+theme:
+  name: material
+  language: zh
+  
+  ## 下面部分所有语言一样
+  custom_dir: '../../overrides/'
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - navigation.expand
+
+markdown_extensions:
+  - meta
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+
+extra:
+  alternate:
+    - name: English
+      link: / 
+      lang: en
+    - name: 中文
+      link: /zh/ 
+      lang: zh
+
+nav:
+  - 'index.md'
+  - Unity:  
+    - 'unity/integration.md'
+    - 功能模块:
+      - 'unity/modules/analyze.md'
+      - 'unity/modules/account.md'
+      - 'unity/modules/iap.md'
+      - 'unity/modules/exit.md'
+    - 可选功能:
+      - unity/optional-modules/online-config.md
+      - unity/optional-modules/activation-code.md
+      - unity/optional-modules/share.md
+      - unity/optional-modules/browser.md
+      - unity/optional-modules/icloud.md
+      - unity/optional-modules/community.md
+      - unity/optional-modules/recording.md
+      - unity/optional-modules/comment-page.md
+      - unity/optional-modules/info.md
+
+  - iOS:
+    - 'ios/integration.md'
+    - 功能模块:
+      - 'ios/modules/analyze.md'
+      - 'ios/modules/iap.md'
+    - 可选功能:
+      - ios/optional-modules/share.md
+  - Android:
+    - 'android/integration-android-suit.md'

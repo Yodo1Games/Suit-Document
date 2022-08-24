@@ -1,19 +1,25 @@
-# iOS集成
+# iOS 集成
 
 **开始之前**:
+
 >* `iOS14`要求`Xcode`版本为`12+`，请务必升级您的`Xcode`版本到`12+`。
 >*  `SDK`要求`iOS`的最低版本为`iOS10.0`
 >*  最简便的方法就是使用`CocoaPods`(请使用`1.10`及以上版本), 如果您刚开始接触`CocoaPods`，请参阅其[官方文档](https://guides.cocoapods.org/using/using-cocoapods)，了解如何创建和使用`Podfile`
 
 ## 集成步骤
+
 ### 1. 将`iOS SDK`添加到项目中
+
 #### 1.1 创建`Podfile`文件</br>
+
 在项目根目录下创建`Podfile`文件
+
 ```ruby
 touch Podfile
 ```
 
 #### 1.2 将iOS SDK导入项目</br>
+
 请打开项目的 `Podfile` 文件并将下面代码添加到应用的目标中：
 
 ```ruby
@@ -28,12 +34,15 @@ pod 'Yodo1Suit/Yodo1_UCenter', '1.5.1.1'
 ```
 
 在`终端`中执行如下命令：</br>
+
 ```ruby
 pod install --repo-update
 ```
 
 ### 2. `Xcode`工程配置
+
 #### 2.1 设置`Yodo1KeyInfo.plist`参数
+
 ``` xml
 <key>KeyConfig</key> 
 	<dict> 

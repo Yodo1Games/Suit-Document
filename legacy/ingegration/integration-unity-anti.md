@@ -1,16 +1,19 @@
 # Unity AntiAddiction
 
 **集成准备**:
+
 >* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1SdkUnityPlugin_AntiIndulged/Yodo1AntiAddictionSDK_3.2.1.unitypackage)
 >* SDK支持Unity 3D 版本（2017或更高版本）
 >* SDK支持Android API 19+
 > * `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
 > * iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
 
-
 ## 集成步骤
+
 ### 1. 集成配置
+
 ### 1.1 插件结构
+
 <center class="half">
     <img src="./../../resource/unity_anti_structure.jpg" width="200"/>
 </center>
