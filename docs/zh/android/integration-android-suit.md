@@ -13,7 +13,7 @@ hide:
    allprojects {
        repositories {
            //yodo1 maven repo
-           maven { url "http://nexus.yodo1.com:8081/repository/maven-public/" }
+           maven { url "https://nexus.yodo1.com/repository/maven-public/" }
        }
    }
    ```
@@ -29,8 +29,8 @@ hide:
    请在应用module内build.gradle添加以下依赖：
 
    ```groovy
-   api 'com.yodo1.suit.pay:core:1.5.0.0'
-   api 'com.yodo1.suit.pay:core_bridge:1.4.4'
+   api 'com.yodo1.suit.pay:core:6.1.4.6'
+   api 'com.yodo1.suit.bridge:pay:6.1.4.0'
    ```
 
 3. AndroidManifest.xml配置
@@ -47,7 +47,7 @@ hide:
                android:configChanges="keyboardHidden|orientation|screenSize"
                android:exported="true"
                android:screenOrientation="portrait"
-               android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+               android:theme="@style/GameTheme">
                <intent-filter>
                    <action android:name="android.intent.action.MAIN" />
                    <category android:name="android.intent.category.LAUNCHER" />
@@ -166,7 +166,7 @@ hide:
    #修改游戏是横屏还是竖屏。portrait或者landscape,二选一。
    thisProjectOrient=portrait
    Yodo1SDKType=yodo1_global
-   Yodo1SDKVersion=1.5.0
+   Yodo1SDKVersion=6.1.4
    CHANNEL_CODE_PUBLISH=GooglePlay
    CHANNEL_CODE=GooglePlay
    sdk_code=GooglePlay
@@ -217,7 +217,7 @@ Yodo1Game.initWithConfig(this,jso.toString());
 
 ```groovy
 //Google渠道添加
-api 'com.yodo1.suit.pay:google:4.0.0.2'
+api 'com.yodo1.suit.pay:google:4.0.0.7'
 
 //!!GP 同时yodo1_games_config.properties文件加入一下两个配置：
 google_app_id=yourAppId on GooglePlay
@@ -459,7 +459,7 @@ google_publish_key=YourPublishKey on GooglePlay
 
 ```groovy
 //AppsFlyer统计渠道
-api 'com.yodo1.suit.analytics:appsflyer:6.5.3.3'
+api 'com.yodo1.suit.analytics:appsflyer:6.8.0.0'
 
 //!!AF 同时yodo1_games_config.properties文件加入一下两个配置：
 appsflyer_dev_key=YourAF_DevKey

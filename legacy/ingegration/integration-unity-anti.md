@@ -5,7 +5,6 @@
 >* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1SdkUnityPlugin_AntiIndulged/Yodo1AntiAddictionSDK_3.2.1.unitypackage)
 >* SDK支持Unity 3D 版本（2017或更高版本）
 >* SDK支持Android API 19+
->* [Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier)是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 启用
 > * `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
 > * iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
 
@@ -19,7 +18,7 @@
     <img src="./../../resource/unity_anti_structure.jpg" width="200"/>
 </center>
 
-请在MAS后台申请应用相关的ID和秘钥，将会得到应用的配置内容。
+请联系Yodo1团队申请应用相关的ID和秘钥，将会得到应用的配置内容。
 
 请将AppKey填入SDK配置对象内(如果该游戏没有RegionCode可不填)，并推荐在调试阶段打开DebugMode及Log开关，正式包请关闭。
 
@@ -27,17 +26,19 @@
 Yodo1AntiIndulgedSDK/User/Resources/Yodo1U3dSettings.asset
 
 <center class="half">
-    <img src="./../../resource/unity_anti_setting_0.png" width="200"/>
+    <img src="./../../resource/unity_anti_setting_0.png" width="300"/>
 </center>
 
-另外说明，标题栏Assets/Yodo1Anti Settings，只对Android配置有效。请开发者以上图示意配置为主。
-
-<center class="half">
-    <img src="./../../resource/unity_anti_setting_1.png" width="200"/>
-</center>
-
+>* Ios Setting配置`App Key`和`Region Code`
+>* Andriod Setting配置`App Key`和`Region Code`
 
 ### 1.2 发布Android包时的配置
+
+[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier)是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 启用
+
+<center class="half">
+    <img src="./../../resource/andriod_use_jetifier.png" width="300"/>
+</center>
 
 发布Android包时，请先检查Assets/Yodo1AntiAddictionSDK/Plugins/Android/anti-addiction-unity-x.x.x文件是否存在，并在上文提到的Yodo1U3dSetting.asset里配置好Android Settings部分的内容。
 
@@ -53,6 +54,12 @@ Yodo1AntiIndulgedSDK/User/Resources/Yodo1U3dSettings.asset
    tools:replace="android:value" />
 ```
 
+另外说明，标题栏Assets/Yodo1Anti Settings，只对Android配置有效。请开发者以上图示意配置为主。
+
+<center class="half">
+    <img src="./../../resource/unity_anti_setting_1.png" width="300"/>
+</center>
+
 ### 1.3 发布iOS包时的配置
 发布iOS包时，请正确配置上文提到的Yodo1U3dSetting.asset里Ios Settings部分的内容
 
@@ -60,7 +67,7 @@ Yodo1AntiIndulgedSDK/User/Resources/Yodo1U3dSettings.asset
 接入流程图
 
 <center class="half">
-    <img src="./../../resource/unity_anti_ process.png" width="200"/>
+    <img src="./../../resource/unity_anti_ process.png" width="300"/>
 </center>
 
 
