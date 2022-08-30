@@ -4,7 +4,7 @@
 
 >* SDK要求API最小版本是19
 >* 你可以通过`Gradle`下载SDK作为依赖项。
->* 你需要`[Android Studio](https://developer.android.com/studio)`，请查看这些指南。
+>* 你需要[Android Studio](https://developer.android.com/studio)，请查看这些指南。
 
 ## 安装SDK
 
@@ -75,7 +75,9 @@ android {
 import com.yodo1.ua.Yodo1UA;
 ```
 
-#### 2. 在全局应用程序onCreate中，使用以下参数调用`initialize`方法
+#### 2. 初始化SDK
+
+在全局应用程序onCreate中，使用以下参数调用`initialize`方法
 
 ```java
 Yodo1UA.UAInitConfig initConfig = new Yodo1UA.UAInitConfig();
@@ -209,7 +211,7 @@ import com.yodo1.ua.constants.Yodo1UAInAppEventType;
 预定义的事件名称常量遵循`Yodo1UAInAppEventType.EVENT_NAME`命名约定
 
 | Event name       |  Android constant name          |  
-|------------------|---------------------------------|
+| ---------------- | ------------------------------- |
 | "y_ua_purchase"  |  Yodo1UAInAppEventType.PURCHASE |
 
 #### 预定义的事件参数
@@ -222,13 +224,13 @@ import com.yodo1.ua.constants.Yodo1UAInAppEventParam;
 
 预定义的事件参数常量遵循`Yodo1UAInAppEventParam.PARAMETER_NAME`命名约定
 
-| Event parameter name  |  Android constant name          |   Type    ｜
-|-----------------------|---------------------------------| --------- ｜
-| "y_ua_content_id"     |  CONTENT_ID                     |   String  ｜
-| "y_ua_content_type"   |  CONTENT_TYPE                   |   String  ｜
-| "y_ua_revenue"        |  REVENUE                        |   float   ｜
-| "y_ua_currency"       |  CURRENCY                       |   String  ｜
-| "y_ua_quantity"       |  QUANTITY                       |   int     ｜
-| "y_ua_order_id"       |  ORDER_ID                       |   String  ｜
+| Event parameter name   |  Android constant name          |   Type    ｜
+| ---------------------- | ------------------------------- | --------- ｜
+| "y_ua_content_id"      |  CONTENT_ID                     |   String  ｜
+| "y_ua_content_type"    |  CONTENT_TYPE                   |   String  ｜
+| "y_ua_revenue"         |  REVENUE                        |   float   ｜
+| "y_ua_currency"        |  CURRENCY                       |   String  ｜
+| "y_ua_quantity"        |  QUANTITY                       |   int     ｜
+| "y_ua_order_id"        |  ORDER_ID                       |   String  ｜
 
 ## 深度链接(DeepLink)
