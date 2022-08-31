@@ -62,4 +62,7 @@ nav:
     - 可选功能:
       - ios/optional-modules/share.md
   - Android:
-    - 'android/integration-android-suit.md'
+    - Suit SDK:
+      - 'android/integration.md'
+    - 功能模块:
+      - 'android/modules/ua.md'
