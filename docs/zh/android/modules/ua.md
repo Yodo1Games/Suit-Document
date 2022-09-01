@@ -224,13 +224,13 @@ import com.yodo1.ua.constants.Yodo1UAInAppEventParam;
 
 预定义的事件参数常量遵循`Yodo1UAInAppEventParam.PARAMETER_NAME`命名约定
 
-| Event parameter name   |  Android constant name          |   Type    ｜
-| ---------------------- | ------------------------------- | --------- ｜
-| "y_ua_content_id"      |  CONTENT_ID                     |   String  ｜
-| "y_ua_content_type"    |  CONTENT_TYPE                   |   String  ｜
-| "y_ua_revenue"         |  REVENUE                        |   float   ｜
-| "y_ua_currency"        |  CURRENCY                       |   String  ｜
-| "y_ua_quantity"        |  QUANTITY                       |   int     ｜
-| "y_ua_order_id"        |  ORDER_ID                       |   String  ｜
+| Event parameter name   |  Android constant name          |   Type    |
+| ---------------------- | ------------------------------- | --------- |
+| "y_ua_content_id"      |  CONTENT_ID                     |   String  |
+| "y_ua_content_type"    |  CONTENT_TYPE                   |   String  |
+| "y_ua_revenue"         |  REVENUE                        |   float   |
+| "y_ua_currency"        |  CURRENCY                       |   String  |
+| "y_ua_quantity"        |  QUANTITY                       |   int     |
+| "y_ua_order_id"        |  ORDER_ID                       |   String  |
 
 ## 深度链接(DeepLink)
