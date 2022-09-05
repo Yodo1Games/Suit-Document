@@ -62,6 +62,7 @@ nav:
     - 'ios/integration.md'
     - 功能模块:
       - 'ios/modules/analyze.md'
+      - 'ios/modules/ua.md'
       - 'ios/modules/iap.md'
     - 可选功能:
       - ios/optional-modules/share.md
