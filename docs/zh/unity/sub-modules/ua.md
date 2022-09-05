@@ -65,12 +65,9 @@ UA SDK会自动添加AD_ID权限。
 /// <summary>
 /// Initialize the default instance of the SDK.
 /// </summary>
-public static void InitializeWithConfig(Yodo1U3dUAConfig config)
-{
- 	Yodo1U3dUASDK.Instance.InitializeWithConfig(config);
-}
+public static void InitializeWithConfig(Yodo1U3dUAConfig config);
 ```
-* config是初始化参数配置
+* `Yodo1U3dUAConfig`是初始化参数配置
 
 ### 示例代码
 
@@ -84,6 +81,7 @@ void Start()  {
     Yodo1U3dUA.InitializeWithConfig(config);
 }
 ```
+
 * 第一个参数（AppsFlyerDevKey）是Appsflyer Dev Key，注意：如果使用Yodo1默认Appsflyer Dev Key，可忽略该参数，SDK中已经集成它
 * 第二个参数（AppleId）是苹果的Apple Id，注意：如果是iOS平台，该参数是必选项，如果是Andriod平台，该参数可以忽略
 
@@ -100,15 +98,13 @@ SDK允许您记录应用程序上下文中发生的用户操作。这些通常�
 /// </summary>
 /// <param name="eventName">The In-app event name</param>
 /// <param name="eventValues">The event parameters Dictionary</param>
-public static void TrackEvent(string eventName, Dictionary<string, object> eventValues)
-{
-    Yodo1U3dUASDK.Instance.TrackEvent(eventName, Yodo1JSON.Serialize(eventValues));
-}
+public static void TrackEvent(string eventName, Dictionary<string, object> eventValues);
 ```
+
 * 第一个参数(eventName)是应用内事件名称
 * 第二个参数(eventValues)是事件参数`Dictionary`
 
-### 示例代码
+#### 示例代码
 
 ```c#
 Dictionary<string, object> dic = new Dictionary<string, object>();
@@ -150,10 +146,7 @@ SDK为应用内部购买提供服务器验证。`ValidateAndTrackInAppPurchase`�
 /// API for server verification of in-app purchases
 /// </summary>
 /// <param name="productDefinition"></param>
-public static void ValidateAndTrackInAppPurchase(Yodo1UAProductDefinition productDefinition)
-{
-	Yodo1U3dUASDK.Instance.ValidateAndTrackInAppPurchase(productDefinition);
-}
+public static void ValidateAndTrackInAppPurchase(Yodo1UAProductDefinition productDefinition);
 ```
 > 注意
 >
@@ -175,15 +168,15 @@ Yodo1U3dUA.ValidateAndTrackInAppPurchase(product);                              
 }
 ```
 
-* PublicKey: License Key obtained from the Google Play Console(Android)
-* Signature: data.INAPP_DATA_SIGNATURE from onActivityResult(Android)
-* PurchaseData: data.INAPP_PURCHASE_DATA from onActivityResult(Android)
-* Price: Purchase price(Android & iOS)
-* Currency: Purchase currency(Android & iOS)
-* ProductIdentifier: Product Identifier(iOS)
-* TransactionId: TransactionId from proof of successful payment(iOS)
+* PublicKey: License Key obtained from the Google Play Console(Only Android)
+* Signature: data.INAPP_DATA_SIGNATURE from onActivityResult(Only Android)
+* PurchaseData: data.INAPP_PURCHASE_DATA from onActivityResult(Only Android)
+* Price: Purchase price(Both Android and iOS)
+* Currency: Purchase currency(Both Android and iOS)
+* ProductIdentifier: Product Identifier(Only iOS)
+* TransactionId: TransactionId from proof of successful payment(Only iOS)
 
-#### 开启沙箱测试环境（仅适用于iOS）
+#### 开启沙箱测试环境（Only iOS）
 开启沙箱测试环境是为了方便测试`ValidateAndTrackInAppPurchase`（iOS平台）
 
 ```c#
@@ -191,12 +184,18 @@ Yodo1U3dUA.ValidateAndTrackInAppPurchase(product);                              
 /// The useReceiptValidationSandbox method lets you can open sandbox test environment. Used to test payment verification.
 /// It’s only work on iOS 
 /// </summary>
-/// <param name="isConsent">true/false</param>
-public static void UseReceiptValidationSandbox(bool isConsent)
-{
-	Yodo1U3dUASDK.Instance.UseReceiptValidationSandbox(isConsent);
-}
+/// <param name="isSanbox">true/false</param>
+public static void UseReceiptValidationSandbox(bool isSanbox);
 ```
+#### 示例:开启沙箱测试
+```c#
+Yodo1U3dUA.UseReceiptValidationSandbox(YES);                                     
+```
+
+> 注意
+>
+>* 在[苹果开发者](https://developer.apple.com)网站申请沙盒账户
+>*  在苹果手机上 -> 设置 -> App Store 添加`沙盒账户`
 
 ### 事件的常量
 
@@ -219,8 +218,7 @@ public static void UseReceiptValidationSandbox(bool isConsent)
 | "y_ua_quantity"        |  QUANTITY                       |   String  |
 | "y_ua_order_id"        |  ORDER_ID                       |   String  |
 
-## 设置CustomId和增加额外属性（可选）
-### 设置CustomId
+## 设置CustomId
 ```c#
 /// <summary>
 /// The setCustomUserID method lets you can set your own user ID in your app to this property
@@ -230,22 +228,30 @@ public static void UseReceiptValidationSandbox(bool isConsent)
 /// 
 /// </summary>
 /// <param name="customUserID">Your own user ID in your app</param>
-public static void SetCustomUserID(string customUserID)
-{
-	Yodo1U3dUASDK.Instance.SetCustomUserID(customUserID);
-}
+public static void SetCustomUserID(string customUserID);
 ```
-### 增加额外属性
+#### 示例:设置CustomId
+```c#
+Yodo1U3dUA.SetCustomUserID("<String>");                                     
+```
+
+* 针对于需要获取当前用户下多个账号的事件信息，例如：同一台设备下有多个账号
+
+## 增加额外属性
 ```c#
 /// <summary>
 /// The setAdditionalData method lets you can add custom data to events' payload. It will appear in raw-data reports.
 /// </summary>
 /// <param name="customData">The event parameters Dictionary</param>
-public static void SetAdditionalData(Dictionary<string, object> customData)
-{
-	Yodo1U3dUASDK.Instance.SetAdditionalData(Yodo1JSON.Serialize(customData));
-}
+public static void SetAdditionalData(Dictionary<string, object> customData);
 ```
+
+#### 示例:增加额外属性配置
+```c#
+Yodo1U3dUA.SetAdditionalData("<Dictionary>");                                     
+```
+
+* 加强事件分析能力，同时也可以与其他第三方统计平台做数据关联
 
 ## 深度链接(DeepLink)
 
@@ -256,10 +262,11 @@ public static void SetAdditionalData(Dictionary<string, object> customData)
 /// The SetAgeRestrictedUser method set whether it is a child user.
 /// </summary>
 /// <param name="isChild">true/false</param>
-public static void SetAgeRestrictedUser(bool isChild)
-{
-	Yodo1U3dUASDK.Instance.SetAgeRestrictedUser(isChild);
-}
+public static void SetAgeRestrictedUser(bool isChild);
+```
+#### 示例:设置是否为儿童用户
+```c#
+Yodo1U3dUA.SetAgeRestrictedUser("<bool>");                                     
 ```
 ### 隐私协议
 ```c#
@@ -267,10 +274,11 @@ public static void SetAgeRestrictedUser(bool isChild)
 /// The SetHasUserConsent method Set whether to agree to the user privacy agreement.
 /// </summary>
 /// <param name="isConsent">true/false</param>
-public static void SetHasUserConsent(bool isConsent)
-{
-	Yodo1U3dUASDK.Instance.SetHasUserConsent(isConsent);
-}
+public static void SetHasUserConsent(bool isConsent);
+```
+#### 示例:设置是否同意隐私协议
+```c#
+Yodo1U3dUA.SetHasUserConsent("<bool>");                                     
 ```
 ### 禁止出售用户信息
 ```c#
@@ -278,10 +286,11 @@ public static void SetHasUserConsent(bool isConsent)
 /// The SetDoNotSell method set whether to agree not to sell.
 /// </summary>
 /// <param name="isNotSell">true/false</param>
-public static void SetDoNotSell(bool isNotSell)
-{
-	Yodo1U3dUASDK.Instance.SetDoNotSell(isNotSell);
-}
+public static void SetDoNotSell(bool isNotSell);
+```
+#### 示例:设置是否禁止出售用户信息
+```c#
+Yodo1U3dUA.SetDoNotSell("<bool>");                                     
 ```
 ## 其他
 ### 获取SDK版本信息
@@ -289,10 +298,7 @@ public static void SetDoNotSell(bool isNotSell)
 /// <summary>
 /// The GetSdkVersion method get sdk version.
 /// </summary>
-public static string GetSdkVersion()
-{
-	return Yodo1U3dUASDK.Instance.GetSdkVersion();
-}
+public static string GetSdkVersion();
 ```
 ### 开启日志
 默认是不开启日志，上架之前请先关闭日志
@@ -301,8 +307,5 @@ public static string GetSdkVersion()
 /// <summary>
 /// Whether to enable logging.
 /// </summary>
-public static void SetDebugLog(bool debugLog)
-{
-	Yodo1U3dUASDK.Instance.SetDebugLog(debugLog);
-}
+public static void SetDebugLog(bool debugLog);
 ```
