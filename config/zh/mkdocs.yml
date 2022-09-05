@@ -54,6 +54,10 @@ nav:
       - unity/optional-modules/comment-page.md
       - unity/optional-modules/info.md
 
+  - Unity(Independent):  
+    - 功能模块:
+      - 'unity/sub-modules/ua.md'
+
   - iOS:
     - 'ios/integration.md'
     - 功能模块:
@@ -61,6 +65,7 @@ nav:
       - 'ios/modules/iap.md'
     - 可选功能:
       - ios/optional-modules/share.md
+
   - Android:
     - Suit SDK:
       - 'android/integration.md'
