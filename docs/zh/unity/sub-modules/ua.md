@@ -1,32 +1,26 @@
-# UA功能
+# UA Plugin
 
 **集成准备**:
 
->* SDK要求API最小版本是19
->* 你可以通过`Gradle`下载SDK作为依赖项。
->* 你需要[Android Studio](https://developer.android.com/studio)，请查看这些指南。
+>* 下载[Unity插件]()
+>* SDK支持Unity LTS 版本（2019或更高版本）
+>* SDK支持Android API 19+
+>* `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
+>* iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
 
-## 安装SDK
+## 集成配置
 
-### 1. 添加`Gradle`依赖
+### 1. `Android`配置
+#### 1.1 设置支持AndroidX
+[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) 是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 来启用它，如下图所示：
 
-将以下代码添加到你的应用级`build.gradlefile`中:
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/andriod_use_jetifier.png" width="300"> 
+    <figcaption>andriod use jetifier</figcaption> 
+</figure>
 
-```groovy
-repositories {
- google()
- mavenCentral()
-    ⋮
-}
-
-dependencies {
- implementation 'com.yodo1.ua:core:1.0.0'
- implementation 'com.yodo1.ua:appsflyer:6.8.0.0'
-    ⋮
-}
-```
-
-### 2. Android权限
+#### 1.2 Android权限
 
 在2022年初，谷歌宣布改变谷歌Play Services的行为，并获取Android广告ID。根据声明，针对Android 13 (API 33)及以上的应用程序必须在其`AndroidManifest.xml`文件中声明谷歌Play服务正常权限，以获得设备的广告ID。
 
@@ -50,64 +44,48 @@ UA SDK会自动添加AD_ID权限。
 
 有关更多信息，请参见[谷歌Play Services文档](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info#public-string-getid)。
 
-### 3. 设置`Java 8`编译选项
-
-如果你的项目没有使用Java 8+，在build.gradle中设置Java版本为8:
-
-```groovy
-android {
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-}
-```
+### 2. `iOS`配置
+#### 2.1 添加 `use_framework`
+设置路径：Assets -> External Dependency Manager -> iOS Resolver -> Settings（如图所示）
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/unity_setting_1.jpg" width="300"> 
+</figure>
+<figure> 
+    <img src="/zh/assets/images/unity_setting_2.jpg" width="300"> 
+</figure>
+<!-- markdownlint-restore -->
 
 ## 集成SDK
 
 ### 初始化SDK
+推荐在`Start`方法中调用SDK初始化
 
-建议在全局的`Application`类/子类中初始化SDK。这是为了确保SDK可以在任何场景中启动(例如，深度链接)。
-
-#### 1. 引入`Yodo1UA`
-
-```java
-import com.yodo1.ua.Yodo1UA;
+```c#
+/// <summary>
+/// Initialize the default instance of the SDK.
+/// </summary>
+public static void InitializeWithConfig(Yodo1U3dUAConfig config)
+{
+ 	Yodo1U3dUASDK.Instance.InitializeWithConfig(config);
+}
 ```
-
-#### 2. 初始化SDK
-
-在全局应用程序onCreate中，使用以下参数调用`initialize`方法
-
-```java
-Yodo1UA.UAInitConfig initConfig = new Yodo1UA.UAInitConfig();
-initConfig.appsFlyerDevKey = "<AF_DEV_KEY>";
-Yodo1UA.initialize(this, initConfig);
-```
-
-* 第一个参数是Application Context.
-* 第二个参数是初始化配置，注意：如果使用Yodo1默认Appsflyer Dev Key，可忽略该参数，SDK中已经集成它
+* config是初始化参数配置
 
 ### 示例代码
 
-下面的例子演示了如何从Application类初始化和启动SDK。
+下面的例子演示了如何在`Start`方法中调用SDK初始化
 
-```java
-import android.app.Application;
-import com.yodo1.ua.Yodo1UA;
-
-public class Yodo1UAApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        // ...
-        Yodo1UA.UAInitConfig initConfig = new Yodo1UA.UAInitConfig();
-        initConfig.appsFlyerDevKey = "<AF_DEV_KEY>";
-        Yodo1UA.initialize(this);
-        // ...
-    }
+```c#
+void Start()  {
+    Yodo1U3dUAConfig config = new Yodo1U3dUAConfig();
+    config.AppsFlyerDevKey = "<AF_Dev_Key>";
+    config.AppleId = "<Apple_Id>";
+    Yodo1U3dUA.InitializeWithConfig(config);
 }
 ```
+* 第一个参数（AppsFlyerDevKey）是Appsflyer Dev Key，注意：如果使用Yodo1默认Appsflyer Dev Key，可忽略该参数，SDK中已经集成它
+* 第二个参数（AppleId）是苹果的Apple Id，注意：如果是iOS平台，该参数是必选项，如果是Andriod平台，该参数可以忽略
 
 ## 应用内事件
 
@@ -116,38 +94,45 @@ public class Yodo1UAApplication extends Application {
 SDK允许您记录应用程序上下文中发生的用户操作。这些通常被称为应用内事件。
 
 #### trackEvent方法
-
-logEvent方法允许您追踪应用程序内的事件，要访问`trackEvent`方法，导入`Yodo1UA`
-
-```java
-import com.yodo1.ua.Yodo1UA;
+```c#
+/// <summary>
+/// The trackEvent method lets you track in-app events and send them to UA for processing.
+/// </summary>
+/// <param name="eventName">The In-app event name</param>
+/// <param name="eventValues">The event parameters Dictionary</param>
+public static void TrackEvent(string eventName, Dictionary<string, object> eventValues)
+{
+    Yodo1U3dUASDK.Instance.TrackEvent(eventName, Yodo1JSON.Serialize(eventValues));
+}
 ```
+* 第一个参数(eventName)是应用内事件名称
+* 第二个参数(eventValues)是事件参数`Dictionary`
 
-trackEvent 有3个参数
+### 示例代码
 
-```java
-void trackEvent(Context context, String eventName, Map<String, Object> eventValues)
+```c#
+Dictionary<string, object> dic = new Dictionary<string, object>();
+dic.Add("test_1", "test123");
+dic.Add("test_2", 123);
+Yodo1U3dUA.TrackEvent("my_test", dic);
 ```
-
-* 第一个参数(context)是应用`Application/Activity`上下文
-* 第二个参数(eventName)是应用内事件名称
-* 第三个参数(eventValues)是事件参数`Map`
 
 ### 记录收入
 
-你可以通过应用内部事件发送收益。使用`Yodo1UAInAppEventParam.REVENUE`事件参数，将收益包含在应用内部事件中。您可以用任何数值(正的或负的)填充它。收入值不应该包含逗号、分隔符、货币符号或文本。例如，收入事件应该类似于1234.56。
+你可以通过应用内部事件发送收益。使用`Yodo1UAInAppEventType.PURCHASE`事件参数，将收益包含在应用内部事件中。您可以用任何数值(正的或负的)填充它。收入值不应该包含逗号、分隔符、货币符号或文本。例如，收入事件应该类似于1234.56。
 
 #### 示例:带有收益的购买事件
 
-```java
-Map<String, Object> eventValues = new HashMap<String, Object>();
-eventValues.put(Yodo1UAInAppEventParam.CONTENT_ID, < ITEM_SKU >);
-eventValues.put(Yodo1UAInAppEventParam.CONTENT_TYPE, < ITEM_TYPE >);
-eventValues.put(Yodo1UAInAppEventParam.CURRENCY, "USD");
-eventValues.put(Yodo1UAInAppEventParam.REVENUE, 200);
-eventValues.put(Yodo1UAInAppEventParam.QUANTITY, 1);
+```c#
+Dictionary<string, object> dic = new Dictionary<string, object>();
+dic.Add(Yodo1UAInAppEventParam.CONTENT_ID, "<CONTENT_ID>");
+dic.Add(Yodo1UAInAppEventParam.CONTENT_TYPE, "<CONTENT_TYPE>");
+dic.Add(Yodo1UAInAppEventParam.REVENUE, "<REVENUE>");
+dic.Add(Yodo1UAInAppEventParam.CURRENCY, "<CURRENCY>");
+dic.Add(Yodo1UAInAppEventParam.QUANTITY, "<QUANTITY>");
+dic.Add(Yodo1UAInAppEventParam.ORDER_ID, "<ORDER_ID>");
 
-Yodo1UA.trackEvent(this, Yodo1UAInAppEventType.PURCHASE, eventValues);
+Yodo1U3dUA.TrackEvent(Yodo1UAInAppEventType.PURCHASE, dic);
 ```
 
 > 注意
@@ -157,80 +142,167 @@ Yodo1UA.trackEvent(this, Yodo1UAInAppEventType.PURCHASE, eventValues);
 
 ### 验证购买
 
-SDK为应用内部购买提供服务器验证。`validateAndTrackInAppPurchase`方法负责验证和记录购买事件。
+SDK为应用内部购买提供服务器验证。`ValidateAndTrackInAppPurchase`方法负责验证和记录购买事件。
 
-#### validateAndTrackInAppPurchase方法
-
-validateAndTrackInAppPurchase 有6个参数
-
-```java
-validateAndTrackInAppPurchase(Context context, 
-                               String publicKey, 
-                               String signature, 
-                               String purchaseData, 
-                               String price, 
-                               String currency)
+#### ValidateAndTrackInAppPurchase方法
+```c#
+/// <summary>
+/// API for server verification of in-app purchases
+/// </summary>
+/// <param name="productDefinition"></param>
+public static void ValidateAndTrackInAppPurchase(Yodo1UAProductDefinition productDefinition)
+{
+	Yodo1U3dUASDK.Instance.ValidateAndTrackInAppPurchase(productDefinition);
+}
 ```
-
-* context: Application / Activity context
-* publicKey: License Key obtained from the Google Play Console
-* signature: data.INAPP_DATA_SIGNATURE from onActivityResult
-* purchaseData: data.INAPP_PURCHASE_DATA from onActivityResult
-* price: Purchase price, should be derived from skuDetails.getStringArrayList("DETAILS_LIST")
-* currency: Purchase currency, should be derived from skuDetails.getStringArrayList("DETAILS_LIST")
-
 > 注意
 >
 >* 验证成功后，`validateAndTrackInAppPurchase`将在AppsFlyer后台生成一个`af_purchase`应用内事件，自己发送此事件将导致重复事件报告。
 
 #### 示例:验证应用内购买
 
-```java
-// Purchase object is returned by Google API in onPurchasesUpdated() callback
-private void handlePurchase(Purchase purchase) {
-    Log.d(LOG_TAG, "Purchase successful!");
-    Yodo1UA.validateAndTrackInAppPurchase(getApplicationContext(),
-                                         PUBLIC_KEY,
-                                         purchase.getSignature(),
-                                         purchase.getOriginalJson(),
-                                         "10",
-                                         "USD");
+```c#
+Yodo1UAProductDefinition product = new Yodo1UAProductDefinition();
+product.PublicKey = "<PublicKey>";
+product.Signature = "<Signature>";
+product.PurchaseData = "<PurchaseData>";
+product.Currency = "<Currency>";
+product.Price = "<Price>";
+product.ProductIdentifier = "<ProductIdentifier>";
+product.TransactionId = "<TransactionId>";
+
+Yodo1U3dUA.ValidateAndTrackInAppPurchase(product);                                     "USD");
+}
+```
+
+* PublicKey: License Key obtained from the Google Play Console(Android)
+* Signature: data.INAPP_DATA_SIGNATURE from onActivityResult(Android)
+* PurchaseData: data.INAPP_PURCHASE_DATA from onActivityResult(Android)
+* Price: Purchase price(Android & iOS)
+* Currency: Purchase currency(Android & iOS)
+* ProductIdentifier: Product Identifier(iOS)
+* TransactionId: TransactionId from proof of successful payment(iOS)
+
+#### 开启沙箱测试环境（仅适用于iOS）
+开启沙箱测试环境是为了方便测试`ValidateAndTrackInAppPurchase`（iOS平台）
+
+```c#
+/// <summary>
+/// The useReceiptValidationSandbox method lets you can open sandbox test environment. Used to test payment verification.
+/// It’s only work on iOS 
+/// </summary>
+/// <param name="isConsent">true/false</param>
+public static void UseReceiptValidationSandbox(bool isConsent)
+{
+	Yodo1U3dUASDK.Instance.UseReceiptValidationSandbox(isConsent);
 }
 ```
 
 ### 事件的常量
 
 #### 预定义的事件名称
+预定义的事件名称常量遵循`Yodo1UAInAppEventType.PURCHASE`命名约定
 
-要使用以下常量，导入`Yodo1UAInAppEventType`:
-
-```java
-import com.yodo1.ua.constants.Yodo1UAInAppEventType;
-```
-
-预定义的事件名称常量遵循`Yodo1UAInAppEventType.EVENT_NAME`命名约定
-
-| Event name       |  Android constant name          |  
+| Event name       |  Unity constant name            |  
 | ---------------- | ------------------------------- |
 | "y_ua_purchase"  |  Yodo1UAInAppEventType.PURCHASE |
 
 #### 预定义的事件参数
+预定义的事件参数常量遵循`Yodo1UAInAppEventParam`命名约定
 
-要使用以下常量，导入`Yodo1UAInAppEventParam`
-
-```java
-import com.yodo1.ua.constants.Yodo1UAInAppEventParam;
-```
-
-预定义的事件参数常量遵循`Yodo1UAInAppEventParam.PARAMETER_NAME`命名约定
-
-| Event parameter name   |  Android constant name          |   Type    |
+| Event parameter name   |  Unity constant name          |   Type    |
 | ---------------------- | ------------------------------- | --------- |
 | "y_ua_content_id"      |  CONTENT_ID                     |   String  |
 | "y_ua_content_type"    |  CONTENT_TYPE                   |   String  |
-| "y_ua_revenue"         |  REVENUE                        |   float   |
+| "y_ua_revenue"         |  REVENUE                        |   String  |
 | "y_ua_currency"        |  CURRENCY                       |   String  |
-| "y_ua_quantity"        |  QUANTITY                       |   int     |
+| "y_ua_quantity"        |  QUANTITY                       |   String  |
 | "y_ua_order_id"        |  ORDER_ID                       |   String  |
 
+## 设置CustomId和增加额外属性（可选）
+### 设置CustomId
+```c#
+/// <summary>
+/// The setCustomUserID method lets you can set your own user ID in your app to this property
+/// 
+/// In case you use your own user ID in your app, you can set this property to that ID.
+/// Enables you to cross-reference your own unique ID with AppsFlyer’s unique ID and the other devices’ IDs
+/// 
+/// </summary>
+/// <param name="customUserID">Your own user ID in your app</param>
+public static void SetCustomUserID(string customUserID)
+{
+	Yodo1U3dUASDK.Instance.SetCustomUserID(customUserID);
+}
+```
+### 增加额外属性
+```c#
+/// <summary>
+/// The setAdditionalData method lets you can add custom data to events' payload. It will appear in raw-data reports.
+/// </summary>
+/// <param name="customData">The event parameters Dictionary</param>
+public static void SetAdditionalData(Dictionary<string, object> customData)
+{
+	Yodo1U3dUASDK.Instance.SetAdditionalData(Yodo1JSON.Serialize(customData));
+}
+```
+
 ## 深度链接(DeepLink)
+
+## 关于隐私合规政策
+### 儿童用户
+```c#
+/// <summary>
+/// The SetAgeRestrictedUser method set whether it is a child user.
+/// </summary>
+/// <param name="isChild">true/false</param>
+public static void SetAgeRestrictedUser(bool isChild)
+{
+	Yodo1U3dUASDK.Instance.SetAgeRestrictedUser(isChild);
+}
+```
+### 隐私协议
+```c#
+/// <summary>
+/// The SetHasUserConsent method Set whether to agree to the user privacy agreement.
+/// </summary>
+/// <param name="isConsent">true/false</param>
+public static void SetHasUserConsent(bool isConsent)
+{
+	Yodo1U3dUASDK.Instance.SetHasUserConsent(isConsent);
+}
+```
+### 禁止出售用户信息
+```c#
+/// <summary>
+/// The SetDoNotSell method set whether to agree not to sell.
+/// </summary>
+/// <param name="isNotSell">true/false</param>
+public static void SetDoNotSell(bool isNotSell)
+{
+	Yodo1U3dUASDK.Instance.SetDoNotSell(isNotSell);
+}
+```
+## 其他
+### 获取SDK版本信息
+```c#
+/// <summary>
+/// The GetSdkVersion method get sdk version.
+/// </summary>
+public static string GetSdkVersion()
+{
+	return Yodo1U3dUASDK.Instance.GetSdkVersion();
+}
+```
+### 开启日志
+默认是不开启日志，上架之前请先关闭日志
+
+```c#
+/// <summary>
+/// Whether to enable logging.
+/// </summary>
+public static void SetDebugLog(bool debugLog)
+{
+	Yodo1U3dUASDK.Instance.SetDebugLog(debugLog);
+}
+```
