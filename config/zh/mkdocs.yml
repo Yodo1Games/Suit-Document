@@ -57,6 +57,7 @@ nav:
   - Unity(Independent):  
     - 功能模块:
       - 'unity/sub-modules/ua.md'
+      - 'unity/sub-modules/live-ops.md'
 
   - iOS:
     - 'ios/integration.md'
