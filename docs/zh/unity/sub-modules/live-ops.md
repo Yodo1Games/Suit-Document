@@ -22,30 +22,6 @@
     <figcaption>andriod use jetifier</figcaption> 
 </figure>
 
-#### 1.2 Android权限
-
-在2022年初，谷歌宣布改变谷歌Play Services的行为，并获取Android广告ID。根据声明，针对Android 13 (API 33)及以上的应用程序必须在其`AndroidManifest.xml`文件中声明谷歌Play服务正常权限，以获得设备的广告ID。
-
-UA SDK会自动添加AD_ID权限。
-
-> 注意
->
->* 如果你的应用程序参与了为[家庭设计](https://support.google.com/googleplay/android-developer/topic/9877766?hl=en&ref_topic=9858052)的项目，你应该取消AD_ID权限
->* 对于目标API级别32 (Android 12L)或更老的应用程序，不需要此权限。
-
-#### 取消`AD_ID`权限
-
-根据[谷歌的政策](https://support.google.com/googleplay/android-developer/answer/11043825?hl=en)，针对儿童的应用程序不能传输广告ID。
-
-针对Android 13 (API 33)及以上的儿童应用程序必须防止权限合并到他们的应用程序，通过添加一个撤销声明到他们的Manifest:
-
-```xml
-<uses-permission android:name="com.google.android.gms.permission.AD_ID"
- tools:node="remove"/>
-```
-
-有关更多信息，请参见[谷歌Play Services文档](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info#public-string-getid)。
-
 ## 集成SDK
 
 ### 初始化SDK
