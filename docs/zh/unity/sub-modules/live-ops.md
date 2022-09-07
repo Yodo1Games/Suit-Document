@@ -73,7 +73,7 @@ private static System.Action<int, string> _onInitializeFailureEvent;
 public static event System.Action<int, string> OnInitializeFailureEvent;
 ```
 
-### 示例代码
+#### 示例代码
 
 下面的例子演示了如何在`Start`方法中调用SDK初始化
 
@@ -177,7 +177,7 @@ public static double DoubleValue(string key, double defaultValue)
 #### 示例代码
 
 ```c#
-double valueDouble = Yodo1U3dLiveOpsSDK.Instance. DoubleValue("test_ double", 10.0);
+double valueDouble = Yodo1U3dLiveOpsSDK.Instance.DoubleValue("test_ double", 10.0);
 ```
 
 ### float类型
@@ -198,7 +198,7 @@ public static float FloatValue(string key, float defaultValue)
 #### 示例代码
 
 ```c#
-float valueFloat = Yodo1U3dLiveOpsSDK.Instance. FloatValue("test_ float", 10.0);
+float valueFloat = Yodo1U3dLiveOpsSDK.Instance.FloatValue("test_ float", 10.0);
 ```
 
 ## 激活码
