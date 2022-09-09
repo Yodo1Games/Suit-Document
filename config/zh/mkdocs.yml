@@ -58,6 +58,7 @@ nav:
     - 功能模块:
       - 'unity/sub-modules/ua.md'
       - 'unity/sub-modules/live-ops.md'
+      - 'unity/sub-modules/analyze.md'
 
   - iOS:
     - 'ios/integration.md'
