@@ -33,7 +33,7 @@
 /// Initialize the default instance of the SDK.
 /// </summary>
 /// <param name="config">The analytics config</param>
-public static void Initialize(Yodo1U3dAnalyticsConfig config)
+public static void Initialize(Yodo1U3dAnalyticsConfig config);
 ```
 
 * `config`是初始化需要使用的参数配置
