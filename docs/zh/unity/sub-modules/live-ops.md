@@ -177,9 +177,9 @@ public static float FloatValue(string key, float defaultValue)
 float valueFloat = Yodo1U3dLiveOpsSDK.Instance.FloatValue("test_ float", 10.0);
 ```
 
-## 激活码
+## 兑换码
 
-### 激活码校验
+### 校验兑换码
 
 ```c#
 /// <summary>
@@ -189,20 +189,18 @@ float valueFloat = Yodo1U3dLiveOpsSDK.Instance.FloatValue("test_ float", 10.0);
 public static void VerifyActivationCode(string activationCode);
 ```
 
-* `activationCode`是激活码（string）
+* `activationCode`是兑换码（string）
 
 > 注意
 >
 >* `activationCode`不能包含空号和标点符号
 
-### 激活码回调
+### 兑换码回调事件
 
 ```c#
-// 激活码兑换成功
 private static System.Action<Dictionary<string, object>> _onActivationCodeRewardEvent;
 public static event System.Action<Dictionary<string, object>> OnActivationCodeRewardEvent;
-
-// 激活码兑换失败    
+   
 private static System.Action<int, string> _onActivationCodeFailureEvent;
 public static event System.Action<int, string> OnActivationCodeFailureEvent;
 ```
@@ -212,16 +210,16 @@ public static event System.Action<int, string> OnActivationCodeFailureEvent;
 ```c#
 Yodo1U3dLiveOpsSDK.OnActivationCodeRewardEvent += (Dictionary<string, object> reward) =>
 {
-	// 激活码兑换成功
+	
 };
 
 Yodo1U3dLiveOpsSDK.OnActivationCodeFailureEvent += (int code, string message) =>
 {
-	// 激活码兑换失败
+	
 };
 
-// 激活码兑换
-string activationCode = "ABC123";
+
+string activationCode = "<Your_Activation_Code>";
 Yodo1U3dLiveOpsSDK.Instance.VerifyActivationCode(activationCode);
 ```
 

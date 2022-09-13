@@ -33,7 +33,7 @@ UA SDK会自动添加AD_ID权限。
 >* 如果你的应用程序参与了为[家庭设计](https://support.google.com/googleplay/android-developer/topic/9877766?hl=en&ref_topic=9858052)的项目，你应该取消AD_ID权限
 >* 对于目标API级别32 (Android 12L)或更老的应用程序，不需要此权限。
 
-#### 取消`AD_ID`权限
+##### 取消`AD_ID`权限
 
 根据[谷歌的政策](https://support.google.com/googleplay/android-developer/answer/11043825?hl=en)，针对儿童的应用程序不能传输广告ID。
 
@@ -95,11 +95,11 @@ void Start()  {
 
 SDK允许您记录应用程序上下文中发生的用户操作。这些通常被称为应用内事件。
 
-#### trackEvent方法
+#### TrackEvent方法
 
 ```c#
 /// <summary>
-/// The trackEvent method lets you track in-app events and send them to UA for processing.
+/// The TrackEvent method lets you track in-app events and send them to UA for processing.
 /// </summary>
 /// <param name="eventName">The In-app event name</param>
 /// <param name="eventValues">The event parameters Dictionary</param>
@@ -195,7 +195,7 @@ Yodo1U3dUA.ValidateAndTrackInAppPurchase(product);
 public static void UseReceiptValidationSandbox(bool isSanbox);
 ```
 
-### 示例:开启沙箱测试
+#### 示例:开启沙箱测试
 
 ```c#
 Yodo1U3dUA.UseReceiptValidationSandbox(YES);                                     
@@ -269,7 +269,7 @@ Yodo1U3dUA.SetAdditionalData("<Dictionary>");
 
 * 加强事件分析能力，同时也可以与其他第三方统计平台做数据关联
 
-## 深度链接(DeepLink)
+<!-- ## 深度链接(DeepLink) -->
 
 ## 关于隐私合规政策
 
@@ -341,4 +341,25 @@ public static string GetSdkVersion();
 /// Whether to enable logging.
 /// </summary>
 public static void SetDebugLog(bool debugLog);
+```
+
+## 已知问题
+
+### Backup rules
+
+If you add `android:fullBackupContent="true"` inside the tag in the `AndroidManifest.xml`, you might get the following error:
+
+```xml
+Manifest merger failed : Attribute application@fullBackupContent value=(true)
+```
+
+To fix this error, add `tools:replace="android:fullBackupContent"` in the `<application>` tag in the `AndroidManifest.xml` file.
+
+If you have your own backup rules specified (`android:fullBackupContent="@xml/my_rules"`), in addition to the instructions above, please merge them with AppsFlyer rules manually by adding the following rule:
+
+```xml
+<full-backup-content>
+    ...//your custom rules
+    <exclude domain="sharedpref" path="appsflyer-data"/>
+</full-backup-content>
 ```

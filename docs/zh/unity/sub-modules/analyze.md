@@ -61,32 +61,27 @@ void Start()
 
 SDK允许您记录应用程序上下文中发生的用户操作。这些通常被称为应用内事件。
 
-### trackEvent方法
+### TrackEvent方法
 
-事件名称是`string`类型，只能以字母开头，可包含数字，字母和下划线"_"，长度最大为50个字符，对字母大小写不敏感。
-
-* 事件的属性是一个`JSONObject`对象，其中每个元素代表一个属性。
-* `Key`的值为属性名称，事件名称是`string`类型，只能以字母开头，可包含数字，字母和下划线"_"，长度最大为50个字符，对字母大小写不敏感。
-* `Value`为该属性的值，支持`String`、`Number`、`Boolean`、`Date`、`JSONObject`和`JSONArray`.`JSONObject`中的内容可以包含`String`、`Number`、`Boolean`、`Date`以及`JSONArray`（其中内容为字符串）；`JSONArray`中的内容可以包含`JSONObject`和`String`
+SDK允许您记录应用程序上下文中发生的用户操作。这些通常被称为应用内事件。
 
 ```c#
 //// <summary>
-/// The trackEvent method lets you track in-app events and send them to TD for processing.
+/// The TrackEvent method lets you track in-app events and send them to TD for processing.
 /// </summary>
 /// <param name="eventName">The In-app event name</param>
 /// <param name="eventValues">The event parameters Map</param>
 public static void TrackEvent(string eventName, Dictionary<string, object> eventValues);
 ```
 
-* 第一个参数(eventName)是应用内事件名称
-* 第二个参数(eventValues)是事件参数`Dictionary`
+* 第一个参数(eventName)是应用内事件名称，事件名称是`string`类型，只能以字母开头，可包含数字，字母和下划线"_"，长度最大为50个字符，对字母大小写不敏感。
+* 第二个参数(eventValues)是事件参数`Dictionary`，其中每个元素代表一个属性，支持`String`、`Number`、`Boolean`、`Date`、`JSONObject`和`JSONArray`.`JSONObject`中的内容可以包含`String`、`Number`、`Boolean`、`Date`以及`JSONArray`（其中内容为字符串）；`JSONArray`中的内容可以包含`JSONObject`和`String`
 
 #### 示例代码
 
 ```c#
 Dictionary<string, object> dic = new Dictionary<string, object>();
-dic.Add("test_1", "test123");
-dic.Add("test_2", 123);
+dic.Add("level", 10);
 Yodo1U3dAnalytics.TrackEvent("my_test", dic);
 ```
 
