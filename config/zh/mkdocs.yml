@@ -65,6 +65,7 @@ nav:
       - 'ios/modules/analyze.md'
       - 'ios/modules/ua.md'
       - 'ios/modules/iap.md'
+      - 'ios/modules/live-ops.md'
     - 可选功能:
       - ios/optional-modules/share.md
 
