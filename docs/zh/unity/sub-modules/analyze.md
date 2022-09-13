@@ -61,7 +61,7 @@ void Start()
 
 SDK允许您记录应用程序上下文中发生的用户操作。这些通常被称为应用内事件。
 
-### TrackEvent方法
+#### TrackEvent方法
 
 ```c#
 //// <summary>
@@ -83,7 +83,9 @@ dic.Add("level", 10);
 Yodo1U3dAnalytics.TrackEvent("my_test", dic);
 ```
 
-### 设置account id
+## 用户ID
+
+### 设置账号ID
 
 SDK 实例会使用ID_安装次数作为每个用户的默认访客 ID，该 ID 将会作为用户在未登录状态下身份识别 ID。需要注意的是，访客 ID 在用户重新安装 App 以及更换设备时将会变更。
 
@@ -108,7 +110,7 @@ public static void Login(string accountId);
 Yodo1U3dAnalytics.Login("test_account_id");
 ```
 
-### 取消设置account id
+### 清除账号 ID
 
 ```c#
 /// <summary>
