@@ -63,8 +63,6 @@ SDK允许您记录应用程序上下文中发生的用户操作。这些通常�
 
 ### TrackEvent方法
 
-SDK允许您记录应用程序上下文中发生的用户操作。这些通常被称为应用内事件。
-
 ```c#
 //// <summary>
 /// The TrackEvent method lets you track in-app events and send them to TD for processing.

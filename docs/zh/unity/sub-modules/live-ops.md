@@ -205,7 +205,7 @@ private static System.Action<int, string> _onActivationCodeFailureEvent;
 public static event System.Action<int, string> OnActivationCodeFailureEvent;
 ```
 
-#### 激活码兑换示例代码
+#### 兑换码示例代码
 
 ```c#
 Yodo1U3dLiveOpsSDK.OnActivationCodeRewardEvent += (Dictionary<string, object> reward) =>
