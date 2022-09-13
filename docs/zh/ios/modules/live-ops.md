@@ -1,6 +1,7 @@
 # Live Ops 集成
 
 **开始前**:
+
 >* ' iOS14 '要求' Xcode '版本为' 12+ '，请确保升级你的' Xcode '版本为' 12+ '。
 >* ' SDK '要求' iOS '的最低版本为' iOS10.0 '
 >*最简单的方法是使用' CocoaPods '(请使用' 1.10 '及以上)，如果你是' CocoaPods '的新手，请参考它的[官方文档](https://guides.cocoapods.org/using/using -cocoapods)，学习如何创建和使用' Podfile '

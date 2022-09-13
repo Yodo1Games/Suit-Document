@@ -56,7 +56,6 @@ nav:
 
   - Unity Plugins:
     - 'unity/sub-modules/analyze.md'
-    - 'unity/sub-modules/core-analyze.md'
     - 'unity/sub-modules/ua.md'
     - 'unity/sub-modules/live-ops.md'
 
@@ -64,6 +63,7 @@ nav:
     - 'ios/integration.md'
     - 功能模块:
       - 'ios/modules/analyze.md'
+      - 'ios/modules/core-analyze.md'
       - 'ios/modules/ua.md'
       - 'ios/modules/iap.md'
       - 'ios/modules/live-ops.md'
