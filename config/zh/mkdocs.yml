@@ -56,6 +56,7 @@ nav:
 
   - Unity Plugins:
     - 'unity/sub-modules/analyze.md'
+    - 'unity/sub-modules/core-analyze.md'
     - 'unity/sub-modules/ua.md'
     - 'unity/sub-modules/live-ops.md'
 
