@@ -84,8 +84,8 @@ void Start()  {
 public static string StringValue(string key, string defaultValue);
 ```
 
-* 第一个参数(key)是获取在线参数value所对应的key值
-* 第二个参数(defaultValue)是设置value的默认值
+* `key`是获取在线参数value所对应的key值
+* `defaultValue`是设置value的默认值
 
 #### 示例代码
 
@@ -105,8 +105,8 @@ string valueString = Yodo1U3dLiveOpsSDK.Instance.StringValue("test_string", stri
 public static bool BooleanValue(string key, bool defaultValue);
 ```
 
-* 第一个参数(key)是获取在线参数value所对应的key值
-* 第二个参数(defaultValue)是设置value的默认值
+* `key`是获取在线参数value所对应的key值
+* `defaultValue`是设置value的默认值
 
 #### 示例代码
 
@@ -126,8 +126,8 @@ bool valueBool = Yodo1U3dLiveOpsSDK.Instance.BooleanValue("test_bool", false);
 public static int IntValue(string key, int defaultValue);
 ```
 
-* 第一个参数(key)是获取在线参数value所对应的key值
-* 第二个参数(defaultValue)是设置value的默认值
+* `key`是获取在线参数value所对应的key值
+* `defaultValue`是设置value的默认值
 
 #### 示例代码
 
@@ -147,8 +147,8 @@ int valueInt = Yodo1U3dLiveOpsSDK.Instance.IntValue("test_int", 10);
 public static double DoubleValue(string key, double defaultValue)
 ```
 
-* 第一个参数(key)是获取在线参数value所对应的key值
-* 第二个参数(defaultValue)是设置value的默认值
+* `key`是获取在线参数value所对应的key值
+* `defaultValue`是设置value的默认值
 
 #### 示例代码
 
@@ -168,8 +168,8 @@ double valueDouble = Yodo1U3dLiveOpsSDK.Instance.DoubleValue("test_ double", 10.
 public static float FloatValue(string key, float defaultValue)
 ```
 
-* 第一个参数(key)是获取在线参数value所对应的key值
-* 第二个参数(defaultValue)是设置value的默认值
+* `key`是获取在线参数value所对应的key值
+* `defaultValue`是设置value的默认值
 
 #### 示例代码
 

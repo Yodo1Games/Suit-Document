@@ -86,8 +86,8 @@ void Start()  {
 }
 ```
 
-* 第一个参数（AppsFlyerDevKey）是Appsflyer Dev Key，注意：如果使用Yodo1默认Appsflyer Dev Key，可忽略该参数，SDK中已经集成它
-* 第二个参数（AppleId）是苹果的Apple Id，注意：如果是iOS平台，该参数是必选项，如果是Andriod平台，该参数可以忽略
+* `AppsFlyerDevKey`是Appsflyer Dev Key，注意：如果使用Yodo1默认Appsflyer Dev Key，可忽略该参数，SDK中已经集成它
+* `AppleId`是苹果的Apple Id，注意：如果是iOS平台，该参数是必选项，如果是Andriod平台，该参数可以忽略
 
 ## 应用内事件
 
@@ -106,8 +106,8 @@ SDK允许您记录应用程序上下文中发生的用户操作。这些通常�
 public static void TrackEvent(string eventName, Dictionary<string, object> eventValues);
 ```
 
-* 第一个参数(eventName)是应用内事件名称
-* 第二个参数(eventValues)是事件参数`Dictionary`
+* `eventName`是应用内事件名称
+* `eventValues`是事件参数`Dictionary`
 
 #### 示例代码
 
