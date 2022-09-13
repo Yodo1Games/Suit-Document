@@ -160,7 +160,7 @@ pod install --repo-update
 ### 校验兑换码
 ``` obj-c
 /**
- * 激活码/优惠券
+ * 兑换码/优惠券
  */
 - (void)verifyWithActivationCode:(NSString *)activationCode
                     	callback:(void (^)(BOOL success,NSDictionary* _Nullable response, NSDictionary* _Nullable error))callback;
