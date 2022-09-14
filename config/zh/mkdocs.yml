@@ -54,13 +54,22 @@ nav:
       - unity/optional-modules/comment-page.md
       - unity/optional-modules/info.md
 
+  - Unity Plugins:
+    - 'unity/sub-modules/analyze.md'
+    - 'unity/sub-modules/ua.md'
+    - 'unity/sub-modules/live-ops.md'
+
   - iOS:
     - 'ios/integration.md'
     - 功能模块:
       - 'ios/modules/analyze.md'
+      - 'ios/modules/core-analyze.md'
+      - 'ios/modules/ua.md'
       - 'ios/modules/iap.md'
+      - 'ios/modules/live-ops.md'
     - 可选功能:
       - ios/optional-modules/share.md
+
   - Android:
     - Suit SDK:
       - 'android/integration.md'
