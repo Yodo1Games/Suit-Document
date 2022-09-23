@@ -170,3 +170,10 @@ AppsFlyer Deeplink集成，请参考它的[官方文档](https://dev.appsflyer.c
 }
 
 ```
+
+#### 4.4 向AppsFlyer发送SKAN回传备份（iOS 15+适用）
+
+请参考它的[官方文档](https://support.appsflyer.com/hc/zh-cn/articles/4402320969617)
+
+>* 将`NSAdvertisingAttributionReportEndpoint`键添加到应用程序的`info.plist`中。
+>* 将键的值设置为`https://appsflyer-skadnetwork.com/`。

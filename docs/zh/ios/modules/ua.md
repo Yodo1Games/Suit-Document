@@ -213,6 +213,13 @@ SDK为应用内部购买提供服务器验证。`validateAndTrackInAppPurchase`�
 [Yodo1UA.sharedInstance setAdditionalData:@{@"ta_distinct_id":ThinkingAnalyticsSDK.sharedInstance.getDistinctId}];
 ```
 
+## 向AppsFlyer发送SKAN回传备份（iOS 15+适用）
+
+请参考它的[官方文档](https://support.appsflyer.com/hc/zh-cn/articles/4402320969617)
+
+>* 将`NSAdvertisingAttributionReportEndpoint`键添加到应用程序的`info.plist`中。
+>* 将键的值设置为`https://appsflyer-skadnetwork.com/`。
+
 ## 深度链接（Deeplink）
 
 AppsFlyer Deeplink集成，请参考它的[官方文档](https://dev.appsflyer.com/hc/docs/initial-setup-2#procedures-for-ios-universal-links)
