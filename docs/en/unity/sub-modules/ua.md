@@ -63,6 +63,56 @@ Set the `use_framework` according to `Assets -> External Dependency Manager -> i
 
 ## Integrate SDK
 
+## Privacy Policy compliance
+
+### COPPA
+
+```c#
+/// <summary>
+/// The SetAgeRestrictedUser method set whether it is a child user.
+/// </summary>
+/// <param name="isChild">true/false</param>
+public static void SetAgeRestrictedUser(bool isChild);
+```
+
+#### Example: COPPA
+
+```c#
+Yodo1U3dUA.SetAgeRestrictedUser("<bool>");                                     
+```
+
+### GDPR
+
+```c#
+/// <summary>
+/// The SetHasUserConsent method Set whether to agree to the user privacy agreement.
+/// </summary>
+/// <param name="isConsent">true/false</param>
+public static void SetHasUserConsent(bool isConsent);
+```
+
+#### Example: GDPR
+
+```c#
+Yodo1U3dUA.SetHasUserConsent("<bool>");                                     
+```
+
+### CCPA
+
+```c#
+/// <summary>
+/// The SetDoNotSell method set whether to agree not to sell.
+/// </summary>
+/// <param name="isNotSell">true/false</param>
+public static void SetDoNotSell(bool isNotSell);
+```
+
+#### Example: CCPA
+
+```c#
+Yodo1U3dUA.SetDoNotSell("<bool>");                                     
+```
+
 ### Initialize SDK
 
 It is recommended to call SDK initialization in the `Start` method
@@ -275,56 +325,6 @@ Yodo1U3dUA.SetAdditionalData("<Dictionary>");
 * Strengthen the event analysis ability, and can also do data association with other third-party statistical platforms
 
 <!-- ## 深度链接(DeepLink) -->
-
-## Privacy Policy compliance
-
-### COPPA
-
-```c#
-/// <summary>
-/// The SetAgeRestrictedUser method set whether it is a child user.
-/// </summary>
-/// <param name="isChild">true/false</param>
-public static void SetAgeRestrictedUser(bool isChild);
-```
-
-#### Example: COPPA
-
-```c#
-Yodo1U3dUA.SetAgeRestrictedUser("<bool>");                                     
-```
-
-### GDPR
-
-```c#
-/// <summary>
-/// The SetHasUserConsent method Set whether to agree to the user privacy agreement.
-/// </summary>
-/// <param name="isConsent">true/false</param>
-public static void SetHasUserConsent(bool isConsent);
-```
-
-#### Example: GDPR
-
-```c#
-Yodo1U3dUA.SetHasUserConsent("<bool>");                                     
-```
-
-### CCPA
-
-```c#
-/// <summary>
-/// The SetDoNotSell method set whether to agree not to sell.
-/// </summary>
-/// <param name="isNotSell">true/false</param>
-public static void SetDoNotSell(bool isNotSell);
-```
-
-#### Example: CCPA
-
-```c#
-Yodo1U3dUA.SetDoNotSell("<bool>");                                     
-```
 
 ## Other Methods
 

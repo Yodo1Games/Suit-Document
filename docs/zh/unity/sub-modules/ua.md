@@ -60,6 +60,56 @@ UA SDK会自动添加AD_ID权限。
 
 ## 集成SDK
 
+## 关于隐私合规政策
+
+### 儿童用户
+
+```c#
+/// <summary>
+/// The SetAgeRestrictedUser method set whether it is a child user.
+/// </summary>
+/// <param name="isChild">true/false</param>
+public static void SetAgeRestrictedUser(bool isChild);
+```
+
+#### 示例:设置是否为儿童用户
+
+```c#
+Yodo1U3dUA.SetAgeRestrictedUser("<bool>");                                     
+```
+
+### 隐私协议
+
+```c#
+/// <summary>
+/// The SetHasUserConsent method Set whether to agree to the user privacy agreement.
+/// </summary>
+/// <param name="isConsent">true/false</param>
+public static void SetHasUserConsent(bool isConsent);
+```
+
+#### 示例:设置是否同意隐私协议
+
+```c#
+Yodo1U3dUA.SetHasUserConsent("<bool>");                                     
+```
+
+### 禁止出售用户信息
+
+```c#
+/// <summary>
+/// The SetDoNotSell method set whether to agree not to sell.
+/// </summary>
+/// <param name="isNotSell">true/false</param>
+public static void SetDoNotSell(bool isNotSell);
+```
+
+#### 示例:设置是否禁止出售用户信息
+
+```c#
+Yodo1U3dUA.SetDoNotSell("<bool>");                                     
+```
+
 ### 初始化SDK
 
 推荐在`Start`方法中调用SDK初始化
@@ -270,56 +320,6 @@ Yodo1U3dUA.SetAdditionalData("<Dictionary>");
 * 加强事件分析能力，同时也可以与其他第三方统计平台做数据关联
 
 <!-- ## 深度链接(DeepLink) -->
-
-## 关于隐私合规政策
-
-### 儿童用户
-
-```c#
-/// <summary>
-/// The SetAgeRestrictedUser method set whether it is a child user.
-/// </summary>
-/// <param name="isChild">true/false</param>
-public static void SetAgeRestrictedUser(bool isChild);
-```
-
-#### 示例:设置是否为儿童用户
-
-```c#
-Yodo1U3dUA.SetAgeRestrictedUser("<bool>");                                     
-```
-
-### 隐私协议
-
-```c#
-/// <summary>
-/// The SetHasUserConsent method Set whether to agree to the user privacy agreement.
-/// </summary>
-/// <param name="isConsent">true/false</param>
-public static void SetHasUserConsent(bool isConsent);
-```
-
-#### 示例:设置是否同意隐私协议
-
-```c#
-Yodo1U3dUA.SetHasUserConsent("<bool>");                                     
-```
-
-### 禁止出售用户信息
-
-```c#
-/// <summary>
-/// The SetDoNotSell method set whether to agree not to sell.
-/// </summary>
-/// <param name="isNotSell">true/false</param>
-public static void SetDoNotSell(bool isNotSell);
-```
-
-#### 示例:设置是否禁止出售用户信息
-
-```c#
-Yodo1U3dUA.SetDoNotSell("<bool>");                                     
-```
 
 ## 其他
 
