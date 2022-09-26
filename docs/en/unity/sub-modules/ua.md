@@ -63,9 +63,9 @@ Set the `use_framework` according to `Assets -> External Dependency Manager -> i
 
 ## Integrate SDK
 
-## Privacy Policy compliance
+### Privacy Policy compliance
 
-### COPPA
+#### COPPA
 
 ```c#
 /// <summary>
@@ -75,13 +75,13 @@ Set the `use_framework` according to `Assets -> External Dependency Manager -> i
 public static void SetAgeRestrictedUser(bool isChild);
 ```
 
-#### Example: COPPA
+##### Example: COPPA
 
 ```c#
 Yodo1U3dUA.SetAgeRestrictedUser("<bool>");                                     
 ```
 
-### GDPR
+#### GDPR
 
 ```c#
 /// <summary>
@@ -91,13 +91,13 @@ Yodo1U3dUA.SetAgeRestrictedUser("<bool>");
 public static void SetHasUserConsent(bool isConsent);
 ```
 
-#### Example: GDPR
+##### Example: GDPR
 
 ```c#
 Yodo1U3dUA.SetHasUserConsent("<bool>");                                     
 ```
 
-### CCPA
+#### CCPA
 
 ```c#
 /// <summary>
@@ -107,7 +107,7 @@ Yodo1U3dUA.SetHasUserConsent("<bool>");
 public static void SetDoNotSell(bool isNotSell);
 ```
 
-#### Example: CCPA
+##### Example: CCPA
 
 ```c#
 Yodo1U3dUA.SetDoNotSell("<bool>");                                     

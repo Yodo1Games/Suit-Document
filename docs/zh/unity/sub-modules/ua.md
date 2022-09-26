@@ -60,9 +60,9 @@ UA SDK会自动添加AD_ID权限。
 
 ## 集成SDK
 
-## 关于隐私合规政策
+### 关于隐私合规政策
 
-### 儿童用户
+#### 儿童用户
 
 ```c#
 /// <summary>
@@ -72,13 +72,13 @@ UA SDK会自动添加AD_ID权限。
 public static void SetAgeRestrictedUser(bool isChild);
 ```
 
-#### 示例:设置是否为儿童用户
+##### 示例:设置是否为儿童用户
 
 ```c#
 Yodo1U3dUA.SetAgeRestrictedUser("<bool>");                                     
 ```
 
-### 隐私协议
+#### 隐私协议
 
 ```c#
 /// <summary>
@@ -88,13 +88,13 @@ Yodo1U3dUA.SetAgeRestrictedUser("<bool>");
 public static void SetHasUserConsent(bool isConsent);
 ```
 
-#### 示例:设置是否同意隐私协议
+##### 示例:设置是否同意隐私协议
 
 ```c#
 Yodo1U3dUA.SetHasUserConsent("<bool>");                                     
 ```
 
-### 禁止出售用户信息
+#### 禁止出售用户信息
 
 ```c#
 /// <summary>
@@ -104,7 +104,7 @@ Yodo1U3dUA.SetHasUserConsent("<bool>");
 public static void SetDoNotSell(bool isNotSell);
 ```
 
-#### 示例:设置是否禁止出售用户信息
+##### 示例:设置是否禁止出售用户信息
 
 ```c#
 Yodo1U3dUA.SetDoNotSell("<bool>");                                     
