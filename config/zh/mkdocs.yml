@@ -28,7 +28,7 @@ markdown_extensions:
 extra:
   alternate:
     - name: English
-      link: / 
+      link: /en/
       lang: en
     - name: 中文
       link: /zh/ 
