@@ -106,7 +106,7 @@ public static bool BooleanValue(string key, bool defaultValue);
 * `key` is to obtain the key value corresponding to the remote configuration value
 * `defaultValue` is the default value for setting value
 
-#### 示例代码
+#### Sample Code
 
 ```c#
 bool valueBool = Yodo1U3dLiveOpsSDK.Instance.BooleanValue("test_bool", false);
