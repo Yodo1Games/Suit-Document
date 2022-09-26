@@ -1,20 +1,20 @@
 # Live Ops Plugin
 
-**集成准备**:
+**Getting started**:
 
->* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Live_Ops/Yodo1-LiveOps-1.0.0.unitypackage)
->* SDK支持Unity LTS 版本（2019或更高版本）
->* SDK支持Android API 19+
->* `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
->* iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
+>* Download [Unity Plugin](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Live_Ops/Yodo1-LiveOps-1.0.0.unitypackage)
+>* SDK supports Unity LTS 2019 and above
+>* SDK supports Android API 19 and above
+>* `CocoaPods` is required for `iOS` build, you can install it by following the instructions [here](https://guides.cocoapods.org/using/getting-started.html#getting-started)
+>* iOS15 requires `Xcode` 13+, please make sure you are using the latest version of Xcode
 
-## 集成配置
+## Integrate Configuration
 
-### `Android`配置
+### `Android` Configuration
 
-#### 设置支持AndroidX
+#### Support for AndroidX
 
-[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) 是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 来启用它，如下图所示：
+[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) is required for `Android` build, you can enable it by selecting ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier***
 
 <!-- markdownlint-disable -->
 <figure> 
@@ -22,11 +22,11 @@
     <figcaption>andriod use jetifier</figcaption> 
 </figure>
 
-## 集成SDK
+## Integrate SDK
 
-### 初始化SDK
+### Initialize SDK
 
-推荐在`Start`方法中调用SDK初始化
+It is recommended to call SDK initialization in the `Start` method
 
 ```c#
 /// <summary>
@@ -35,44 +35,42 @@
 public static void Initialize(string gameKey);
 ```
 
-* `gameKey`是初始化需要使用的`Yodo1 GameKey`
+* `gameKey` is the unique identifier of the application from Yodo1Games
 
-### 初始化回调
+### Set the initialization callback events
 
 ```c#
-// 初始化成功
 private static System.Action _onInitializeSuccessEvent;
 public static event System.Action OnInitializeSuccessEvent;
-
-// 初始化失败    
+   
 private static System.Action<int, string> _onInitializeFailureEvent;
 public static event System.Action<int, string> OnInitializeFailureEvent;
 ```
 
-#### 示例代码
+#### Sample Code
 
-下面的例子演示了如何在`Start`方法中调用SDK初始化
+The following example showing how to call SDK initialization in the `Start` method
 
 ```c#
 void Start()  {
 
 	Yodo1U3dLiveOpsSDK.OnInitializeSuccessEvent += () =>
 	{
-		//初始化成功回调
+		
 	};
 
 	Yodo1U3dLiveOpsSDK.OnInitializeFailureEvent += (int code, string message) =>
 	{  
-		//初始化失败回调
+		
 	};
-	//初始化
+	
 	Yodo1U3dLiveOpsSDK.Instance.Initialize("<Game_Key>");
 }
 ```
 
-## 在线参数
+## Remote configuration
 
-### string类型
+### `string` type
 
 ```c#
 /// <summary>
@@ -84,16 +82,16 @@ void Start()  {
 public static string StringValue(string key, string defaultValue);
 ```
 
-* `key`是获取在线参数value所对应的key值
-* `defaultValue`是设置value的默认值
+* `key` is to obtain the key value corresponding to the remote configuration value
+* `defaultValue` is the default value for setting value
 
-#### 示例代码
+#### Sample Code
 
 ```c#
 string valueString = Yodo1U3dLiveOpsSDK.Instance.StringValue("test_string", string.Empty);
 ```
 
-### bool类型
+### `bool` type
 
 ```c#
 /// <summary>
@@ -105,8 +103,8 @@ string valueString = Yodo1U3dLiveOpsSDK.Instance.StringValue("test_string", stri
 public static bool BooleanValue(string key, bool defaultValue);
 ```
 
-* `key`是获取在线参数value所对应的key值
-* `defaultValue`是设置value的默认值
+* `key` is to obtain the key value corresponding to the remote configuration value
+* `defaultValue` is the default value for setting value
 
 #### 示例代码
 
@@ -114,7 +112,7 @@ public static bool BooleanValue(string key, bool defaultValue);
 bool valueBool = Yodo1U3dLiveOpsSDK.Instance.BooleanValue("test_bool", false);
 ```
 
-### int类型
+### `int` type
 
 ```c#
 /// <summary>
@@ -126,16 +124,16 @@ bool valueBool = Yodo1U3dLiveOpsSDK.Instance.BooleanValue("test_bool", false);
 public static int IntValue(string key, int defaultValue);
 ```
 
-* `key`是获取在线参数value所对应的key值
-* `defaultValue`是设置value的默认值
+* `key` is to obtain the key value corresponding to the remote configuration value
+* `defaultValue` is the default value for setting value
 
-#### 示例代码
+#### Sample Code
 
 ```c#
 int valueInt = Yodo1U3dLiveOpsSDK.Instance.IntValue("test_int", 10);
 ```
 
-### double类型
+### `double` type
 
 ```c#
 /// <summary>
@@ -147,16 +145,16 @@ int valueInt = Yodo1U3dLiveOpsSDK.Instance.IntValue("test_int", 10);
 public static double DoubleValue(string key, double defaultValue)
 ```
 
-* `key`是获取在线参数value所对应的key值
-* `defaultValue`是设置value的默认值
+* `key` is to obtain the key value corresponding to the remote configuration value
+* `defaultValue` is the default value for setting value
 
-#### 示例代码
+#### Sample Code
 
 ```c#
 double valueDouble = Yodo1U3dLiveOpsSDK.Instance.DoubleValue("test_ double", 10.0);
 ```
 
-### float类型
+### `float` type
 
 ```c#
 /// <summary>
@@ -168,18 +166,18 @@ double valueDouble = Yodo1U3dLiveOpsSDK.Instance.DoubleValue("test_ double", 10.
 public static float FloatValue(string key, float defaultValue)
 ```
 
-* `key`是获取在线参数value所对应的key值
-* `defaultValue`是设置value的默认值
+* `key` is to obtain the key value corresponding to the remote configuration value
+* `defaultValue` is the default value for setting value
 
-#### 示例代码
+#### Sample Code
 
 ```c#
 float valueFloat = Yodo1U3dLiveOpsSDK.Instance.FloatValue("test_ float", 10.0);
 ```
 
-## 兑换码
+## Redeem Code
 
-### 校验兑换码
+### Verify the redeem code
 
 ```c#
 /// <summary>
@@ -189,13 +187,13 @@ float valueFloat = Yodo1U3dLiveOpsSDK.Instance.FloatValue("test_ float", 10.0);
 public static void VerifyActivationCode(string activationCode);
 ```
 
-* `activationCode`是兑换码（string）
+* `activationCode` is the value of the redeem code
 
-> 注意
+> Note
 >
->* `activationCode`不能包含空号和标点符号
+>* `activationCode` can't contain empty signs and punctuation marks
 
-### 兑换码回调事件
+### The callback events of the redeem code
 
 ```c#
 private static System.Action<Dictionary<string, object>> _onActivationCodeRewardEvent;
@@ -205,7 +203,7 @@ private static System.Action<int, string> _onActivationCodeFailureEvent;
 public static event System.Action<int, string> OnActivationCodeFailureEvent;
 ```
 
-#### 兑换码示例代码
+### Sample Code
 
 ```c#
 Yodo1U3dLiveOpsSDK.OnActivationCodeRewardEvent += (Dictionary<string, object> reward) =>
@@ -223,9 +221,9 @@ string activationCode = "<Your_Activation_Code>";
 Yodo1U3dLiveOpsSDK.Instance.VerifyActivationCode(activationCode);
 ```
 
-## 其他
+## Other Methods
 
-### 获取SDK版本信息
+### Get the SDK version
 
 ```c#
 /// <summary>
@@ -234,9 +232,9 @@ Yodo1U3dLiveOpsSDK.Instance.VerifyActivationCode(activationCode);
 public static string GetSdkVersion();
 ```
 
-### 开启日志
+### Enable the debug log
 
-默认是不开启日志，上架之前请先关闭日志
+The debug log is disabled by default. Please disable it before release to App stores
 
 ```c#
 /// <summary>

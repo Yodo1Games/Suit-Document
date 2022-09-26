@@ -44,8 +44,15 @@ extra:
       link: /zh/ 
       lang: zh
 
+# nav:
+#   - Getting started:
+#     - '../../docs/en/index.md'
+#     - '../../docs/en/ingegration/integration-android.md'
+#     - '../../docs/en/ingegration/integration-ios.md'
+
 nav:
-  - Getting started:
-    - '../../docs/en/index.md'
-    - '../../docs/en/ingegration/integration-android.md'
-    - '../../docs/en/ingegration/integration-ios.md'
+  - '../../docs/en/index.md'
+  - Unity Plugins:
+    - '../../docs/en/unity/sub-modules/analyze.md'
+    - '../../docs/en/unity/sub-modules/ua.md'
+    - '../../docs/en/unity/sub-modules/live-ops.md'
