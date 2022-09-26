@@ -1,20 +1,20 @@
 # UA Plugin
 
-**集成准备**:
+**Getting started**:
 
->* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/UA/Yodo1-UA-1.0.0.unitypackage)
->* SDK支持Unity LTS 版本（2019或更高版本）
->* SDK支持Android API 19+
->* `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
->* iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
+>* Download [Unity Plugin](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/UA/Yodo1-UA-1.0.0.unitypackage)
+>* SDK supports Unity LTS 2019 and above
+>* SDK supports Android API 19 and above
+>* `CocoaPods` is required for `iOS` build, you can install it by following the instructions [here](https://guides.cocoapods.org/using/getting-started.html#getting-started)
+>* iOS15 requires `Xcode` 13+, please make sure you are using the latest version of Xcode
 
-## 集成配置
+## Integrate Configuration
 
-### 1. `Android`配置
+### 1. `Android` Configuration
 
-#### 1.1 设置支持AndroidX
+#### 1.1 Support for AndroidX
 
-[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) 是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 来启用它，如下图所示：
+[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) is required for `Android` build, you can enable it by selecting ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier***
 
 <!-- markdownlint-disable -->
 <figure> 
@@ -22,20 +22,20 @@
     <figcaption>andriod use jetifier</figcaption> 
 </figure>
 
-#### 1.2 Android权限
+#### 1.2 Android permission
 
-在2022年初，谷歌宣布改变谷歌Play Services的行为，并获取Android广告ID。根据声明，针对Android 13 (API 33)及以上的应用程序必须在其`AndroidManifest.xml`文件中声明谷歌Play服务正常权限，以获得设备的广告ID。
+In early 2022, Google announced a change to the behavior of Google Play Services and fetching of the Android Advertising ID. According to the [announcement](https://support.google.com/googleplay/android-developer/answer/6048248?hl=en), apps targeting Android 13 (API 33) and above must declare a Google Play services normal permission in their `AndroidManifest.xml` file in order to get access to the device’s Advertising ID.
 
-UA SDK会自动添加AD_ID权限。
+UA SDK adds the AD_ID permission automatically.
 
-> 注意
+> Note
 >
->* 如果你的应用程序参与了为[家庭设计](https://support.google.com/googleplay/android-developer/topic/9877766?hl=en&ref_topic=9858052)的项目，你应该取消AD_ID权限
->* 对于目标API级别32 (Android 12L)或更老的应用程序，不需要此权限。
+>* If your app participates in the [Designed for Families]((https://support.google.com/googleplay/android-developer/topic/9877766?hl=en&ref_topic=9858052)) program, you should Revoke the AD_ID permission.
+>* For apps that target API level 32 (Android 12L) or older, this permission is not needed.
 
-##### 取消`AD_ID`权限
+##### Revoking the `AD_ID` permission
 
-根据[谷歌的政策](https://support.google.com/googleplay/android-developer/answer/11043825?hl=en)，针对儿童的应用程序不能传输广告ID。
+According to [Google’s Policy](https://support.google.com/googleplay/android-developer/answer/11043825?hl=en), apps that target children must not transmit the Advertising ID.
 
 针对Android 13 (API 33)及以上的儿童应用程序必须防止权限合并到他们的应用程序，通过添加一个撤销声明到他们的Manifest:
 
@@ -44,11 +44,14 @@ UA SDK会自动添加AD_ID权限。
  tools:node="remove"/>
 ```
 
-有关更多信息，请参见[谷歌Play Services文档](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info#public-string-getid)。
+For more information, see [Google Play Services documentation](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info#public-string-getid).
 
-### 2. `iOS`配置
-#### 2.1 添加 `use_framework`
-设置路径：Assets -> External Dependency Manager -> iOS Resolver -> Settings（如图所示）
+### 2. `iOS` Configuration
+
+#### 2.1 Adds `use_framework`
+
+Set the `use_framework` according to `Assets -> External Dependency Manager -> iOS Resolver -> Settings`
+
 <!-- markdownlint-disable -->
 <figure> 
     <img src="/zh/assets/images/unity_setting_1.jpg" width="300"> 
@@ -58,11 +61,11 @@ UA SDK会自动添加AD_ID权限。
 </figure>
 <!-- markdownlint-restore -->
 
-## 集成SDK
+## Integrate SDK
 
-### 关于隐私合规政策
+### Privacy Policy compliance
 
-#### 儿童用户
+#### COPPA
 
 ```c#
 /// <summary>
@@ -72,13 +75,13 @@ UA SDK会自动添加AD_ID权限。
 public static void SetAgeRestrictedUser(bool isChild);
 ```
 
-##### 示例:设置是否为儿童用户
+##### Example: COPPA
 
 ```c#
 Yodo1U3dUA.SetAgeRestrictedUser("<bool>");                                     
 ```
 
-#### 隐私协议
+#### GDPR
 
 ```c#
 /// <summary>
@@ -88,13 +91,13 @@ Yodo1U3dUA.SetAgeRestrictedUser("<bool>");
 public static void SetHasUserConsent(bool isConsent);
 ```
 
-##### 示例:设置是否同意隐私协议
+##### Example: GDPR
 
 ```c#
 Yodo1U3dUA.SetHasUserConsent("<bool>");                                     
 ```
 
-#### 禁止出售用户信息
+#### CCPA
 
 ```c#
 /// <summary>
@@ -104,15 +107,15 @@ Yodo1U3dUA.SetHasUserConsent("<bool>");
 public static void SetDoNotSell(bool isNotSell);
 ```
 
-##### 示例:设置是否禁止出售用户信息
+##### Example: CCPA
 
 ```c#
 Yodo1U3dUA.SetDoNotSell("<bool>");                                     
 ```
 
-### 初始化SDK
+### Initialize SDK
 
-推荐在`Start`方法中调用SDK初始化
+It is recommended to call SDK initialization in the `Start` method
 
 ```c#
 /// <summary>
@@ -121,11 +124,11 @@ Yodo1U3dUA.SetDoNotSell("<bool>");
 public static void InitializeWithConfig(Yodo1U3dUAConfig config);
 ```
 
-* `Yodo1U3dUAConfig`是初始化参数配置
+* `Yodo1U3dUAConfig` is the parameter configuration required for initialization
 
-### 示例代码
+### Sample Code
 
-下面的例子演示了如何在`Start`方法中调用SDK初始化
+The following example showing how to call SDK initialization in the `Start` method
 
 ```c#
 void Start()  {
@@ -136,16 +139,16 @@ void Start()  {
 }
 ```
 
-* `AppsFlyerDevKey`是Appsflyer Dev Key，注意：如果使用Yodo1默认Appsflyer Dev Key，可忽略该参数，SDK中已经集成它
-* `AppleId`是苹果的Apple Id，注意：如果是iOS平台，该参数是必选项，如果是Andriod平台，该参数可以忽略
+* `AppsFlyerDevKey` is Appsflyer Dev Key. Note: This is an optional parameter and defaults to the AppsFlyer Dev Key of Yodo1
+* `AppleId` is your Apple id. Note: This is required by iOS, please ignore it if you’re building Android
 
-## 应用内事件
+## In-App events
 
-### 记录应用程序事件
+### Tracking in-app events
 
-SDK允许您记录应用程序上下文中发生的用户操作。这些通常被称为应用内事件。
+The SDK lets you track user actions happening in the context of your app. These are commonly referred to as in-app events.
 
-#### TrackEvent方法
+#### The TrackEvent method
 
 ```c#
 /// <summary>
@@ -156,10 +159,10 @@ SDK允许您记录应用程序上下文中发生的用户操作。这些通常�
 public static void TrackEvent(string eventName, Dictionary<string, object> eventValues);
 ```
 
-* `eventName`是应用内事件名称
-* `eventValues`是事件参数`Dictionary`
+* `eventName` is the In-app event name
+* `eventValues` is the event parameters `Dictionary`
 
-#### 示例代码
+#### Sample Code
 
 ```c#
 Dictionary<string, object> dic = new Dictionary<string, object>();
@@ -168,11 +171,13 @@ dic.Add("test_2", 123);
 Yodo1U3dUA.TrackEvent("my_test", dic);
 ```
 
-### 记录收入
+### Tracking revenue
 
-你可以通过应用内部事件发送收益。使用`Yodo1UAInAppEventType.PURCHASE`事件参数，将收益包含在应用内部事件中。您可以用任何数值(正的或负的)填充它。收入值不应该包含逗号、分隔符、货币符号或文本。例如，收入事件应该类似于1234.56。
+You can send revenue with in-app event. Use `Yodo1UAInAppEventType.PURCHASE` event parameter to include revenue in the in-app event. You can populate it with any numeric value, positive or negative.
 
-#### 示例:带有收益的购买事件
+The revenue value should not contain comma separators, currency signs, or text. A revenue event should be similar to 1234.56, for example.
+
+#### Example: Purchase event with revenue
 
 ```c#
 Dictionary<string, object> dic = new Dictionary<string, object>();
@@ -186,16 +191,16 @@ dic.Add(Yodo1UAInAppEventParam.ORDER_ID, "<ORDER_ID>");
 Yodo1U3dUA.TrackEvent(Yodo1UAInAppEventType.PURCHASE, dic);
 ```
 
-> 注意
+> Note
 >
->* 不要在收益值中添加货币符号
->* 货币代码应该是3个字符的ISO 4217代码
+>* Do not add currency symbols to the revenue value.
+>* The currency code should be a 3 character ISO 4217 code.
 
-### 验证购买
+### Validating purchases
 
-SDK为应用内部购买提供服务器验证。`ValidateAndTrackInAppPurchase`方法负责验证和记录购买事件。
+SDK provides server verification for in-app purchases. The `ValidateAndTrackInAppPurchase` method takes care of validating and tracking the purchase event.
 
-#### ValidateAndTrackInAppPurchase方法
+#### The ValidateAndTrackInAppPurchase method
 
 ```c#
 /// <summary>
@@ -205,11 +210,11 @@ SDK为应用内部购买提供服务器验证。`ValidateAndTrackInAppPurchase`�
 public static void ValidateAndTrackInAppPurchase(Yodo1UAProductDefinition productDefinition);
 ```
 
-> 注意
+> Note
 >
->* 验证成功后，`validateAndTrackInAppPurchase`将在AppsFlyer后台生成一个`af_purchase`应用内事件，自己发送此事件将导致重复事件报告。
+>* ValidateAndTrackInAppPurchase generates an `af_purchase` in-app event upon successful validation.
 
-#### 示例:验证应用内购买
+#### Example: Validate an in-app purchase
 
 ```c#
 Yodo1UAProductDefinition product = new Yodo1UAProductDefinition();
@@ -232,9 +237,9 @@ Yodo1U3dUA.ValidateAndTrackInAppPurchase(product);
 * ProductIdentifier: Product Identifier(Only iOS)
 * TransactionId: TransactionId from proof of successful payment(Only iOS)
 
-#### 开启沙箱测试环境（Only iOS）
+#### Testing purchase validation in Sandbox mode（Only iOS）
 
-开启沙箱测试环境是为了方便测试`ValidateAndTrackInAppPurchase`（iOS平台）
+To test purchase validation using a sandboxed environment, add the following code:
 
 ```c#
 /// <summary>
@@ -245,30 +250,30 @@ Yodo1U3dUA.ValidateAndTrackInAppPurchase(product);
 public static void UseReceiptValidationSandbox(bool isSanbox);
 ```
 
-#### 示例:开启沙箱测试
+#### Example: enable the Sandbox mode
 
 ```c#
-Yodo1U3dUA.UseReceiptValidationSandbox(YES);                                     
+Yodo1U3dUA.UseReceiptValidationSandbox(true);                                     
 ```
 
-> 注意
+> Note
 >
->* 在[苹果开发者](https://developer.apple.com)网站申请沙盒账户
->* 在苹果手机上 -> 设置 -> App Store 添加`沙盒账户`
+>* Apply for a sandbox account at [Apple's developer](https://developer.apple.com) site
+>* On your iPhone -> Settings -> App Store -> Add `SANDBOX ACCOUNT`
 
-### 事件的常量
+### Event constants
 
-#### 预定义的事件名称
+#### Predefined event names
 
-预定义的事件名称常量遵循`Yodo1UAInAppEventType.PURCHASE`命名约定
+Predefined event name constants follow a `Yodo1UAInAppEventType.PURCHASE` naming convention
 
 | Event name       |  Unity constant name            |  
 | ---------------- | ------------------------------- |
 | "y_ua_purchase"  |  Yodo1UAInAppEventType.PURCHASE |
 
-#### 预定义的事件参数
+#### Predefined event parameters
 
-预定义的事件参数常量遵循`Yodo1UAInAppEventParam`命名约定
+Predefined event parameter constants follow a `Yodo1UAInAppEventParam` naming convention
 
 | Event parameter name   |  Unity constant name          |   Type    |
 | ---------------------- | ------------------------------- | --------- |
@@ -279,7 +284,7 @@ Yodo1U3dUA.UseReceiptValidationSandbox(YES);
 | "y_ua_quantity"        |  QUANTITY                       |   String  |
 | "y_ua_order_id"        |  ORDER_ID                       |   String  |
 
-## 设置CustomId
+## Set custom user Id
 
 ```c#
 /// <summary>
@@ -293,15 +298,15 @@ Yodo1U3dUA.UseReceiptValidationSandbox(YES);
 public static void SetCustomUserID(string customUserID);
 ```
 
-### 示例:设置CustomId
+### Example: set custom user id
 
 ```c#
 Yodo1U3dUA.SetCustomUserID("<String>");                                     
 ```
 
-* 针对于需要获取当前用户下多个账号的事件信息，例如：同一台设备下有多个账号
+* This operation is used to obtain event information about multiple accounts of the current user, for example, multiple accounts of the same device
 
-## 增加额外属性
+## Adding additional attributes
 
 ```c#
 /// <summary>
@@ -311,19 +316,19 @@ Yodo1U3dUA.SetCustomUserID("<String>");
 public static void SetAdditionalData(Dictionary<string, object> customData);
 ```
 
-### 示例:增加额外属性配置
+### Example: Adding additional attributes
 
 ```c#
 Yodo1U3dUA.SetAdditionalData("<Dictionary>");                                     
 ```
 
-* 加强事件分析能力，同时也可以与其他第三方统计平台做数据关联
+* Strengthen the event analysis ability, and can also do data association with other third-party statistical platforms
 
 <!-- ## 深度链接(DeepLink) -->
 
-## 其他
+## Other Methods
 
-### 获取SDK版本信息
+### Get the SDK version
 
 ```c#
 /// <summary>
@@ -332,9 +337,9 @@ Yodo1U3dUA.SetAdditionalData("<Dictionary>");
 public static string GetSdkVersion();
 ```
 
-### 开启日志
+### Enable the debug log
 
-默认是不开启日志，上架之前请先关闭日志
+The debug log is disabled by default. Please disable it before release to App stores
 
 ```c#
 /// <summary>
@@ -343,7 +348,7 @@ public static string GetSdkVersion();
 public static void SetDebugLog(bool debugLog);
 ```
 
-## 已知问题
+## known issues
 
 ### Backup rules
 

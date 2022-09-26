@@ -8,6 +8,11 @@ theme:
   language: en
 
   custom_dir: '../../overrides/'
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - navigation.expand
   palette:
     - scheme: default
       primary: indigo
@@ -38,14 +43,21 @@ markdown_extensions:
 extra:
   alternate:
     - name: English
-      link: /en
+      link: /en/
       lang: en
     - name: 中文
       link: /zh/ 
       lang: zh
 
+# nav:
+#   - Getting started:
+#     - '../../docs/en/index.md'
+#     - '../../docs/en/ingegration/integration-android.md'
+#     - '../../docs/en/ingegration/integration-ios.md'
+
 nav:
-  - Getting started:
-    - '../../docs/en/index.md'
-    - '../../docs/en/ingegration/integration-android.md'
-    - '../../docs/en/ingegration/integration-ios.md'
+  # - 'index.md'
+  - Unity Plugins:
+    - 'unity/sub-modules/analyze.md'
+    - 'unity/sub-modules/ua.md'
+    - 'unity/sub-modules/live-ops.md'

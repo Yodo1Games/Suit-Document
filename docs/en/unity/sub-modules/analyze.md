@@ -1,20 +1,20 @@
 # Analytics Plugin
 
-**集成准备**:
+**Getting started**:
 
->* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Analytics/Yodo1-Analytics-1.0.0.unitypackage)
->* SDK支持Unity LTS 版本（2019或更高版本）
->* SDK支持Android API 19+
->* `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
->* iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
+>* Download [Unity Plugin](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Analytics/Yodo1-Analytics-1.0.0.unitypackage)
+>* SDK supports Unity LTS 2019 and above
+>* SDK supports Android API 19 and above
+>* `CocoaPods` is required for `iOS` build, you can install it by following the instructions [here](https://guides.cocoapods.org/using/getting-started.html#getting-started)
+>* iOS15 requires `Xcode` 13+, please make sure you are using the latest version of Xcode
 
-## 集成配置
+## Integrate Configuration
 
-### `Android`配置
+### `Android` Configuration
 
-#### 设置支持AndroidX
+#### Support for AndroidX
 
-[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) 是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 来启用它，如下图所示：
+[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) is required for `Android` build, you can enable it by selecting ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier***
 
 <!-- markdownlint-disable -->
 <figure> 
@@ -22,11 +22,11 @@
     <figcaption>andriod use jetifier</figcaption> 
 </figure>
 
-## 集成SDK
+## Integrate SDK
 
-### 初始化SDK
+### Initialize SDK
 
-推荐在`Start`方法中调用SDK初始化
+It is recommended to call SDK initialization in the `Start` method
 
 ```c#
 /// <summary>
@@ -36,11 +36,11 @@
 public static void Initialize(Yodo1U3dAnalyticsConfig config);
 ```
 
-* `config`是初始化需要使用的参数配置
+* `config` is the parameter configuration required for initialization
 
-#### 示例代码
+#### Sample Code
 
-下面的例子演示了如何在`Start`方法中调用SDK初始化
+The following example showing how to call SDK initialization in the `Start` method
 
 ```c#
 void Start()
@@ -52,16 +52,16 @@ void Start()
 }
 ```
 
-* `config`配置中第一个参数（GameKey）是游戏使用的gameKey（Yodo1 GameKey）
-* `config`配置中第二个参数（TD_AppId）是ThinkingData AppId
+* `GameKey` is the unique identifier of the application from Yodo1Games
+* `TD_AppId` is the unique identifier of the application from Thinking SDK, it can be obtained from the project management page of TA background
 
-## 应用内事件
+## In-App events
 
-### 记录应用程序事件
+### Tracking in-app events
 
-SDK允许您记录应用程序上下文中发生的用户操作。这些通常被称为应用内事件。
+The SDK lets you track user actions happening in the context of your app. These are commonly referred to as in-app events.
 
-#### TrackEvent方法
+#### The TrackEvent method
 
 ```c#
 //// <summary>
@@ -72,10 +72,10 @@ SDK允许您记录应用程序上下文中发生的用户操作。这些通常�
 public static void TrackEvent(string eventName, Dictionary<string, object> eventValues);
 ```
 
-* `eventName`是应用内事件名称，事件名称是`string`类型，只能以字母开头，可包含数字，字母和下划线"_"，长度最大为50个字符，对字母大小写不敏感。
-* `eventValues`是事件参数`Dictionary`，其中每个元素代表一个属性，支持`string`、`bool`、`int`、`double`和`float`.
+* `eventName` is the In-app event name, the event name is `string` type, the name can start with a letter and contain digits, letters, and underscores (_). The name can contain a maximum of 50 characters and is case insensitive.
+* `eventValues` is the event parameters `Dictionary`, Where each element represents an attribute, supports `string`、`bool`、`int`、`double` and `float`.
 
-#### 示例代码
+#### Sample Code
 
 ```c#
 Dictionary<string, object> dic = new Dictionary<string, object>();
@@ -83,11 +83,11 @@ dic.Add("level", 10);
 Yodo1U3dAnalytics.TrackEvent("my_test", dic);
 ```
 
-## 用户ID
+## User ID
 
-### 设置账号ID
+### Set user ID
 
-SDK 实例会使用ID_安装次数作为每个用户的默认访客 ID，该 ID 将会作为用户在未登录状态下身份识别 ID。需要注意的是，访客 ID 在用户重新安装 App 以及更换设备时将会变更。
+The SDK instance will use a random UUID as the default guest ID for each user, which will be used as the user's identity ID when the user is not logged in. It should be noted that the guest ID will change when the user reinstalls the App and changes the device.
 
 ```c#
 /// <summary>
@@ -102,15 +102,15 @@ SDK 实例会使用ID_安装次数作为每个用户的默认访客 ID，该 ID 
 public static void Login(string accountId);
 ```
 
-* `accountId`是游戏中定义的账号id
+* `accountId` is the user ID defined in the game
 
-#### 示例代码
+#### Sample Code
 
 ```c#
 Yodo1U3dAnalytics.Login("test_account_id");
 ```
 
-### 清除账号 ID
+### Logout ID
 
 ```c#
 /// <summary>
@@ -123,13 +123,13 @@ Yodo1U3dAnalytics.Login("test_account_id");
 public static void Logout();
 ```
 
-#### 示例代码
+#### Sample Code
 
 ```c#
 Yodo1U3dAnalytics.Logout();
 ```
 
-### 获取TD的distinct id
+### Get the distinct id of Thinking SDK
 
 ```c#
 /// <summary>
@@ -139,13 +139,13 @@ Yodo1U3dAnalytics.Logout();
 public static string GetDistinctId();
 ```
 
-#### 示例代码
+#### Sample Code
 
 ```c#
 string distinct_id = Yodo1U3dAnalytics.GetDistinctId();
 ```
 
-### 获取TD的device id
+### Get the device id of Thinking SDK
 
 ```c#
 /// <summary>
@@ -155,15 +155,15 @@ string distinct_id = Yodo1U3dAnalytics.GetDistinctId();
 public static string GetDeviceId();
 ```
 
-#### 示例代码
+#### Sample Code
 
 ```c#
 string device_id = Yodo1U3dAnalytics.GetDeviceId();
 ```
 
-## 其他
+## Other Methods
 
-### 获取SDK版本信息
+### Get the SDK version
 
 ```c#
 /// <summary>
@@ -172,9 +172,9 @@ string device_id = Yodo1U3dAnalytics.GetDeviceId();
 public static string GetSdkVersion();
 ```
 
-### 开启日志
+### Enable the debug log
 
-默认是不开启日志，上架之前请先关闭日志
+The debug log is disabled by default. Please disable it before release to App stores
 
 ```c#
 /// <summary>

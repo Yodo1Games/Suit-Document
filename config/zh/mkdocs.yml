@@ -28,14 +28,14 @@ markdown_extensions:
 extra:
   alternate:
     - name: English
-      link: / 
+      link: /en/
       lang: en
     - name: 中文
       link: /zh/ 
       lang: zh
 
 nav:
-  - 'index.md'
+  # - 'index.md'
   - Unity:  
     - 'unity/integration.md'
     - 功能模块:
