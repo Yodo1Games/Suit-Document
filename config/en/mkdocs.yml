@@ -8,6 +8,11 @@ theme:
   language: en
 
   custom_dir: '../../overrides/'
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - navigation.expand
   palette:
     - scheme: default
       primary: indigo
@@ -38,7 +43,7 @@ markdown_extensions:
 extra:
   alternate:
     - name: English
-      link: /en
+      link: /en/
       lang: en
     - name: 中文
       link: /zh/ 
