@@ -51,8 +51,8 @@ extra:
 #     - '../../docs/en/ingegration/integration-ios.md'
 
 nav:
-  - '../../docs/en/index.md'
+  - 'index.md'
   - Unity Plugins:
-    - '../../docs/en/unity/sub-modules/analyze.md'
-    - '../../docs/en/unity/sub-modules/ua.md'
-    - '../../docs/en/unity/sub-modules/live-ops.md'
+    - 'unity/sub-modules/analyze.md'
+    - 'unity/sub-modules/ua.md'
+    - 'unity/sub-modules/live-ops.md'
