@@ -37,7 +37,7 @@ public static void InitializeWithConfig(Yodo1U3dShareConfig config);
 
 * `config`是初始化需要使用的各个分享平台的`AppId`和`UniversalLink`
 
-#### Yodo1U3dShareConfig结构
+#### Yodo1U3dShareConfig结构(只适用于iOS)
 
 ```c#
 // QQ Share
@@ -87,7 +87,7 @@ void Start()  {
 
 >* 注意
 >
-* 给个分享平台都是可以自由组合选择配置，如果不设置对应平台的`AppId`和`UniversalLink`（`DisplayName`）则表示不使用该分享平台
+* 各个分享平台都是可以自由组合选择配置，如果不设置对应平台的`AppId`和`UniversalLink`（`DisplayName`）则表示不使用该分享平台
 
 ### 分享
 

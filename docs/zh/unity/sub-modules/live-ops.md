@@ -205,6 +205,17 @@ private static System.Action<int, string> _onActivationCodeFailureEvent;
 public static event System.Action<int, string> OnActivationCodeFailureEvent;
 ```
 
+#### 兑换码ErrorCode
+
+| code   | 描述           |
+| -------| ------------- |
+| 0      | 成功           |
+| 1      | 无效的兑换码    |
+| 2      | 兑换码已使用    |
+| 3      | 活动未开始      |
+| 4      | 活动已结束      |
+| 5      | 同类兑换码不可重复领取|
+
 #### 兑换码示例代码
 
 ```c#
