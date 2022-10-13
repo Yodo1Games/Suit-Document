@@ -70,6 +70,7 @@ nav:
       - 'ios/modules/live-ops.md'
     - 可选功能:
       - ios/optional-modules/share.md
+      - ios/optional-modules/core-share.md
 
   - Android:
     - Suit SDK:

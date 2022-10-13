@@ -22,6 +22,18 @@
     <figcaption>andriod use jetifier</figcaption> 
 </figure>
 
+### 2. `iOS`配置
+
+#### 1.1 设置AppId和UniversalLink
+
+<figure> 
+    <img src="/zh/assets/images/unity_edit_share_0.png" width="300"> 
+</figure>
+
+<figure> 
+    <img src="/zh/assets/images/unity_edit_share_0.png" width="300"> 
+</figure>
+
 ## 集成SDK
 
 ### 初始化SDK
@@ -32,7 +44,7 @@
 /// <summary>
 /// Initialize the default instance of the SDK.
 /// </summary>
-public static void InitializeWithConfig(Yodo1U3dShareConfig config);
+public static void Initialize();
 ```
 
 * `config`是初始化需要使用的各个分享平台的`AppId`和`UniversalLink`
@@ -63,7 +75,6 @@ public string FacebookDisplayName;
 | SinaAppId                   | 新浪微博App Id             |
 | SinaUniversalLink        | 新浪微博通用链接          |
 | FacebookAppId           | Facebook App Id           |
-| FacebookDisplayName | Facebook Display Name |
 
 #### 示例代码
 
@@ -72,22 +83,9 @@ public string FacebookDisplayName;
 ```c#
 void Start()  {
 
-	Yodo1U3dShareConfig config = new Yodo1U3dShareConfig();
-    config.QQAppId = "<QQ_App_Id>";
-    config.QQUniversalLink = "<QQ_Universal_Link>";
-    config.WechatAppId = "<Wechat_App_Id>";
-    config.WechatUniversalLink = "<Wechat_Universal_Link>";
-    config.SinaAppId = "<Sina_App_Id>";
-    config.SinaUniversalLink = "<Sina_Universal_Link>";
-    config.FacebookAppId = "<Facebook_App_Id>";
-    config.FacebookDisplayName = "<Facebook_Display_Name>";
-    Yodo1U3dShare.InitializeWithConfig(config);
+    Yodo1U3dShare.Initialize();
 }
 ```
-
->* 注意
->
-* 各个分享平台都是可以自由组合选择配置，如果不设置对应平台的`AppId`和`UniversalLink`（`DisplayName`）则表示不使用该分享平台
 
 ### 分享
 
@@ -178,6 +176,21 @@ Yodo1U3dShare.Share(shareInfo);
  
 ``` c# 
  shareInfo.SNSType = Yodo1U3dShareConstants.Yodo1SNSType.Yodo1SNSTypeTencentQQ | Yodo1U3dShareConstants.Yodo1SNSType.Yodo1SNSTypeWeixinMoments | Yodo1U3dShareConstants.Yodo1SNSType.Yodo1SNSTypeWeixinContacts;
+```
+
+### 分享回调
+
+``` c# 
+public static event System.Action<Yodo1U3dShareResult> OnResultEvent;
+```
+
+#### 示例代码
+
+``` c# 
+Yodo1U3dShareSDK.OnResultEvent += (Yodo1U3dShareResult shareResult) =>
+{
+	Debug.LogFormat("{0} Yodo1ShareResult {1}", Yodo1U3dShare.TAG, shareResult.ToString());
+};
 ```
 
 ## 其他
