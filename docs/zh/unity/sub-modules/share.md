@@ -31,8 +31,18 @@
 </figure>
 
 <figure> 
-    <img src="/zh/assets/images/unity_edit_share_0.png" width="300"> 
+    <img src="/zh/assets/images/unity_edit_share_1.png" width="300"> 
 </figure>
+
+| 参数名称                    | 描述                              |
+| ------------------ | ------------------ |
+| QQAppId                     | QQ App Id                    |
+| QQUniversalLink          | QQ通用链接                  |
+| WechatAppId               | 微信App Id                   |
+| WechatUniversalLink    | 微信通用链接                |
+| SinaAppId                   | 新浪微博App Id             |
+| SinaUniversalLink        | 新浪微博通用链接          |
+| FacebookAppId           | Facebook App Id           |
 
 ## 集成SDK
 
@@ -47,34 +57,7 @@
 public static void Initialize();
 ```
 
-* `config`是初始化需要使用的各个分享平台的`AppId`和`UniversalLink`
-
-#### Yodo1U3dShareConfig结构(只适用于iOS)
-
-```c#
-// QQ Share
-public string QQAppId;
-public string QQUniversalLink;
-// WeChat Share
-public string WechatAppId;
-public string WechatUniversalLink;
-// Sina Share
-public string SinaAppId;
-public string SinaUniversalLink;
-// Facebook Share
-public string FacebookAppId;
-public string FacebookDisplayName;
-```
-
-| 参数名称                    | 描述                              |
-| ------------------ | ------------------ |
-| QQAppId                     | QQ App Id                    |
-| QQUniversalLink          | QQ通用链接                  |
-| WechatAppId               | 微信App Id                   |
-| WechatUniversalLink    | 微信通用链接                |
-| SinaAppId                   | 新浪微博App Id             |
-| SinaUniversalLink        | 新浪微博通用链接          |
-| FacebookAppId           | Facebook App Id           |
+* 初始化是根据编辑面板设置的AppId和UniversalLink进行初始化
 
 #### 示例代码
 
