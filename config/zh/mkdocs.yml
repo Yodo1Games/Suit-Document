@@ -55,6 +55,7 @@ nav:
       - unity/optional-modules/info.md
 
   - Unity Plugins:
+    - 'unity/sub-modules/getting-started.md'
     - 'unity/sub-modules/analyze.md'
     - 'unity/sub-modules/ua.md'
     - 'unity/sub-modules/live-ops.md'
