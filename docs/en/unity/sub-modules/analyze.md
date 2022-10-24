@@ -3,24 +3,6 @@
 **Getting started**:
 
 >* Download [Unity Plugin](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Analytics/Yodo1-Analytics-1.0.1.unitypackage)
->* SDK supports Unity LTS 2019 and above
->* SDK supports Android API 19 and above
->* `CocoaPods` is required for `iOS` build, you can install it by following the instructions [here](https://guides.cocoapods.org/using/getting-started.html#getting-started)
->* iOS15 requires `Xcode` 13+, please make sure you are using the latest version of Xcode
-
-## Integrate Configuration
-
-### `Android` Configuration
-
-#### Support for AndroidX
-
-[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) is required for `Android` build, you can enable it by selecting ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier***
-
-<!-- markdownlint-disable -->
-<figure> 
-    <img src="/zh/assets/images/andriod_use_jetifier.png" width="300"> 
-    <figcaption>andriod use jetifier</figcaption> 
-</figure>
 
 ## Integrate SDK
 
@@ -45,10 +27,10 @@ The following example showing how to call SDK initialization in the `Start` meth
 ```c#
 void Start()
 {
-	Yodo1U3dAnalyticsConfig config = new Yodo1U3dAnalyticsConfig();
-	config.GameKey = "<Game_Key>";
-	config.TD_AppId = "<TD_App_Id>";
-	Yodo1U3dAnalytics.Initialize(config);
+  Yodo1U3dAnalyticsConfig config = new Yodo1U3dAnalyticsConfig();
+  config.GameKey = "<Game_Key>";
+  config.TD_AppId = "<TD_App_Id>";
+  Yodo1U3dAnalytics.Initialize(config);
 }
 ```
 

@@ -3,26 +3,12 @@
 **Getting started**:
 
 >* Download [Unity Plugin](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/UA/Yodo1-UA-1.0.1.unitypackage)
->* SDK supports Unity LTS 2019 and above
->* SDK supports Android API 19 and above
->* `CocoaPods` is required for `iOS` build, you can install it by following the instructions [here](https://guides.cocoapods.org/using/getting-started.html#getting-started)
->* iOS15 requires `Xcode` 13+, please make sure you are using the latest version of Xcode
 
 ## Integrate Configuration
 
 ### 1. `Android` Configuration
 
-#### 1.1 Support for AndroidX
-
-[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) is required for `Android` build, you can enable it by selecting ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier***
-
-<!-- markdownlint-disable -->
-<figure> 
-    <img src="/zh/assets/images/andriod_use_jetifier.png" width="300"> 
-    <figcaption>andriod use jetifier</figcaption> 
-</figure>
-
-#### 1.2 Android permission
+#### 1.1 Android permission
 
 In early 2022, Google announced a change to the behavior of Google Play Services and fetching of the Android Advertising ID. According to the [announcement](https://support.google.com/googleplay/android-developer/answer/6048248?hl=en), apps targeting Android 13 (API 33) and above must declare a Google Play services normal permission in their `AndroidManifest.xml` file in order to get access to the device’s Advertising ID.
 
@@ -45,21 +31,6 @@ According to [Google’s Policy](https://support.google.com/googleplay/android-d
 ```
 
 For more information, see [Google Play Services documentation](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info#public-string-getid).
-
-### 2. `iOS` Configuration
-
-#### 2.1 Adds `use_framework`
-
-Set the `use_framework` according to `Assets -> External Dependency Manager -> iOS Resolver -> Settings`
-
-<!-- markdownlint-disable -->
-<figure> 
-    <img src="/zh/assets/images/unity_setting_1.jpg" width="300"> 
-</figure>
-<figure> 
-    <img src="/zh/assets/images/unity_setting_2.jpg" width="300"> 
-</figure>
-<!-- markdownlint-restore -->
 
 ## Integrate SDK
 
