@@ -57,7 +57,7 @@
 # 先创建虚拟环境，只需要创建一次，后续直接激活即可
 python3 -m venv venv
 # 激活虚拟环境
-source tutorial-env/bin/activate
+source venv/bin/activate
 # 安装必要依赖
 pip install -r requirements.txt
 ```
@@ -66,7 +66,7 @@ pip install -r requirements.txt
 
 ```bash
 # 先激活虚拟环境
-source tutorial-env/bin/activate
+source venv/bin/activate
 # 安装必要依赖
 sh scripts/build-and-preview.sh
 ```
