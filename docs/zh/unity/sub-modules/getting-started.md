@@ -1,10 +1,9 @@
 # 集成准备
 
->* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Analytics/Yodo1-Analytics-1.0.1.unitypackage)
 >* SDK支持Unity LTS 版本（2019或更高版本）
 >* SDK支持Android API 19+
 >* `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
->* iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
+>* iOS15需要`Xcode` 13+，请确保你的`Xcode`是最新的。
 
 ## 集成配置
 

@@ -1,4 +1,4 @@
-# Analytics Plugin
+# 数据分析集成
 
 **集成准备**:
 
