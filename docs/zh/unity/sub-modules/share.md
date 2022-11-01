@@ -1,52 +1,62 @@
-# Share
+# 分享功能集成
 
 **集成准备**:
 
->* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/UA/Yodo1-UA-1.0.0.unitypackage)
->* SDK支持Unity LTS 版本（2019或更高版本）
->* SDK支持Android API 19+
->* `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
->* iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
+>* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Share/Yodo1-Share-1.0.0.unitypackage)
 
 ## 集成配置
 
-### 1. `Android`配置
+### `Android`配置
 
-#### 1.1 设置支持AndroidX
-
-[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) 是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 来启用它，如下图所示：
+<!-- #### 1.1 设置支持AndroidX -->
 
 <!-- markdownlint-disable -->
 <figure> 
-    <img src="/zh/assets/images/andriod_use_jetifier.png" width="300"> 
-    <figcaption>andriod use jetifier</figcaption> 
+    <img src="/zh/assets/images/unity_edit_share_0.png" width="500"> 
+</figure>
+<figure> 
+    <img src="/zh/assets/images/unity_edit_share_android.png" width="500"> 
 </figure>
 
-### 2. `iOS`配置
+#### Facebook配置
+* If you don't have a Facebook App ID for your app yet, see [Facebook SDK Quick Start for Android](https://developers.facebook.com/micro_site/url/?click_from_context_menu=true&country=CN&destination=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fandroid%2Fgetting-started%23quick-start&event_type=click&last_nav_impression_id=1xS9zpVpa1paH5FcB&max_percent_page_viewed=25&max_viewport_height_px=920&max_viewport_width_px=1728&orig_http_referrer=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fsharing%2Fandroid%2F&orig_request_uri=https%3A%2F%2Fdevelopers.facebook.com%2Fajax%2Fdocs%2Fnav%2F%3Fpath1%3Dsharing%26path2%3Dandroid&region=apac&scrolled=true&session_id=1Hod3pJy5Oxr1a6Yk&site=developers).
+* Find your Facebook App ID on the [Apps](https://developers.facebook.com/micro_site/url/?click_from_context_menu=true&country=CN&destination=https%3A%2F%2Fdevelopers.facebook.com%2Fapps&event_type=click&last_nav_impression_id=1xS9zpVpa1paH5FcB&max_percent_page_viewed=25&max_viewport_height_px=920&max_viewport_width_px=1728&orig_http_referrer=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fsharing%2Fandroid%2F&orig_request_uri=https%3A%2F%2Fdevelopers.facebook.com%2Fajax%2Fdocs%2Fnav%2F%3Fpath1%3Dsharing%26path2%3Dandroid&region=apac&scrolled=true&session_id=1Hod3pJy5Oxr1a6Yk&site=developers) page of the developer portal and then see [Add Your Facebook App ID and Client Token](https://developers.facebook.com/micro_site/url/?click_from_context_menu=true&country=CN&destination=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fandroid%2Fgetting-started%23app_id&event_type=click&last_nav_impression_id=1xS9zpVpa1paH5FcB&max_percent_page_viewed=25&max_viewport_height_px=920&max_viewport_width_px=1728&orig_http_referrer=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fsharing%2Fandroid%2F&orig_request_uri=https%3A%2F%2Fdevelopers.facebook.com%2Fajax%2Fdocs%2Fnav%2F%3Fpath1%3Dsharing%26path2%3Dandroid&region=apac&scrolled=true&session_id=1Hod3pJy5Oxr1a6Yk&site=developers).
 
-#### 1.1 设置AppId和UniversalLink
+#### 配置游戏和二维码Logo
+* Game Logo File: 合成分享图片所需的游戏logo
+* QR Logo File: 合成分享图片所需要的二维码logo
+
+### `iOS`配置
+
+<!-- #### 1.1 设置AppId和UniversalLink -->
 
 <figure> 
-    <img src="/zh/assets/images/unity_edit_share_0.png" width="300"> 
+    <img src="/zh/assets/images/unity_edit_share_0.png" width="500"> 
 </figure>
 
 <figure> 
-    <img src="/zh/assets/images/unity_edit_share_1.png" width="300"> 
+    <img src="/zh/assets/images/unity_edit_share_ios.png" width="500"> 
 </figure>
 
-| 参数名称                    | 描述                              |
+| 参数名称            | 描述                |
 | ------------------ | ------------------ |
-| QQAppId                     | QQ App Id                    |
-| QQUniversalLink          | QQ通用链接                  |
-| WechatAppId               | 微信App Id                   |
-| WechatUniversalLink    | 微信通用链接                |
-| SinaAppId                   | 新浪微博App Id             |
-| SinaUniversalLink        | 新浪微博通用链接          |
-| FacebookAppId           | Facebook App Id           |
+| QQAppId            | QQ App Id          |
+| QQUniversalLink    | QQ通用链接           |
+| WechatAppId        | 微信App Id          |
+| WechatUniversalLink| 微信通用链接          |
+| SinaAppId          | 新浪微博App Id       |
+| SinaUniversalLink  | 新浪微博通用链接      |
+| FacebookAppId      | Facebook App Id     |
 
 ## 集成SDK
 
 ### 初始化SDK
+
+在你初始化SDK的文件顶部包括以下行:
+
+```c#
+using Yodo1.Share;
+```
 
 推荐在`Start`方法中调用SDK初始化
 
@@ -57,7 +67,7 @@
 public static void Initialize();
 ```
 
-* 初始化是根据编辑面板设置的AppId和UniversalLink进行初始化
+* 初始化是根据编辑面板配置进行初始化
 
 #### 示例代码
 
@@ -65,7 +75,6 @@ public static void Initialize();
 
 ```c#
 void Start()  {
-
     Yodo1U3dShare.Initialize();
 }
 ```
@@ -73,92 +82,99 @@ void Start()  {
 ### 分享
 
 ```c#
-public static void Share(Yodo1U3dShareInfo shareInfo);
+public static void Share(Yodo1U3dShareContent shareContent);
 ```
 
-* `shareInfo`是分享需要使用的内容
+* `shareContent`是分享需要使用的内容
 
-#### Yodo1U3dShareInfo结构
+#### Yodo1U3dShareContent 结构
 
 ```c#
-public Yodo1U3dShareConstants.Yodo1SNSType SNSType;
-public string Title;
-public string Desc;
-public string Image;
+public Yodo1U3dShareType ShareType;
+public Yodo1U3dShareContentType ContentType;
+public string ContentTitle;
+public string ContentText;
+public string ContentImage;
+public string ContentUrl;
 public string QrLogo;
 public string QrText;
-public string Url;
-public string GameLogo;
-public float GameLogoX;
 public float QrTextX;
 public float QrImageX;
+public string GameLogo;
+public float GameLogoX;
 public bool Composite;
 ```
 
-| 参数名称     | 描述                    |
-| ----------- | ---------------------- |
-| SNSType     | 分享类型                |
-| Title       | 分享标题(仅对qq和微信有效) |
-| Desc        | 分享文字描述             |
-| Image       | 分享的图片               |
-| QrLogo      | 二维码logo              |
+| 参数名称     | 描述                           |
+| ----------- | ----------------------------- |
+| ShareType   | 分享类型                        |
+| ContentType | 分享内容类型(Link或者Image)       |
+| ContentTitle| 分享标题(仅对qq和微信有效)         |
+| ContentText | 分享文字描述                     |
+| ContentImage| 分享的图片                       |
+| ContentUrl  | 分享的url(微信是链接地址)         |
+| QrLogo      | 二维码logo                      |
 | QrText      | 二维码右边的文本,根据\n这个符号来分行|
-| Url         | 分享的url(微信是链接地址)  |
-| GameLogo    | 分享到微信平台的Logo      |
-| GameLogoX   | 分享到微信平台的Logo偏移量 |
-| QrTextX     | 文字偏移量                          |
-| QrImageX    | 二维码偏移量                       |
+| GameLogo    | 分享到微信平台的Logo             |
+| GameLogoX   | 分享到微信平台的Logo偏移量         |
+| QrTextX     | 文字偏移量                      |
+| QrImageX    | 二维码偏移量                    |
 | Composite   | 是否启用图片合成                 |
 
-#### Yodo1SNSType结构
+#### Yodo1U3dShareType 结构
 
 ``` c#
-Yodo1SNSTypeNone(-1),
-Yodo1SNSTypeTencentQQ(1 << 0), //朋友圈
-Yodo1SNSTypeWeixinMoments(1 << 1), //朋友圈
-Yodo1SNSTypeWeixinContacts(1 << 2),//聊天界面
-Yodo1SNSTypeSinaWeibo(1 << 3), //新浪微博
-Yodo1SNSTypeFacebook(1 << 4), //Facebook
-Yodo1SNSTypeAll(1 << 5); //所有平台分享
+Yodo1ShareTypeTencentQQ = 1 << 0,/**< QQ分享 >*/
+Yodo1ShareTypeWeixinMoments = 1 << 1,/**< 朋友圈 >*/
+Yodo1ShareTypeWeixinContacts = 1 << 2, /**< 聊天界面 >*/
+Yodo1ShareTypeSinaWeibo = 1 << 3,/**< 新浪微博 >*/
+Yodo1ShareTypeFacebook = 1 << 4,/**< Facebook >*/
+Yodo1ShareTypeAll = 1 << 5 /**< 所有平台分享 >*/
 ```
 
 | Key名称                    | 描述          |
 | ------------------------- | ------------- |
-| Yodo1SNSTypeNone          |               |
-| Yodo1SNSTypeTencentQQ     | QQ朋友圈       |
-| Yodo1SNSTypeWeixinMoments | 微信朋友圈      |
-| Yodo1SNSTypeWeixinContacts| 微信聊天界面    |
-| Yodo1SNSTypeSinaWeibo     | 新浪微博       |
-| Yodo1SNSTypeFacebook      | Facebook      |
-| Yodo1SNSTypeAll           | 所有分享平台    |
+| Yodo1ShareTypeTencentQQ     | QQ朋友圈       |
+| Yodo1ShareTypeWeixinMoments | 微信朋友圈      |
+| Yodo1ShareTypeWeixinContacts| 微信聊天界面    |
+| Yodo1ShareTypeSinaWeibo     | 新浪微博       |
+| Yodo1ShareTypeFacebook      | Facebook      |
+| Yodo1ShareTypeAll           | 所有分享平台    |
+
+#### Yodo1U3dShareContentType 结构
+
+``` c#
+LINK = 0,
+IMAGE = 1,
+```
 
 #### 示例代码
 
-
 ``` c#
-Yodo1U3dShareInfo shareInfo = new Yodo1U3dShareInfo();
-shareInfo.SNSType = Yodo1U3dShareConstants.Yodo1SNSType.Yodo1SNSTypeAll;
-shareInfo.Title = "<Title>";
-shareInfo.Desc = "<Desc>";
-shareInfo.Image = "share_test_image.png";
-shareInfo.Url = "<Url>";
-shareInfo.GameLogo = "sharelogo.png";
-shareInfo.GameLogoX = 0;
-shareInfo.QrLogo = "qrLogo.png";
-shareInfo.QrText = "长按识别二维码 \n 求挑战！求带走！";
-shareInfo.QrTextX = 0;
-shareInfo.QrImageX = 0;
-shareInfo.Composite = true;
+Yodo1U3dShareContent shareContent = new Yodo1U3dShareContent();
+shareContent.ShareType = Yodo1U3dShareType.Yodo1ShareTypeAll;
+shareContent.ContentType = Yodo1U3dShareContentType.LINK;
+shareContent.ContentTitle = "<Title>";
+shareContent.ContentText = "<Desc>";
+shareContent.ContentImage = "share_test_image.png";
+shareContent.ContentUrl = "<Url>";
+shareContent.GameLogo = "game_logo.png";
+shareContent.GameLogoX = 0;
+shareContent.QrLogo = "qr_logo_.png";
+shareContent.QrText = "长按识别二维码 \n 求挑战！求带走！";
+shareContent.QrTextX = 0;
+shareContent.QrImageX = 0;
+shareContent.Composite = true;
 
-Yodo1U3dShare.Share(shareInfo);
+Yodo1U3dShare.Share(shareContent);
 ```
 
 >* 注意
 >
-* shareInfo.SNSType可以自由组合，例：
+* shareContent.ShareType 可以自由组合，例：
  
 ``` c# 
- shareInfo.SNSType = Yodo1U3dShareConstants.Yodo1SNSType.Yodo1SNSTypeTencentQQ | Yodo1U3dShareConstants.Yodo1SNSType.Yodo1SNSTypeWeixinMoments | Yodo1U3dShareConstants.Yodo1SNSType.Yodo1SNSTypeWeixinContacts;
+ shareContent.ShareType = Yodo1U3dShareType.Yodo1ShareTypeTencentQQ | Yodo1U3dShareType.Yodo1ShareTypeWeixinMoments | Yodo1U3dShareType.Yodo1ShareTypeWeixinContacts;
 ```
 
 ### 分享回调
