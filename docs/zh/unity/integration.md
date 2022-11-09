@@ -2,7 +2,7 @@
 
 **集成准备**:
 
->* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1Sdk_OpenSuit/Yodo1SDK(Suit)-6.1.8.unitypackage)
+>* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1Sdk_OpenSuit/Yodo1SDK(Suit)-6.1.9.unitypackage)
 >* SDK支持Unity LTS 版本（2019或更高版本）
 >* SDK支持Android API 19+
 >* `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
@@ -110,7 +110,7 @@
 >* 如果使用支付功能，请勾选`UCpayment`
 >* 如果使用iCloud功能，请勾选`iCloud`
 >* 数据统计ThinkingData必须配置，请配置ThinkingData appid
->* 其他数据统计是可选的，如果需要请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置。配置好后，需要在XCode中检查domain配置）
+>* 其他数据统计是可选的，如果需要请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置。配置好后，需要在XCode中检查domain配置。注意：配置domain的域必须添加“applink:”前缀）
 >* Debug Mode为日志打开和测试模式开启，上线时请关闭
 
 #### 2.2 添加 `use_framework`

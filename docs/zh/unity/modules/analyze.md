@@ -58,3 +58,49 @@ Yodo1U3dAnalytics.customEventAppsflyer("mission", properties);
 Yodo1U3dAnalytics.validateInAppPurchase_GooglePlay(String publicKey, String signature, String purchaseData, String price, String currency);
 //AppleStore支付校验
 Yodo1U3dAnalytics.validateInAppPurchase_Apple(string productId, string price, string currency, string transactionId); -->
+
+## 设置UA-Deeplink功能
+
+您可以在editor编辑面板添加deeplink的domain.（注意：域前面必须添加"applink:"前缀）
+
+获取deeplink数据
+
+```c#
+public static string GetNativeRuntime(string key);
+```
+
+>* key = "appsflyer_deeplink"，获取deeplink数据
+>* key = "appsflyer_id"，获取AF的用户id
+
+重置deeplink数据
+
+```c#
+public static void SaveToNativeRuntime(string key, string valuepairs);
+```
+
+## 设置UA-User invite attribution功能
+
+您可以在editor编辑面板添加domain，domain必须与deeplink一致。（注意：域前面必须添加"applink:"前缀）
+
+生成分享url
+
+```c#
+public static void generateInviteUrlWithLinkGenerator(Yodo1U3dAnalyticsUserGenerate generate);
+```
+
+Yodo1U3dAnalyticsUserGenerate结构
+
+```c#
+private string targetView; //目标试图名称
+private string promoCode; //促销代码
+private string referrerId; //介绍人id
+private string campaign; //活动名称
+private string channel; //渠道
+private string url; //分享的domain
+```
+
+上报”用户归因分享Link“事件
+
+```c#
+public static void logInviteAppsFlyerWithEventData(Dictionary<string, string> value = null);
+```
