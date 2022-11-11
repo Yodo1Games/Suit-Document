@@ -43,6 +43,7 @@ nav:
       - 'unity/modules/account.md'
       - 'unity/modules/iap.md'
       - 'unity/modules/exit.md'
+      - 'unity/modules/anti.md'
     - 可选功能:
       - unity/optional-modules/online-config.md
       - unity/optional-modules/activation-code.md
