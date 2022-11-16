@@ -4,16 +4,8 @@
 >* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1SdkUnityPlugin_AntiIndulged/Yodo1AntiAddictionSDK_3.2.5.unitypackage)
 >* SDK支持Unity 3D 版本（2017或更高版本）
 >* SDK支持Android API 19+
->* [Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier)是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 启用
-> * `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
-> * iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
-
-
-## 插件结构示意图
-
-<center class="half">
-    <img src="/zh/assets/images/unity_anti_structure.jpg" width="200"/>
-</center>
+>* `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
+>* iOS14需要`Xcode` 12+，请确保你的`Xcode`是最新的。
 
 ## 集成配置
 
@@ -25,53 +17,19 @@
 Yodo1AntiIndulgedSDK/User/Resources/Yodo1U3dSettings.asset
 
 <center class="half">
-    <img src="/zh/assets/images/unity_anti_setting_0.png" width="200"/>
+    <img src="/zh/assets/images/unity_anti_setting_0.png" width="400"/>
 </center>
 
 另外说明，标题栏Assets/Yodo1Anti Settings，只对Android配置有效。请开发者以上图示意配置为主。
 
 <center class="half">
-    <img src="/zh/assets/images/unity_anti_setting_1.png" width="200"/>
+    <img src="/zh/assets/images/unity_anti_setting_1.png" width="400"/>
 </center>
 
 
 ### 1. `Android`配置
 
-#### 1.1 设置支持AndroidX
-
-[Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) 是Android构建所必需的，可以通过选择 ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier*** 来启用它，如下图所示：
-
-<!-- markdownlint-disable -->
-<figure> 
-    <img src="/zh/assets/images/andriod_use_jetifier.png" width="300"> 
-    <figcaption>andriod use jetifier</figcaption> 
-</figure>
-
-#### 1.2 Android权限
-
-在2022年初，谷歌宣布改变谷歌Play Services的行为，并获取Android广告ID。根据声明，针对Android 13 (API 33)及以上的应用程序必须在其`AndroidManifest.xml`文件中声明谷歌Play服务正常权限，以获得设备的广告ID。
-
-UA SDK会自动添加AD_ID权限。
-
-> 注意
->
->* 如果你的应用程序参与了为[家庭设计](https://support.google.com/googleplay/android-developer/topic/9877766?hl=en&ref_topic=9858052)的项目，你应该取消AD_ID权限
->* 对于目标API级别32 (Android 12L)或更老的应用程序，不需要此权限。
-
-##### 取消`AD_ID`权限
-
-根据[谷歌的政策](https://support.google.com/googleplay/android-developer/answer/11043825?hl=en)，针对儿童的应用程序不能传输广告ID。
-
-针对Android 13 (API 33)及以上的儿童应用程序必须防止权限合并到他们的应用程序，通过添加一个撤销声明到他们的Manifest:
-
-```xml
-<uses-permission android:name="com.google.android.gms.permission.AD_ID"
- tools:node="remove"/>
-```
-
-有关更多信息，请参见[谷歌Play Services文档](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info#public-string-getid)。
-
-#### 1.3 Android发布
+#### 1.1 Android发布
 
 发布Android包时，请先检查Assets/Yodo1AntiAddictionSDK/Plugins/Android/anti-addiction-unity-x.x.x文件是否存在，并在上文提到的Yodo1U3dSetting.asset里配置好Android Settings部分的内容。
 
@@ -87,15 +45,12 @@ UA SDK会自动添加AD_ID权限。
    tools:replace="android:value" />
 ```
 
-### 2. `iOS`配置
-发布iOS包时，请正确配置上文提到的Yodo1U3dSetting.asset里Ios Settings部分的内容
-
 ## SDK集成
 
 ### 1. 接入流程示意图
 
 <center class="half">
-    <img src="/zh/assets/images/unity_anti_ process.png" width="200"/>
+    <img src="/zh/assets/images/unity_anti_ process.png" width="400"/>
 </center>
 
 ### 2. SDK初始化及设置事件监听器
