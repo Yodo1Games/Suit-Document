@@ -88,6 +88,9 @@ public static void SaveToNativeRuntime(string key, string valuepairs);
 public static void generateInviteUrlWithLinkGenerator(Yodo1U3dAnalyticsUserGenerate generate);
 ```
 
+>* 注意
+>*  在获取到的url后面拼接`&af_force_deeplink=true`可以唤起手机上已经安装好的应用（Facebook分享中url被拦截，链接只会跳转到AppStore，拼接了`&af_force_deeplink=true`可以唤起应用）
+
 Yodo1U3dAnalyticsUserGenerate结构
 
 ```c#
