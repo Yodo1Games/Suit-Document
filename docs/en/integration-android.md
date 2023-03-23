@@ -7,7 +7,7 @@
 ### 1. Open the project-level `build.gradle` and add the below code
 
 ```groovy
-maven { url "http://nexus.yodo1.com:8081/repository/maven-public/" }
+maven { url "https://nexus.yodo1.com/repository/maven-public/" }
 ```
 
 ### 2. Open the app-level `build.gradle` and add the below code
@@ -15,12 +15,12 @@ maven { url "http://nexus.yodo1.com:8081/repository/maven-public/" }
 
 ```groovy
 //core
-implementation 'com.yodo1.suit.pay:core:1.5.0.0'
-implementation 'com.yodo1.suit.pay:core_bridge:1.4.4'
+implementation 'com.yodo1.suit.pay:core:6.1.14.3'
+implementation 'com.yodo1.suit.pay:core_bridge:6.1.12'
 //GooglePlay Store
-implementation 'com.yodo1.suit.pay:google:4.0.0.2'
+implementation 'com.yodo1.suit.pay:google:5.1.0.1'
 //AF analytics
-implementation 'com.yodo1.suit.analytics:appsflyer:6.5.3.3'
+implementation 'com.yodo1.suit.analytics:appsflyer:6.9.2.3'
 ```
 
 #### 2.2 Add `compileOptions` property to the `Android` section
