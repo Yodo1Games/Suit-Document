@@ -26,6 +26,21 @@ Yodo1U3dAnalytics.customEvent("product_buy", properties);
 
 ## UA(AppsFlyer)统计
 
+**注意**：在GooglePlay渠道，要求必须正确接入[Privacy](/zh/unity/optional-modules/privacy/)，确保统计合规。
+
+### 发送UA自定义事件
+
+您可以调用 `customEventAppsflyer` 来上传游戏UA相关自定义事件, 以用户的任务作为示例：
+
+```c#
+Dictionary<string, string> properties = new Dictionary<string, string>();
+properties.Add("mission_id", "xxxx");
+properties.Add("mission_name", "yyyy");
+properties.Add("mission_finish", "true");
+
+Yodo1U3dAnalytics.customEventAppsflyer("mission", properties);
+```
+
 ### IAP收入
 
 有收入的购买事件，示例如下
@@ -40,26 +55,12 @@ string receiptId = "";
 Yodo1U3dAnalytics.eventAndValidateInAppPurchase_Apple(revenue, currency, quantity, contentId, receiptId);
 ```
 
-## 发送UA自定义事件
-
-您可以调用 `customEventAppsflyer` 来上传游戏UA相关自定义事件, 以用户的任务作为示例：
-
-```c#
-Dictionary<string, string> properties = new Dictionary<string, string>();
-properties.Add("mission_id", "xxxx");
-properties.Add("mission_name", "yyyy");
-properties.Add("mission_finish", "true");
-
-Yodo1U3dAnalytics.customEventAppsflyer("mission", properties);
-```
-
-
 <!-- //Google Play支付校验。如果使用sdk内GooglePlay支付，则不需要手动调用。
 Yodo1U3dAnalytics.validateInAppPurchase_GooglePlay(String publicKey, String signature, String purchaseData, String price, String currency);
 //AppleStore支付校验
 Yodo1U3dAnalytics.validateInAppPurchase_Apple(string productId, string price, string currency, string transactionId); -->
 
-## 设置UA-Deeplink功能
+### 设置UA-Deeplink功能
 
 您可以在editor编辑面板添加deeplink的domain.（注意：域前面必须添加"applink:"前缀）
 
@@ -78,7 +79,7 @@ public static string GetNativeRuntime(string key);
 public static void SaveToNativeRuntime(string key, string valuepairs);
 ```
 
-## 设置UA-User invite attribution功能
+### 设置UA-User invite attribution功能
 
 您可以在editor编辑面板添加domain，domain必须与deeplink一致。（注意：域前面必须添加"applink:"前缀）
 
@@ -89,7 +90,7 @@ public static void generateInviteUrlWithLinkGenerator(Yodo1U3dAnalyticsUserGener
 ```
 
 >* 注意
->*  在获取到的url后面拼接`&af_force_deeplink=true`可以唤起手机上已经安装好的应用（Facebook分享中url被拦截，链接只会跳转到AppStore，拼接了`&af_force_deeplink=true`可以唤起应用）
+>* 在获取到的url后面拼接`&af_force_deeplink=true`可以唤起手机上已经安装好的应用（Facebook分享中url被拦截，链接只会跳转到AppStore，拼接了`&af_force_deeplink=true`可以唤起应用）
 
 Yodo1U3dAnalyticsUserGenerate结构
 

@@ -53,6 +53,7 @@ nav:
       - unity/optional-modules/recording.md
       - unity/optional-modules/comment-page.md
       - unity/optional-modules/info.md
+      - unity/optional-modules/privacy.md
 
   - Unity Plugins:
     - 'unity/sub-modules/getting-started.md'
