@@ -27,8 +27,8 @@ android.enableJetifier=true
 请在应用module内build.gradle添加以下依赖：
 
 ```groovy
-api 'com.yodo1.suit.pay:core:6.1.14.3'
-api 'com.yodo1.suit.bridge:pay:6.1.12'
+api 'com.yodo1.suit.pay:core:6.1.15.0'
+api 'com.yodo1.suit.bridge:pay:6.1.15'
 ```
 
 ### 3. AndroidManifest.xml配置
@@ -455,7 +455,7 @@ Yodo1Game.hasMoreGame();
 
 ```groovy
 //AppsFlyer统计渠道
-api 'com.yodo1.suit.analytics:appsflyer:6.9.2.3'
+api 'com.yodo1.suit.analytics:appsflyer:6.10.1.1'
 
 //!!AF 同时yodo1_games_config.properties文件加入一下两个配置：
 appsflyer_dev_key=YourAF_DevKey
