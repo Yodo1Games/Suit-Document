@@ -26,6 +26,8 @@ Yodo1U3dAnalytics.customEvent("product_buy", properties);
 
 ## UA(AppsFlyer)统计
 
+在GooglePlay渠道，要求必须正确接入[Privacy](https://yodo1-suit.web.app/zh/unity/optional-modules/privacy/)，确保统计合规。
+
 ### IAP收入
 
 有收入的购买事件，示例如下
