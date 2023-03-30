@@ -11,13 +11,13 @@
 如果用户(16岁或以上)已经同意，请将下面的标志设置为`true`。
 
 ```c#
-Yodo1U3dSDK.SetUserConsent(true);
+Yodo1U3dUtils.SetUserConsent(true);
 ```
 
 如果用户是16岁以下的儿童或未同意，请将下面的标志设置为`false`。
 
 ```c#
-Yodo1U3dSDK.SetUserConsent(false);
+Yodo1U3dUtils.SetUserConsent(false);
 ```
 
 ## 2. COPPA-COPPA 美国儿童在线隐私权保护法
@@ -25,13 +25,13 @@ Yodo1U3dSDK.SetUserConsent(false);
 如果用户属于年龄限制类别(即13岁以下的儿童)，请将标志设置为`true`。
 
 ```c#
-Yodo1U3dSDK.SetTagForUnderAgeOfConsent(true);
+Yodo1U3dUtils.SetTagForUnderAgeOfConsent(true);
 ```
 
 如果用户不属于年龄限制类别(即，13岁或以上)请将标志设为`false`。
 
 ```c#
-Yodo1U3dSDK.SetTagForUnderAgeOfConsent(false);
+Yodo1U3dUtils.SetTagForUnderAgeOfConsent(false);
 ```
 
 ## 3. CCPA-CCPA 加州消费者隐私法案
@@ -41,13 +41,13 @@ Yodo1U3dSDK.SetTagForUnderAgeOfConsent(false);
 如果同意出售个人数据，请将标志设置为`false`。
 
 ```c#
-Yodo1U3dSDK.SetDoNotSell(false);
+Yodo1U3dUtils.SetDoNotSell(false);
 ```
 
 如果不同意出售个人数据，请将标志设置为`true`。
 
 ```c#
-Yodo1U3dSDK.SetDoNotSell(true);
+Yodo1U3dUtils.SetDoNotSell(true);
 ```
 
 <!-- ## 4，展示年龄选择框
