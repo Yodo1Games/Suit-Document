@@ -27,7 +27,7 @@ android.enableJetifier=true
 请在应用module内build.gradle添加以下依赖：
 
 ```groovy
-api 'com.yodo1.suit.pay:core:6.1.15.0'
+api 'com.yodo1.suit.pay:core:6.1.16.0'
 api 'com.yodo1.suit.bridge:pay:6.1.15'
 ```
 
@@ -167,7 +167,7 @@ yodo1_sdk_mode=offline
 #修改游戏是横屏还是竖屏。portrait或者landscape,二选一。
 thisProjectOrient=portrait
 Yodo1SDKType=yodo1_global
-Yodo1SDKVersion=6.1.14
+Yodo1SDKVersion=6.1.16
 CHANNEL_CODE_PUBLISH=GooglePlay
 CHANNEL_CODE=GooglePlay
 sdk_code=GooglePlay
