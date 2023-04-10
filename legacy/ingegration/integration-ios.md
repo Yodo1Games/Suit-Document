@@ -3,8 +3,8 @@
 **开始之前**:
 
 >* `iOS14`要求`Xcode`版本为`12+`，请务必升级您的`Xcode`版本到`12+`。
->*  `SDK`要求`iOS`的最低版本为`iOS10.0`
->*  最简便的方法就是使用`CocoaPods`(请使用`1.10`及以上版本), 如果您刚开始接触`CocoaPods`，请参阅其[官方文档](https://guides.cocoapods.org/using/using-cocoapods)，了解如何创建和使用`Podfile`
+>* `SDK`要求`iOS`的最低版本为`iOS10.0`
+>* 最简便的方法就是使用`CocoaPods`(请使用`1.10`及以上版本), 如果您刚开始接触`CocoaPods`，请参阅其[官方文档](https://guides.cocoapods.org/using/using-cocoapods)，了解如何创建和使用`Podfile`
 
 ## 集成步骤
 
@@ -43,36 +43,42 @@ pod install --repo-update
 
 #### 2.1 设置`Yodo1KeyInfo.plist`参数
 
-``` xml
+```xml
 <key>KeyConfig</key> 
-	<dict> 
-   	 	<key>AppsFlyer_domain</key> 
-    		<string>[AppsFlyer domain]</string> 
-    	<key>ThinkingAppId</key> 
-    		<string>[ThinkingData AppId]</string> 
-    	<key>AppsFlyer_Schemes</key> 
-    		<string>[AppsFlyer Schemes]</string> 
-    	<key>ThinkingServerUrl</key> 
-    		<string>[Thinking ServerUrl]</string> 
-    	<key>AppsFlyer_Identifier</key> 
-    		<string>[[AppsFlyer Identifier]</string> 
-    	<key>SdkVersion</key> 
-    		<string>1.5.1.1</string> 
-    	<key>GameKey</key> 
-    		<string>[Yodo1 GameKey]</string> 
-    	<key>debugEnabled</key> 
-   	 		<string>0</string> 
-    	<key>RegionCode</key> 
-    		<string>[Yodo1 RegionCode]</string> 
-    	<key>UmengAnalytics</key> 
-    		<string>[Umeng AppId]</string> 
-    	<key>AppleAppId</key> 
-    		<string>[Apple AppId]</string> 
-    	<key>AppsFlyerDevKey</key> 
-    		<string>[AppsFlyer DevKey]</string> 
+<dict> 
+	<key>AppsFlyer_domain</key> 
+		<string>[AppsFlyer domain]</string> 
+	<key>ThinkingAppId</key> 
+		<string>[ThinkingData AppId]</string> 
+	<key>AppsFlyer_Schemes</key> 
+		<string>[AppsFlyer Schemes]</string> 
+	<key>ThinkingServerUrl</key> 
+		<string>[Thinking ServerUrl]</string> 
+	<key>AppsFlyer_Identifier</key> 
+		<string>[[AppsFlyer Identifier]</string> 
+	<key>SdkVersion</key> 
+		<string>1.5.1.1</string> 
+	<key>GameKey</key> 
+		<string>[Yodo1 GameKey]</string> 
+	<key>debugEnabled</key> 
+		<string>0</string> 
+	<key>RegionCode</key> 
+		<string>[Yodo1 RegionCode]</string> 
+	<key>UmengAnalytics</key> 
+		<string>[Umeng AppId]</string> 
+	<key>AppleAppId</key> 
+		<string>[Apple AppId]</string> 
+	<key>AppsFlyerDevKey</key> 
+		<string>[AppsFlyer DevKey]</string> 
 </dict>
 ```
-![](./../../resource/ios_init_appkey.png)
+
+<!-- markdownlint-disable -->
+<figure> 
+	<img src="/zh/assets/images/ios_init_appkey.png" width="400">
+    <figcaption>Unity Settings</figcaption> 
+</figure>
+
 #### 2.2 `iOS9 App Transport Security`设置
 在`iOS9`中，苹果增加了关于`ATS`的控制。为了确保在所有中介网络上不间断地支持MAS广告，需要您在`Info.plist`文件中进行以下设置：
 
@@ -92,13 +98,21 @@ pod install --repo-update
 #### 2.3 禁用`BitCode`
 为确保所有中介网络正常工作，请禁用bitcode，如下图所示:
 
+<!-- markdownlint-disable -->
+<figure> 
+	<img src="/zh/assets/images/ios_bitcode.png" width="400">
+    <figcaption>Unity Settings</figcaption> 
+</figure>
+
 <img src="./../../resource/ios_bitcode.png" style="zoom:50%;" />
 
 ### 3. 遵守必要的法律框架(Privacy)
 请遵守适用于您的游戏及其用户的所有法律框架。
 
 <font color=red>重要：</font>不遵守这些框架可能会导致苹果商店拒绝你的游戏，并对你的游戏盈利产生负面影响。
+
 #### 3.1 导入头文件`Yodo1Suit.h``YD1AgePrivacyManager.h`
+
 ``` obj-c
 #import "YodoSuit.h"
 #import "YD1AgePrivacyManager.h"

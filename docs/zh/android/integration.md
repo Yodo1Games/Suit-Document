@@ -173,7 +173,7 @@ CHANNEL_CODE=GooglePlay
 sdk_code=GooglePlay
 ```
 
-添加计费点文件，如果不接入支付功能可忽略。新建或者修改文件src/main/assets/[yodo1_payinfo.xml](../resource/yodo1_payinfo.xml)文件。
+添加计费点文件，如果不接入支付功能可忽略。新建或者修改文件src/main/assets/[yodo1_payinfo.xml](../assets/yodo1_payinfo.xml)文件。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -185,7 +185,7 @@ productDesc="LuxuryTourSale" productId="iap_few_coins" productName="LuxuryTourSa
 </products>
 ```
 
-这里提供一个excel模板。[点击打开IapConfig_sample.xls](../resource/IapConfig_sample.xls)
+这里提供一个excel模板。[点击打开IapConfig_sample.xls](../assets/IapConfig_sample.xls)
 
 ## 集成DK
 
