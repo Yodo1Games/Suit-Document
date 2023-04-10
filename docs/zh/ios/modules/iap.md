@@ -5,7 +5,7 @@
 >* `iOS14`要求`Xcode`版本为`12+`，请确保升级你的`Xcode`版本为`12+`。
 >* SDK要求`iOS`的最低版本为`10.0`
 >* 最简单的方法是使用`CocoaPods`(请使用`1.10`及以上)，如果你是`CocoaPods`的新手，请参考它的[官方文档](https://guides.cocoapods.org/using/using-cocoapods)，学习如何创建和使用`Podfile`
->* 集成Purchase之前需要优先集成Analytics，请参考[Analytics集成文档](./yodo1-analytics-ios.md)
+>* 集成Purchase之前需要优先集成Analytics，请参考[Analytics集成文档](./analyze.md)
 
 ## 集成步骤
 

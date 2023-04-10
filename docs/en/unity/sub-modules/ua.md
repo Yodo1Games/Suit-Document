@@ -6,9 +6,9 @@
 
 ## Integrate Configuration
 
-### 1. `Android` Configuration
+### `Android` Configuration
 
-#### 1.1 Android permission
+#### Android permission
 
 In early 2022, Google announced a change to the behavior of Google Play Services and fetching of the Android Advertising ID. According to the [announcement](https://support.google.com/googleplay/android-developer/answer/6048248?hl=en), apps targeting Android 13 (API 33) and above must declare a Google Play services normal permission in their `AndroidManifest.xml` file in order to get access to the device’s Advertising ID.
 
@@ -16,18 +16,18 @@ UA SDK adds the AD_ID permission automatically.
 
 > Note
 >
->* If your app participates in the [Designed for Families]((https://support.google.com/googleplay/android-developer/topic/9877766?hl=en&ref_topic=9858052)) program, you should Revoke the AD_ID permission.
+>* If your app participates in the [Designed for Families](https://support.google.com/googleplay/android-developer/topic/9877766?hl=en&ref_topic=9858052)program, you should Revoke the AD_ID permission.
 >* For apps that target API level 32 (Android 12L) or older, this permission is not needed.
 
 ##### Revoking the `AD_ID` permission
 
 According to [Google’s Policy](https://support.google.com/googleplay/android-developer/answer/11043825?hl=en), apps that target children must not transmit the Advertising ID.
 
-针对Android 13 (API 33)及以上的儿童应用程序必须防止权限合并到他们的应用程序，通过添加一个撤销声明到他们的Manifest:
+Children's apps for Android 13 (API 33) and above must prevent permission from being merged into their apps by adding an undo statement to their Manifest:
 
 ```xml
 <uses-permission android:name="com.google.android.gms.permission.AD_ID"
- tools:node="remove"/>
+    tools:node="remove"/>
 ```
 
 For more information, see [Google Play Services documentation](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info#public-string-getid).
@@ -97,7 +97,7 @@ public static void InitializeWithConfig(Yodo1U3dUAConfig config);
 
 * `Yodo1U3dUAConfig` is the parameter configuration required for initialization
 
-### Sample Code
+### Example: Initialize SDK
 
 The following example showing how to call SDK initialization in the `Start` method
 
@@ -133,7 +133,7 @@ public static void TrackEvent(string eventName, Dictionary<string, object> event
 * `eventName` is the In-app event name
 * `eventValues` is the event parameters `Dictionary`
 
-#### Sample Code
+#### Example: TrackEvent
 
 ```c#
 Dictionary<string, object> dic = new Dictionary<string, object>();

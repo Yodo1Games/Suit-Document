@@ -11,7 +11,7 @@
 
 游戏内商品的iap 商品计费点，在项目中单独配置放置。大多数渠道包，通过打到包内的 xml 配置，获取商品最新的价格、名称、描述等信息。其中小米，华为，googlePlay等渠道，使用计费点托管到渠道服务器，根据对应的productId，来获取商品信息，或者发起支付。
 
-这里提供一个excel模板。[点击打开IapConfig_sample.xls](./../../resource/IapConfig_sample.xls)
+这里提供一个excel模板。[点击打开IapConfig_sample.xls](./../../assets/IapConfig_sample.xls)
 
 接入方，收集统计游戏内所有的商品信息，填入excel表格中，上传反馈到 yodo1 系统即可。需要进行托管的计费点，由运营人员编辑各个渠道所需要的格式，上传开启。游戏开发一视同仁。
 
@@ -134,8 +134,6 @@ Yodo1U3dConstants.PayType结构：
 | PayTypeAlipay  |   支付宝       |
 | PayTypeChannel | 支付渠道(ios为appstore)  |
 | PayTypeSMS     |   短代               |
-
-
 
 ## 查询漏单
 

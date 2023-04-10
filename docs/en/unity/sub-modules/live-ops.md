@@ -29,25 +29,24 @@ private static System.Action<int, string> _onInitializeFailureEvent;
 public static event System.Action<int, string> OnInitializeFailureEvent;
 ```
 
-#### Sample Code
+#### Example: Initialize
 
 The following example showing how to call SDK initialization in the `Start` method
 
 ```c#
 void Start()  {
+  Yodo1U3dLiveOpsSDK.OnInitializeSuccessEvent += () =>
+  {
 
-	Yodo1U3dLiveOpsSDK.OnInitializeSuccessEvent += () =>
-	{
-		
-	};
+  };
 
-	Yodo1U3dLiveOpsSDK.OnInitializeFailureEvent += (int code, string message) =>
-	{  
-		
-	};
-	
-	Yodo1U3dLiveOpsSDK.Instance.Initialize("<Game_Key>");
-}
+  Yodo1U3dLiveOpsSDK.OnInitializeFailureEvent += (int code, string message) =>
+  {  
+
+  };
+
+  Yodo1U3dLiveOpsSDK.Instance.Initialize("<Game_Key>");
+  }
 ```
 
 ## Remote configuration
@@ -67,7 +66,7 @@ public static string StringValue(string key, string defaultValue);
 * `key` is to obtain the key value corresponding to the remote configuration value
 * `defaultValue` is the default value for setting value
 
-#### Sample Code
+#### Example: StringValue method
 
 ```c#
 string valueString = Yodo1U3dLiveOpsSDK.Instance.StringValue("test_string", string.Empty);
@@ -88,7 +87,7 @@ public static bool BooleanValue(string key, bool defaultValue);
 * `key` is to obtain the key value corresponding to the remote configuration value
 * `defaultValue` is the default value for setting value
 
-#### Sample Code
+#### Example: BooleanValue method
 
 ```c#
 bool valueBool = Yodo1U3dLiveOpsSDK.Instance.BooleanValue("test_bool", false);
@@ -109,7 +108,7 @@ public static int IntValue(string key, int defaultValue);
 * `key` is to obtain the key value corresponding to the remote configuration value
 * `defaultValue` is the default value for setting value
 
-#### Sample Code
+#### Example: IntValue method
 
 ```c#
 int valueInt = Yodo1U3dLiveOpsSDK.Instance.IntValue("test_int", 10);
@@ -130,7 +129,7 @@ public static double DoubleValue(string key, double defaultValue)
 * `key` is to obtain the key value corresponding to the remote configuration value
 * `defaultValue` is the default value for setting value
 
-#### Sample Code
+#### Example: DoubleValue method
 
 ```c#
 double valueDouble = Yodo1U3dLiveOpsSDK.Instance.DoubleValue("test_ double", 10.0);
@@ -151,7 +150,7 @@ public static float FloatValue(string key, float defaultValue)
 * `key` is to obtain the key value corresponding to the remote configuration value
 * `defaultValue` is the default value for setting value
 
-#### Sample Code
+#### Example: FloatValue method
 
 ```c#
 float valueFloat = Yodo1U3dLiveOpsSDK.Instance.FloatValue("test_ float", 10.0);
@@ -185,19 +184,18 @@ private static System.Action<int, string> _onActivationCodeFailureEvent;
 public static event System.Action<int, string> OnActivationCodeFailureEvent;
 ```
 
-### Sample Code
+### Example: Verify the reddem code
 
 ```c#
 Yodo1U3dLiveOpsSDK.OnActivationCodeRewardEvent += (Dictionary<string, object> reward) =>
 {
-	
+
 };
 
 Yodo1U3dLiveOpsSDK.OnActivationCodeFailureEvent += (int code, string message) =>
 {
-	
-};
 
+};
 
 string activationCode = "<Your_Activation_Code>";
 Yodo1U3dLiveOpsSDK.Instance.VerifyActivationCode(activationCode);

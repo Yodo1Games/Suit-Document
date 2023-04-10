@@ -27,10 +27,10 @@ public static void Initialize(Yodo1U3dAnalyticsConfig config);
 ```c#
 void Start()
 {
-	Yodo1U3dAnalyticsConfig config = new Yodo1U3dAnalyticsConfig();
-	config.GameKey = "<Game_Key>";
-	config.TD_AppId = "<TD_App_Id>";
-	Yodo1U3dAnalytics.Initialize(config);
+  Yodo1U3dAnalyticsConfig config = new Yodo1U3dAnalyticsConfig();
+  config.GameKey = "<Game_Key>";
+  config.TD_AppId = "<TD_App_Id>";
+  Yodo1U3dAnalytics.Initialize(config);
 }
 ```
 
@@ -57,7 +57,7 @@ public static void TrackEvent(string eventName, Dictionary<string, object> event
 * `eventName`是应用内事件名称，事件名称是`string`类型，只能以字母开头，可包含数字，字母和下划线"_"，长度最大为50个字符，对字母大小写不敏感。
 * `eventValues`是事件参数`Dictionary`，其中每个元素代表一个属性，支持`string`、`bool`、`int`、`double`和`float`.
 
-#### 示例代码
+#### TrackEvent示例代码
 
 ```c#
 Dictionary<string, object> dic = new Dictionary<string, object>();
@@ -86,7 +86,7 @@ public static void Login(string accountId);
 
 * `accountId`是游戏中定义的账号id
 
-#### 示例代码
+#### 设置账号ID示例代码
 
 ```c#
 Yodo1U3dAnalytics.Login("test_account_id");

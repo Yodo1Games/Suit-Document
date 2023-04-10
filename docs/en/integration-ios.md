@@ -1,19 +1,25 @@
 # iOS Integration
 
-**Basic requirements**:
+**Basic requirements**
+
 >* `iOS14` requires `Xcode` version to be `12+`, Upgrade `Xcode` version to `12+`.
->*  `SDK` requires the minimum version of `iOS` to be `iOS10.0`
->*  The easiest way is to use `CocoaPods` (Use `1.10` and above), Refer `CocoaPods` [official documentation](https://guides.cocoapods.org/using/using -cocoapods), for learning how to create and use a `Podfile`
+>* `SDK` requires the minimum version of `iOS` to be `iOS10.0`
+>* The easiest way is to use `CocoaPods` (Use `1.10` and above), Refer `CocoaPods` [official documentation](https://guides.cocoapods.org/using/using -cocoapods), for learning how to create and use a `Podfile`
 
 ## Integration steps
+
 ### 1. Add `iOS SDK` to the project
-#### 1.1 Create `Podfile` file</br>
+
+#### 1.1 Create `Podfile` file
+
 Create a `Podfile` file in the project root directory
+
 ```ruby
 touch Podfile
 ```
 
-#### 1.2 Import the iOS SDK into the project</br>
+#### 1.2 Import the iOS SDK into the project
+
 Open the project's `Podfile` file and add the following code to the application's target:
 
 ```ruby
@@ -26,24 +32,33 @@ pod 'Yodo1Suit/Yodo1_UCenter', '1.5.1.4'
 ```
 
 Execute the following command in `Terminal`:</br>
+
 ```ruby
 pod install --repo-update
 ```
 
 ### 2. `Xcode` project configuration
+
 #### 2.1 Set `Info.plist` parameter
-``` xml
-<key>AnalyticsInfo</key> 
-<dict>  
-    	<key>ThinkingAppId</key> 
-    	<string>[ThinkingData AppId]</string> 
-    	<key>AppleAppId</key> 
-    	<string>[Apple AppId]</string> 
-    	<key>AppsFlyerDevKey</key> 
-    	<string>[AppsFlyer DevKey]</string> 
+
+```xml
+<key>AnalyticsInfo</key>
+<dict>
+ <key>ThinkingAppId</key>
+ <string>[ThinkingData AppId]</string>
+ <key>AppleAppId</key>
+ <string>[Apple AppId]</string>
+ <key>AppsFlyerDevKey</key>
+ <string>[AppsFlyer DevKey]</string>
 </dict>
 ```
-![](./../resource/ios_init_appkey.png)
+
+<!-- markdownlint-disable -->
+<figure> 
+	<img src="/zh/assets/images/ios_init_appkey.png" width="400">
+    <figcaption>Unity Settings</figcaption> 
+</figure>
+
 #### 2.2 Set `iOS9 App Transport Security`
 In `iOS9`, Apple added controls on `ATS`. To ensure uninterrupted support of statistics on all intermediary networks, add the following settings in the `Info.plist` file:
 
@@ -61,9 +76,14 @@ The plist source code can also be edited(`Open As Source Code`) to achieve the s
 ```
 
 #### 2.3 Disable `BitCode`
+
 To ensure that all intermediary networks work properly, disable bitcode as shown in the image below:
 
-<img src="./../resource/ios_bitcode.png" style="zoom:50%;" />
+<!-- markdownlint-disable -->
+<figure> 
+	<img src="/zh/assets/images/ios_bitcode.png" width="400">
+    <figcaption>Unity Settings</figcaption> 
+</figure>
 
 ### 3. Initialize The SDK
 #### 3.1 Import the header file `Yodo1Manager.h `
@@ -98,7 +118,6 @@ You need to prepare the below `SHARED KEY` before you start integration In-App p
 
 ![image](https://user-images.githubusercontent.com/12006868/165882664-0f81c01a-5f03-40d4-8998-01eb94965fbf.png)
 
-
 ### 2. Set up the SKUs of game
 
  `Yodo1ProductInfo.plist`
@@ -124,7 +143,12 @@ You need to prepare the below `SHARED KEY` before you start integration In-App p
     	<string>Period Unit</string> 
 </dict>
 ```
-![](./../resource/ios_purchase_point.png)
+
+<!-- markdownlint-disable -->
+<figure> 
+	<img src="/zh/assets/images/ios_purchase_point.png" width="400">
+    <figcaption>Unity Settings</figcaption> 
+</figure>
 
 The product structure is as follows
 	

@@ -13,16 +13,19 @@
 配置对象路径请参照插件的结构图:
 Yodo1AntiIndulgedSDK/User/Resources/Yodo1U3dSettings.asset
 
-<center class="half">
-    <img src="/zh/assets/images/unity_anti_setting_0.png" width="400"/>
-</center>
+<!-- markdownlint-disable -->
+<figure> 
+	<img src="/zh/assets/images/unity_anti_setting_0.png" width="400">
+    <figcaption>Unity Settings</figcaption> 
+</figure>
 
 另外说明，标题栏Assets/Yodo1Anti Settings，只对Android配置有效。请开发者以上图示意配置为主。
 
-<center class="half">
-    <img src="/zh/assets/images/unity_anti_setting_1.png" width="400"/>
-</center>
-
+<!-- markdownlint-disable -->
+<figure> 
+	<img src="/zh/assets/images/unity_anti_setting_1.png" width="400">
+    <figcaption>Unity Settings</figcaption> 
+</figure>
 
 ### 1. `Android`配置
 

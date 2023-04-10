@@ -20,7 +20,7 @@ public static void Initialize(Yodo1U3dAnalyticsConfig config);
 
 * `config` is the parameter configuration required for initialization
 
-#### Sample Code
+#### Example: Initialize
 
 The following example showing how to call SDK initialization in the `Start` method
 
@@ -57,7 +57,7 @@ public static void TrackEvent(string eventName, Dictionary<string, object> event
 * `eventName` is the In-app event name, the event name is `string` type, the name can start with a letter and contain digits, letters, and underscores (_). The name can contain a maximum of 50 characters and is case insensitive.
 * `eventValues` is the event parameters `Dictionary`, Where each element represents an attribute, supports `string`、`bool`、`int`、`double` and `float`.
 
-#### Sample Code
+#### Example: TrackEvent method
 
 ```c#
 Dictionary<string, object> dic = new Dictionary<string, object>();
@@ -86,7 +86,7 @@ public static void Login(string accountId);
 
 * `accountId` is the user ID defined in the game
 
-#### Sample Code
+#### Example: Set user ID
 
 ```c#
 Yodo1U3dAnalytics.Login("test_account_id");
@@ -105,7 +105,7 @@ Yodo1U3dAnalytics.Login("test_account_id");
 public static void Logout();
 ```
 
-#### Sample Code
+#### Example: Logout ID
 
 ```c#
 Yodo1U3dAnalytics.Logout();
@@ -121,7 +121,7 @@ Yodo1U3dAnalytics.Logout();
 public static string GetDistinctId();
 ```
 
-#### Sample Code
+#### Example: Get the distinct id of Thinking SDK
 
 ```c#
 string distinct_id = Yodo1U3dAnalytics.GetDistinctId();
@@ -137,7 +137,7 @@ string distinct_id = Yodo1U3dAnalytics.GetDistinctId();
 public static string GetDeviceId();
 ```
 
-#### Sample Code
+#### Example: Get the device id of the Thinking SDK
 
 ```c#
 string device_id = Yodo1U3dAnalytics.GetDeviceId();
