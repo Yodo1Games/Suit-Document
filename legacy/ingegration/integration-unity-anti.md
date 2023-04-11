@@ -67,7 +67,7 @@ Yodo1AntiIndulgedSDK/User/Resources/Yodo1U3dSettings.asset
 接入流程图
 
 <center class="half">
-    <img src="./../../resource/unity_anti_ process.png" width="300"/>
+    <img src="./../../resource/unity_anti_process.png" width="300"/>
 </center>
 
 

@@ -54,7 +54,7 @@ Auto Load: 是否开启自动加载，自动调用初始化。
 ### 1. 接入流程示意图
 
 <center class="half">
-    <img src="/zh/assets/images/unity_anti_ process.png" width="400"/>
+    <img src="/zh/assets/images/unity_anti_process.png" width="400"/>
 </center>
 
 ### 2. SDK初始化及设置事件监听器
