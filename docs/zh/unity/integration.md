@@ -22,7 +22,6 @@
 </figure>
 
 >* AppKey配置Yodo1 GameKey，RegionCode配置Yodo1 RegionCode（没有可以不用配置）
->* 如果使share功能，请勾选`Share`，同时配置对应的appkey和link
 >* 如果使用渠道支付功能，请勾选`GooglePlay`
 >* 数据统计ThinkingData必须配置，请配置ThinkingData appid
 >* 其他数据统计是可选的，如果需要请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置）

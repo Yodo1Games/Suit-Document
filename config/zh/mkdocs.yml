@@ -44,6 +44,7 @@ nav:
       - 'unity/modules/iap.md'
       - 'unity/modules/exit.md'
     - 可选功能:
+      - unity/optional-modules/anti.md
       - unity/optional-modules/online-config.md
       - unity/optional-modules/activation-code.md
       - unity/optional-modules/share.md
@@ -55,13 +56,13 @@ nav:
       - unity/optional-modules/info.md
       - unity/optional-modules/privacy.md
 
-  - Unity Plugins:
-    - 'unity/sub-modules/getting-started.md'
-    - 'unity/sub-modules/analyze.md'
-    - 'unity/sub-modules/ua.md'
-    - 'unity/sub-modules/live-ops.md'
-    - 'unity/sub-modules/share.md'
-    - 'unity/sub-modules/anti.md'
+  # - Unity Plugins:
+  #   - 'unity/sub-modules/getting-started.md'
+  #   - 'unity/sub-modules/analyze.md'
+  #   - 'unity/sub-modules/ua.md'
+  #   - 'unity/sub-modules/live-ops.md'
+  #   - 'unity/sub-modules/share.md'
+  #   - 'unity/sub-modules/anti.md'
 
   - iOS:
     - 'ios/integration.md'
