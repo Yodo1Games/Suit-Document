@@ -2,43 +2,47 @@
 
 **集成准备**:
 
->* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1SdkUnityPlugin_AntiIndulged/Yodo1AntiAddictionSDK_3.2.5.unitypackage)
+>* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1SdkUnityPlugin_AntiIndulged/Yodo1AntiAddictionSDK_3.2.7.unitypackage)
 
 ## 集成配置
 
-请在MAS后台申请应用相关的ID和秘钥，将会得到应用的配置内容。
+请联系发行商务人员，获取GameAppKey，将会得到值应用的配置内容。
 
 请将AppKey填入SDK配置对象内(如果该游戏没有RegionCode可不填)，并推荐在调试阶段打开DebugMode及Log开关，正式包请关闭。
 
 配置对象路径请参照插件的结构图:
-Yodo1AntiIndulgedSDK/User/Resources/Yodo1U3dSettings.asset
+/Assets/Yodo1/Anti/Resources/Yodo1U3dSettings.asset
+
+<center class="half">
+    <img src="/zh/assets/images/unity_anti_setting_0.png" width="400"/>
+</center>
+
+标题栏 Yodo1/Anti-Addication SDK/Settings，Android和iOS平台切换后需要单独配置。请开发者以示意图配置为主。
 
 <!-- markdownlint-disable -->
 <figure> 
-	<img src="/zh/assets/images/unity_anti_setting_0.png" width="400">
+	<img src="/zh/assets/images/unity_anti_setting_1.jpg" width="400">
     <figcaption>Unity Settings</figcaption> 
 </figure>
 
-另外说明，标题栏Assets/Yodo1Anti Settings，只对Android配置有效。请开发者以上图示意配置为主。
+App Key: 必填参数，标识游戏唯一。
 
-<!-- markdownlint-disable -->
-<figure> 
-	<img src="/zh/assets/images/unity_anti_setting_1.png" width="400">
-    <figcaption>Unity Settings</figcaption> 
-</figure>
+Regin Code: 区域代码，可选。
+
+Enabled: 是否开启功能，默认勾选打开。
+
+Auto Load: 是否开启自动加载，自动调用初始化。
 
 ### 1. `Android`配置
 
 #### 1.1 Android发布
 
-发布Android包时，请先检查Assets/Yodo1AntiAddictionSDK/Plugins/Android/anti-addiction-unity-x.x.x文件是否存在，并在上文提到的Yodo1U3dSetting.asset里配置好Android Settings部分的内容。
-
-之后，修改Assets/Plugins/Android/AndroidManifest.xml内以下标签的内容：
+发布Android包时，修改Assets/Plugins/Android/AndroidManifest.xml内以下标签的内容：
 
 <font color=red>注意: </font>如果开发者需使用自己的AndroidManifest.xml，那么请将以下内容复制进去。
 
 ```c#	
-<!-- 游戏要发布的目标平台的平台代码，这里置为默认值'Yodo1'即可。yodo1其他插件同样有保留一个 -->
+<!-- 游戏要发布的目标平台的发布代码，这里置为默认值'Yodo1'即可。yodo1其他插件同样有保留一个 -->
 <meta-data
    android:name="Yodo1ChannelCode"
    android:value="Yodo1"
@@ -76,7 +80,7 @@ public static void SetTimeLimitNotifyCallBack(TimeLimitNotifyDelegate timeLimitN
 public static void SetPlayerDisconnectionCallBack(PlayerDisconnectionDelegate playerDisconnectionCallback);
 ```
 
-#### 2.4 初始化
+#### 2.4 初始化,自动初始化则不需要调用
 
 ```c#
 public static void Init();
@@ -126,11 +130,12 @@ private void Awake() {
 
 玩家登录后，在进入游戏前必须进行实名验证。
 
-开发者只需在玩家每次进入游戏之前都调用实名认证接口，并等待回调结果即可。
+1，如果玩家已经实名或者完成了实名，ResumeGame 继续游戏。
 
-防沉迷SDK会自动判断玩家先前是否已经进行过实名认证，如果没有会弹出窗口来引导玩家进行实名制。
+2，如果玩家实名失败或者拒绝实名，可以引导玩家进行实名制，务必完成实名操作才能进行游戏，否则EndGame 结束游戏。
 
-<font color=red>注意: </font>此接口中需要传入的accountId可为游戏自身的账号ID，也可以在接入Yodo1的账号SDK后使用账号系统返回的。如果都没有，请使用设备ID。
+<font color=red>注意: </font>此接口中需要传入的accountId可为游戏自身的账号ID，也可以在接入Yodo1 Suit SDK后使用账号系统返回的userId。如果都没有，请使用设备ID。
+防沉迷系统使用accountId来表示唯一用户。
 
 ```c#
 public static void VerifyCertificationInfo(string accountId,
@@ -144,8 +149,6 @@ public void readyEnterGame(string accountId) {
     // 调用实名认证接口
     Yodo1U3dAntiAddiction.VerifyCertificationInfo(accountId, (Yodo1U3dEventAction eventAction) => {
         if (eventAction == Yodo1U3dEventAction.ResumeGame) {
-            // 实名认证成功后可查询玩家是否为游客模式
-            bool isGuestUser = Yodo1U3dAntiIndulged.IsGuestUser();
             // 此时可继续游戏
             Online();
         } else if (eventAction == Yodo1U3dEventAction.EndGame) {
@@ -161,8 +164,11 @@ public void readyEnterGame(string accountId) {
 
 ### 4. 玩家上线及下线
 
-当实名认证验证成功后，最后一步是调用上线接口，来通知防沉迷SDK玩家将要开始游戏。
-收到成功结果之后，此时所有步骤已进行完毕，可以让玩家进行游戏了。
+当实名认证验证成功后，最后一步是调用一次上线接口，来通知防沉迷SDK玩家将要开始游戏。
+收到成功结果之后，此时所有步骤已进行完毕，可以让玩家进行游戏了。有时开发者根据需要，一些游戏场景例如大厅,购物车,地图等不算入
+游戏时长，则可根据界面切换调用下线和上线。
+
+补充说明：防沉迷已替开发者处理好APP生命周期中自动触发的上下线动作，例如在游戏被切换到后台、从后台返回以及被销毁等。
 
 
 ```c#
@@ -193,11 +199,10 @@ private void Offline() {
 }
 ```
 
-补充说明：防沉迷已替开发者处理好APP生命周期中自动触发的上下线动作，例如在游戏被切换到后台、从后台返回以及被销毁等。
 
 ### 5. 付款限制与上报商品信息
 
-对游客与未成年人玩家，限制了他们每日/月可消费的最大金额。
+对未成年人玩家，规则限制了他们每日/月可消费的最大金额。
 
 开发者需要在调用支付接口进行支付之前，先调用付费限制来判断玩家是否还可继续购买。
 
@@ -242,40 +247,9 @@ void OnPurchaseSuccess(ProductInfo info) {
 ### 6. 其他功能
 
 ```c#
-/// Is Chinese main land(是否是中国大陆).
-public static bool IsChineseMainland();
-
-/// Gets whether the current user is a guest user(获取当前用户是否为试玩).
-public static bool IsGuestUser();
+/// 在实名完成后,调用可获取到玩家年龄
+public static int getAge();
 
 /// Get sdk version(获取SDK版本).
 public static string GetSDKVersion();
-```
-
-### 7. 补充说明
-
-使用Yodo1打包系统需要修改的内容
-
-如果开发者准备使用Yodo1的打包系统处理游戏包，那么请注释以下文件中的配置：
-Asset/Yodo1AntiAddictionSDK/Editor/Dependencies/AntiAddictionDependencies.xml
-
-```c#
-<dependencies>
-  <iosPods>
-    <sources>
-      <source>https://github.com/Yodo1Sdk/Yodo1Spec.git</source>
-    </sources>
-    <iosPod name="Yodo1AntiAddiction2.0" version="0.9.3" minTargetSdk="9.0">
-    </iosPod>
-  </iosPods>
-  <androidPackages>
-    <repositories>
-      <repository>http://nexus.yodo1.com:8081/repository/maven-public/</repository>
-    </repositories>
-    <!-- 使用Yodo1打包系统需要注释部分，检查版本名为最新版本 -->
-    <!-- <androidPackage spec="com.yodo1.common:support:1.0.2" /> -->
-    <!-- <androidPackage spec="com.yodo1.anti-addiction:core:3.0.23" /> -->
-    <!-- End -->
-  </androidPackages>
-</dependencies>
 ```
