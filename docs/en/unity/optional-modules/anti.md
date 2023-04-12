@@ -32,17 +32,17 @@ Please switch to Android or iOS platform, and then fill in it
 >* **Enabled**: Whether to enabled the function, please choice it by default
 >* **Auto Load**: Whether to enable automatic call initialization
 
-### 3. Integration flow chart
+<!-- ### 3. Integration flow chart
 
 <center class="half">
     <img src="/zh/assets/images/unity_anti_process.png" width="500"/>
-</center>
+</center> -->
 
-### 4. SDK initialization
+### 3. SDK initialization
 
 Call the relevant code in the function of object `Awake` during project initialization
 
-#### 4.1 Set the initialization delegate
+#### 3.1 Set the initialization delegate
 
 ```c#
 /// <summary>
@@ -56,7 +56,7 @@ Call the relevant code in the function of object `Awake` during project initiali
 public delegate void InitDelegate(bool result, string content);
 ```
 
-#### 4.2 Initialize method
+#### 3.2 Initialize method
 
 ```c#
 public static void Init();
@@ -93,7 +93,7 @@ public class Sample : MonoBehaviour {
 
 ```
 
-### 5. Real name authentication
+### 4. Real name authentication
 
 When the game starts, a "enter the game" button should be set. After clicking, a real-name verification window will pop up. Users have to enter the citizen ID and relevant information of the People's Republic of China.
 
@@ -139,7 +139,7 @@ public class Sample : MonoBehaviour {
 }
 ```
 
-### Play time limit
+### 5. Play time limit
 
 Child players will receive a warning after the total play time accumulates to a certain period of time. When the play time exceeds the limit, they will not be able to enter the game.
 
@@ -376,10 +376,13 @@ Yodo1U3dAntiAddiction.ReportProductReceipt(productId, type, priceCent, currency,
 
 ## Other Methods
 
-```c#
-/// 在实名完成后,调用可获取到玩家年龄
-public static int getAge();
+### Get user's age
 
-/// Get sdk version(获取SDK版本).
+```c#
+public static int getAge();
+```
+### Get SDK version
+
+```c#
 public static string GetSDKVersion();
 ```
