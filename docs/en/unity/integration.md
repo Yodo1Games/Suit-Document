@@ -22,12 +22,12 @@
     <!-- <figcaption>Unity Settings</figcaption>  -->
 </figure>
 
->* **App Key**: Unique identifier for your game in Yodo1, you can get it from the Yodo1 team
->* **Region Code**: You can get it from the Yodo1 team, which is optional
->* **Publishing Store**: Please choice `GooglePlay` if your game is published on the Google Play store and uses Yodo's in-app purchase. Please choice `ChinaMainLand` if your game is published to the stores in China Mainland and contact the Yodo1 team for build
->* **Thinking Data**: Please fill in app id of Thinking Data
->* **AppsFlyer** is optional
->* **Debug Mode**: Enable debug log, please turn it off when you publish your game to stores
+>* **App Key**: Unique identifier for your game in Yodo1, you can get it from Yodo1 team.
+>* **Region Code**: You can get it from Yodo1 team, which is optional.
+>* **Publishing Store**: Please select `GooglePlay` if your game is published on the Google Play store and uses Yodo's in-app purchase. Please select `ChinaMainLand` if your game is published to the stores in China Mainland and contact Yodo1 team for cloud building.
+>* **Thinking Data**: Please fill in app id of Thinking Data.
+>* **AppsFlyer** is optional.
+>* **Debug Mode**: This is to enable debug logs, Turn this off when you publish your game to store.
 
 #### 1.2 Support for AndroidX
 
@@ -77,7 +77,7 @@ There are two ways to implement lifecycle methods of `Yodo1Application`
   </application>
   ```
 
-**Note**: You need to change `android:screenOrientation` with respect to your app's or game's settings
+**Note**: You need to change `android:screenOrientation` with respect to your app's/game's settings
 
 #### 1.5 Add `Yodo1UnityActivity` to `AndroidManifest.xml` file
 
@@ -96,7 +96,7 @@ There are two ways to implement lifecycle methods of `Yodo1Application`
 
 ### 2. iOS Configuration
 
-#### 2.1 Set the SDK basic configuration
+#### 2.1 Set the basic SDK configuration
 
 <!-- markdownlint-disable -->
 <figure> 
@@ -105,13 +105,13 @@ There are two ways to implement lifecycle methods of `Yodo1Application`
 </figure>
 <!-- markdownlint-restore -->
 
->* **App Key**: Unique identifier for your game in Yodo1, you can get it from the Yodo1 team
->* **Region Code**: You can get it from the Yodo1 team, which is optional
->* **UCpayment**: Please choice `UCpayment` if your game uses Yodo1's in-app purchase
->* **iCloud**: Please choice `iCloud` if your game uses Yodo1's iCloud
->* **Thinking Data**: Please fill in app id of Thinking Data
->* **AppsFlyer** is optional
->* **Debug Mode**: Enable debug log, please turn it off when you publish your game to stores
+>* **App Key**: Unique identifier for your game in Yodo1, you can get it from Yodo1 team.
+>* **Region Code**: You can get it from Yodo1 team, which is optional.
+>* **UCpayment**: Please select `UCpayment` if your game uses Yodo1's in-app purchase.
+>* **iCloud**: Please select `iCloud` if your game uses Yodo1's iCloud.
+>* **Thinking Data**: Please fill in app id of Thinking Data.
+>* **AppsFlyer** is optional.
+>* **Debug Mode**: This is to enable debug logs, Turn this off when you publish your game to store.
 
 #### 2.2 Add `use_framework`
 
@@ -128,7 +128,7 @@ Set the `use_framework` according to `Assets -> External Dependency Manager -> i
 
 ## Initialize SDK
 
-It is recommended to call SDK initialization in the `Start` method
+It is recommended to call SDK initialization in the `Start` method.
 
 The recommended initialization method is as follows
 
@@ -138,7 +138,7 @@ void Start()  {
 }
 ```
 
-With regionCode is an outdated method that only works for older games where `RegionCode` has been applied
+Initializing with regionCode is outdated and it works only for older games where `RegionCode` has been applied.
 
 ```c#
 void Start()  {
