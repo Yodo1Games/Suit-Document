@@ -1,20 +1,63 @@
-# Integrate SDK
+# Integration Guide
+This page shows you how to download, important, and configure the Yodo1 Suit SDK in Unity.
 
-**Getting started**:
+**Notes: Below are the enviroments/API level requirements for Yodo1Suit SDK**
 
->* Download [Unity Plugin](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1Sdk_OpenSuit/Yodo1SDK(Suit)-6.1.16.unitypackage)
->* SDK supports Unity LTS 2019 and above
->* SDK supports Android API 19 and above
->* SDK supports iOS API 10 and above
->* `CocoaPods` is required for `iOS` build, you can install it by following the instructions [here](https://guides.cocoapods.org/using/getting-started.html#getting-started)
->* iOS15 requires `Xcode` 13+, please make sure you are using the latest version of Xcode
+> Enviroments Requirements:
+>
+> - Unity LTS 2019 or above
+> - CocoaPods is required for `iOS` build, you can install it by following the instructions [here](https://guides.cocoapods.org/using/getting-started.html#getting-started)
+> - iOS15 requires `Xcode` 13+ or above
+>
+> API Level Requirements:
+>
+> - Android API 19 or above
+> -  iOS API 11 or above
 
-## Integrate Configuration
+## Download the Latest SDK(6.1.16)
+You can download the Unity Plugin [via the link here](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1Sdk_OpenSuit/Yodo1SDK(Suit)-6.1.16.unitypackage).
 
-### 1. Android Configuration
+## iOS Configuration
+### 1. Basic Settings
+`App Key`: Unique identifier for your game, you can get it from Yodo1 team
 
-#### 1.1 Set the SDK basic configuration
+`Debug Mode`: Enable/Disable debug mode, please turn it off before release your game to stores
 
+`Region Code(Optional)`: You can get it from the Yodo1 team, which is optional
+
+`UCpayment(Optional)`: In-app purchase enhancement for China Android
+
+`iCloud(Optional)`: Enable this means you will use Yodo1's iCloud
+
+`Thinking AppId & Server URL(Optional)`: Enable data analytics and using Thinking service to collected user-level data and provide insights
+
+`AppsFlyer(Optional)`: Enable it to use AppsFlyer
+<!-- markdownlint-disable -->
+
+<figure> 
+	 <img src="/zh/assets/images/unity_ios.png">
+    <img src="/zh/assets/images/unity_setting_0.png">
+</figure>
+<!-- markdownlint-restore -->
+
+### 2. iOS Resolver Settings
+
+You need to add `user_frameworks!` to the podfile to use third-party Unity packages properly.  You can find the settings in your Unity editor: `Assets -> External Dependency Manager -> iOS Resolver -> Settings`
+
+<!-- markdownlint-disable -->
+
+<figure> 
+    <img src="/zh/assets/images/unity_setting_1.jpg" width="300"> 
+</figure>
+<figure> 
+    <img src="/zh/assets/images/unity_setting_2.jpg" width="300"> 
+</figure>
+
+<!-- markdownlint-restore -->
+
+## Android Configuration
+
+### 1. Basic Settings
 <!-- markdownlint-disable -->
 <figure> 
 	<img src="/zh/assets/images/unity_android.png">
@@ -29,7 +72,7 @@
 >* **AppsFlyer** is optional
 >* **Debug Mode**: Enable debug log, please turn it off when you publish your game to stores
 
-#### 1.2 Support for AndroidX
+### 2. Support for AndroidX
 
 [Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) is required for `Android` build, you can enable it by selecting ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier***
 
@@ -39,7 +82,7 @@
     <figcaption>andriod use jetifier</figcaption> 
 </figure>
 
-#### 1.3 Implement `Yodo1Application` lifecycle methods
+### 3. Implement `Yodo1Application` lifecycle methods
 
 There are two ways to implement lifecycle methods of `Yodo1Application`
 
@@ -59,7 +102,7 @@ There are two ways to implement lifecycle methods of `Yodo1Application`
   }
   ```
 
-#### 1.4 Add `SplashActivity` to `AndroidManifest.xml` file as default LAUNCHER activity
+### 4. Add `SplashActivity` to `AndroidManifest.xml` file as default LAUNCHER activity
 
   ```xml
   <application >
@@ -79,7 +122,7 @@ There are two ways to implement lifecycle methods of `Yodo1Application`
 
 **Note**: You need to change `android:screenOrientation` with respect to your app's or game's settings
 
-#### 1.5 Add `Yodo1UnityActivity` to `AndroidManifest.xml` file
+### 5. Add `Yodo1UnityActivity` to `AndroidManifest.xml` file
 
   ```xml
   <activity
@@ -94,43 +137,9 @@ There are two ways to implement lifecycle methods of `Yodo1Application`
   </activity>
   ```
 
-### 2. iOS Configuration
+## Initialize the SDK
 
-#### 2.1 Set the SDK basic configuration
-
-<!-- markdownlint-disable -->
-<figure> 
-	 <img src="/zh/assets/images/unity_ios.png">
-    <img src="/zh/assets/images/unity_setting_0.png">
-</figure>
-<!-- markdownlint-restore -->
-
->* **App Key**: Unique identifier for your game in Yodo1, you can get it from the Yodo1 team
->* **Region Code**: You can get it from the Yodo1 team, which is optional
->* **UCpayment**: Please choice `UCpayment` if your game uses Yodo1's in-app purchase
->* **iCloud**: Please choice `iCloud` if your game uses Yodo1's iCloud
->* **Thinking Data**: Please fill in app id of Thinking Data
->* **AppsFlyer** is optional
->* **Debug Mode**: Enable debug log, please turn it off when you publish your game to stores
-
-#### 2.2 Add `use_framework`
-
-Set the `use_framework` according to `Assets -> External Dependency Manager -> iOS Resolver -> Settings`
-
-<!-- markdownlint-disable -->
-<figure> 
-    <img src="/zh/assets/images/unity_setting_1.jpg" width="300"> 
-</figure>
-<figure> 
-    <img src="/zh/assets/images/unity_setting_2.jpg" width="300"> 
-</figure>
-<!-- markdownlint-restore -->
-
-## Initialize SDK
-
-It is recommended to call SDK initialization in the `Start` method
-
-The recommended initialization method is as follows
+initialize the Yodo1 Suit SDK after finishing the configuration. It's recommended to initialize the SDK in the `Start` method.
 
 ```c#
 void Start()  {
@@ -138,7 +147,7 @@ void Start()  {
 }
 ```
 
-With regionCode is an outdated method that only works for older games where `RegionCode` has been applied
+If your game has multiple environments, you can use `RegionCode` to initialize the SDK. You can think of these environments as different regions for your game. Using `RegionCode` allows you to set up different server callbacks for your different backends.
 
 ```c#
 void Start()  {
