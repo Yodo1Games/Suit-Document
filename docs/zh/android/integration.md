@@ -27,7 +27,7 @@ android.enableJetifier=true
 请在应用module内build.gradle添加以下依赖：
 
 ```groovy
-api 'com.yodo1.suit.pay:core:6.1.16.0'
+api 'com.yodo1.suit.pay:core:6.2.0.2'
 api 'com.yodo1.suit.bridge:pay:6.1.15'
 ```
 

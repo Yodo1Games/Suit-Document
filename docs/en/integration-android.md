@@ -15,7 +15,7 @@ maven { url "https://nexus.yodo1.com/repository/maven-public/" }
 
 ```groovy
 //core
-implementation 'com.yodo1.suit.pay:core:6.1.16.0'
+implementation 'com.yodo1.suit.pay:core:6.2.0.2'
 implementation 'com.yodo1.suit.pay:core_bridge:6.1.15'
 //GooglePlay Store
 implementation 'com.yodo1.suit.pay:google:5.1.0.1'
