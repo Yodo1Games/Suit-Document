@@ -59,7 +59,7 @@ nav:
       # - 'unity/modules/account.md'
       # - 'unity/modules/iap.md'
       # - 'unity/modules/exit.md'
-    - Optional Modules:
+    - Sub Modules:
       - unity/optional-modules/anti.md
       - unity/optional-modules/share.md
 
