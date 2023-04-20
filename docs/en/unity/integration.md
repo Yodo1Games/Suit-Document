@@ -1,7 +1,10 @@
 # Integration Guide
+
 This page shows you how to download, important, and configure the Yodo1 Suit SDK in Unity.
 
-**Notes: Below are the enviroments/API level requirements for Yodo1Suit SDK**
+## Getting started
+
+**Notes**: Below are the enviroments/API level requirements for Yodo1Suit SDK
 
 > Enviroments Requirements:
 >
@@ -12,20 +15,23 @@ This page shows you how to download, important, and configure the Yodo1 Suit SDK
 > API Level Requirements:
 >
 > - Android API 19 or above
-> -  iOS API 11 or above
+> - iOS API 11 or above
 
-## Download the Latest SDK(6.1.16)
+## Download the Latest SDK(6.2.0)
+
 You can download the Unity Plugin [via the link here](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1Sdk_OpenSuit/Yodo1SDK(Suit)-6.2.0.unitypackage).
 
 ## iOS Configuration
-### 1. Basic Settings
+
+### 1. iOS Basic Settings
+
 `App Key`: Unique identifier for your game, you can get it from Yodo1 team
 
 `Debug Mode`: Enable/Disable debug mode, please turn it off before release your game to stores
 
 `Region Code(Optional)`: You can get it from the Yodo1 team, which is optional
 
-`UCpayment(Optional)`: In-app purchase enhancement for China Android
+`UCpayment(Optional)`: In-app purchase enhancement
 
 `iCloud(Optional)`: Enable this means you will use Yodo1's iCloud
 
@@ -57,7 +63,8 @@ You need to add `user_frameworks!` to the podfile to use third-party Unity packa
 
 ## Android Configuration
 
-### 1. Basic Settings
+### 1. Android Basic Settings
+
 <!-- markdownlint-disable -->
 <figure> 
 	<img src="/zh/assets/images/unity_android.png">
