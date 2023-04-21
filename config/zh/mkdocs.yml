@@ -41,10 +41,11 @@ nav:
     - 功能模块:
       - 'unity/modules/analyze.md'
       - 'unity/modules/account.md'
+      - 'unity/modules/anti.md'
       - 'unity/modules/iap.md'
       - 'unity/modules/exit.md'
     - 可选功能:
-      - unity/optional-modules/anti.md
+
       - unity/optional-modules/online-config.md
       - unity/optional-modules/activation-code.md
       - unity/optional-modules/share.md
