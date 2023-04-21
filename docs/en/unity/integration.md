@@ -146,7 +146,7 @@ There are two ways to implement lifecycle methods of `Yodo1Application`
 
 ## Initialize the SDK
 
-initialize the Yodo1 Suit SDK after finishing the configuration. It's recommended to initialize the SDK in the `Start` method.
+Initialize the Yodo1 Suit SDK after finishing the configuration. It's recommended to initialize the SDK in the `Start` method.
 
 ```c#
 void Start()  {

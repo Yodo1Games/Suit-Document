@@ -1,23 +1,49 @@
-# 支付IAP功能
+# 应用内购买
 
-在开始集成之前，您需要准备以下`共享密钥`，并将其发送给Yodo1团队。
-<font color=red>Apple Pay要求: </font>[Apple链接](https://appstoreconnect.apple.com/access/shared-secret)
+## 集成准备
 
-![image](https://user-images.githubusercontent.com/12006868/165882664-0f81c01a-5f03-40d4-8998-01eb94965fbf.png)
+在开始集成之前，需要准备商店密钥和IAP计费点。
+
+### 商店密钥
+
+在开始集成之前，您需要准备以下秘钥，并将其发送给Yodo1团队。
+
+#### Apple商店
+
+你可以从Apple后台获得共享密钥，`App Store Connect -> users and access -> shared key`，请点击[共享密钥](https://appstoreconnect.apple.com/access/shared-secret)。如下图所示：
+
+<!-- markdownlint-disable -->
+<figure>
+    <img src="/zh/assets/images/ios_shared_key.png" width="800"/>
+</figure>
+
+
+#### Google商店
+
 <font color=red>Google Pay要求: </font>[Google链接](https://developers.google.com/android-publisher/authorization?hl=en)
 ![image](https://user-images.githubusercontent.com/12006868/164370037-3ccd465c-b2ef-410b-9d09-118ef63a62cc.png)
 
-## 计费点配置和计费点托管
+#### 中国安卓商店
 
-游戏内商品的iap 商品计费点，在项目中单独配置放置。大多数渠道包，通过打到包内的 xml 配置，获取商品最新的价格、名称、描述等信息。其中小米，华为，googlePlay等渠道，使用计费点托管到渠道服务器，根据对应的productId，来获取商品信息，或者发起支付。
+中国安卓商店需要相关密钥，Yodo1的运营团队将负责申请并配置到PA系统中
 
-这里提供一个excel模板。[点击打开IapConfig_sample.xls](./../../assets/IapConfig_sample.xls)
+### 计费点
 
-接入方，收集统计游戏内所有的商品信息，填入excel表格中，上传反馈到 yodo1 系统即可。需要进行托管的计费点，由运营人员编辑各个渠道所需要的格式，上传开启。游戏开发一视同仁。
+为了统一并更好的管理不同商店的IAP差异，SDK将使用excel来管理所有商品信息
 
-Suit Unity打包中，将excel表格改名为IapConfig，扩展名保持不变。放置于Yodo1/Suit/Resources/目录下。
+**注意**
 
-产品结构如下：
+* 小米，华为，Google和Apple商店，计费点托管到他们服务器，根据渠道的商品ID，来获取商品信息，或者发起支付
+* 其它商店，SDK将根据包体内的商品信息完成购买相关流程，并将详细的商品信息发送给渠道SDK/服务器，完成整体的购买流程。
+
+#### 游戏计费点模版
+
+你可以从这里[下载模版](/zh/assets/IapConfig_sample.xls)，商品结构如下：
+
+<!-- markdownlint-disable -->
+<figure>
+    <img src="/zh/assets/images/unity_iap_product.png" width="800"/>
+</figure>
 
 | Key                | Data Type | Description                                                                  |
 | ------------------ | --------- | ---------------------------------------------------------------------------- |
@@ -29,6 +55,14 @@ Suit Unity打包中，将excel表格改名为IapConfig，扩展名保持不变�
 | Currency           | string    | Currency type(eg:USD,CNY,JPY,EUR,HKD)                                        |
 | ProductType        | string    | 1(0:not consumable, 1:consumable, 2:auto subscribe, 3:non-auto subscription) |
 | PeriodUnit         | string    | Period Unit                                                                  |
+
+
+#### 制作计费点文件
+
+开发者需要添加所有游戏内的商品信息到上述excel中
+
+* Apple或Google商店: 需要开发者将excel(表格改名为IapConfig.xls，扩展名保持不变)放置于`Yodo1/Suit/Resources/`目录下。
+* 中国安卓商店: 并发送到Yodo1运营团队，运营团队将申请所有计费点，并配置在PA。
 
 ## 查询所有商品
 
