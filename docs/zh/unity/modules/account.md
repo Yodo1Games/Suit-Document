@@ -105,7 +105,7 @@ void LogoutDelegate (Yodo1U3dConstants.AccountEvent accountEvent) {
 bool isLogin = Yodo1U3dAccount.IsLogin ();
 ```
 
-## Error Codes
+## 错误码
 
 | ErrorCode | ErrorMessage                    |
 | :-------- | :------------------------------ |
