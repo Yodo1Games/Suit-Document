@@ -10,7 +10,9 @@ user.playedId = "Your Player ID"
 Yodo1U3dAnalytics.login(user);
 ```
 
-## 发送自定义事件
+## Thinking Data
+
+### 发送自定义事件
 
 在 SDK 初始化完成之后，您就可以调用 `customEvent` 来上传游戏自定义事件, 以用户购买某商品作为范例：
 
@@ -24,11 +26,11 @@ Yodo1U3dAnalytics.customEvent("product_buy", properties);
 >* 事件的名称是`string`类型，只能以字母开头，可包含数字，字母和下划线“_”，长度最大为 50 个字符，对字母大小写不敏感。
 >* 事件的属性是一个`Dictionary`对象，其中每个元素代表一个属性，Key的值为属性的名称，为`string`类型，规定只能以字母开头，包含数字，字母和下划线“_”，长度最大为 50 个字符，对字母大小写不敏感。
 
-## UA(AppsFlyer)统计
+## AppsFlyer(UA)
 
-**注意**：在GooglePlay渠道，要求必须正确接入[Privacy](/zh/unity/optional-modules/privacy/)，确保统计合规。
+当前AppsFlyer仅适用于Apple和Google商店，并在Google商店使用时，要求必须正确集成[用户隐私](/zh/unity/optional-modules/privacy/)，确保合规。
 
-### 发送UA自定义事件
+### 发送自定义事件
 
 您可以调用 `customEventAppsflyer` 来上传游戏UA相关自定义事件, 以用户的任务作为示例：
 
@@ -43,7 +45,7 @@ Yodo1U3dAnalytics.customEventAppsflyer("mission", properties);
 
 ### IAP收入
 
-有收入的购买事件，示例如下
+特殊场景下，游戏未使用Yodo1 Suit的应用内购买功能，并需要追踪IAP收入。有收入的购买事件，示例如下
 
 ```c#
 string contentId = "Your SKU Item";
@@ -54,6 +56,8 @@ string receiptId = "";
 
 Yodo1U3dAnalytics.eventAndValidateInAppPurchase_Apple(revenue, currency, quantity, contentId, receiptId);
 ```
+
+**注意**: 如果你正在使用Yodo1 Suit的应用内购买功能，请不要在购买成功后使用此方法，Yodo1 Suit的应用内购买已经帮助开发者调用了追踪IAP收入方法
 
 <!-- //Google Play支付校验。如果使用sdk内GooglePlay支付，则不需要手动调用。
 Yodo1U3dAnalytics.validateInAppPurchase_GooglePlay(String publicKey, String signature, String purchaseData, String price, String currency);
