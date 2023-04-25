@@ -64,6 +64,8 @@
 * Apple或Google商店: 需要开发者将excel(表格改名为IapConfig.xls，扩展名保持不变)放置于`Yodo1/Suit/Resources/`目录下。
 * 中国安卓商店: 并发送到Yodo1运营团队，运营团队将申请所有计费点，并配置在PA。
 
+功能即可
+
 ## 查询所有商品
 
 一般在游戏实名认证结束后，或者登录成功后 进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。
@@ -214,7 +216,7 @@ void LossOrderIdPurchasesDelegate(bool success, List<Yodo1U3dProductData> produc
           Yodo1U3dPayment.SetSendGoodsFailDelegate(SendGoodsFailDelegate);
 ```
 
-## In-App Purchase
+## 错误码
 
 | ErrorCode | ErrorMessage                    |
 | :-------- | :------------------------------ |
