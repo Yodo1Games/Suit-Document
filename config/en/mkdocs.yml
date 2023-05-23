@@ -54,6 +54,7 @@ nav:
 
   - Unity:  
     - 'unity/integration.md'
+    - 'unity/FAQ.md'
     # - 功能模块:
       # - 'unity/modules/analyze.md'
       # - 'unity/modules/account.md'

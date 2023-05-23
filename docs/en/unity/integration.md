@@ -1,6 +1,10 @@
 # Integration Guide
 
-This page shows you how to download, important, and configure the Yodo1 Suit SDK in Unity.
+Yodo1 Suit SDK is an API wrapper for Yodo1's publishing services/business. It provides a comprehensive set of tools and APIs to effectively integrate Yodo1's services into your game development process. By utilizing Yodo1 Suit SDK, developers can easily implement features such as in-app purchases, ad monetization, analytics, anti-addition(China version COPPA) and more, improving your games and increasing revenue streams.
+
+With Yodo1 Suit SDK, developers can focus on creating the best possible gaming experience for their users, while relying on a robust set of tools and services to quickly and efficiently bring their games to market. Whether you're looking to launch on iOS or Android, Yodo1 Suit SDK is designed to simplify the integration process and help developers achieve their goals effectively and efficiently.
+
+And this page shows you how to download and set up Yodo1 Suit SDK in Unity.
 
 ## Getting started
 
@@ -17,13 +21,13 @@ This page shows you how to download, important, and configure the Yodo1 Suit SDK
 > - Android API 19 or above
 > - iOS API 11 or above
 
-## Download the Latest SDK(6.2.0)
+## Download the Latest SDK(6.2.1)
 
-You can download the Unity Plugin [via the link here](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1Sdk_OpenSuit/Yodo1SDK(Suit)-6.2.0.unitypackage).
+You can download the Unity Plugin [via the link here](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1Sdk_OpenSuit/Yodo1SDK(Suit)-6.2.1.unitypackage).
 
 ## iOS Configuration
 
-### 1. iOS Basic Settings
+### 1. Basic Settings
 
 `App Key`: Unique identifier for your game, you can get it from Yodo1 team
 
