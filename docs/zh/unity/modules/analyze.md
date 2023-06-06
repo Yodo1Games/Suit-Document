@@ -1,5 +1,7 @@
 # 统计功能
 
+>* 当从Suit 6.2.1 及以下版本升级到6.3.0时，请先查看[升级引导](/zh/unity/analyze-upgrade-guide)。
+
 ## 设置账号 ID
 
 在用户进行登录时，可调用 login 来设置用户的账号 ID，在设置完账号 ID 后，将会以账号 ID 作为身份识别 ID
@@ -22,7 +24,7 @@ properties.Add("mission_id", "xxxx");
 properties.Add("mission_name", "yyyy");
 properties.Add("mission_finish", "true");
 
-Yodo1U3dAnalytics.TrackUAEvent("mission", properties);
+Yodo1U3dAnalytics.TrackEvent("mission", properties);
 ```
 
 >* 事件的名称是`string`类型，只能以字母开头，可包含数字，字母和下划线“_”，长度最大为 50 个字符，对字母大小写不敏感。
