@@ -53,63 +53,62 @@ Yodo1U3dAnalytics.TrackUAEvent("mission", properties);
 
 1. 向UA团队申请IAP收入的事件Token，并填写到EventConfig文件中。
 2. 当购买IAP成功后，调用`TrackIAPRevenue` 方法上报IAP收入。注意：如果你在使用Yodo1 Suit进行应用内购买，SDK将自动上报IAP收入
-	
-	```c#
-	Yodo1U3dAnalytics.TrackIAPRevenue(Yodo1U3dIAPRevenue  iAPRevenue);
-	```
 
-	示例如下：
-	
-	```c#
-	using UnityEngine.Purchasing;
-	
-	public class GameObject : MonoBehaviour, IStoreListener
-	{
-	    public static string kProductIDConsumable = "com.test.cons";
-	
-	    void Start()
-	    {
-	        // TODO 初始化Suit SDK
-	    }
-	
-	    public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
-	    {
-			var product = args.purchasedProduct;
-			string prodID = args.purchasedProduct.definition.id
-			string price = args.purchasedProduct.metadata.localizedPrice.ToString()
-			string currency = args.purchasedProduct.metadata.isoCurrencyCode;
-			
-			string receipt = args.purchasedProduct.receipt;
-			var recptToJSON = (Dictionary<string, object>)Yodo1JSONObject.Deserialize(product.receipt)
-			var receiptPayload = (Dictionary<string, object>)Yodo1JSONObject.Deserialize((string)recptToJSON["Payload"]);
-			var transactionID = product.transactionID;
-			
-			if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable, StringComparison.Ordinal))
-			{
-				//TODO 追踪IAP收入
-				Yodo1U3dIAPRevenue iAPRevenue = new Yodo1U3dIAPRevenue();
-				iAPRevenue.ProductIdentifier = prodID;
-				iAPRevenue.Revenue = price;
-				iAPRevenue.Currency = currency;
-	
-	#if UNITY_IOS
-		            if(isSandbox)
-		            {
-		               iAPRevenue.Sandbox(true);
-		            }
-		            iAPRevenue.TransactionId = transactionID;
-	#elif UNITY_ANDROID
-			     iAPRevenue.PublicKey = <google_public_key>;
-				iAPRevenue.Signature = signature;
-				iAPRevenue.PurchaseData = purchaseData;
-	#endif
-			Yodo1U3dAnalytics.TrackIAPRevenue(iAPRevenue);
-	        }
-	
-	        return PurchaseProcessingResult.Complete;
-	    }
-	}
-	```
+   ```c#
+   Yodo1U3dAnalytics.TrackIAPRevenue(Yodo1U3dIAPRevenue  iAPRevenue);
+   ```
+
+   示例如下：
+
+   ```c#
+   using UnityEngine.Purchasing;
+
+   public class GameObject : MonoBehaviour, IStoreListener
+   {
+     public static string kProductIDConsumable = "com.test.cons";
+
+     void Start()
+     {
+         // TODO 初始化Suit SDK
+     }
+
+     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
+     {
+         var product = args.purchasedProduct;
+         string prodID = args.purchasedProduct.definition.id
+         string price = args.purchasedProduct.metadata.localizedPrice.ToString()
+         string currency = args.purchasedProduct.metadata.isoCurrencyCode;
+
+         string receipt = args.purchasedProduct.receipt;
+         var recptToJSON = (Dictionary<string, object>)Yodo1JSONObject.Deserialize(product.receipt)
+         var receiptPayload = (Dictionary<string, object>)Yodo1JSONObject.Deserialize((string)recptToJSON["Payload"]);
+         var transactionID = product.transactionID;
+
+         if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable, StringComparison.Ordinal))
+         {
+            //TODO 追踪IAP收入
+            Yodo1U3dIAPRevenue iAPRevenue = new Yodo1U3dIAPRevenue();
+            iAPRevenue.ProductIdentifier = prodID;
+            iAPRevenue.Revenue = price;
+            iAPRevenue.Currency = currency;
+   #if UNITY_IOS
+            if(isSandbox)
+            {
+               iAPRevenue.Sandbox(true);
+            }
+            iAPRevenue.TransactionId = transactionID;
+   #elif UNITY_ANDROID
+            iAPRevenue.PublicKey = <google_public_key>;
+            iAPRevenue.Signature = signature;
+            iAPRevenue.PurchaseData = purchaseData;
+   #endif
+            Yodo1U3dAnalytics.TrackIAPRevenue(iAPRevenue);
+         }
+
+         return PurchaseProcessingResult.Complete;
+     }
+   }
+   ```
 
 #### 追踪广告收入
 
@@ -130,29 +129,29 @@ Yodo1U3dAnalytics.TrackAdRevenue(adRevenue);
 
 ```c#
 using UnityEngine.Purchasing;
-	
+
 public class GameObject : MonoBehaviou
-{	
-    void Start()
-    {
-    		Yodo1ROASCollection.SetAdRevenueDelegate((string adPlatform, string adSource, string adFormat, string adUnitName, double revenue, string currency) => {
-		    Debug.LogFormat("{0} adPlatform:{1} adSource:{2} adFormat:{3} adUnitName:{4} revenue:{5} currency:{6}", Yodo1ROASCollection.TAG, adPlatform, adSource, adFormat, adUnitName, revenue, currency);
-		    // TODO You can track the data yourselves here. 
-			Yodo1U3dAdRevenue adRevenue = new Yodo1U3dAdRevenue();
-			if (adPlatform.Contains("applovin")) {
-				adRevenue.Source = Yodo1U3dAdRevenue.Source_Applovin_MAX;
-			} else if (adPlatform.Contains("admob")) {
-				adRevenue.Source = Yodo1U3dAdRevenue.Source_AdMob;
-			} else if (adPlatform.Contains("ironsource")) {
-				adRevenue.Source = Yodo1U3dAdRevenue.Source_IronSource;
-			}
-			adRevenue.Revenue = revenue;
-			adRevenue.Currency = currency;
-			adRevenue.NetworkName = adSource;
-			adRevenue.UnitId = adUnitName;
-			Yodo1U3dAnalytics.TrackAdRevenue(adRevenue);
-	   });
-    }
+{
+   void Start()
+   {
+      Yodo1ROASCollection.SetAdRevenueDelegate((string adPlatform, string adSource, string adFormat, string adUnitName, double revenue, string currency) => {
+         Debug.LogFormat("{0} adPlatform:{1} adSource:{2} adFormat:{3} adUnitName:{4} revenue:{5} currency:{6}", Yodo1ROASCollection.TAG, adPlatform, adSource, adFormat, adUnitName, revenue, currency);
+         // TODO You can track the data yourselves here. 
+         Yodo1U3dAdRevenue adRevenue = new Yodo1U3dAdRevenue();
+         if (adPlatform.Contains("applovin")) {
+         adRevenue.Source = Yodo1U3dAdRevenue.Source_Applovin_MAX;
+         } else if (adPlatform.Contains("admob")) {
+         adRevenue.Source = Yodo1U3dAdRevenue.Source_AdMob;
+         } else if (adPlatform.Contains("ironsource")) {
+         adRevenue.Source = Yodo1U3dAdRevenue.Source_IronSource;
+         }
+         adRevenue.Revenue = revenue;
+         adRevenue.Currency = currency;
+         adRevenue.NetworkName = adSource;
+         adRevenue.UnitId = adUnitName;
+         Yodo1U3dAnalytics.TrackAdRevenue(adRevenue);
+      });
+   }
 }
 ```
 
