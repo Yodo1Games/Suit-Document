@@ -38,7 +38,7 @@
 
 #### 游戏计费点模版
 
-你可以从这里[下载模版](/zh/assets/IapConfig_sample.xls)，商品结构如下：
+你可以从这里[下载模版](/zh/assets/IapConfig_sample.xls.zip)，商品结构如下：
 
 <!-- markdownlint-disable -->
 <figure>
