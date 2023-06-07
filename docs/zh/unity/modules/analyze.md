@@ -36,7 +36,7 @@ Yodo1U3dAnalytics.TrackEvent("mission", properties);
 
 ### 应用内事件
 
-当你开始集成应用内事件时，请先下载[EventConfig.xls](/zh/assets/EventConfig.xls)文件，填入你需要的事件名称和token(Token由UA团队提供)，并将其放置在`Assets/Yodo1/Suit/Resources`目录下。
+当你开始集成应用内事件时，请先下载[EventConfig.xls](/zh/assets/EventConfig.xls.zip)文件，填入你需要的事件名称和token(Token由UA团队提供)，并将其放置在`Assets/Yodo1/Suit/Resources`目录下。
 
 #### 发送自定义事件
 
