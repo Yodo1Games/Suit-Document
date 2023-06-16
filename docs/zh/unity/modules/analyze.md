@@ -36,7 +36,7 @@ Yodo1U3dAnalytics.TrackEvent("mission", properties);
 
 ### 应用内事件
 
-当你开始集成应用内事件时，请先下载[EventConfig.xls](/zh/assets/EventConfig.xls.zip)文件，填入你需要的事件名称和token(Token由UA团队提供)，并将其放置在`Assets/Yodo1/Suit/Resources`目录下。
+当你开始集成应用内事件时，请先下载[yodo1_ua_events.xls](/zh/assets/yodo1_ua_events.xls.zip)文件，填入你需要的事件名称和token(Token由UA团队提供)，并将其放置在`Assets/Yodo1/Suit/Resources`目录下。
 
 #### 发送自定义事件
 
@@ -53,7 +53,7 @@ Yodo1U3dAnalytics.TrackUAEvent("mission", properties);
 
 #### 追踪IAP收入
 
-1. 向UA团队申请IAP收入的事件Token，并填写到EventConfig文件中。
+1. 向UA团队申请IAP收入的事件Token，并填写到yodo1_ua_events文件中。
 2. 当购买IAP成功后，调用`TrackIAPRevenue` 方法上报IAP收入。注意：如果你在使用Yodo1 Suit进行应用内购买，SDK将自动上报IAP收入
 
    ```c#
@@ -141,11 +141,11 @@ public class GameObject : MonoBehaviou
          // TODO You can track the data yourselves here. 
          Yodo1U3dAdRevenue adRevenue = new Yodo1U3dAdRevenue();
          if (adPlatform.Contains("applovin")) {
-         adRevenue.Source = Yodo1U3dAdRevenue.Source_Applovin_MAX;
+             adRevenue.Source = Yodo1U3dAdRevenue.Source_Applovin_MAX;
          } else if (adPlatform.Contains("admob")) {
-         adRevenue.Source = Yodo1U3dAdRevenue.Source_AdMob;
+             adRevenue.Source = Yodo1U3dAdRevenue.Source_AdMob;
          } else if (adPlatform.Contains("ironsource")) {
-         adRevenue.Source = Yodo1U3dAdRevenue.Source_IronSource;
+             adRevenue.Source = Yodo1U3dAdRevenue.Source_IronSource;
          }
          adRevenue.Revenue = revenue;
          adRevenue.Currency = currency;
