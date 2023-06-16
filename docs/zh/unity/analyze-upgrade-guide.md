@@ -2,10 +2,11 @@
 
 ## 主要变化
 
-1. 新增 EventConfig.xls UA事件映射文件，用于管理 UA 事件名称和事件token的映射关系
+1. 新增 yodo1_ua_events.xls UA事件映射文件，用于管理 UA 事件名称和事件token的映射关系
    * UA团队：为所需的UA事件申请token，并填入此映射文件中后，发送这个文件给相关项目组的技术团队。
    * 技术团队：将文件放置在项目的`Assets/Yodo1/Suit/Resources`目录下，构建游戏包体进行测试。
 2. 新增方法`TrackAdRevenue`，追踪广告收入。
+3. 新增方法`TrackIAPRevenue`，追踪应用内支付。
 
 请点[这里](/zh/unity/modules/analyze)查看集成文档。
 
