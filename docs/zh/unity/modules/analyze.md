@@ -127,7 +127,7 @@ adRevenue.PlacementId = "";
 Yodo1U3dAnalytics.TrackAdRevenue(adRevenue);
 ```
 
-当前无法从MAS SDK的标准集成方式中获取广告收入，所以需要使用[MAS广告收入组件](https://github.com/Yodo1Games/Yodo1-MAS-ROAS-Collection/tree/master/ROAS-Collection-Unity)获取广告收入，示例代码如下
+当前无法从MAS SDK的标准集成方式中获取广告收入，所以需要使用[MAS广告收入组件](https://github.com/Yodo1Games/Yodo1-MAS-Ad-Revenue/blob/master/MAS-Ad-Revenue-Unity/README.md)获取广告收入，示例代码如下
 
 ```c#
 using UnityEngine.Purchasing;
@@ -136,17 +136,12 @@ public class GameObject : MonoBehaviou
 {
    void Start()
    {
-      Yodo1ROASCollection.SetAdRevenueDelegate((string adPlatform, string adSource, string adFormat, string adUnitName, double revenue, string currency) => {
-         Debug.LogFormat("{0} adPlatform:{1} adSource:{2} adFormat:{3} adUnitName:{4} revenue:{5} currency:{6}", Yodo1ROASCollection.TAG, adPlatform, adSource, adFormat, adUnitName, revenue, currency);
+      Yodo1MasAdRevenue.SetAdRevenueDelegate((string adPlatform, string adSource, string adFormat, string adUnitName, double revenue, string currency) => {
+         Debug.LogFormat("{0} adPlatform:{1} adSource:{2} adFormat:{3} adUnitName:{4} revenue:{5} currency:{6}", Yodo1MasAdRevenue.TAG, adPlatform, adSource, adFormat, adUnitName, revenue, currency);
          // TODO You can track the data yourselves here. 
+
          Yodo1U3dAdRevenue adRevenue = new Yodo1U3dAdRevenue();
-         if (adPlatform.Contains("applovin")) {
-             adRevenue.Source = Yodo1U3dAdRevenue.Source_Applovin_MAX;
-         } else if (adPlatform.Contains("admob")) {
-             adRevenue.Source = Yodo1U3dAdRevenue.Source_AdMob;
-         } else if (adPlatform.Contains("ironsource")) {
-             adRevenue.Source = Yodo1U3dAdRevenue.Source_IronSource;
-         }
+         adRevenue.Source = adPlatform.ToLower();
          adRevenue.Revenue = revenue;
          adRevenue.Currency = currency;
          adRevenue.NetworkName = adSource;
