@@ -11,6 +11,7 @@
 5. 修改定制化UA事件的上报方法，全局查找并替换 `customEventAppsflyer` 为 `TrackUAEvent`
 6. 对于未集成/使用 Yodo1 Suit SDK 提供的内购 API 的游戏/应用, 需修改追踪IAP收入的方法。`eventAndValidateInAppPurchase_Apple`, `eventAndValidateInAppPurchase_Google`, 和`validateInAppPurchase_Apple` 修改为 `TrackIAPRevenue`
 7. 追踪广告收入，使用`TrackAdRevenue`来追踪广告收入，API详细说明，请查看[这里](/zh/unity/modules/analyze/#_5)
+8. Adjust测试流程及数据查看⽅法，请查看[这里](/zh/unity/modules/analyze/#adjust)
 
 请点[这里](/zh/unity/modules/analyze)查看集成文档。
 
