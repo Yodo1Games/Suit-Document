@@ -4,7 +4,7 @@
 
 1. 下载最新的[Suit Unity插件](./integration.md)并导入到游戏工程内。
 2. 向UA团队申请Adjust的AppToken并将其配置在iOS配置中
-3. 添加 yodo1\_ua\_events.xls UA事件映射文件，此文件用于管理 UA 事件名称和事件token的映射关系
+3. 添加 [yodo1_ua_events.xls](/zh/assets/yodo1_ua_events.xls.zip) UA事件映射文件，此文件用于管理 UA 事件名称和事件token的映射关系
    * UA团队：为所需的UA事件申请token，并填入此映射文件中后，发送这个文件给相关项目组的技术团队。
    * 技术团队：将文件放置在项目的`Assets/Yodo1/Suit/Resources`目录下，构建游戏包体进行测试。
 4. 修改追踪事件的方法，`customEvent`修改为`TrackEvent`
