@@ -197,3 +197,127 @@ private string url; //分享的domain
 ```c#
 public static void logInviteAppsFlyerWithEventData(Dictionary<string, string> value = null);
 ```
+
+<!-- ## UA测试流程 -->
+
+## Adjust测试流程及数据查看⽅法
+
+### SDK log 输出要求
+
+⾸次 sdk 接⼊完成后，请选择sandbox并开启debug mode，方便集成检查测试
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/sandbox_and_debug_mode.png" width="700">
+</figure>
+
+检查没有问题后换成 production mode 上线
+
+### 测试数据查看⽅法
+
+#### 测试控制台查看⽅法
+
+测试控制台是「实时」查询接⼝，可使⽤⼴告id进⾏查询当前安装信息，或清除安装记录
+
+>* 注：Sandbox mode/Production mode数据均可使⽤测试控制台查询
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/testing_console_1.png" width="700">
+</figure>
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/testing_console_2.png" width="700">
+</figure>
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/testing_console_3.png" width="700">
+</figure>
+
+* 安卓使⽤：gps_adid / oaid / adid 
+* iOS使⽤：idfa / idfv / adid
+
+>* 注：adid是adjust为每个设备⽣成的唯⼀id，只有在adjust sdk成功初始化上报adjust服务器才会返回该值
+gps_adid（即google advertising id 也简称为gaid）和idfa是设备上唯⼀的⼴告id
+>* adid格式示例： 12b3e453f674b51a9db517ba0f140612
+>* gps_adid/oaid/idfa/idfv格式示例：12f34b56-32dc-4f8f-8725-499e8627df34
+
+你可以通过 adjust insights 获取，示例如下
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/adjust_insights.png" width="700">
+</figure>
+
+查看测试结果
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/testing_console_4.png" width="700">
+</figure>
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/testing_console_5.png" width="700">
+</figure>
+
+Adjust永久排重，即该设备记录到安装之后，⽆论是否卸载重装，我们将不会重新记录安装，也不会重新归因，因此同⼀个测试设备可以通过「清除设备」的⽅式重复测试。
+
+>* 注：先在设备上卸载应⽤，再点击「清除设备」
+
+#### 数据后台查看⽅法
+
+打开「Sandbox模式」
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/data_background_1.png" width="700">
+</figure>
+
+点击编辑按钮，查看⾃定义事件
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/data_background_2.png" width="700">
+</figure>
+
+选择KPI进行可视化
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/data_background_3.png" width="700">
+</figure>
+
+⾃定义事件查询⽅法：选择「可交付数据KPI」选择「事件」，在event中搜索添加⽬标事件，点击「选择指标」，点击「确认」
+
+### 渠道归因数据测试⽅法
+
+跟踪链接测试⽅法：创建跟踪链接 — 拼接参数 — 点击跟踪链接 — 激活应⽤ — 查看测试控制台
+
+已为ARBS，RODEO，TEW创建了测试归因渠道(Yodo1-Test-Channel)，其它游戏进行归因测试前，请按照如下步骤创建测试归因渠道(Yodo1-Test-Channel)。
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/attribution_1.png" width="700">
+</figure>
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/attribution_2.png" width="700">
+</figure>
+
+得到点击跟踪链接：https://app.adjust.com/l5tuaz
+
+在点击跟踪链接前请拼接⼴告id：
+
+* 假设安卓gps_adid为：12f34b56-32dc-4f8f-8725-499e8627df34
+* 假设苹果idfa为：45f34b56-32dc-4f8f-8725-499e8627df67
+
+得到安卓点击跟踪链接：https://app.adjust.com/l5tuaz?gps_adid=12f34b56-32dc-4f8f-8725-499e8627df34
+
+得到苹果点击跟踪链接：https://app.adjust.com/l5tuaz?idfa=45f34b56-32dc-4f8f-8725-499e8627df67
+
+在浏览器触发跟踪链接之后，本地安装产品⾄⼿机，打开应⽤，在测试控制台查询归因结果
+
+>* 注：⼀些媒体⽆法在跟踪链接上加设备id，只要跳转google play，Adjust仍能通过referrer进⾏准确归因；

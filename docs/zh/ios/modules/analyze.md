@@ -177,3 +177,43 @@ AppsFlyer Deeplink集成，请参考它的[官方文档](https://dev.appsflyer.c
 
 >* 将`NSAdvertisingAttributionReportEndpoint`键添加到应用程序的`info.plist`中。
 >* 将键的值设置为`https://appsflyer-skadnetwork.com/`。
+
+## 测试流程
+
+### Adjust 测试流程及数据查看⽅法
+
+#### 测试数据查看⽅法
+
+测试控制台查看⽅法
+
+数据后台查看⽅法
+
+#### 渠道归因数据测试⽅法 
+
+测试控制台是「实时」查询接⼝，可使⽤⼴告id进⾏查询当前安装信息，或清除安装记录
+
+>* 注：Sandbox mode/Production mode数据均可使⽤测试控制台查询
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/testing_console_1.png" width="300">
+</figure>
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/testing_console_2.png" width="300">
+</figure>
+
+<!-- markdownlint-disable -->
+<figure> 
+    <img src="/zh/assets/images/adjust/testing_console_3.png" width="300">
+</figure>
+
+
+
+
+
+
+
+
+
