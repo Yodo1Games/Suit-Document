@@ -1,6 +1,6 @@
 # 统计功能
 
->* 当从Suit 6.2.1 及以下版本升级到6.3.0时，请先查看[升级引导](/zh/unity/analyze-upgrade-guide)。
+>* 当从Suit 6.2.1 及以下版本升级到6.3.0及以上时，请先查看[升级引导](/zh/unity/analyze-upgrade-guide)。
 
 ## 设置账号 ID
 
