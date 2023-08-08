@@ -23,7 +23,7 @@ And this page shows you how to download and set up Yodo1 Suit SDK in Unity.
 
 ## Download the Latest SDK(6.3.3)
 
-You can download the Unity Plugin [via the link here](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1Sdk_OpenSuit/Yodo1-Suit-6.3.3.unitypackage).
+You can download the Unity Plugin [via the link here](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Suit/Yodo1-Suit-6.3.3.unitypackage).
 
 ## iOS Configuration
 

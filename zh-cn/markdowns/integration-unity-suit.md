@@ -1,7 +1,7 @@
 # Unity Suit
 
 **集成准备**:
->* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1Sdk_OpenSuit/Yodo1-Suit-6.3.3.unitypackage)
+>* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Suit/Yodo1-Suit-6.3.3.unitypackage)
 >* SDK支持Unity LTS 版本（2019或更高版本）
 >* SDK支持Android API 19+
 >* `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
