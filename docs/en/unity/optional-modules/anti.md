@@ -16,7 +16,7 @@ After the game is integrated with our SDK, be sure to implement the following co
 
 ## Integrate SDK
 
-### 1. Download Latest [Unity Plugin(3.2.8)](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1SdkUnityPlugin_AntiIndulged/Yodo1AntiAddictionSDK_3.2.8.unitypackage)
+### 1. Download Latest [Unity Plugin(3.2.9)](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1SdkUnityPlugin_AntiIndulged/Yodo1-Anti-Addiction-3.2.9.unitypackage)
 
 ### 2. Integrate Configuration
 
