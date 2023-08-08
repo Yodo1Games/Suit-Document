@@ -19,7 +19,7 @@
 
 ## 下载最新的SDK(6.3.3)
 
-你可以点击这里下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Yodo1Sdk_OpenSuit/Yodo1-Suit-6.3.3.unitypackage).
+你可以点击这里下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Suit/Yodo1-Suit-6.3.3.unitypackage).
 
 ## iOS配置
 
