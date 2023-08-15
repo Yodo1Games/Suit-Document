@@ -55,11 +55,12 @@ nav:
   - Unity:  
     - 'unity/integration.md'
     - 'unity/FAQ.md'
-    # - 功能模块:
-      # - 'unity/modules/analyze.md'
-      # - 'unity/modules/account.md'
-      # - 'unity/modules/iap.md'
-      # - 'unity/modules/exit.md'
+    - Functional Modules:
+      - unity/sub-modules/getting-started.md
+      - unity/sub-modules/analyze.md
+      - unity/sub-modules/live-ops.md
+      - unity/sub-modules/share.md
+      - unity/sub-modules/ua.md
     - Sub Modules:
       - unity/optional-modules/anti.md
       - unity/optional-modules/share.md
