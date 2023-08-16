@@ -1,9 +1,9 @@
-# 退出游戏
+# Exit the game
 
 ``` c#
 Yodo1U3dUtils.exit (this, exitCallback);
     
-//退出游戏回调
+//Exit game callback
 void exitCallback(string msg){
      Debug.Log ("exitCallback, msg = " + msg);
 }

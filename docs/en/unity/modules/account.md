@@ -1,35 +1,28 @@
-# 账号系统
+# Account system
 
-## 登录
+## Login
 
 ```c#
 Yodo1U3dAccount.Login();
 /**
-  *loginType:缺省代表渠道登录
-  *Channel(0, "支付渠道账号登陆", "Channel"),,默认使用Channel方式登录
-  *Device(1, "设备登陆", "Device"),
-  *Google(2, "谷歌账号登陆", "Google"),
-  *Yodo1(3, "游道易账号登录", "Yodo1"),
-  *Wechat(4, "微信登录", "WECHAT"),
-  *Sina(5, "新浪微博登录", "SINA"),
-  *QQ(6, "QQ登录", "QQ");
-  *extra      一般传null，有时有特殊配置
+  *loginType: Default representative channel login
+  *Channel(0, "Channel Login", "Channel"),By default, log in using Channel mode
+  *Device(1, "Device Login", "Device"),
+  *Yodo1(3, "Yodo1 Login", "Yodo1"),
+  *extra      Normally passed as null, sometimes with special configurations
 **/
 Yodo1U3dAccount.Login(Yodo1U3dConstants.LoginType loginType, string extra)
 ```
 
-Yodo1U3dConstants.LoginType结构：
+Yodo1U3dConstants.LoginType structure：
 
-| Key名称      | 描述          |
-| ----------- | ------------- |
-| Channel     | 支付渠道登录    |
-| Device      | 设备登录       |
-| Yodo1       | 游道易账号登录  |
-| Wechat      | 微信登录       |
-| Sina        | 新浪微博登录    |
-| QQ          | QQ登录         |
+| Key名称      | 描述            |
+| ----------- |---------------|
+| Channel     | Channel Login |
+| Device      | Device Login  |
+| Yodo1       | Yodo1 Login   |
 
-设置登录回调：
+Set login callback：
 
 ```c#
 Yodo1U3dAccount.SetLoginDelegate(LoginDelegate);
@@ -51,20 +44,20 @@ void LoginDelegate(Yodo1U3dConstants.AccountEvent accountEvent, Yodo1U3dUser use
 }
 ```
 
-Yodo1U3dConstants.AccountEvent结构：
+Yodo1U3dConstants.AccountEvent structure：
 
-| Key名称      | 描述          |
-| ----------- | ------------- |
-| Success     | 登录成功       |
-| Fail        | 登录失败       |
-| Cancel      | 取消登录       |
-| Fail_Plugin | plugin失败    |
-| Fail_NetWork| 网络连接失败    |
-| NeedRealName| 需要真实名字    |
+| Key Name     | Description     |
+|--------------|-----------------|
+| Success      | Login succeeded |
+| Fail         | Login failure   |
+| Cancel       | Cancel login    |
+| Fail_Plugin  | plugin failure  |
+| Fail_NetWork | Network connection failed          |
+| NeedRealName | Real name required          |
 
-## 提交用户信息
+## Submit Player User Info
 
-登录成功后，游戏根据自己的逻辑处理上报给sdk和渠道sdk，设置玩家playerId，和其他信息。健壮后面的逻辑。
+After successful login, the game will process and report to SDK and channel SDK based on its own logic, set player playerId, and other information. The logic behind robustness.
 
 ``` c#
 Yodo1U3dAccount.SubmitUser (Yodo1U3dUser);
@@ -72,24 +65,24 @@ Yodo1U3dAccount.SubmitUser (Yodo1U3dUser);
 
 Yodo1U3dUser结构：
 
-| Key名称      | 描述     | 是否为空 |
-| ------------ | -------- | -------- |
-| playedId     | 用户id   | 不可为空 |
-| nickName     | 用户昵称 | 可为空   |
-| level        | 等级     | 可为空   |
-| age          | 年龄     | 可为空   |
-| gender       | 性别     | 可为空   |
-| gameServerId | 服务器id | 可为空   |
+| Key Name     | description | Is it empty |
+|--------------|-------------|------------|
+| playedId     | user id     | nonullable |
+| nickName     | NickName    | nullable   |
+| level        | Level       | nullable   |
+| age          | Age         | nullable   |
+| gender       | gender      | nullable   |
+| gameServerId | gameServerId | nullable  |
 
-## 登出（可选）
+## Logout（Optional）
 
-退出登录，游戏如果有多账号，并切换账号时需要调用登出方法，注意：仅支持Andriod。
+Log out and log in. If there are multiple accounts in the game and you need to call the login method when switching accounts, please note that only Android is supported.
 
 ``` c#
 Yodo1U3dAccount.Logout ();
 ```
 
-设置登出回调
+Set logout callback
 
 ``` c#
 Yodo1U3dAccount.SetLogoutDelegate(LogoutDelegate);
@@ -99,13 +92,13 @@ void LogoutDelegate (Yodo1U3dConstants.AccountEvent accountEvent) {
 }
 ```
 
-## 判断是否已经登录
+## Determine if you have logged in
 
 ``` c#
 bool isLogin = Yodo1U3dAccount.IsLogin ();
 ```
 
-## 错误码
+## error code
 
 | ErrorCode | ErrorMessage                    |
 | :-------- | :------------------------------ |
