@@ -64,10 +64,10 @@ nav:
 
   - iOS:
       - 'ios/integration.md'
-      - Functional Modules:
-      - Optional Features:
+#      - Functional Modules:
+#      - Optional Features:
 
   - Android:
       - 'android/integration.md'
-      - Functional Modules:
-      - Optional Features:
+#      - Functional Modules:
+#      - Optional Features:
