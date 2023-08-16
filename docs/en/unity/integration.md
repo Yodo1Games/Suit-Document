@@ -83,10 +83,10 @@ You need to add `user_frameworks!` to the podfile to use third-party Unity packa
 >* **AppsFlyer** is optional
 >* **Debug Mode**: Enable debug log, please turn it off when you publish your game to stores
 
-### 2. Support for AndroidX
+### 2. AndroidX Support Config
 
 [Jetifier](https://developer.android.com/jetpack/androidx/releases/jetifier) is required for `Android` build, you can enable it by selecting ***Assets > External Dependency Manager > Android Resolver > Settings > Use Jetifier***
-
+GooglePlay channel must be configured this.Don't do this in chineaseMainLand if no have special requirements.
 <!-- markdownlint-disable -->
 <figure> 
     <img src="/zh/assets/images/andriod_use_jetifier.png" width="300"> 
@@ -94,6 +94,8 @@ You need to add `user_frameworks!` to the podfile to use third-party Unity packa
 </figure>
 
 ### 3. Implement `Yodo1Application` lifecycle methods
+
+If the Application is not customized for the APP, can skip this step.
 
 There are two ways to implement lifecycle methods of `Yodo1Application`
 
@@ -115,6 +117,8 @@ There are two ways to implement lifecycle methods of `Yodo1Application`
 
 ### 4. Add `SplashActivity` to `AndroidManifest.xml` file as default LAUNCHER activity
 
+If the LAUNCHER Page is not customized for the APP, can skip this step.
+
   ```xml
   <application >
       <activity
@@ -134,6 +138,8 @@ There are two ways to implement lifecycle methods of `Yodo1Application`
 **Note**: You need to change `android:screenOrientation` with respect to your app's or game's settings
 
 ### 5. Add `Yodo1UnityActivity` to `AndroidManifest.xml` file
+
+If the Unity Container Page is not customized for the APP, can skip this step.
 
   ```xml
   <activity

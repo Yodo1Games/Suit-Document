@@ -1,22 +1,21 @@
-# 统计功能
+# Statistics
 
->* 当从Suit 6.2.1 及以下版本升级到6.3.0及以上时，请先查看[升级引导](/zh/unity/analyze-upgrade-guide)。
+## Set Account ID
 
-## 设置账号 ID
-
-在用户进行登录时，可调用 login 来设置用户的账号 ID，在设置完账号 ID 后，将会以账号 ID 作为身份识别 ID.
+When a user logs in, login can be called to set the user's account ID. After setting the account ID, the account ID will be used as the identification ID.
 
 ``` c#
 Yodo1U3dUser user = new Yodo1U3dUser();
 user.playedId = "Your Player ID"
+user.** = "***"
 Yodo1U3dAnalytics.login(user);
 ```
 
 ## Thinking Data
 
-### 发送自定义事件
+### Send Custom Events
 
-在 SDK 初始化完成之后，您就可以调用 `TrackEvent` 来上传游戏自定义事件, 以用户的任务作为示例：
+You can call 'TrackEvent' to upload game custom events, using the user's task as an example:
 
 ```c#
 Dictionary<string, string> properties = new Dictionary<string, string>();
@@ -27,20 +26,20 @@ properties.Add("mission_finish", "true");
 Yodo1U3dAnalytics.TrackEvent("mission", properties);
 ```
 
->* 事件的名称是`string`类型，只能以字母开头，可包含数字，字母和下划线“_”，长度最大为 50 个字符，对字母大小写不敏感。
->* 事件的属性是一个`Dictionary`对象，其中每个元素代表一个属性，Key的值为属性的名称，为`string`类型，规定只能以字母开头，包含数字，字母和下划线“_”，长度最大为 50 个字符，对字母大小写不敏感。
+>* The name of the event is of type 'string', which can only start with a letter and can contain numbers, letters, and the underscore '_'. The maximum length is 50 characters and is not sensitive to letter case.
+>* The attribute of an event is a 'Dictionary' object, where each element represents an attribute. The value of Key is the name of the attribute and is of type 'string'. It can only start with a letter and contains numbers, letters, and the underscore '_'. The maximum length is 50 characters and is not sensitive to letter case.
 
 ## UA(AppsFlyer和Adjust)
 
-当前UA仅适用于Apple和Google商店，并在Google商店使用时，要求必须正确集成[用户隐私](/zh/unity/optional-modules/privacy/)，确保合规。
+Currently, UA is only applicable to Apple and Google Store,and when used in Google Store, it is required to properly integrate[User Privacy](/zh/unit/optional modules/privacy/),to ensure compliance.
 
-### 应用内事件
+### In application events
 
-当你开始集成应用内事件时，请先下载[yodo1_ua_events.xls](/zh/assets/yodo1_ua_events.xls.zip)文件，填入你需要的事件名称和token(Token由UA团队提供)，并将其放置在`Assets/Yodo1/Suit/Resources`目录下。
+When you start integrating events within the application and UA by Adjust, please first download the[yodo1 ua events. xls](/zh/assets/yodo1_ua_events.xls.zip)file, fill in the event name and token you need (provided by the UA team), and place it in the 'Assets/Yodo1/Suit/Resources' directory.
 
-#### 发送自定义事件
+#### Send Custom Events
 
-您可以调用 `TrackUAEvent` 来上传游戏UA相关自定义事件，以用户的任务作为示例：
+You can call 'TrackUAEvent' to upload game UA related custom events, using the user's task as an example:
 
 ```c#
 Dictionary<string, string> properties = new Dictionary<string, string>();
@@ -51,16 +50,16 @@ properties.Add("mission_finish", "true");
 Yodo1U3dAnalytics.TrackUAEvent("mission", properties);
 ```
 
-#### 追踪IAP收入
+#### Track IAP revenue
 
-1. 向UA团队申请IAP收入的事件Token，并填写到yodo1_ua_events文件中。
-2. 当购买IAP成功后，调用`TrackIAPRevenue` 方法上报IAP收入。注意：如果你在使用Yodo1 Suit进行应用内购买，SDK将自动上报IAP收入
+1. Apply for an IAP revenue event token from the UA team and fill it in to yodo1_ Ua_ In the events file.
+2. After the IAP purchase is successful, call the 'TrackIAPRevenue' method to report the IAP revenue. Note: If you are using Yodo1 Suit for in app purchases, the SDK will automatically report IAP revenue
 
    ```c#
    Yodo1U3dAnalytics.TrackIAPRevenue(Yodo1U3dIAPRevenue  iAPRevenue);
    ```
 
-   示例如下：
+   Examples are as follows：
 
    ```c#
    using UnityEngine.Purchasing;
@@ -71,7 +70,7 @@ Yodo1U3dAnalytics.TrackUAEvent("mission", properties);
 
      void Start()
      {
-         // TODO 初始化Suit SDK
+         // TODO Initialization Suit SDK
      }
 
      public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
@@ -88,7 +87,7 @@ Yodo1U3dAnalytics.TrackUAEvent("mission", properties);
 
          if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable, StringComparison.Ordinal))
          {
-            //TODO 追踪IAP收入
+            //TODO track IAP revenue
             Yodo1U3dIAPRevenue iAPRevenue = new Yodo1U3dIAPRevenue();
             iAPRevenue.ProductIdentifier = prodID;
             iAPRevenue.Revenue = price;
@@ -109,9 +108,9 @@ Yodo1U3dAnalytics.TrackUAEvent("mission", properties);
    }
    ```
 
-#### 追踪广告收入
+#### Track advertising revenue
 
-Suit SDK提供`TrackAdRevenue`方法来报告广告收入。
+The Suit SDK provides the 'TrackAdRevenue' method to report advertising revenue.
 
 ```c#
 Yodo1U3dAdRevenue adRevenue = new Yodo1U3dAdRevenue();
@@ -124,7 +123,7 @@ adRevenue.PlacementId = "";
 Yodo1U3dAnalytics.TrackAdRevenue(adRevenue);
 ```
 
-当前无法从MAS SDK的标准集成方式中获取广告收入，所以需要使用[MAS广告收入组件](https://github.com/Yodo1Games/Yodo1-MAS-Ad-Revenue/blob/master/MAS-Ad-Revenue-Unity/README.md)获取广告收入，示例代码如下
+Currently, we cannot obtain advertising revenue from the standard integration method of the MAS SDK, so we need to use the[MAS Advertising Revenue Component](https://github.com/Yodo1Games/Yodo1-MAS-Ad-Revenue/blob/master/MAS-Ad-Revenue-Unity/README.md) Obtain advertising revenue, sample code as follows
 
 ```c#
 using UnityEngine.Purchasing;
@@ -149,50 +148,50 @@ public class GameObject : MonoBehaviou
 }
 ```
 
-### 深度链接
+### DeepLink
 
-您可以在editor编辑面板添加deeplink的domain.（注意：域前面必须添加"applink:"前缀）
+You can add the domain of the deeplink in the editor editing panel (Note: The prefix 'applink:' must be added before the domain)
 
-获取deeplink数据
+Obtain deeplink data
 
 ```c#
 public static string GetNativeRuntime(string key);
 ```
 
->* key = "appsflyer_deeplink"，获取deeplink数据
->* key = "appsflyer_id"，获取AF的用户id
+>* key = "appsflyer_deeplink"，Obtain deeplink data
+>* key = "appsflyer_id"，Obtain the user ID of AF
 
-重置deeplink数据
+Reset deeplink data
 
 ```c#
 public static void SaveToNativeRuntime(string key, string valuepairs);
 ```
 
-### 用户邀请
+### User Invitation
 
-您可以在editor编辑面板添加domain，domain必须与deeplink一致。（注意：域前面必须添加"applink:"前缀）
+You can add a domain in the editor editing panel, which must be consistent with the deeplink. (Note: The prefix 'applink:' must be added before the domain)
 
-生成分享url
+Generate sharing URL
 
 ```c#
 public static void generateInviteUrlWithLinkGenerator(Yodo1U3dAnalyticsUserGenerate generate);
 ```
 
->* 注意
->* 在获取到的url后面拼接`&af_force_deeplink=true`可以唤起手机上已经安装好的应用（Facebook分享中url被拦截，链接只会跳转到AppStore，拼接了`&af_force_deeplink=true`可以唤起应用）
+>* Notice
+>* Splice `&af after the obtained URL_ Force_ Deeplink=true 'can evoke applications already installed on the phone (URLs are intercepted during Facebook sharing, and the link will only jump to the AppStore. Joined with'&af_forceDeeplink=true 'can evoke applications)
 
-Yodo1U3dAnalyticsUserGenerate结构
+Yodo1U3dAnalyticsUserGenerate structure
 
 ```c#
-private string targetView; //目标试图名称
-private string promoCode; //促销代码
-private string referrerId; //介绍人id
-private string campaign; //活动名称
-private string channel; //渠道
-private string url; //分享的domain
+private string targetView; //Target Attempt Name
+private string promoCode; //PROMO CODE
+private string referrerId; //Referrer ID
+private string campaign; //Activity Name
+private string channel; //channel
+private string url; //Shared domain
 ```
 
-上报”用户归因分享Link“事件
+Report the 'User Attribution Sharing Link' event
 
 ```c#
 public static void logInviteAppsFlyerWithEventData(Dictionary<string, string> value = null);
@@ -200,26 +199,26 @@ public static void logInviteAppsFlyerWithEventData(Dictionary<string, string> va
 
 <!-- ## UA测试流程 -->
 
-## Adjust测试流程及数据查看⽅法
+## Adjust Testing process and data viewing method
 
-### SDK log 输出要求
+### SDK log Output requirements
 
-⾸次 sdk 接⼊完成后，请选择sandbox并开启debug mode，方便集成检查测试
+After completing the first SDK connection, please select Sandbox and enable the debug mode to facilitate integration inspection and testing.
 
 <!-- markdownlint-disable -->
 <figure> 
     <img src="/zh/assets/images/adjust/sandbox_and_debug_mode.png" width="700">
 </figure>
 
-检查没有问题后换成 production mode 上线
+After checking that there are no issues, switch to production mode and go online.
 
-### 测试数据查看⽅法
+### Test data viewing method
 
-#### 测试控制台查看⽅法
+#### Test Console Viewing Method
 
-测试控制台是「实时」查询接⼝，可使⽤⼴告id进⾏查询当前安装信息，或清除安装记录
+The test console is a "real-time" query interface that allows the user ID to query the current installation information or clear installation records.
 
->* 注：Sandbox mode/Production mode数据均可使⽤测试控制台查询
+>* Note: Sandbox mode/Production mode data can be queried through the testing console.
 
 <!-- markdownlint-disable -->
 <figure> 
@@ -236,22 +235,22 @@ public static void logInviteAppsFlyerWithEventData(Dictionary<string, string> va
     <img src="/zh/assets/images/adjust/testing_console_3.png" width="700">
 </figure>
 
-* 安卓使⽤：gps_adid / oaid / adid 
-* iOS使⽤：idfa / idfv / adid
+* Android app：gps_adid / oaid / adid 
+* iOS app：idfa / idfv / adid
 
->* 注：adid是adjust为每个设备⽣成的唯⼀id，只有在adjust sdk成功初始化上报adjust服务器才会返回该值
-gps_adid（即google advertising id 也简称为gaid）和idfa是设备上唯⼀的⼴告id
->* adid格式示例： 12b3e453f674b51a9db517ba0f140612
->* gps_adid/oaid/idfa/idfv格式示例：12f34b56-32dc-4f8f-8725-499e8627df34
+>* Note: adid is a unique id created by adjust for each device. This value will only be returned when the adjust sdk successfully initializes and reports to the adjust server
+   GPS_ Adid (also known as Google advertising id or gaid) and idfa are the only advertising ids on the device
+>* Example of adid format： 12b3e453f674b51a9db517ba0f140612
+>* Example of gps_adid/oaid/idfa/idfv format：12f34b56-32dc-4f8f-8725-499e8627df34
 
-你可以通过 adjust insights 获取，示例如下
+You can obtain it through adjust insights, as shown in the following example
 
 <!-- markdownlint-disable -->
 <figure> 
     <img src="/zh/assets/images/adjust/adjust_insights.png" width="700">
 </figure>
 
-查看测试结果
+View test results
 
 <!-- markdownlint-disable -->
 <figure> 
@@ -263,40 +262,40 @@ gps_adid（即google advertising id 也简称为gaid）和idfa是设备上唯⼀
     <img src="/zh/assets/images/adjust/testing_console_5.png" width="700">
 </figure>
 
-Adjust永久排重，即该设备记录到安装之后，⽆论是否卸载重装，我们将不会重新记录安装，也不会重新归因，因此同⼀个测试设备可以通过「清除设备」的⽅式重复测试。
+Adjust permanent weight removal, which means that after the device is recorded for installation, regardless of whether it is uninstalled or reinstalled, we will not record the installation again or attribute it again. Therefore, the same testing device can be retested through the "clear device" method.
 
->* 注：先在设备上卸载应⽤，再点击「清除设备」
+>* Note: First uninstall the application on the device, and then click 'Clear Device'
 
-#### 数据后台查看⽅法
+#### Data backend viewing method
 
-打开「Sandbox模式」
+Open Sandbox Mode
 
 <!-- markdownlint-disable -->
 <figure> 
     <img src="/zh/assets/images/adjust/data_background_1.png" width="700">
 </figure>
 
-点击编辑按钮，查看⾃定义事件
+Click the edit button to view the defined events
 
 <!-- markdownlint-disable -->
 <figure> 
     <img src="/zh/assets/images/adjust/data_background_2.png" width="700">
 </figure>
 
-选择KPI进行可视化
+Select KPIs for visualization
 
 <!-- markdownlint-disable -->
 <figure> 
     <img src="/zh/assets/images/adjust/data_background_3.png" width="700">
 </figure>
 
-⾃定义事件查询⽅法：选择「可交付数据KPI」选择「事件」，在event中搜索添加⽬标事件，点击「选择指标」，点击「确认」
+Definition of event query method: Select "Deliverable Data KPI", select "Event", search for and add a benchmark event in the event, click "Select Indicator", and then click "Confirm"
 
-### 渠道归因数据测试⽅法
+### Channel attribution data testing method
 
-跟踪链接测试⽅法：创建跟踪链接 — 拼接参数 — 点击跟踪链接 — 激活应⽤ — 查看测试控制台
+Tracking link testing method: Create tracking link - Splice parameters - Click on tracking link - Activate application - View testing console
 
-已为ARBS，RODEO，TEW创建了测试归因渠道(Yodo1-Test-Channel)，其它游戏进行归因测试前，请按照如下步骤创建测试归因渠道(Yodo1-Test-Channel)。
+We have created a test attribution channel (Yodo1 Test Channel) for ARBS, RODEO, and TEW. Before conducting attribution testing for other games, please follow the following steps to create a test attribution channel (Yodo1 Test Channel).
 <!-- markdownlint-disable -->
 <figure> 
     <img src="/zh/assets/images/adjust/attribution_1.png" width="700">
@@ -307,17 +306,17 @@ Adjust永久排重，即该设备记录到安装之后，⽆论是否卸载重�
     <img src="/zh/assets/images/adjust/attribution_2.png" width="700">
 </figure>
 
-得到点击跟踪链接：https://app.adjust.com/l5tuaz
+Get click tracking link：https://app.adjust.com/l5tuaz
 
-在点击跟踪链接前请拼接⼴告id：
+Before clicking on the tracking link, please splice the message ID:
 
-* 假设安卓gps_adid为：12f34b56-32dc-4f8f-8725-499e8627df34
-* 假设苹果idfa为：45f34b56-32dc-4f8f-8725-499e8627df67
+* Assuming Android GPS_ Adid is：12f34b56-32dc-4f8f-8725-499e8627df34
+* Assuming Apple idfa is：45f34b56-32dc-4f8f-8725-499e8627df67
 
-得到安卓点击跟踪链接：https://app.adjust.com/l5tuaz?gps_adid=12f34b56-32dc-4f8f-8725-499e8627df34
+Get Android click tracking link：https://app.adjust.com/l5tuaz?gps_adid=12f34b56-32dc-4f8f-8725-499e8627df34
 
-得到苹果点击跟踪链接：https://app.adjust.com/l5tuaz?idfa=45f34b56-32dc-4f8f-8725-499e8627df67
+Get Apple Click Tracking Link：https://app.adjust.com/l5tuaz?idfa=45f34b56-32dc-4f8f-8725-499e8627df67
 
-在浏览器触发跟踪链接之后，本地安装产品⾄⼿机，打开应⽤，在测试控制台查询归因结果
+After triggering the tracking link in the browser, install the product locally, open the application, and query the attribution results in the test console
 
->* 注：⼀些媒体⽆法在跟踪链接上加设备id，只要跳转google play，Adjust仍能通过referrer进⾏准确归因；
+>* Note: Some media cannot add a device ID to the tracking link. As long as you jump to Google Play, Adjust can still accurately attribute it through a referrer;

@@ -38,7 +38,6 @@ nav:
   # - 'index.md'
   - Unity:
       - 'unity/integration.md'
-      - 'unity/sub-modules/getting-started.md'
       - Functional Module:
           - 'unity/modules/analyze.md'
           - 'unity/modules/account.md'
