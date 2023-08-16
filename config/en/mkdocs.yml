@@ -46,28 +46,43 @@ extra:
       link: /en/
       lang: en
     - name: 中文
-      link: /zh/ 
+      link: /zh/
       lang: zh
 
 nav:
   # - 'index.md'
-
-  - Unity:  
+  - Unity:
     - 'unity/integration.md'
+    - 'unity/sub-modules/getting-started.md'
+    - Functional Module:
+      - 'unity/modules/analyze.md'
+      - 'unity/modules/account.md'
+      - 'unity/modules/anti.md'
+      - 'unity/modules/iap.md'
+      - 'unity/modules/exit.md'
+    - Optional Features:
+      - 'unity/optional-modules/share.md'
     - 'unity/FAQ.md'
-    - Functional Modules:
-      - unity/sub-modules/getting-started.md
-      - unity/sub-modules/analyze.md
-      - unity/sub-modules/live-ops.md
-      - unity/sub-modules/share.md
-      - unity/sub-modules/ua.md
-    - Sub Modules:
-      - unity/optional-modules/anti.md
-      - unity/optional-modules/share.md
 
-  # - Unity Plugins:
-    # - 'unity/sub-modules/getting-started.md'
-    # - 'unity/sub-modules/analyze.md'
-    # - 'unity/sub-modules/ua.md'
-    # - 'unity/sub-modules/live-ops.md'
-    # - 'unity/sub-modules/share.md'
+#  - Unity:
+#    - 'unity/integration.md'
+#    - 'unity/FAQ.md'
+#    - Functional Modules:
+#      - unity/sub-modules/getting-started.md
+#      - unity/sub-modules/analyze.md
+#      - unity/sub-modules/live-ops.md
+#      - unity/sub-modules/share.md
+#      - unity/sub-modules/ua.md
+#    - Sub Modules:
+#      - unity/optional-modules/anti.md
+#      - unity/optional-modules/share.md
+
+  - iOS:
+    - 'ios/integration.md'
+    - Functional Modules:
+    - Optional Features:
+
+  - Android:
+    - 'android/integration.md'
+    - Functional Modules:
+    - Optional Features:
