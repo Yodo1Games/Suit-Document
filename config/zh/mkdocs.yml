@@ -31,30 +31,30 @@ extra:
       link: /en/
       lang: en
     - name: 中文
-      link: /zh/ 
+      link: /zh/
       lang: zh
 
 nav:
   # - 'index.md'
-  - Unity:  
-    - 'unity/integration.md'
-    - 功能模块:
-      - 'unity/modules/analyze.md'
-      - 'unity/modules/account.md'
-      - 'unity/modules/anti.md'
-      - 'unity/modules/iap.md'
-      - 'unity/modules/exit.md'
-    - 可选功能:
-      - unity/optional-modules/online-config.md
-      - unity/optional-modules/activation-code.md
-      - unity/optional-modules/share.md
-      - unity/optional-modules/browser.md
-      - unity/optional-modules/icloud.md
-      - unity/optional-modules/community.md
-      - unity/optional-modules/recording.md
-      - unity/optional-modules/comment-page.md
-      - unity/optional-modules/info.md
-      - unity/optional-modules/privacy.md
+  - Unity:
+      - 'unity/integration.md'
+      - 功能模块:
+          - 'unity/modules/analyze.md'
+          - 'unity/modules/account.md'
+          - 'unity/modules/anti.md'
+          - 'unity/modules/iap.md'
+          - 'unity/modules/exit.md'
+      - 可选功能:
+          - unity/optional-modules/online-config.md
+          - unity/optional-modules/activation-code.md
+          - unity/optional-modules/share.md
+          - unity/optional-modules/browser.md
+          - unity/optional-modules/icloud.md
+          - unity/optional-modules/community.md
+          - unity/optional-modules/recording.md
+          - unity/optional-modules/comment-page.md
+          - unity/optional-modules/info.md
+          - unity/optional-modules/privacy.md
 
   # - Unity Plugins:
   #   - 'unity/sub-modules/getting-started.md'
@@ -65,19 +65,19 @@ nav:
   #   - 'unity/sub-modules/anti.md'
 
   - iOS:
-    - 'ios/integration.md'
-    - 功能模块:
-      - 'ios/modules/analyze.md'
-      - 'ios/modules/core-analyze.md'
-      - 'ios/modules/ua.md'
-      - 'ios/modules/iap.md'
-      - 'ios/modules/live-ops.md'
-    - 可选功能:
-      - ios/optional-modules/share.md
-      - ios/optional-modules/core-share.md
+      - 'ios/integration.md'
+      - 功能模块:
+          - 'ios/modules/analyze.md'
+          - 'ios/modules/core-analyze.md'
+          - 'ios/modules/ua.md'
+          - 'ios/modules/iap.md'
+          - 'ios/modules/live-ops.md'
+      - 可选功能:
+          - ios/optional-modules/share.md
+          - ios/optional-modules/core-share.md
 
   - Android:
-    - Suit SDK:
-      - 'android/integration.md'
-    - 功能模块:
-      - 'android/modules/ua.md'
+      - Suit SDK:
+          - 'android/integration.md'
+      - 功能模块:
+          - 'android/modules/ua.md'
