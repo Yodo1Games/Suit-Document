@@ -1,16 +1,16 @@
-# 应用内购买
+# In-App Purchases
 
-## 集成准备
+## Integration preparation
 
-在开始集成之前，需要准备商店密钥和IAP计费点。
+Before starting the integration, it is necessary to prepare the store key and IAP billing point.
 
-### 商店密钥
+### Store Key
 
-在开始集成之前，您需要准备以下秘钥，并将其发送给Yodo1团队。
+Before starting the integration, you need to prepare the following key and send it to the Yodo1 team.
 
-#### Apple商店
+#### Apple Store
 
-你可以从Apple后台获得共享密钥，`App Store Connect -> users and access -> shared key`，请点击[共享密钥](https://appstoreconnect.apple.com/access/shared-secret)。如下图所示：
+You can obtain a shared key from the Apple backend，`App Store Connect -> users and access -> shared key`，Click[ShareSecret](https://appstoreconnect.apple.com/access/shared-secret)。如下图所示：
 
 <!-- markdownlint-disable -->
 <figure>
@@ -18,27 +18,27 @@
 </figure>
 
 
-#### Google商店
+#### Google Store
 
-<font color=red>Google Pay要求: </font>[Google链接](https://developers.google.com/android-publisher/authorization?hl=en)
+<font color=red>Google Pay Require: </font>[Google Link](https://developers.google.com/android-publisher/authorization?hl=en)
 ![image](https://user-images.githubusercontent.com/12006868/164370037-3ccd465c-b2ef-410b-9d09-118ef63a62cc.png)
 
-#### 中国安卓商店
+#### China Android Store
 
-中国安卓商店需要相关密钥，Yodo1的运营团队将负责申请并配置到PA系统中
+The Chinese Android store requires relevant keys, and the Yodo1 operation team will be responsible for applying and configuring them into the PA system
 
-### 计费点
+### Billing point
 
-为了统一并更好的管理不同商店的IAP差异，SDK将使用excel来管理所有商品信息
+In order to unify and better manage the IAP differences among different stores, the SDK will use Excel to manage all product information
 
-**注意**
+**Notice**
 
-* 小米，华为，Google和Apple商店，计费点托管到他们服务器，根据渠道的商品ID，来获取商品信息，或者发起支付
-* 其它商店，SDK将根据包体内的商品信息完成购买相关流程，并将详细的商品信息发送给渠道SDK/服务器，完成整体的购买流程。
+* Xiaomi, Huawei, Google, Apple stores and so on host billing points to their servers to obtain product information or initiate payments based on the channel's product ID。
+* For other stores, the SDK will complete the purchase process based on the product information inside the package, and send detailed product information to the channel SDK/server to complete the overall purchase process.
 
-#### 游戏计费点模版
+#### Game billing point template
 
-你可以从这里[下载模版](/zh/assets/IapConfig_sample.xls.zip)，商品结构如下：
+Click[TemplateDownload](/zh/assets/IapConfig_sample.xls.zip)，The product structure is as follows：
 
 <!-- markdownlint-disable -->
 <figure>
@@ -57,27 +57,27 @@
 | PeriodUnit         | string    | Period Unit                                                                  |
 
 
-#### 制作计费点文件
+#### Create billing point files
 
-开发者需要添加所有游戏内的商品信息到上述excel中
+Developers need to add all in-game product information to the above Excel
 
-* Apple或Google商店: 需要开发者将excel(表格改名为IapConfig.xls，扩展名保持不变)放置于`Yodo1/Suit/Resources/`目录下。
-* 中国安卓商店: 并发送到Yodo1运营团队，运营团队将申请所有计费点，并配置在PA。
+* Apple or Google Store: Developers need to place Excel (table renamed IapConfig.xls, extension unchanged) in the 'Yodo1/Suit/Resources/' directory.
+* Chinese Android store: and send it to the Yodo1 operation team, which will apply for all billing points and configure them in PA.
 
-功能即可
+Functionality is sufficient
 
-## 查询所有商品
+## Query all products
 
-一般在游戏实名认证结束后，或者登录成功后 进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。
+It is usually done after the real name authentication of the game is completed, or after successful login, or it can be requested to obtain product information in the game hall or before requesting it.
 
 ``` c#
-//该方法会请求所有商品信息，然后在回调中全部返回
+//This method will request all product information and then return it all in the callback
 Yodo1U3dPayment.RequestProductsInfo();
-或
-//该方法只会获取指定的商品的信息， 然后在回调中返回 string puoductID = "iap_few_coins";
+or
+//This method only retrieves information about the specified product and returns it in the callback string puoductID = "iap_few_coins";
 Yodo1U3dPayment.ProductInfoWithProductId(puoductID);
     
-设置回调：Yodo1U3dPayment.SetRequestProductsInfoDelegate (RequestProductsInfoDelegate);
+Set Callback：Yodo1U3dPayment.SetRequestProductsInfoDelegate (RequestProductsInfoDelegate);
     
 void RequestProductsInfoDelegate(bool success, List<Yodo1U3dProductData> products){
      if (products != null) {
@@ -89,9 +89,9 @@ void RequestProductsInfoDelegate(bool success, List<Yodo1U3dProductData> product
 }
 ```
 
-## 查询已经拥有的订阅型商品
+## Query subscription products that you already have
 
-一般在游戏实名认证结束,或者登录成功后进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。备注：只适用于GooglePlay渠道，AppleStore渠道。
+Usually, it is done after the game's real name authentication is completed or the login is successful. It can also be requested to obtain product information in the game hall or before requesting it. Note: Only applicable to Google Play channels and Apple Store channels.
 
 ``` c#
 Yodo1U3dPayment.SetQuerySubscriptionsDelegate(QuerySubscriptionsDelegate);
@@ -99,9 +99,9 @@ Yodo1U3dPayment.SetQuerySubscriptionsDelegate(QuerySubscriptionsDelegate);
 Yodo1U3dPayment.QuerySubsriptions();
 ```
 
-## 查询已经拥有的消耗和非消耗商品
+## Query the already owned consumption and non consumption products
 
-一般在游戏实名认证结束,或者登录成功后进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。备注：只适用于GooglePlay渠道。
+Usually, it is done after the game's real name authentication is completed or the login is successful. It can also be requested to obtain product information in the game hall or before requesting it. Note: Only applicable to Google Play channels.
 
 ``` c#
 Yodo1U3dPayment.SetVerifyProductsInfoDelegate(VerifyPurchasesDelegate);
@@ -109,9 +109,9 @@ Yodo1U3dPayment.SetVerifyProductsInfoDelegate(VerifyPurchasesDelegate);
 Yodo1U3dPayment.RequestGoogleCode();
 ```
 
-## 恢复所有商品
+## Restore all products
 
-一般在游戏实名认证结束,或者登录成功后进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。备注：只适用于GooglePlay渠道，AppleStore渠道。
+Usually, it is done after the game's real name authentication is completed or the login is successful. It can also be requested to obtain product information in the game hall or before requesting it. Note: Only applicable to Google Play channels and Apple Store channels.
 
 ``` c#
 Yodo1U3dPayment.SetRestorePurchasesDelegate(RestorePurchasesDelegate);
@@ -119,29 +119,29 @@ Yodo1U3dPayment.SetRestorePurchasesDelegate(RestorePurchasesDelegate);
 Yodo1U3dPayment.restorePurchase();
 ```
 
-## 支付
+## Purchase
 
-调用支付方法，对于需要用户登录才能拉起支付的时候会先自动调用登录。
+Calling the payment method will automatically call the login when the user needs to log in to initiate payment.
 
 ``` c#
-/**该方法会根据引入的渠道展示支付方式（支付宝，微信，渠道，运营商）
-* productId  商品Id
-* extra 透传值，可为null
-* 建议方式
+/**This method will display the payment method according to the introduced channel (Alipay, WeChat, channel, operator)
+* productId  ProductId
+* extra PassValue,Nullable
+* Suggested approach
 **/i
 Yodo1U3dPayment.Purchase(string productId, string extra)
 ```
 
-设置支付回调：
+Set purchase callback：
 
 ``` c#
 Yodo1U3dPayment.SetPurchaseDelegate(PurchaseDelegate);
 /**
-* orderId,yodo1订单号
-* channelOrderId , iOS订单号。（目前只在iOS中）
-* productId，计费点文件的Id。
-* extra，渠道支付返回的多余信息
-* payType，支付类型
+* orderId,yodo1 OrderId
+* channelOrderId , iOS OrderId。（Only in iOS）
+* productId，channel Product Id。
+* extra，Excess information returned by channel payment
+* payType，payType
 */
 
 void PurchaseDelegate (Yodo1U3dConstants.PayEvent status, string orderId, string productId, string extra, Yodo1U3dConstants.PayType payType) {
@@ -152,31 +152,31 @@ void PurchaseDelegate (Yodo1U3dConstants.PayEvent status, string orderId, string
 }
 ```
 
-Yodo1U3dConstants.PayEvent结构：
+Yodo1U3dConstants.PayEvent Structure：
 
-| Key名称         | 描述 |
-| -------------- | --------- |
-| PayCannel      |   取消支付  |
-| PaySuccess     |   支付成功  |
-| PayFail        |   支付失败  |
-| PayVerifyFail  |  ops验证失败|
-| PayCustomCode  |  支付账号异常|
+| KeyName       | Description           |
+|---------------|-----------------------|
+| PayCannel     | Pay Cancel            |
+| PaySuccess    | Pay Success           |
+| PayFail       | Pay Failure           |
+| PayVerifyFail | Ops Verify Fail       |
+| PayCustomCode | Pay Account Exception |
 
-Yodo1U3dConstants.PayType结构：
+Yodo1U3dConstants.PayType Structure：
 
-| Key名称         | 描述 |
-| -------------- | ------------- |
-| PayTypeWechat  |   微信         |
-| PayTypeAlipay  |   支付宝       |
-| PayTypeChannel | 支付渠道(ios为appstore)  |
-| PayTypeSMS     |   短代               |
+| KeyName        | Description                 |
+|----------------|-----------------------------|
+| PayTypeWechat  | Wechat                      |
+| PayTypeAlipay  | Alipay                      |
+| PayTypeChannel | PayChannel(ios is appstore) |
+| PayTypeSMS     | PayBySms                    |
 
-## 查询漏单
+## Query missing orders
 
-一般在游戏实名认证结束,或者登录成功后进行，也可以在游戏大厅和在需要商品信息之前，请求获取到。
+Usually, it is done after the game's real name authentication is completed or the login is successful. It can also be requested to obtain product information in the game hall or before requesting it.
 Yodo1U3dPayment.QueryLossOrder ();
 
-设置回调：
+Set Callback：
 
 ``` c#
 Yodo1U3dPayment.SetLossOrderIdPurchasesDelegate(LossOrderIdPurchasesDelegate);
@@ -189,34 +189,34 @@ void LossOrderIdPurchasesDelegate(bool success, List<Yodo1U3dProductData> produc
 }
 ```
 
-## 发货成功通知
+## Notification of successful shipment
 
-购买成功后，调用发货成功通知接口。。功能是健全购买流程，作为丢单的统计依据。
+Notification of successful shipment
 
 ``` c#
 /**
- * 发送发货成功通知，可以不用在意回调处理。
+ * After the purchase is successful, call the delivery success notification interface.. The function is to improve the purchasing process and serve as a statistical basis for lost orders.
  */
          Yodo1U3dPayment.sendGoods(orderId[]);
-//可以不接入
-  
+         
+//Can be disconnected
          Yodo1U3dPayment.SetSendGoodsOverDelegate(SendGoodsOverDelegate);
 ```
 
-## 发货失败通知
+## Delivery Failure Notification
 
-购买失败后，调用发货失败通知接口。。功能是健全购买流程，作为丢单的统计依据。
+After the purchase fails, call the delivery failure notification interface.. The function is to improve the purchasing process and serve as a statistical basis for lost orders.
 
 ``` c#
 /**
- * 发送发货失败通知，可以不用在意回调处理。
+ * Sending a delivery failure notification eliminates the need for callback processing.
  */
          Yodo1U3dPayment.sendGoodsFail(orderId[]);
-//可以不接入
+//Can be disconnected
           Yodo1U3dPayment.SetSendGoodsFailDelegate(SendGoodsFailDelegate);
 ```
 
-## 错误码
+## ErrorCode
 
 | ErrorCode | ErrorMessage                    |
 | :-------- | :------------------------------ |
