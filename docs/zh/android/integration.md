@@ -27,8 +27,8 @@ android.enableJetifier=true
 请在应用module内build.gradle添加以下依赖：
 
 ```groovy
-api 'com.yodo1.suit.pay:core:6.2.0.2'
-api 'com.yodo1.suit.bridge:pay:6.1.15'
+api 'com.yodo1.suit.pay:core:6.3.4.17'
+api 'com.yodo1.suit.bridge:pay:6.3.5'
 ```
 
 ### 3. AndroidManifest.xml配置
@@ -215,7 +215,7 @@ Yodo1Game.initWithConfig(this,jso.toString());
 
 ```groovy
 //Google渠道添加
-api 'com.yodo1.suit.pay:google:5.1.0.1'
+api 'com.yodo1.suit.pay:google:17.0.0.19'
 
 //!!GP 同时yodo1_games_config.properties文件加入一下两个配置：
 google_app_id=yourAppId on GooglePlay
