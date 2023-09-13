@@ -7,31 +7,16 @@ theme:
   name: material
   language: en
 
+  ## 下面部分所有语言一样
   custom_dir: '../../overrides/'
   features:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.indexes
     - navigation.expand
-  palette:
-    - scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-  font:
-    text: Roboto
-    code: Roboto Mono
-  favicon: assets/favicon.png
 
 markdown_extensions:
+  - meta
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
@@ -46,27 +31,42 @@ extra:
       link: /en/
       lang: en
     - name: 中文
-      link: /zh/ 
+      link: /zh/
       lang: zh
 
 nav:
   # - 'index.md'
+  - Unity:
+      - 'unity/integration.md'
+      - Functional Module:
+          - 'unity/modules/analyze.md'
+          - 'unity/modules/account.md'
+          - 'unity/modules/anti.md'
+          - 'unity/modules/iap.md'
+          - 'unity/modules/exit.md'
+      - Optional Features:
+          - 'unity/optional-modules/share.md'
+      - 'unity/FAQ.md'
 
-  - Unity:  
-    - 'unity/integration.md'
-    - 'unity/FAQ.md'
-    # - 功能模块:
-      # - 'unity/modules/analyze.md'
-      # - 'unity/modules/account.md'
-      # - 'unity/modules/iap.md'
-      # - 'unity/modules/exit.md'
-    - Sub Modules:
-      - unity/optional-modules/anti.md
-      - unity/optional-modules/share.md
+  #  - Unity:
+  #    - 'unity/integration.md'
+  #    - 'unity/FAQ.md'
+  #    - Functional Modules:
+  #      - unity/sub-modules/getting-started.md
+  #      - unity/sub-modules/analyze.md
+  #      - unity/sub-modules/live-ops.md
+  #      - unity/sub-modules/share.md
+  #      - unity/sub-modules/ua.md
+  #    - Sub Modules:
+  #      - unity/optional-modules/anti.md
+  #      - unity/optional-modules/share.md
 
-  # - Unity Plugins:
-    # - 'unity/sub-modules/getting-started.md'
-    # - 'unity/sub-modules/analyze.md'
-    # - 'unity/sub-modules/ua.md'
-    # - 'unity/sub-modules/live-ops.md'
-    # - 'unity/sub-modules/share.md'
+  - iOS:
+      - 'ios/integration.md'
+#      - Functional Modules:
+#      - Optional Features:
+
+  - Android:
+      - 'android/integration.md'
+#      - Functional Modules:
+#      - Optional Features:
