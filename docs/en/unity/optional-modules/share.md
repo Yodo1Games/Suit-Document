@@ -2,7 +2,7 @@
 
 **Getting started**:
 
->* Download [Unity Plugin](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Share/Yodo1-Share-1.0.3.unitypackage)
+>* Download [Unity Plugin](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Share/Yodo1-Share-1.0.4.unitypackage)
 
 ## Integrate Configuration
 

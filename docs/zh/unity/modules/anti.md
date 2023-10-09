@@ -23,7 +23,7 @@
 
 ## 集成SDK
 
-### 1. 下载最新[Unity插件(3.2.9)](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Anti-Addiction/Yodo1-Anti-Addiction-3.2.9.unitypackage)
+### 1. 下载最新[Unity插件(3.2.10)](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Anti-Addiction/Yodo1-Anti-Addiction-3.2.10.unitypackage)
 
 ### 2. 集成配置
 
