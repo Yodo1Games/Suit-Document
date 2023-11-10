@@ -15,12 +15,12 @@ maven { url "https://nexus.yodo1.com/repository/maven-public/" }
 
 ```groovy
 //core
-implementation 'com.yodo1.suit.pay:core:6.3.4.17'
-implementation 'com.yodo1.suit.pay:core_bridge:6.3.5'
+implementation 'com.yodo1.suit.pay:core:6.3.6.0'
+implementation 'com.yodo1.suit.pay:core_bridge:6.3.6'
 //GooglePlay Store
-implementation 'com.yodo1.suit.pay:google:17.0.0.19'
+implementation 'com.yodo1.suit.pay:google:17.0.0.24'
 //AF analytics
-implementation 'com.yodo1.suit.analytics:appsflyer:6.12.2.1'
+implementation 'com.yodo1.suit.analytics:appsflyer:6.12.3.0'
 ```
 
 #### 2.2 Add `compileOptions` property to the `Android` section

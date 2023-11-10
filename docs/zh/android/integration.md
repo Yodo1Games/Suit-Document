@@ -27,8 +27,8 @@ android.enableJetifier=true
 请在应用module内build.gradle添加以下依赖：
 
 ```groovy
-api 'com.yodo1.suit.pay:core:6.3.4.17'
-api 'com.yodo1.suit.bridge:pay:6.3.5'
+api 'com.yodo1.suit.pay:core:6.3.6.0'
+api 'com.yodo1.suit.bridge:pay:6.3.6'
 ```
 
 ### 3. AndroidManifest.xml配置
@@ -605,6 +605,7 @@ Yodo1GameUtils.openWebPage("www.baidu.com", new JSONObject(maps).toString());
 //获取隐私协议和用户协议
 String terms = Yodo1GameUtils.getTermsLink();
 String policy = Yodo1GameUtils.getPolicyLink();
+String childPolicy = Yodo1GameUtils.getChildPolicyLink();
 
 //获取SDK版本
 Yodo1Game.getSDKVersion();
