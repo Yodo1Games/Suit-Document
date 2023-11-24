@@ -1,7 +1,7 @@
 # Unity Suit
 
 **集成准备**:
->* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Suit/Yodo1-Suit-6.3.6.unitypackage)
+>* 下载[Unity插件](https://bj-ali-opp-sdk-update.oss-cn-beijing.aliyuncs.com/Unity_Plugins/Suit/Yodo1-Suit-6.3.7.unitypackage)
 >* SDK支持Unity LTS 版本（2019或更高版本）
 >* SDK支持Android API 19+
 >* `CocoaPods`是`iOS`构建所必需的，可以按照[这里](https://guides.cocoapods.org/using/getting-started.html#getting-started)的说明安装。
@@ -639,14 +639,34 @@ Yodo1GameUtils.openFeedback();
 
 ### 3.7 录制屏幕功能
 ``` java
-//开启录屏
+/**
+ * 录屏老接口(渠道录屏)
+**/
 Yodo1U3dPublish.BeginRecordVideo();
-//停止录屏,仅支持iOS
-Yodo1U3dPublish.StopRecordVideo();
-//展示录屏,仅支持iOS
-Yodo1U3dPublish.ShowRecordVideo();
-//是否支持截屏
 Yodo1U3dPublish.IsCaptureSupported();
+//只iOS
+Yodo1U3dPublish.StopRecordVideo();
+//只iOS
+Yodo1U3dPublish.ShowRecordVideo();
+ 
+ 
+/**
+ * 录屏新接口
+**/
+//开启录屏
+Yodo1U3dReplay.Initialize(Yodo1ReplayConfig config);
+//停止录屏
+Yodo1U3dReplay.StopRecord();
+//开始录屏
+Yodo1U3dReplay.StartRecord();
+//是否支持录屏
+Yodo1U3dReplay.IsSupport();
+//是否正在录屏
+Yodo1U3dReplay.IsRecording();
+//设置录屏模式。玩家控制录屏开始(浮标按钮,此时start/stop没意义)，还是API控制开关。
+Yodo1U3dReplay.SetType(Yodo1ReplayType);
+//展示录屏结果。(是否分享等后续交互展示)
+Yodo1U3dReplay.ShowRecorder();
 ```
 
 ### 3.8 打开/跳转 app评价页
