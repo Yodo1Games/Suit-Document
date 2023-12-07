@@ -473,9 +473,10 @@ void LossOrderIdPurchasesDelegate(bool success, List<Yodo1U3dProductData> produc
 
 ### 2.5  退出游戏
 ``` java
-Yodo1U3dUtils.exit (this, exitCallback);
+Yodo1U3dUtils.exit ();
     
 //退出游戏回调
+Yodo1U3dAccount.SetExitDelegate(exitCallback);
 void exitCallback(string msg){
      Debug.Log ("exitCallback, msg = " + msg);
 }
