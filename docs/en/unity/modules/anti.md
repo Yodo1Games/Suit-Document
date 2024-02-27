@@ -74,6 +74,12 @@ using Yodo1.AntiAddiction;
 
 public class Sample : MonoBehaviour {
     private void Awake() {
+        // Determine if it is mainland China
+        bool isChinaMainland = Yodo1U3dAntiAddiction.IsChineseMainland(); 
+        if (!isChinaMainland) {
+            return;
+        }
+        
         // Set SDK initialization callback.
         Yodo1U3dAntiAddiction.SetInitCallBack((bool result, string content) => {
             if (result) {
