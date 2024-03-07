@@ -95,7 +95,7 @@ Yodo1U3dAnalytics.TrackUAEvent("mission", properties);
             iAPRevenue.Currency = currency;
    #if UNITY_IOS
             iAPRevenue.TransactionId = transactionID;
-            iAPRevenue.ReceiptId = receipt;
+            iAPRevenue.ReceiptId = (string)recptToJSON["Payload"];
    #elif UNITY_ANDROID
             iAPRevenue.PublicKey = <google_public_key>;
             iAPRevenue.Signature = (string)receiptPayload["signature"];.
