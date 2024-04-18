@@ -30,7 +30,17 @@ Yodo1U3dAnalytics.TrackEvent("mission", properties);
 >* 事件的名称是`string`类型，只能以字母开头，可包含数字，字母和下划线“_”，长度最大为 50 个字符，对字母大小写不敏感。
 >* 事件的属性是一个`Dictionary`对象，其中每个元素代表一个属性，Key的值为属性的名称，为`string`类型，规定只能以字母开头，包含数字，字母和下划线“_”，长度最大为 50 个字符，对字母大小写不敏感。
 
-## UA(AppsFlyer和Adjust)
+### 获取Thinking Data的标识符
+
+在 SDK 初始化完成之后，可以通过`GetIdentifiers`方法来获取`Thinking Data`的 `distinct_id` 和 `device_id`，示例如下：
+
+```c#
+Dictionary<string, object> identifiers = Yodo1U3dAnalytics.GetIdentifiers();
+string tdDistinctId = identifiers["td_distinct_id"].ToString();
+string tdDeviceId = identifiers["td_device_id"].ToString();
+```
+
+## UA(Adjust)
 
 当前UA仅适用于Apple和Google商店，并在Google商店使用时，要求必须正确集成[用户隐私](/zh/unity/optional-modules/privacy/)，确保合规。
 
@@ -168,7 +178,7 @@ public static string GetNativeRuntime(string key);
 public static void SaveToNativeRuntime(string key, string valuepairs);
 ```
 
-### 用户邀请
+<!-- ### 用户邀请
 
 您可以在editor编辑面板添加domain，domain必须与deeplink一致。（注意：域前面必须添加"applink:"前缀）
 
@@ -196,7 +206,7 @@ private string url; //分享的domain
 
 ```c#
 public static void logInviteAppsFlyerWithEventData(Dictionary<string, string> value = null);
-```
+``` -->
 
 <!-- ## UA测试流程 -->
 

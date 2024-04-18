@@ -152,6 +152,26 @@ void PurchaseDelegate (Yodo1U3dConstants.PayEvent status, string orderId, string
 }
 ```
 
+```c#
+Yodo1U3dPayment.SetPurchaseUpdatedDelegate((Yodo1U3dConstants.PayEvent status, Yodo1U3dProductData product) =>
+{
+    Debug.Log(Yodo1U3dConstants.LOG_TAG + "PurchaseUpdatedDelegate status: " + status);
+
+    if (status == Yodo1U3dConstants.PayEvent.PaySuccess)
+    {
+        Dictionary<string, object> payload = (Dictionary<string, object>)product.Receipt["Payload"];
+        //iOS
+        string base64EncodedReceipt = (string)payload["base64EncodedReceipt"];
+        Debug.Log(Yodo1U3dConstants.LOG_TAG + "base64EncodedReceipt: " + base64EncodedReceipt);
+        //Android
+        string signature = (string)payload["signature"];
+        string json = (string)payload["json"];
+        Debug.Log(Yodo1U3dConstants.LOG_TAG + "signature:" + signature + ", json: " + json);
+    }
+});
+
+``` 
+
 Yodo1U3dConstants.PayEvent结构：
 
 | Key名称         | 描述 |
