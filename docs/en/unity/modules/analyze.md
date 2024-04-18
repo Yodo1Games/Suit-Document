@@ -29,7 +29,17 @@ Yodo1U3dAnalytics.TrackEvent("mission", properties);
 >* The name of the event is of type 'string', which can only start with a letter and can contain numbers, letters, and the underscore '_'. The maximum length is 50 characters and is not sensitive to letter case.
 >* The attribute of an event is a 'Dictionary' object, where each element represents an attribute. The value of Key is the name of the attribute and is of type 'string'. It can only start with a letter and contains numbers, letters, and the underscore '_'. The maximum length is 50 characters and is not sensitive to letter case.
 
-## UA(AppsFlyer和Adjust)
+### Get Identifiers
+
+You can call `GetIdentifiers` to get the identifiers of the Thinking Data, an example:
+
+```c#
+Dictionary<string, object> identifiers = Yodo1U3dAnalytics.GetIdentifiers();
+string tdDistinctId = identifiers["td_distinct_id"].ToString();
+string tdDeviceId = identifiers["td_device_id"].ToString();
+```
+
+## UA(Adjust)
 
 Currently, UA is only applicable to Apple and Google Store,and when used in Google Store, it is required to properly integrate[User Privacy](/zh/unit/optional modules/privacy/),to ensure compliance.
 
@@ -167,7 +177,7 @@ Reset deeplink data
 public static void SaveToNativeRuntime(string key, string valuepairs);
 ```
 
-### User Invitation
+<!-- ### User Invitation
 
 You can add a domain in the editor editing panel, which must be consistent with the deeplink. (Note: The prefix 'applink:' must be added before the domain)
 
@@ -195,7 +205,7 @@ Report the 'User Attribution Sharing Link' event
 
 ```c#
 public static void logInviteAppsFlyerWithEventData(Dictionary<string, string> value = null);
-```
+``` -->
 
 <!-- ## UA测试流程 -->
 
