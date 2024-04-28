@@ -7,6 +7,10 @@
 在用户进行登录时，可调用 login 来设置用户的账号 ID，在设置完账号 ID 后，将会以账号 ID 作为身份识别 ID.
 
 ``` c#
+Yodo1U3dAnalytics.login("Your Player ID");
+```
+
+``` c#
 Yodo1U3dUser user = new Yodo1U3dUser();
 user.playedId = "Your Player ID"
 Yodo1U3dAnalytics.login(user);

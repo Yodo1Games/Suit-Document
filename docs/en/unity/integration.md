@@ -21,9 +21,9 @@ And this page shows you how to download and set up Yodo1 Suit SDK in Unity.
 > - Android API 19 or above
 > - iOS API 11 or above
 
-## Download the Latest SDK(6.3.10)
+## Download the Latest SDK(6.3.11)
 
-You can download the Unity Plugin [via the link here](https://sdk-artifacts.yodo1.com/Yodo1Suit/6.3.10/Unity/Release/Yodo1Suit-6.3.10.unitypackage).
+You can download the Unity Plugin [via the link here](https://sdk-artifacts.yodo1.com/Yodo1Suit/6.3.11/Unity/Release/Yodo1Suit-6.3.11.unitypackage).
 
 ## iOS Configuration
 
@@ -39,9 +39,11 @@ You can download the Unity Plugin [via the link here](https://sdk-artifacts.yodo
 
 `iCloud(Optional)`: Enable this means you will use Yodo1's iCloud
 
-`Thinking AppId & Server URL(Optional)`: Enable data analytics and using Thinking service to collected user-level data and provide insights
+`Thinking AppId(Optional)`: Enable data analytics and using Thinking project to collected user-level data and provide insights
 
-`AppsFlyer(Optional)`: Enable it to use AppsFlyer
+`Thinking AppIdNew(Optional)`: Enable data analytics and using new Thinking project to collected user-level data and provide insights
+
+`Adjust(Optional)`: Enable it to use Adjust
 <!-- markdownlint-disable -->
 
 <figure> 
@@ -80,7 +82,7 @@ You need to add `user_frameworks!` to the podfile to use third-party Unity packa
 >* **Region Code**: You can get it from the Yodo1 team, which is optional
 >* **Publishing Store**: Please choice `GooglePlay` if your game is published on the Google Play store and uses Yodo's in-app purchase. Please choice `ChinaMainLand` if your game is published to the stores in China Mainland and contact the Yodo1 team for build
 >* **Thinking Data**: Please fill in app id of Thinking Data
->* **AppsFlyer** is optional
+>* **Adjust** is optional
 >* **Debug Mode**: Enable debug log, please turn it off when you publish your game to stores
 
 ### 2. AndroidX Support Config

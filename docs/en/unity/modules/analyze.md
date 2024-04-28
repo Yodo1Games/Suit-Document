@@ -5,6 +5,10 @@
 When a user logs in, login can be called to set the user's account ID. After setting the account ID, the account ID will be used as the identification ID.
 
 ``` c#
+Yodo1U3dAnalytics.login("Your Player ID");
+```
+
+``` c#
 Yodo1U3dUser user = new Yodo1U3dUser();
 user.playedId = "Your Player ID"
 user.** = "***"
