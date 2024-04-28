@@ -17,9 +17,9 @@
 > - Android API 19+
 > - iOS API 11+
 
-## 下载最新的SDK(6.3.10)
+## 下载最新的SDK(6.3.11)
 
-你可以点击这里下载[Unity插件](https://sdk-artifacts.yodo1.com/Yodo1Suit/6.3.10/Unity/Release/Yodo1Suit-6.3.10.unitypackage).
+你可以点击这里下载[Unity插件](https://sdk-artifacts.yodo1.com/Yodo1Suit/6.3.11/Unity/Release/Yodo1Suit-6.3.11.unitypackage).
 
 ## iOS配置
 
@@ -35,9 +35,11 @@
 
 `iCloud(Optional)`: 启用它意味着你将使用Yodo1的iCloud，这是可选的
 
-`Thinking AppId & Server URL(Optional)`: 使用Thinking service收集用户级数据
+`Thinking AppId(Optional)`: 使用 Thinking project 收集用户级数据
 
-`AppsFlyer(Optional)`: 使用AppsFlyer UA SDK
+`Thinking AppIdNew(Optional)`: 使用 New Thinking project 收集用户级数据
+
+`Adjust(Optional)`: 使用 Adjust UA SDK
 
 <!-- >* AppKey配置Yodo1 GameKey，RegionCode配置Yodo1 RegionCode（没有可以不用配置）
 >* 如果使share功能，请勾选`Share`，同时配置对应的appkey和link
@@ -85,8 +87,9 @@
 * `Publishing Store`: 发行商店选项
     * `GooglePlay`: 如果使用Google支付功能，请选择它
     * `ChinaMainLand`： 如果要构建中国应用商店包，请选择它, 并联系Yodo1团队进行PA打包
-* `Thinking AppId & Server URL(Optional)`: 使用Thinking service收集用户级数据
-* `AppsFlyer(Optional)`: 如果你的游戏需要UA，请勾选，配置对应的配置信息（AppsFlyer附加了deeplink功能，不使用可以不配置）
+* `Thinking AppId(Optional)`: 使用 Thinking project 收集用户级数据
+* `Thinking AppIdNew(Optional)`: 使用 New Thinking project 收集用户级数据
+* `Adjust(Optional)`: 如果你的游戏需要UA，请勾选，配置对应的配置信息
 
 ### 2. Android解析器设置
 
