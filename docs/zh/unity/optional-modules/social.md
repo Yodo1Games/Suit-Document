@@ -19,7 +19,6 @@
 #### 新浪微博配置
 
 * [Weibo] AppKey: 新浪微博AppKey，用来鉴证第三方应用的身份，显示来源等。
-* [Weibo] UniversalLink: 用于分享功能，苹果官方文档 [Support Universal Links](https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW1)。
 * [Weibo] RedirectURI: 应用回调页，在进行授权登录认证时使用。
 
 #### Facebook配置
