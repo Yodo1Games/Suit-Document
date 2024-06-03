@@ -47,6 +47,7 @@ nav:
       - 可选功能:
           - unity/optional-modules/online-config.md
           - unity/optional-modules/activation-code.md
+          - unity/optional-modules/social.md
           - unity/optional-modules/share.md
           - unity/optional-modules/browser.md
           - unity/optional-modules/icloud.md
