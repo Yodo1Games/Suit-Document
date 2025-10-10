@@ -138,30 +138,7 @@ adRevenue.PlacementId = "";
 Yodo1U3dAnalytics.TrackAdRevenue(adRevenue);
 ```
 
-你可以获取MAS [Impression-Level User Revenue](https://developers.yodo1.com/docs/sdk/guides/unity/ad-formats#impression-level-user-revenue-1)，上报收入示例代码如下
-
-```c#
-using UnityEngine.Purchasing;
-
-public class GameObject : MonoBehaviou
-{
-   void Start()
-   {
-      Yodo1MasAdRevenue.SetAdRevenueDelegate((string adPlatform, string adSource, string adFormat, string adUnitName, double revenue, string currency) => {
-         Debug.LogFormat("{0} adPlatform:{1} adSource:{2} adFormat:{3} adUnitName:{4} revenue:{5} currency:{6}", Yodo1MasAdRevenue.TAG, adPlatform, adSource, adFormat, adUnitName, revenue, currency);
-         // TODO You can track the data yourselves here. 
-
-         Yodo1U3dAdRevenue adRevenue = new Yodo1U3dAdRevenue();
-         adRevenue.Source = adPlatform.ToLower();
-         adRevenue.Revenue = revenue;
-         adRevenue.Currency = currency;
-         adRevenue.NetworkName = adSource;
-         adRevenue.UnitId = adUnitName;
-         Yodo1U3dAnalytics.TrackAdRevenue(adRevenue);
-      });
-   }
-}
-```
+你可以获取MAS [Impression-Level User Revenue](https://developers.yodo1.com/docs/sdk/guides/unity/ad-formats#impression-level-user-revenue-1)
 
 ### 深度链接
 
