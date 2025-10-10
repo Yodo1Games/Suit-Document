@@ -138,7 +138,7 @@ adRevenue.PlacementId = "";
 Yodo1U3dAnalytics.TrackAdRevenue(adRevenue);
 ```
 
-当前无法从MAS SDK的标准集成方式中获取广告收入，所以需要使用[MAS广告收入组件](https://github.com/Yodo1Games/Yodo1-MAS-Ad-Revenue/blob/master/MAS-Ad-Revenue-Unity/README.md)获取广告收入，示例代码如下
+你可以获取MAS [Impression-Level User Revenue](https://developers.yodo1.com/docs/sdk/guides/unity/ad-formats#impression-level-user-revenue-1)，上报收入示例代码如下
 
 ```c#
 using UnityEngine.Purchasing;
