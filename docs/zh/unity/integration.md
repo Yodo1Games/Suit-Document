@@ -17,9 +17,9 @@
 > - Android API 19+
 > - iOS API 11+
 
-## 下载最新的SDK(6.5.6)
+## 下载最新的SDK(6.5.7)
 
-你可以点击这里下载[Unity插件](https://sdk-artifacts.yodo1.com/Yodo1Suit/6.5.6/Unity/Release/Yodo1Suit-6.5.6.unitypackage).
+你可以点击这里下载[Unity插件](https://sdk-artifacts.yodo1.com/Yodo1Suit/6.5.7/Unity/Release/Yodo1Suit-6.5.7.unitypackage).
 
 ## iOS配置
 
